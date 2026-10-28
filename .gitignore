@@ -1,0 +1,22 @@
+
+# Personal AI Agent memory, guidelines, and local status files
+PROJECT_MEMORY.md
+PROJECT_STATUS.md
+GEMINI.md
+AGENTS.md
+.agents/
+.gemini/
+.env
+.env.*
+!.env.example
+
+# Node & Build artifacts
+node_modules/
+dist/
+dist-ssr/
+*.local
+.vite/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
