@@ -8,6 +8,7 @@ import {
   Layers,
   Cpu,
 } from 'lucide-react'
+import { GoldParticleCanvas } from './GoldParticleCanvas'
 
 interface HeroProps {
   onExploreClick: () => void
@@ -27,6 +28,9 @@ export const Hero: React.FC<HeroProps> = ({ onExploreClick }) => {
         overflow: 'hidden',
       }}
     >
+      {/* Royal Ambient Gold Particle Stream */}
+      <GoldParticleCanvas />
+
       {/* Background Radial Glow */}
       <div
         style={{
