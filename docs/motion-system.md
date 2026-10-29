@@ -57,3 +57,4 @@ The hero environment is rendered via Three.js with hardware-accelerated WebGL:
    * Explicit `.dispose()` calls on all Three.js geometries, materials, and canvas textures upon component unmount to guarantee zero GPU memory leaks.
 3. **Power Preference:**
    * WebGL context requested with `powerPreference: "high-performance"`, capping canvas `devicePixelRatio` at `Math.min(window.devicePixelRatio, 2)` to protect mobile battery life.
+

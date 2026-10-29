@@ -41,3 +41,4 @@
 
 4. **Search Matrix & Explorer**:
    * Integrate an interactive Command Palette and multi-facet filtering bar inspired by `NavbarGallery` and `21st.Dev` command patterns.
+

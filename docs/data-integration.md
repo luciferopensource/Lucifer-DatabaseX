@@ -1,16 +1,14 @@
 # Data Integration & Scraper Citadels — Lucifer Database X 🗄️
 
-**Repository:** `C:\Users\shank\OneDrive\Desktop\Lucifer Open Source\Lucifer DatabaseX`  
-**Data Sources:**  
-1. `C:\Users\shank\OneDrive\Desktop\Lucifer Open Source\TG Media Sync Manager Account 3\database\smart_sync.db` (264,560 SQLite3 Records)  
-2. `C:\Users\shank\OneDrive\Desktop\Lucifer Open Source\Lucifer-OTT-POS-main\scrapers\resolvers\` (16 Verified Python Resolvers)  
+**Repository:** `Lucifer DatabaseX`  
+**Data Framework:** Sovereign Ingestion Core & 16 Scraper Citadels  
 **Standard:** Lucifer Open Source Truthfulness Standard (Zero Synthetic Statistics)
 
 ---
 
 ## 1. The 16 Verified Scraper Citadels
 
-All source citadels represent actual, physical resolvers discovered in the monorepo codebase at `Lucifer-OTT-POS-main/scrapers/resolvers/`:
+All source citadels represent actual, physical resolvers integrated into Lucifer Database X:
 
 | Citadel Identifier | Python Resolver File | Primary Domains | Core Capabilities & Architecture |
 | :--- | :--- | :--- | :--- |
@@ -33,9 +31,9 @@ All source citadels represent actual, physical resolvers discovered in the monor
 
 ---
 
-## 2. The 264,560 SQLite3 Records (`smart_sync.db`)
+## 2. The 264,560 Sovereign Records
 
-* **Database File:** `TG Media Sync Manager Account 3/database/smart_sync.db`
+* **Sovereign Fleet Source:** Lucifer Fleet Ingestion Matrix
 * **Primary Table:** `sync_history`
 * **Total Rows:** `264,560`
 * **Clean Indexed Titles:** `263,587`
@@ -80,3 +78,4 @@ CREATE TABLE sync_history (
    * Every record maintains a 64-character SHA-256 verification hash (`luciferFleet.catalogHash`) used by the worker fleet for file de-duplication and bitstream verification.
 4. **Mirror Link Conduits:**
    * Each entry is decorated with authentic resolver conduits (`Pixeldrain 10Gbps`, `HubCloud Direct`, `GDFlix Enterprise`, `Gofile Vault`, `Telegram MTProto Fleet Node`).
+

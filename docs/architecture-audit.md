@@ -22,13 +22,12 @@ Lucifer Database X is the centralised sovereign media database, metadata indexin
 
 ---
 
-## 2. Discovered Ecosystem Media Data Sources
+## 2. Integrated Sovereign Media Data Sources
 
-A targeted investigation across `C:\Users\shank\OneDrive\Desktop\Lucifer Open Source\` revealed two primary data sources:
+Lucifer Database X integrates two primary data layers:
 
-### A. The 264,560 Synced Media Records (`smart_sync.db`)
-* **Location:** `C:\Users\shank\OneDrive\Desktop\Lucifer Open Source\TG Media Sync Manager Account 3\database\smart_sync.db`
-* **Table:** `sync_history` (264,560 rows; 263,587 with clean parsed titles)
+### A. The 264,560 Synced Media Records
+* **Catalog Matrix:** `sync_history` (264,560 rows; 263,587 with clean parsed titles)
 * **Fields:** `id`, `message_id`, `source_id`, `dest_id`, `file_name`, `clean_name`, `year`, `resolution`, `codec`, `language`, `size`, `copy_date`, `status`, `poster_url`
 * **Real Sample Titles:**
   * *Spider-Noir.S01E05.Betrayal.2160p.AMZN.WEB-DL.Multi* (3.91 GB, 2160p 4K UHD)
@@ -37,8 +36,7 @@ A targeted investigation across `C:\Users\shank\OneDrive\Desktop\Lucifer Open So
   * *Guard.Revenge.for.Love.2025.1080p.AMZN.WEB-DL.DDP5.1* (3.91 GB)
   * *KANNAPPA_2025_1080p_AMZN_WEB_DL_SDR_x264* (3.91 GB)
 
-### B. The 16 Autonomous Scraper Resolvers (`Lucifer-OTT-POS-main`)
-* **Location:** `C:\Users\shank\OneDrive\Desktop\Lucifer Open Source\Lucifer-OTT-POS-main\scrapers\resolvers\`
+### B. The 16 Sovereign Scraper Citadels
 * **The 16 Specific Citadels / Sources:**
   1. `VegaMovies` (`vegamovies.py`): Multi-tier 4K HDR/SDR, TV packs & Vegadrive/VCloud links
   2. `4KHDHub` (`fourkhdhub.py`): 2160p Dolby Vision & HDR, complete season packs, episode accordions
@@ -84,3 +82,4 @@ A targeted investigation across `C:\Users\shank\OneDrive\Desktop\Lucifer Open So
 3. **3D Visual Environment**:
    * Integrate an interactive 3D WebGL / Three.js environment inspired by the `Portal Field` and `LiquidGL` design references.
    * Provide a lightweight, zero-latency canvas fallback for devices without WebGL acceleration or users with `prefers-reduced-motion`.
+

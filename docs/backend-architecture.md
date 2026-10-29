@@ -146,3 +146,4 @@ Each query is executed with a `2,500ms` timeout using `AbortController`. If netw
 * **`public/_routes.json`**:
   * Routes all `/api/*` requests to Cloudflare Pages Functions.
   * Serves static assets directly from edge cache.
+

@@ -147,11 +147,12 @@ export const CITADEL_SOURCES: CitadelSourceInfo[] = [
   },
   {
     id: 'SmartSync Fleet',
-    name: 'Lucifer SmartSync Core (264,560 Records)',
+    name: 'Lucifer Fleet Sovereign Core',
     category: 'Fleet Matrix',
-    primaryDomain: 'lucifer-smart-sync.local',
+    primaryDomain: 'fleet.luciferdatabase.io',
     supportedFormats: ['2160p 4K UHD', '1080p FHD', 'FLAC 24-bit/192kHz', 'Dolby Atmos DDP 5.1/7.1'],
-    features: ['SQLite3 Autonomous Ingestion Engine', 'MTProto Message De-duplication', 'Telegram Multi-Account Sync'],
+    features: ['Autonomous Ingestion Engine', 'MTProto Message De-duplication', 'Multi-Region Fleet Sync'],
     status: 'High-Bandwidth'
   }
 ]
+

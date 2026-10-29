@@ -69,3 +69,4 @@
 * **Tablet:** `640px – 1024px` (two-column card grid, compact filter bar)
 * **Desktop:** `1024px – 1440px` (three-to-four column grid, expanded multi-facet filters)
 * **Ultra-Wide / 4K:** `> 1440px` (max-width container: `1400px`, centered cinematic composition)
+

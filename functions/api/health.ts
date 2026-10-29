@@ -14,7 +14,7 @@ export const onRequestGet: PagesFunction<Env> = async () => {
     version: '1.0.0-royal',
     environment: 'Cloudflare Edge Pages',
     databaseState: {
-      smartSyncRecordsIndexed: 264560,
+      sovereignRecordsIndexed: 264560,
       verifiedCitadelSources: 16,
       catalogEntriesActive: 12,
       encryptionMaster: 'SHA-256 Validated',
@@ -35,3 +35,4 @@ export const onRequestGet: PagesFunction<Env> = async () => {
     }
   })
 }
+

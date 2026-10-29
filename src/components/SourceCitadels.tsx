@@ -28,7 +28,7 @@ export const SourceCitadels: React.FC<SourceCitadelsProps> = ({
             The Sovereign <span className="text-gold-gradient font-normal">Media Citadels</span>
           </h2>
           <p className="mt-3 text-sm text-obsidian-400 max-w-2xl font-light">
-            Grounded strictly in the verified resolvers from <code className="text-gold-300 font-mono text-xs">Lucifer-OTT-POS-main</code> and the 264,560 synced records of <code className="text-gold-300 font-mono text-xs">smart_sync.db</code>. Zero synthetic sources.
+            Centralised multi-source gateway and stream matrix indexing verified cinematic resolvers, lossless cloud vaults, and high-speed delivery conduits.
           </p>
         </div>
 
@@ -117,7 +117,7 @@ export const SourceCitadels: React.FC<SourceCitadelsProps> = ({
           <div>
             <h4 className="text-sm font-serif text-obsidian-200">Zero Synthetic Simulation Standard</h4>
             <p className="text-xs text-obsidian-400 font-light mt-0.5">
-              Every resolver architecture maps directly to physical Python modules in <code className="text-gold-300 font-mono text-[11px]">scrapers/resolvers/</code>.
+              Every resolver architecture maps to verified protocol standards and sovereign delivery conduits.
             </p>
           </div>
         </div>

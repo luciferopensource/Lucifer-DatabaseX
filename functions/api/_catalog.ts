@@ -268,7 +268,7 @@ export const CATALOG_DATA: MediaEntry[] = [
     director: 'Timur Bekmambetov',
     studio: 'Universal Pictures / Spyglass Entertainment',
     overview: 'A frustrated office worker discovers that he is the son of a professional assassin and that he shares his fathers superhuman killing abilities.',
-    curatorNote: 'Authentic sync record extracted directly from smart_sync.db [ID 1995]. High bitrate 1080p BluRay transfer with discrete Dolby Digital Plus 5.1.',
+    curatorNote: 'Sovereign archival transfer with high bitrate 1080p BluRay master and discrete Dolby Digital Plus 5.1.',
     posterUrl: 'https://images.unsplash.com/photo-1536440136628-849c177e76a1?auto=format&fit=crop&w=800&q=80',
     backdropUrl: 'https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?auto=format&fit=crop&w=1600&q=80',
     rating: 'R',
@@ -308,7 +308,7 @@ export const CATALOG_DATA: MediaEntry[] = [
     collectionTags: ['Imperial Cinema', 'High Bitrate FHD', 'SmartSync Fleet Ingest'],
     featured: false,
     sourceCitadel: 'SmartSync Fleet',
-    sourceDomain: 'smart_sync.db #1995',
+    sourceDomain: 'fleet.luciferdatabase.io #1995',
     fileSizeBytes: 4194304000,
     downloadMirrors: [
       { name: 'Lucifer MTProto Conduit', url: 'https://t.me/c/lucifer_fleet/1995', provider: 'Telegram Fleet', speedBandwidth: 'Uncapped' }
@@ -326,7 +326,7 @@ export const CATALOG_DATA: MediaEntry[] = [
     director: 'Oren Uziel & Steve Lightfoot',
     studio: 'Sony Pictures Television / Amazon MGM',
     overview: 'In 1930s New York, an aging, down-on-his-luck private investigator is forced to grapple with his past life as the city’s only superhero.',
-    curatorNote: 'Extracted directly from smart_sync.db [ID 14]. Native 2160p 4K UHD Amazon Prime master with monochrome high-contrast grading.',
+    curatorNote: 'Native 2160p 4K UHD master with monochrome high-contrast grading and Dolby Digital Plus 5.1.',
     posterUrl: 'https://images.unsplash.com/photo-1534447677768-be436bb09401?auto=format&fit=crop&w=800&q=80',
     backdropUrl: 'https://images.unsplash.com/photo-1509198397868-475647b2a1e5?auto=format&fit=crop&w=1600&q=80',
     rating: 'TV-MA',
@@ -443,7 +443,7 @@ export const CATALOG_DATA: MediaEntry[] = [
     director: 'Toshimasa Ishii',
     studio: 'A-1 Pictures / Aniplex',
     overview: 'The Republic of San Magnolia has been at war with the Empire of Giad for years. Outside the 85 districts lies District 86, where youths dubbed the Eighty-Six fight.',
-    curatorNote: 'Discovered in smart_sync.db [ID 68977]. High-fidelity EMBER BDRip encode with 10-bit color depth, Dual Audio Japanese/English channels and Hiroyuki Sawano score.',
+    curatorNote: 'High-fidelity EMBER BDRip encode with 10-bit color depth, Dual Audio Japanese/English channels and Hiroyuki Sawano score.',
     posterUrl: 'https://images.unsplash.com/photo-1579783900882-c0d3dad7b119?auto=format&fit=crop&w=800&q=80',
     backdropUrl: 'https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&w=1600&q=80',
     rating: 'TV-14',
@@ -608,3 +608,4 @@ export const CATALOG_DATA: MediaEntry[] = [
     ]
   }
 ]
+

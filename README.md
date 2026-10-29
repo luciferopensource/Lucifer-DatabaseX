@@ -12,7 +12,7 @@
 * **Aesthetic Standard:** Royal Obsidian (`#050508`, `#08080c`, `#0e0e15`) accented with Imperial Gold gradients (`#bf953f` to `#fcf6ba`), cinematic double-line framing (`border-royal-double`), and liquid glass refraction.
 * **Typography:** `Cinzel` & `Cormorant Garamond` (display headings), `Outfit` (interface navigation), and `JetBrains Mono` (technical telemetry and cryptographic signatures).
 * **3D Motion Physics:** Interactive Three.js WebGL canvas (`ThreePortalField`) rendering relativistic warp geometry, golden stardust embers, and cursor-reactive camera parallax with smooth 2D canvas fallback.
-* **Truthfulness Standard:** Grounded strictly in the monorepo's 16 movie scraper sources and the 264,560 verified records of `smart_sync.db`. Zero synthetic statistics or mock search results.
+* **Truthfulness Standard:** Grounded strictly in verified media scraper sources and 264,560 sovereign indexed records. Zero synthetic statistics or mock search results.
 
 ---
 
@@ -24,7 +24,7 @@
    * Fully accessible: respects `prefers-reduced-motion` and provides automatic fallback to high-efficiency 2D canvas.
 
 2. **16 Autonomous Scraper Citadels Explorer (`SourceCitadels.tsx`)**:
-   * Integrated audit matrix covering all 16 resolvers from `Lucifer-OTT-POS-main`:
+   * Integrated audit matrix covering all 16 sovereign resolvers:
      * *VegaMovies, 4KHDHub, HDHub4u, CineVood, MoviesDrive, DesireMovies, Toonworld4All, XPrime4u, YTS, ZinkMovies, HBLinks, Gateway Matrix, Pixeldrain, Gofile, TeraBox, M3U / IPTV & Cinemeta*.
    * Instant single-click catalog filtering by citadel.
 
@@ -59,7 +59,7 @@ Lucifer DatabaseX/
 │   ├── design-system.md           # Tokens, typography scales, and CSS classes
 │   ├── motion-system.md           # Three.js WebGL & spring physics specifications
 │   ├── backend-architecture.md    # Cloudflare Pages Functions & API contracts
-│   └── data-integration.md       # The 16 citadels & smart_sync.db mapping rules
+│   └── data-integration.md       # The 16 citadels & sovereign ingestion mapping rules
 ├── functions/                     # Cloudflare Pages Functions (Serverless API)
 │   └── api/
 │       ├── _catalog.ts            # Shared canonical dataset
@@ -155,3 +155,4 @@ npm.cmd run preview
 
 **Parent Brand:** Lucifer Open Source  
 *Crafted with British English conventions and sovereign precision.*
+

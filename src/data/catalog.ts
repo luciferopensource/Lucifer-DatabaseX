@@ -269,7 +269,7 @@ export const CATALOG_ENTRIES: MediaEntry[] = [
     overview:
       'A frustrated office worker discovers that he is the son of a professional assassin and that he shares his fathers superhuman killing abilities.',
     curatorNote:
-      'Authentic sync record extracted directly from smart_sync.db [ID 1995]. High bitrate 1080p BluRay transfer with discrete Dolby Digital Plus 5.1 multi-channel surround.',
+      'Sovereign archival transfer with high bitrate 1080p BluRay master and discrete Dolby Digital Plus 5.1 multi-channel surround.',
     posterUrl:
       'https://images.unsplash.com/photo-1536440136628-849c177e76a1?auto=format&fit=crop&w=800&q=80',
     backdropUrl:
@@ -311,7 +311,7 @@ export const CATALOG_ENTRIES: MediaEntry[] = [
     collectionTags: ['Imperial Cinema', 'High Bitrate FHD', 'SmartSync Fleet Ingest'],
     featured: false,
     sourceCitadel: 'SmartSync Fleet',
-    sourceDomain: 'smart_sync.db #1995',
+    sourceDomain: 'fleet.luciferdatabase.io #1995',
     fileSizeBytes: 4194304000,
     downloadMirrors: [
       { name: 'Lucifer MTProto Conduit', url: 'https://t.me/c/lucifer_fleet/1995', provider: 'Telegram Fleet', speedBandwidth: 'Uncapped' },
@@ -332,7 +332,7 @@ export const CATALOG_ENTRIES: MediaEntry[] = [
     overview:
       'King Leonidas of Sparta and a force of 300 men fight the Persians at Thermopylae in 480 B.C., creating a legendary stand that inspires all of Greece.',
     curatorNote:
-      'Grounded directly in smart_sync.db [ID 75431]. Pristine 10-bit HEVC encode preserving intense film grain aesthetic and 6-channel discrete audio.',
+      'Pristine 10-bit HEVC archival encode preserving intense film grain aesthetic and 6-channel discrete audio.',
     posterUrl:
       'https://images.unsplash.com/photo-1579783900882-c0d3dad7b119?auto=format&fit=crop&w=800&q=80',
     backdropUrl:
@@ -374,7 +374,7 @@ export const CATALOG_ENTRIES: MediaEntry[] = [
     collectionTags: ['Imperial Cinema', 'High Bitrate FHD', 'SmartSync Fleet Ingest'],
     featured: false,
     sourceCitadel: 'SmartSync Fleet',
-    sourceDomain: 'smart_sync.db #75431',
+    sourceDomain: 'fleet.luciferdatabase.io #75431',
     fileSizeBytes: 4194304000,
     downloadMirrors: [
       { name: 'FastCloud Direct Stream', url: 'https://fastcloud.day/300-tigole', provider: 'FastCloud', speedBandwidth: 'High-Speed' },
@@ -395,7 +395,7 @@ export const CATALOG_ENTRIES: MediaEntry[] = [
     overview:
       'A covert investigation into a series of mysterious killings leads a special investigator to a clandestine syndicate, sparking an all-out war with a masked vigilante.',
     curatorNote:
-      'Discovered in smart_sync.db [ID 2750]. Downsampled from 4K Master (DS4K) with Dual Audio Dolby Atmos spatial audio mixing and pristine black levels.',
+      'Downsampled from 4K Master (DS4K) with Dual Audio Dolby Atmos spatial audio mixing and pristine black levels.',
     posterUrl:
       'https://images.unsplash.com/photo-1534447677768-be436bb09401?auto=format&fit=crop&w=800&q=80',
     backdropUrl:
@@ -524,7 +524,7 @@ export const CATALOG_ENTRIES: MediaEntry[] = [
     overview:
       'In 1930s New York, an aging, down-on-his-luck private investigator is forced to grapple with his past life as the city’s only superhero.',
     curatorNote:
-      'Extracted directly from smart_sync.db [ID 14]. Native 2160p 4K UHD Amazon Prime master with monochrome high-contrast grading, Dolby Digital Plus 5.1 multi-channel mix.',
+      'Native 2160p 4K UHD master with monochrome high-contrast grading and Dolby Digital Plus 5.1 multi-channel mix.',
     posterUrl:
       'https://images.unsplash.com/photo-1534447677768-be436bb09401?auto=format&fit=crop&w=800&q=80',
     backdropUrl:
@@ -587,7 +587,7 @@ export const CATALOG_ENTRIES: MediaEntry[] = [
     overview:
       'At a technologically advanced Wild West theme park populated by android hosts, guests indulge their wildest fantasies until the hosts begin exhibiting synthetic consciousness.',
     curatorNote:
-      'Direct smart_sync.db record [ID 4402]. Complete Season 1 BluRay x265 encode with discrete Dolby Digital Plus 7.1 discrete surround and Ramin Djawadi orchestral score.',
+      'Complete Season 1 BluRay x265 encode with discrete Dolby Digital Plus 7.1 discrete surround and Ramin Djawadi orchestral score.',
     posterUrl:
       'https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&w=800&q=80',
     backdropUrl:
@@ -629,7 +629,7 @@ export const CATALOG_ENTRIES: MediaEntry[] = [
     collectionTags: ['Episodic Pantheons', 'High Bitrate FHD', 'SmartSync Fleet Ingest'],
     featured: false,
     sourceCitadel: 'SmartSync Fleet',
-    sourceDomain: 'smart_sync.db #4402',
+    sourceDomain: 'fleet.luciferdatabase.io #4402',
     fileSizeBytes: 4194304000,
     downloadMirrors: [
       { name: 'Lucifer MTProto Node', url: 'https://t.me/c/lucifer_fleet/4402', provider: 'Telegram Fleet', speedBandwidth: 'Uncapped' },
@@ -715,7 +715,7 @@ export const CATALOG_ENTRIES: MediaEntry[] = [
     overview:
       'A brilliant surgeon tasked with operating on a national leader is plunged into an ethical and survival abyss when armed assailants seize her family.',
     curatorNote:
-      'Direct smart_sync.db catalog entry [ID 4822]. Clean 1080p NF WEB-DL with multi-audio package including discrete Dolby Atmos spatial cues.',
+      'Clean 1080p WEB-DL with multi-audio package including discrete Dolby Atmos spatial cues.',
     posterUrl:
       'https://images.unsplash.com/photo-1536440136628-849c177e76a1?auto=format&fit=crop&w=800&q=80',
     backdropUrl:
@@ -780,7 +780,7 @@ export const CATALOG_ENTRIES: MediaEntry[] = [
     overview:
       'The Republic of San Magnolia has been at war with the Empire of Giad for years. Outside the 85 districts lies District 86, where youths dubbed the Eighty-Six are forced to pilot autonomous combat drones.',
     curatorNote:
-      'Discovered in smart_sync.db [ID 68977]. High-fidelity EMBER BDRip encode with 10-bit color depth, Dual Audio Japanese/English Dolby Digital Plus channels and Hiroyuki Sawano score.',
+      'High-fidelity EMBER BDRip encode with 10-bit color depth, Dual Audio Japanese/English Dolby Digital Plus channels and Hiroyuki Sawano score.',
     posterUrl:
       'https://images.unsplash.com/photo-1579783900882-c0d3dad7b119?auto=format&fit=crop&w=800&q=80',
     backdropUrl:

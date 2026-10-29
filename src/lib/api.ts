@@ -13,7 +13,7 @@ export interface HealthTelemetry {
   version: string
   environment: string
   databaseState: {
-    smartSyncRecordsIndexed: number
+    sovereignRecordsIndexed: number
     verifiedCitadelSources: number
     catalogEntriesActive: number
     encryptionMaster: string
@@ -59,7 +59,7 @@ export const api = {
       version: '1.0.0-royal',
       environment: 'Client Sovereign Runtime',
       databaseState: {
-        smartSyncRecordsIndexed: 264560,
+        sovereignRecordsIndexed: 264560,
         verifiedCitadelSources: 16,
         catalogEntriesActive: CATALOG_ENTRIES.length,
         encryptionMaster: 'SHA-256 Validated',
@@ -162,3 +162,4 @@ export const api = {
     return CATALOG_ENTRIES.find((e) => e.id === idOrSlug || e.slug === idOrSlug) || null
   },
 }
+
