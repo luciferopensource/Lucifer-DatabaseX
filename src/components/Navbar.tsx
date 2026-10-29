@@ -180,6 +180,27 @@ export const Navbar: React.FC<NavbarProps> = ({ onSearchClick }) => {
             </a>
 
             <a
+              href="#sources"
+              style={{
+                display: 'flex',
+                alignItems: 'center',
+                gap: '0.4rem',
+                color: '#d4d4e2',
+                textDecoration: 'none',
+                fontFamily: 'var(--font-modern)',
+                fontSize: '0.92rem',
+                fontWeight: 500,
+                letterSpacing: '0.02em',
+                transition: 'color 0.2s',
+              }}
+              onMouseEnter={(e) => (e.currentTarget.style.color = '#fcf6ba')}
+              onMouseLeave={(e) => (e.currentTarget.style.color = '#d4d4e2')}
+            >
+              <Database size={15} color="var(--color-gold-primary)" />
+              <span>16 Citadels</span>
+            </a>
+
+            <a
               href="#schema"
               style={{
                 display: 'flex',
@@ -410,6 +431,22 @@ export const Navbar: React.FC<NavbarProps> = ({ onSearchClick }) => {
           >
             <Layers size={18} color="var(--color-gold-primary)" />
             <span>Royal Collections</span>
+          </a>
+          <a
+            href="#sources"
+            onClick={() => setMobileMenuOpen(false)}
+            style={{
+              display: 'flex',
+              alignItems: 'center',
+              gap: '0.75rem',
+              color: '#f0f0fa',
+              textDecoration: 'none',
+              fontSize: '1.05rem',
+              fontFamily: 'var(--font-royal)',
+            }}
+          >
+            <Database size={18} color="var(--color-gold-primary)" />
+            <span>16 Citadels</span>
           </a>
           <a
             href="#schema"

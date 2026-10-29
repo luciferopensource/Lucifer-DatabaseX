@@ -94,15 +94,33 @@ export const MediaCard: React.FC<MediaCardProps> = ({ entry, onSelect }) => {
             zIndex: 2,
           }}
         >
-          <span
-            className="badge-gold"
-            style={{
-              background: 'rgba(8, 8, 12, 0.85)',
-              backdropFilter: 'blur(8px)',
-            }}
-          >
-            {entry.id}
-          </span>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '0.4rem' }}>
+            <span
+              className="badge-gold"
+              style={{
+                background: 'rgba(8, 8, 12, 0.85)',
+                backdropFilter: 'blur(8px)',
+              }}
+            >
+              {entry.id}
+            </span>
+            {entry.sourceCitadel && (
+              <span
+                style={{
+                  fontFamily: 'var(--font-mono)',
+                  fontSize: '0.62rem',
+                  padding: '0.18rem 0.45rem',
+                  borderRadius: '3px',
+                  background: 'rgba(212, 175, 55, 0.15)',
+                  border: '1px solid rgba(212, 175, 55, 0.35)',
+                  color: '#fcf6ba',
+                  letterSpacing: '0.04em',
+                }}
+              >
+                {entry.sourceCitadel}
+              </span>
+            )}
+          </div>
 
           <span
             style={{

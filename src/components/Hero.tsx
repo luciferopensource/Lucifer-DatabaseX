@@ -7,19 +7,21 @@ import {
   ChevronDown,
   Layers,
   Cpu,
+  Radio,
 } from 'lucide-react'
-import { GoldParticleCanvas } from './GoldParticleCanvas'
+import { ThreePortalField } from './ThreePortalField'
 
 interface HeroProps {
   onExploreClick: () => void
+  onSourcesClick?: () => void
 }
 
-export const Hero: React.FC<HeroProps> = ({ onExploreClick }) => {
+export const Hero: React.FC<HeroProps> = ({ onExploreClick, onSourcesClick }) => {
   return (
     <section
       style={{
         position: 'relative',
-        minHeight: '90vh',
+        minHeight: '92vh',
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
@@ -28,8 +30,8 @@ export const Hero: React.FC<HeroProps> = ({ onExploreClick }) => {
         overflow: 'hidden',
       }}
     >
-      {/* Royal Ambient Gold Particle Stream */}
-      <GoldParticleCanvas />
+      {/* Sovereign 3D WebGL Motion Canvas */}
+      <ThreePortalField />
 
       {/* Background Radial Glow */}
       <div
@@ -38,10 +40,10 @@ export const Hero: React.FC<HeroProps> = ({ onExploreClick }) => {
           top: '15%',
           left: '50%',
           transform: 'translateX(-50%)',
-          width: '700px',
-          height: '450px',
+          width: '750px',
+          height: '480px',
           background:
-            'radial-gradient(ellipse at center, rgba(212, 175, 55, 0.15) 0%, rgba(179, 135, 40, 0.05) 45%, transparent 70%)',
+            'radial-gradient(ellipse at center, rgba(212, 175, 55, 0.18) 0%, rgba(179, 135, 40, 0.06) 45%, transparent 70%)',
           filter: 'blur(60px)',
           pointerEvents: 'none',
           zIndex: 0,
@@ -118,7 +120,7 @@ export const Hero: React.FC<HeroProps> = ({ onExploreClick }) => {
         >
           The authoritative metadata index, stream matrix, and lossless media
           orchestration catalog powering the Lucifer Open Source fleet across
-          Telegram MTProto workers, Torznab relays, and private archives.
+          16 scraper citadels, Telegram MTProto workers, and private archives.
         </p>
 
         {/* Call to Actions */}
@@ -136,6 +138,13 @@ export const Hero: React.FC<HeroProps> = ({ onExploreClick }) => {
             <Film size={18} />
             <span>Explore Master Catalog</span>
           </button>
+
+          {onSourcesClick && (
+            <button onClick={onSourcesClick} className="btn-royal-secondary">
+              <Radio size={18} />
+              <span>16 Scraper Citadels</span>
+            </button>
+          )}
 
           <a href="#schema" className="btn-royal-secondary">
             <Cpu size={18} />

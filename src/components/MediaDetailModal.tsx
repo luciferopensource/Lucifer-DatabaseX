@@ -608,6 +608,20 @@ export const MediaDetailModal: React.FC<MediaDetailModalProps> = ({ entry, onClo
               >
                 <div className="glass-panel" style={{ padding: '1rem', borderRadius: '6px' }}>
                   <div style={{ fontFamily: 'var(--font-mono)', fontSize: '0.72rem', color: '#888899', marginBottom: '0.25rem' }}>
+                    SOURCE RESOLVER CITADEL
+                  </div>
+                  <div style={{ fontFamily: 'var(--font-royal)', fontSize: '0.95rem', color: '#fcf6ba', fontWeight: 700 }}>
+                    {entry.sourceCitadel || 'SmartSync Sovereign Fleet'}
+                  </div>
+                  {entry.sourceDomain && (
+                    <div style={{ fontFamily: 'var(--font-mono)', fontSize: '0.75rem', color: '#888899', marginTop: '0.2rem' }}>
+                      {entry.sourceDomain}
+                    </div>
+                  )}
+                </div>
+
+                <div className="glass-panel" style={{ padding: '1rem', borderRadius: '6px' }}>
+                  <div style={{ fontFamily: 'var(--font-mono)', fontSize: '0.72rem', color: '#888899', marginBottom: '0.25rem' }}>
                     MTPROTO PROTOCOL SIGNATURE
                   </div>
                   <div style={{ fontFamily: 'var(--font-mono)', fontSize: '0.88rem', color: '#ffffff' }}>
@@ -626,13 +640,93 @@ export const MediaDetailModal: React.FC<MediaDetailModalProps> = ({ entry, onClo
 
                 <div className="glass-panel" style={{ padding: '1rem', borderRadius: '6px' }}>
                   <div style={{ fontFamily: 'var(--font-mono)', fontSize: '0.72rem', color: '#888899', marginBottom: '0.25rem' }}>
-                    ARCHIVE VERIFICATION DATE
+                    FILE SIZE IN BYTES
                   </div>
                   <div style={{ fontFamily: 'var(--font-mono)', fontSize: '0.88rem', color: '#ffffff' }}>
-                    {entry.luciferFleet.verifiedDate}
+                    {entry.fileSizeBytes ? `${(entry.fileSizeBytes / (1024 * 1024 * 1024)).toFixed(2)} GB (${entry.fileSizeBytes.toLocaleString()} bytes)` : 'Pristine Lossless Master'}
                   </div>
                 </div>
               </div>
+
+              {/* Verified Mirror Conduits */}
+              {entry.downloadMirrors && entry.downloadMirrors.length > 0 && (
+                <div
+                  style={{
+                    padding: '1.25rem',
+                    borderRadius: '6px',
+                    background: 'rgba(12, 12, 18, 0.9)',
+                    border: '1px solid rgba(212, 175, 55, 0.25)',
+                    marginTop: '0.5rem',
+                  }}
+                >
+                  <div
+                    style={{
+                      fontFamily: 'var(--font-royal)',
+                      fontSize: '0.85rem',
+                      fontWeight: 700,
+                      color: '#fcf6ba',
+                      letterSpacing: '0.04em',
+                      marginBottom: '0.85rem',
+                      display: 'flex',
+                      alignItems: 'center',
+                      gap: '0.5rem',
+                    }}
+                  >
+                    <span>VERIFIED HIGH-SPEED MIRROR CONDUITS</span>
+                    <span className="badge-gold" style={{ fontSize: '0.65rem' }}>
+                      {entry.downloadMirrors.length} NODES ACTIVE
+                    </span>
+                  </div>
+
+                  <div style={{ display: 'flex', flexDirection: 'column', gap: '0.6rem' }}>
+                    {entry.downloadMirrors.map((mirror, mIdx) => (
+                      <div
+                        key={mIdx}
+                        style={{
+                          display: 'flex',
+                          alignItems: 'center',
+                          justifyContent: 'space-between',
+                          padding: '0.65rem 1rem',
+                          background: 'rgba(7, 7, 11, 0.75)',
+                          border: '1px solid rgba(212, 175, 55, 0.15)',
+                          borderRadius: '4px',
+                        }}
+                      >
+                        <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
+                          <span style={{ fontFamily: 'var(--font-mono)', fontSize: '0.75rem', color: '#e6be53' }}>
+                            {mirror.name}
+                          </span>
+                          {mirror.speedBandwidth && (
+                            <span
+                              style={{
+                                fontFamily: 'var(--font-mono)',
+                                fontSize: '0.65rem',
+                                padding: '0.15rem 0.45rem',
+                                borderRadius: '3px',
+                                background: 'rgba(74, 222, 128, 0.12)',
+                                border: '1px solid rgba(74, 222, 128, 0.3)',
+                                color: '#4ade80',
+                              }}
+                            >
+                              {mirror.speedBandwidth}
+                            </span>
+                          )}
+                        </div>
+
+                        <span
+                          style={{
+                            fontFamily: 'var(--font-mono)',
+                            fontSize: '0.72rem',
+                            color: '#9e9eb0',
+                          }}
+                        >
+                          Provider: {mirror.provider}
+                        </span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              )}
             </div>
           )}
         </div>

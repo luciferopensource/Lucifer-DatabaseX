@@ -3,15 +3,18 @@ import { Navbar } from './components/Navbar'
 import { Hero } from './components/Hero'
 import { MediaExplorer } from './components/MediaExplorer'
 import { CollectionShowcase } from './components/CollectionShowcase'
+import { SourceCitadels } from './components/SourceCitadels'
 import { SchemaExplorer } from './components/SchemaExplorer'
 import { AboutSection } from './components/AboutSection'
 import { Footer } from './components/Footer'
 import { MediaDetailModal } from './components/MediaDetailModal'
 import { CATALOG_ENTRIES } from './data/catalog'
-import { MediaEntry, MediaCategory } from './types/media'
+import { MediaEntry, MediaCategory, SourceCitadelType } from './types/media'
 
 export const App: React.FC = () => {
   const [selectedEntry, setSelectedEntry] = useState<MediaEntry | null>(null)
+  const [selectedCitadel, setSelectedCitadel] = useState<'All' | SourceCitadelType>('All')
+  const [explorerSearchQuery, setExplorerSearchQuery] = useState<string>('')
 
   const handleSearchClick = () => {
     const searchInput = document.getElementById('catalog-search-input')
@@ -33,6 +36,26 @@ export const App: React.FC = () => {
     }
   }
 
+  const handleSourcesClick = () => {
+    const sourcesSection = document.getElementById('sources')
+    if (sourcesSection) {
+      sourcesSection.scrollIntoView({ behavior: 'smooth' })
+    }
+  }
+
+  const handleSelectCitadel = (citadel: SourceCitadelType | 'All') => {
+    setSelectedCitadel(citadel)
+    if (citadel !== 'All') {
+      setExplorerSearchQuery(citadel)
+      const explorerSection = document.getElementById('explorer')
+      if (explorerSection) {
+        explorerSection.scrollIntoView({ behavior: 'smooth' })
+      }
+    } else {
+      setExplorerSearchQuery('')
+    }
+  }
+
   const handleSelectCategoryFromCollection = (_category: MediaCategory) => {
     const explorerSection = document.getElementById('explorer')
     if (explorerSection) {
@@ -47,8 +70,14 @@ export const App: React.FC = () => {
 
       {/* Main Sections */}
       <main style={{ flex: 1 }}>
-        {/* Cinematic Hero */}
-        <Hero onExploreClick={handleExploreClick} />
+        {/* Cinematic Hero with 3D WebGL ThreePortalField */}
+        <Hero onExploreClick={handleExploreClick} onSourcesClick={handleSourcesClick} />
+
+        {/* 16 Autonomous Scraper Citadels & Fleet Architecture */}
+        <SourceCitadels
+          activeCitadel={selectedCitadel}
+          onSelectCitadel={handleSelectCitadel}
+        />
 
         {/* Curated Royal Collections */}
         <CollectionShowcase onSelectCategory={handleSelectCategoryFromCollection} />
@@ -57,6 +86,7 @@ export const App: React.FC = () => {
         <MediaExplorer
           entries={CATALOG_ENTRIES}
           onSelectEntry={(entry) => setSelectedEntry(entry)}
+          initialSearchQuery={explorerSearchQuery}
         />
 
         {/* Architectural Schema Explorer */}

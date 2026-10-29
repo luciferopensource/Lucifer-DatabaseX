@@ -33,6 +33,32 @@ export type DynamicRangeType =
   | 'SDR Standard'
   | 'N/A'
 
+export type SourceCitadelType =
+  | 'VegaMovies'
+  | '4KHDHub'
+  | 'HDHub4u'
+  | 'CineVood'
+  | 'MoviesDrive'
+  | 'DesireMovies'
+  | 'Toonworld4All'
+  | 'XPrime4u'
+  | 'YTS'
+  | 'ZinkMovies'
+  | 'HBLinks'
+  | 'Gateway Matrix'
+  | 'Pixeldrain'
+  | 'Gofile'
+  | 'TeraBox'
+  | 'M3U / IPTV & Cinemeta'
+  | 'SmartSync Fleet'
+
+export interface MediaMirrorLink {
+  name: string
+  url: string
+  provider: string
+  speedBandwidth?: string
+}
+
 export interface MediaFormatSpecs {
   container: 'Matroska (.mkv)' | 'MPEG-4 (.mp4)' | 'FLAC Audio (.flac)' | 'ISO Archival'
   resolution: ResolutionType
@@ -93,6 +119,10 @@ export interface MediaEntry {
   luciferFleet: LuciferFleetMetadata
   collectionTags: string[]
   featured?: boolean
+  sourceCitadel?: SourceCitadelType
+  sourceDomain?: string
+  downloadMirrors?: MediaMirrorLink[]
+  fileSizeBytes?: number
 }
 
 export interface FilterState {
@@ -102,5 +132,16 @@ export interface FilterState {
   videoCodec: 'All' | VideoCodecType
   audioFormat: 'All' | AudioFormatType
   dynamicRange: 'All' | DynamicRangeType
+  sourceCitadel?: 'All' | SourceCitadelType
   sortBy: 'featured' | 'yearDesc' | 'yearAsc' | 'titleAsc' | 'bitrateDesc'
+}
+
+export interface CitadelSourceInfo {
+  id: SourceCitadelType
+  name: string
+  category: 'Resolver' | 'Direct Gateway' | 'Cloud Conduit' | 'Fleet Matrix'
+  primaryDomain: string
+  supportedFormats: string[]
+  features: string[]
+  status: 'Operational' | 'High-Bandwidth' | 'Optimal'
 }

@@ -1,5 +1,5 @@
 import React from 'react'
-import { COLLECTION_PRESETS } from '../data/catalog'
+import { COLLECTION_PRESETS, CollectionPreset } from '../data/catalog'
 import { MediaCategory } from '../types/media'
 import { Layers, ArrowRight, Sparkles } from 'lucide-react'
 
@@ -73,7 +73,7 @@ export const CollectionShowcase: React.FC<CollectionShowcaseProps> = ({
             gap: '2rem',
           }}
         >
-          {COLLECTION_PRESETS.map((col) => (
+          {COLLECTION_PRESETS.map((col: CollectionPreset) => (
             <div
               key={col.id}
               onClick={() => {

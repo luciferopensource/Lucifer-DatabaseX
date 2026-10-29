@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from 'react'
 
-export const GoldParticleCanvas: React.FC = () => {
+export const GoldParticleCanvas: React.FC<{ className?: string }> = ({ className = '' }) => {
   const canvasRef = useRef<HTMLCanvasElement | null>(null)
 
   useEffect(() => {
@@ -92,6 +92,7 @@ export const GoldParticleCanvas: React.FC = () => {
   return (
     <canvas
       ref={canvasRef}
+      className={className}
       style={{
         position: 'absolute',
         inset: 0,
