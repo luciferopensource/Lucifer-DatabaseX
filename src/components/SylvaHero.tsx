@@ -20,7 +20,7 @@ export const SylvaHero: React.FC<SylvaHeroProps> = (props) => {
     <LandingPageFrame
       {...frame}
       customization={customization}
-      title="Sylva — Living Green"
+      title="Lucifer Database X — The Sovereign Movie Universe"
       sourceUrl="/landing-pages/inner-green-3d.html"
       style={{
         width: '100vw',
@@ -29,7 +29,7 @@ export const SylvaHero: React.FC<SylvaHeroProps> = (props) => {
         margin: 0,
         padding: 0,
         overflow: 'hidden',
-        background: '#383b34',
+        background: '#09090f',
         ...frame.style,
       }}
     />
@@ -37,3 +37,4 @@ export const SylvaHero: React.FC<SylvaHeroProps> = (props) => {
 }
 
 export default SylvaHero
+

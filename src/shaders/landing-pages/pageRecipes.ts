@@ -47,7 +47,7 @@ export const SYLVA_TYPOGRAPHY: PageTypographyRecipe = {
   headingWeight: "300",
   bodyWeights: ["200", "300", "400", "500"],
   bodyWeight: "300",
-  primaryColor: "#ffffff",
+  primaryColor: "#f3e5ab",
   headingSize: [40, 63, 92],
   bodySize: [12, 16.5, 24],
   headingLetterSpacing: [-0.06, -0.006, 0.12],

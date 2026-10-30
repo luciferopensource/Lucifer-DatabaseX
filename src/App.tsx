@@ -11,7 +11,7 @@ export const App: React.FC = () => {
         overflow: 'hidden',
         margin: 0,
         padding: 0,
-        background: '#383b34',
+        background: '#09090f',
       }}
     >
       <SylvaHero
@@ -19,7 +19,7 @@ export const App: React.FC = () => {
         bodyFont="lexend"
         headingWeight="300"
         bodyWeight="300"
-        primaryColor="#ffffff"
+        primaryColor="#f3e5ab"
         headingSize={63}
         bodySize={16.5}
         headingLetterSpacing={-0.006}

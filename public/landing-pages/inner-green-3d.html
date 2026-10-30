@@ -3,9 +3,9 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Sylva — Into the living world</title>
-<meta name="description" content="Restoring wild places through patient design, native planting, and a deeper kind of stewardship.">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 22 24'%3E%3Crect width='22' height='24' fill='%234a4d44'/%3E%3Cpath fill='%23fff' d='M11 1.3c-2.1 0-3.95 1.2-4.75 2.95C3.95 4.55 2.3 6.25 2.3 8.35c0 2.3 1.9 4.2 4.3 4.2h8.8c2.4 0 4.3-1.9 4.3-4.2 0-2.1-1.65-3.8-4-4.1C14.95 2.5 13.1 1.3 11 1.3Z'/%3E%3Cpath fill='%23fff' d='M9.6 12.55h2.8v4.2c1.35.3 2.45 1.15 3.15 2.4-1.35.4-2.4.15-3.15-.4v4.15H9.6v-4.15c-.75.55-1.8.8-3.15.4.7-1.25 1.8-2.1 3.15-2.4v-4.2Z'/%3E%3C/svg%3E">
+<title>Lucifer Database X — The Sovereign Movie Universe</title>
+<meta name="description" content="The imperial cinematic database and sovereign 4K HDR stream matrix orchestrating the Lucifer Open Source media fleet.">
+<link rel="icon" href="/favicon.svg">
 <script>document.documentElement.className += " js";</script>
 <style>
   @font-face{
@@ -19,14 +19,14 @@
   :root{
     --u: calc(100vw / 1600);
 
-    --ink:            #ffffff;
-    --ink-soft:       rgba(255,255,255,.62);
-    --ink-faint:      rgba(255,255,255,.44);
-    --rule:           rgba(255,255,255,.055);
+    --ink:            #f3e5ab;
+    --ink-soft:       rgba(243,229,171,.75);
+    --ink-faint:      rgba(243,229,171,.48);
+    --rule:           rgba(212,175,55,.14);
 
-    --card:           #f2f3ef;
-    --card-ink:       #23261f;
-    --card-label:     #7c8177;
+    --card:           #101018;
+    --card-ink:       #fdfdfd;
+    --card-label:     #d4af37;
 
     --ease: cubic-bezier(.22,.61,.36,1);
     --ease-out: cubic-bezier(.16,1,.3,1);
@@ -35,12 +35,12 @@
 
   *,*::before,*::after{ box-sizing:border-box; margin:0; padding:0; }
 
-  html{ background:#383b34; }
+  html{ background:#09090f; }
   body{
     font-family:'Lexend',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
     font-weight:300;
     color:var(--ink);
-    background:#383b34;
+    background:#09090f;
     overflow-x:hidden;
     -webkit-font-smoothing:antialiased;
     -moz-osx-font-smoothing:grayscale;
@@ -54,22 +54,17 @@
     min-height:calc(880 * var(--u));
     overflow:hidden;
     isolation:isolate;
-    /* the reference screen reads a near-flat #4a4d44 corner to corner —
-       all the modelling comes from the light pool the root sits in */
     background:
-      radial-gradient(64% 52% at 27% 84%, rgba(232,238,222,.085) 0%, rgba(232,238,222,0) 72%),
-      radial-gradient(70% 60% at 92% 8%,  rgba(24,28,20,.10) 0%, rgba(24,28,20,0) 68%),
-      #4a4d44;
+      radial-gradient(64% 52% at 27% 84%, rgba(212,175,55,.07) 0%, rgba(212,175,55,0) 72%),
+      radial-gradient(70% 60% at 92% 8%,  rgba(14,14,24,.40) 0%, rgba(14,14,24,0) 68%),
+      #09090f;
   }
-  /* The floor of light the root stands in. Sampled off the reference: the
-     background climbs from 73 luma at the nav to ~128 at y 850, brightest
-     around the middle of the bottom edge. */
   .hero::after{
     content:'';
     position:absolute; inset:0;
     background:
-      radial-gradient(72% 44% at 50% 117%, rgba(238,243,231,.50) 0%, rgba(238,243,231,.21) 42%, rgba(238,243,231,.04) 72%, rgba(238,243,231,0) 88%),
-      linear-gradient(180deg, rgba(238,243,231,0) 54%, rgba(238,243,231,.03) 78%, rgba(238,243,231,.085) 100%);
+      radial-gradient(72% 44% at 50% 117%, rgba(212,175,55,.28) 0%, rgba(212,175,55,.10) 42%, rgba(212,175,55,.02) 72%, rgba(212,175,55,0) 88%),
+      linear-gradient(180deg, rgba(14,14,22,0) 54%, rgba(212,175,55,.025) 78%, rgba(212,175,55,.07) 100%);
     pointer-events:none; z-index:0;
   }
 
@@ -131,17 +126,12 @@
     height:calc(46 * var(--u));
     padding:calc(5 * var(--u));
     border-radius:calc(14 * var(--u));
-    border:1px solid rgba(255,255,255,.11);
-    /* No backdrop-filter. It sits over a canvas that repaints every frame,
-       so the backdrop has to be re-sampled and re-blurred every frame too —
-       measured at ~20 fps off the whole page, and the radius made no
-       difference because the cost is the extra pass, not the blur. A
-       translucent panel with a lit top edge reads the same at this size. */
+    border:1px solid rgba(212,175,55,.24);
     background:
-      linear-gradient(180deg, rgba(255,255,255,.055), rgba(255,255,255,0) 42%),
-      rgba(34,40,31,.74);
-    box-shadow:0 calc(8 * var(--u)) calc(22 * var(--u)) rgba(10,14,8,.30),
-               inset 0 1px rgba(255,255,255,.06);
+      linear-gradient(180deg, rgba(212,175,55,.09), rgba(212,175,55,0) 42%),
+      rgba(10,10,16,.88);
+    box-shadow:0 calc(8 * var(--u)) calc(22 * var(--u)) rgba(0,0,0,.60),
+               inset 0 1px rgba(212,175,55,.14);
     isolation:isolate;
   }
   /* Anchored at the top so growth runs downward, out of the headline's way —
@@ -166,15 +156,12 @@
     will-change:width,height,transform;
     transition:color .18s var(--ease), border-color .2s var(--ease), background .2s var(--ease);
   }
-  /* A magnified pill hangs below the capsule, so it needs to be its own
-     opaque tile — a translucent white wash at that size reads as a milky
-     rectangle stuck to the bar rather than as a key lifting off it. */
   .dock-item[data-near="true"]{
     z-index:7;
     color:var(--ink);
-    border-color:rgba(255,255,255,.19);
-    background:rgba(31,37,28,.94);
-    box-shadow:0 calc(7 * var(--u)) calc(16 * var(--u)) rgba(10,14,8,.30);
+    border-color:rgba(212,175,55,.45);
+    background:rgba(18,18,28,.95);
+    box-shadow:0 calc(7 * var(--u)) calc(16 * var(--u)) rgba(0,0,0,.60);
   }
   .dock-item .glyph{
     width:calc(14 * var(--u)); height:calc(14 * var(--u)); flex:none;
@@ -187,26 +174,25 @@
   }
   .dock-item[data-near="true"] .glyph{ opacity:1; }
 
-  /* the mark is the dock's anchor: a solid pale tile, the one opaque thing
-     in a bar made of glass */
+  /* the mark is the dock's anchor: a solid imperial gold tile */
   .dock-mark{
     width:calc(36 * var(--u)); padding:0;
-    background:#eef1e7; border-color:#eef1e7; color:#23261f;
+    background:linear-gradient(135deg, #d4af37 0%, #aa771c 100%);
+    border-color:#d4af37; color:#08080c;
     overflow:hidden;
   }
   .dock-mark svg{ width:58%; height:58%; display:block; fill:currentColor; }
-  /* the near state paints .dock-item white, which on the pale mark tile
-     would be a white glyph on a white ground */
-  .dock-mark[data-near="true"]{ background:#fff; border-color:#fff; color:#1b1e18; }
+  .dock-mark[data-near="true"]{
+    background:#f3e5ab; border-color:#f3e5ab; color:#050508;
+    box-shadow:0 0 calc(14 * var(--u)) rgba(212,175,55,.6);
+  }
 
-  /* the current section wears the cards' paper, so the nav and the cards
-     read as the same material */
   .dock-item.is-active{
-    background:var(--card); border-color:var(--card); color:var(--card-ink);
-    box-shadow:0 calc(6 * var(--u)) calc(16 * var(--u)) rgba(12,17,9,.24);
+    background:var(--card); border-color:rgba(212,175,55,.45); color:var(--ink);
+    box-shadow:0 calc(6 * var(--u)) calc(16 * var(--u)) rgba(0,0,0,.5);
   }
   .dock-item.is-active .glyph{ opacity:.8; }
-  .dock-item--enter{ color:var(--ink); background:rgba(255,255,255,.075); }
+  .dock-item--enter{ color:var(--ink); background:rgba(212,175,55,.12); border-color:rgba(212,175,55,.3); }
 
   /* ── specular rim ────────────────────────────────────────────────────
      A conic gradient masked down to the border, whose start angle points at
@@ -400,12 +386,17 @@
   .card{
     position:absolute;
     background:var(--card); border-radius:calc(46 * var(--u));
-    box-shadow:0 calc(30 * var(--u)) calc(70 * var(--u)) rgba(16,21,13,.30);
-    transition:box-shadow .8s var(--ease);
+    border:1px solid rgba(212,175,55,.18);
+    box-shadow:0 calc(30 * var(--u)) calc(70 * var(--u)) rgba(0,0,0,.60), inset 0 1px 0 rgba(212,175,55,.12);
+    transition:box-shadow .8s var(--ease), border-color .3s var(--ease);
+  }
+  .card:hover{
+    border-color:rgba(212,175,55,.4);
+    box-shadow:0 calc(38 * var(--u)) calc(84 * var(--u)) rgba(0,0,0,.80), 0 0 calc(25 * var(--u)) rgba(212,175,55,.14);
   }
   /* No z-index here on purpose. z-index:auto keeps the card out of its own
-     stacking context, so the body paints under #scene (the moss drapes over
-     its shoulder) while .knob, at z 4, still sits in front of the moss. */
+     stacking context, so the body paints under #scene (the tendrils drape over
+     its shoulder) while .knob, at z 4, still sits in front of the tendrils. */
   .card--about{
     left:calc(890 * var(--u)); top:calc(200 * var(--u));
     width:calc(330 * var(--u)); height:calc(305 * var(--u));
@@ -425,9 +416,9 @@
     font-weight:400; letter-spacing:calc(-0.5 * var(--u)); color:var(--card-ink);
   }
   .card--about .label{ top:calc(152 * var(--u)); }
-  .card--about h2{ top:calc(177 * var(--u)); width:calc(142 * var(--u)); }
+  .card--about h2{ top:calc(177 * var(--u)); width:calc(230 * var(--u)); }
   .card--stove .label{ top:calc(45 * var(--u)); }
-  .card--stove h2{ top:calc(70 * var(--u)); }
+  .card--stove h2{ top:calc(70 * var(--u)); width:calc(230 * var(--u)); }
   /* Both cards carry a plate. The Field Note reads downward — label, title,
      then the photograph — so its window sits at the foot of the card; the
      Ethos card reads the other way up, so its window is at the head and the
@@ -435,12 +426,12 @@
   .card figure{
     position:absolute; left:calc(14 * var(--u)); right:calc(14 * var(--u));
     border-radius:calc(34 * var(--u)); overflow:hidden;
-    isolation:isolate; background:#263025;
+    isolation:isolate; background:#0d0e15;
   }
   .card--stove figure{ bottom:calc(14 * var(--u)); height:calc(158 * var(--u)); }
   .card--about figure{ top:calc(14 * var(--u)); height:calc(122 * var(--u)); }
   /* The plate is its own depth plane. It travels against the card and the
-     moss, so the landscape feels like a small window rather than a
+     tendrils, so the landscape feels like a small window rather than a
      photograph glued to the surface. */
   .portal-media{
     position:absolute; inset:calc(-9 * var(--u)); z-index:1; display:block;
@@ -455,15 +446,15 @@
   .portal-media img{
     width:100%; height:100%; object-fit:cover; display:block;
     transform:scale(1.08);
-    filter:saturate(.92) contrast(1.03);
+    filter:saturate(.95) contrast(1.04);
     transition:transform 1.25s var(--ease-out),filter .8s var(--ease);
   }
-  .card:hover .portal-media img{ transform:scale(1.13); filter:saturate(1.04) contrast(1.04); }
+  .card:hover .portal-media img{ transform:scale(1.13); filter:saturate(1.08) contrast(1.06); }
   .pixel-reveal{
     position:absolute; inset:0; z-index:3; width:100%; height:100%;
     pointer-events:none; opacity:0; mix-blend-mode:screen;
   }
-  /* The white scan rides the clip edge, so its centre has to travel the
+  /* The gold scan rides the clip edge, so its centre has to travel the
      media element's box, not the figure's — .portal-media is overscanned by
      9u on every side to give the parallax rotation somewhere to go. Offsetting
      by that 9u in calc() rather than by a translate percentage keeps the
@@ -472,7 +463,7 @@
     content:''; position:absolute; z-index:2;
     filter:blur(calc(2 * var(--u))); opacity:0; pointer-events:none;
     top:0; bottom:0; width:26%; left:calc(-13% - 9 * var(--u));
-    background:linear-gradient(90deg,transparent,rgba(229,244,209,.2) 42%,rgba(252,255,246,.72) 54%,transparent);
+    background:linear-gradient(90deg,transparent,rgba(212,175,55,.2) 42%,rgba(243,229,171,.75) 54%,transparent);
   }
 
   .knob-float{
@@ -486,15 +477,14 @@
     position:absolute; z-index:4; right:calc(20 * var(--u)); bottom:calc(20 * var(--u));
     width:calc(58 * var(--u)); height:calc(58 * var(--u));
     border:0; border-radius:50%; cursor:pointer;
-    background:#fbfcf8; display:grid; place-items:center;
-    box-shadow:0 calc(6 * var(--u)) calc(16 * var(--u)) rgba(16,21,13,.18);
-    transition:transform .5s var(--ease-out), background .4s var(--ease);
+    background:#d4af37; display:grid; place-items:center;
+    box-shadow:0 calc(6 * var(--u)) calc(16 * var(--u)) rgba(0,0,0,.45);
+    transition:transform .5s var(--ease-out), background .4s var(--ease), box-shadow .4s var(--ease);
   }
   .knob--about{ right:auto; bottom:auto; width:calc(58 * var(--u)); height:calc(58 * var(--u)); }
   .card--stove .knob{ width:calc(54 * var(--u)); height:calc(54 * var(--u)); right:calc(26 * var(--u)); bottom:calc(26 * var(--u)); }
-  .card .knob svg, .knob--about svg{ width:calc(19 * var(--u)); height:calc(19 * var(--u)); display:block; color:#3f453a; }
-  .card .knob:hover, .knob--about:hover{ transform:scale(1.1) rotate(8deg); background:#fff; }
-  .card:hover{ box-shadow:0 calc(38 * var(--u)) calc(84 * var(--u)) rgba(16,21,13,.36); }
+  .card .knob svg, .knob--about svg{ width:calc(19 * var(--u)); height:calc(19 * var(--u)); display:block; color:#08080c; }
+  .card .knob:hover, .knob--about:hover{ transform:scale(1.1) rotate(8deg); background:#f3e5ab; box-shadow:0 0 calc(18 * var(--u)) rgba(212,175,55,.6); }
 
   /* ── scroll cue (z 4) ────────────────────────────────────────────────── */
   .scroll{
@@ -717,8 +707,8 @@
   <canvas id="scene"></canvas>
 
   <div class="dock-wrap">
-    <nav class="dock par-dock" style="--pd:5" data-spec aria-label="Primary">
-      <a class="dock-item dock-mark" data-dock data-spec data-burst href="#" style="--d:120ms" aria-label="Sylva — home">
+    <nav class="dock par-dock" style="--pd:5" data-spec aria-label="Lucifer Movie Universe">
+      <a class="dock-item dock-mark" data-dock data-spec data-burst href="#" style="--d:120ms" aria-label="Lucifer Database X — Cinema Universe">
         <svg viewBox="0 0 22 24" aria-hidden="true">
           <path d="M11 1.3c-2.1 0-3.95 1.2-4.75 2.95C3.95 4.55 2.3 6.25 2.3 8.35c0 2.3 1.9 4.2 4.3 4.2h8.8c2.4 0 4.3-1.9 4.3-4.2 0-2.1-1.65-3.8-4-4.1C14.95 2.5 13.1 1.3 11 1.3Z"/>
           <path d="M9.6 12.55h2.8v4.2c1.35.3 2.45 1.15 3.15 2.4-1.35.4-2.4.15-3.15-.4v4.15H9.6v-4.15c-.75.55-1.8.8-3.15.4.7-1.25 1.8-2.1 3.15-2.4v-4.2Z"/>
@@ -726,27 +716,27 @@
       </a>
       <a class="dock-item is-active" data-dock data-spec data-burst href="#" style="--d:180ms">
         <span class="glyph" aria-hidden="true">
-          <svg viewBox="0 0 16 16"><path d="M8 14V9"/><path d="M8 9c0-2.4 1.7-4.3 4-4.3.2 2.6-1.6 4.6-4 4.3Z"/><path d="M8 10.5C7.9 8.4 6.4 6.8 4.4 6.8 4.3 8.9 5.9 10.6 8 10.5Z"/></svg>
+          <svg viewBox="0 0 16 16"><path d="M2 3h12a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1z"/><path d="M5 3v10M11 3v10M1 8h14"/></svg>
         </span>
-        <span>Grove</span>
+        <span>Cinema</span>
       </a>
       <a class="dock-item" data-dock data-spec data-burst href="#" style="--d:230ms">
         <span class="glyph" aria-hidden="true">
-          <svg viewBox="0 0 16 16"><path d="M1.6 12.4c2.4-3.4 4.3-5.1 5.7-5.1 2 0 3 3.6 5 3.6 1.1 0 1.9-.5 2.4-1.4"/><path d="M4.3 6.2C5.5 4.4 6.6 3.5 7.6 3.5c1.5 0 2.2 2.4 3.7 2.4"/></svg>
+          <svg viewBox="0 0 16 16"><circle cx="8" cy="8" r="7"/><circle cx="8" cy="8" r="2.5"/><path d="M8 1v2M8 13v2M1 8h2M13 8h2"/></svg>
         </span>
-        <span>Habitats</span>
+        <span>4K Vaults</span>
       </a>
       <a class="dock-item" data-dock data-spec data-burst href="#" style="--d:280ms">
         <span class="glyph" aria-hidden="true">
-          <svg viewBox="0 0 16 16"><path d="M4 2.4h5.3L12 5.1v8.5H4z"/><path d="M9.2 2.4V5h2.7"/><path d="M6 8.4h4M6 10.8h2.8"/></svg>
+          <svg viewBox="0 0 16 16"><path d="M2 10V6h3l4-3v10l-4-3H2z"/><path d="M12 5.5a4 4 0 0 1 0 5M14 3.5a7 7 0 0 1 0 9"/></svg>
         </span>
-        <span>Journal</span>
+        <span>Soundstage</span>
       </a>
       <a class="dock-item dock-item--enter" data-dock data-spec data-burst href="#" style="--d:330ms">
         <span class="glyph" aria-hidden="true">
-          <svg viewBox="0 0 16 16"><path d="M6.6 2.5h5.1a1 1 0 0 1 1 1v9a1 1 0 0 1-1 1H6.6"/><path d="M2.6 8h6.6"/><path d="m7 5.6 2.4 2.4L7 10.4"/></svg>
+          <svg viewBox="0 0 16 16"><path d="M4 2v12l10-6z"/></svg>
         </span>
-        <span>Enter</span>
+        <span>Stream</span>
       </a>
     </nav>
   </div>
@@ -759,36 +749,34 @@
       <i style="left:calc(1091 * var(--u))"></i>
     </div>
 
-    <div class="ghost fade" style="--d:1150ms" aria-hidden="true">SYLVA</div>
+    <div class="ghost fade" style="--d:1150ms" aria-hidden="true">CINEMA</div>
 
-    <!-- card 1 sits *behind* the canvas so the moss drapes over its shoulder -->
+    <!-- card 1 sits behind the holographic roots -->
     <article class="card card--about mask" style="--d:760ms; --pd:10; --pr:2.2">
       <figure class="portal" data-delay="920">
-        <span class="portal-media"><img crossorigin="anonymous" src="https://ublctyddhtbgaersvxxb.supabase.co/storage/v1/object/public/threeui-media/scene-images/c74a626e396794aa239bca6f/card-ethos.jpg" alt="A cushion of moss grown over lichen-crusted stones" loading="eager" decoding="async"></span>
+        <span class="portal-media"><img crossorigin="anonymous" src="https://images.unsplash.com/photo-1478720568477-152d9b164e26?auto=format&fit=crop&w=800&q=80" alt="Cinematic 35mm optical projector lens casting beam in darkness" loading="eager" decoding="async"></span>
         <canvas class="pixel-reveal" aria-hidden="true"></canvas>
       </figure>
-      <p class="label">Our Ethos</p>
-      <h2>Let the wild lead.</h2>
+      <p class="label">Director's Cut</p>
+      <h2>Pure 4K Master.</h2>
     </article>
 
-    <!-- the About knob rides *outside* the card: the card has to stay a plain
-         painted box under #scene, so anything that must sit in front of the
-         moss lives here instead, sharing the card's parallax origin -->
+    <!-- the About knob rides *outside* the card -->
     <span class="knob-float" style="--pd:10; --pr:2.2">
-      <button class="knob knob--about mask-circle" style="--d:1100ms" aria-label="Read about Sylva">
+      <button class="knob knob--about mask-circle" style="--d:1100ms" aria-label="Access Director's Vault">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M12 21v-7"/><path d="M12 14c0-3.3 2.4-6 5.5-6 .3 3.6-2.2 6.4-5.5 6Z"/>
-          <path d="M12 16c-.1-2.9-2.2-5.2-4.9-5.2C6.8 13.7 9 16 12 16Z"/>
+          <circle cx="12" cy="12" r="9"/>
+          <path d="M10 8l6 4-6 4V8z" fill="currentColor"/>
         </svg>
       </button>
     </span>
 
     <h1 class="headline" style="--pd:18; --pr:1.2">
       <span><i style="--d:260ms">Step into</i></span>
-      <span><i style="--d:360ms">the living world</i></span>
+      <span><i style="--d:360ms">the movie universe</i></span>
     </h1>
 
-    <p class="lede mask" style="--d:480ms; --pd:14; --pr:1">We restore wild places through patient design, native planting, and a deeper kind of stewardship.</p>
+    <p class="lede mask" style="--d:480ms; --pd:14; --pr:1">Experience sovereign cinematic storytelling through lossless 4K HDR mastering, uncompressed spatial audio, and curated motion picture archives.</p>
 
     <div class="pill-clip">
       <div class="pill mask" style="--d:600ms; --pd:15; --pr:1.4">
@@ -803,7 +791,7 @@
                 <path d="M14 80.5 H68"/>
               </g>
             </svg>
-            <span class="lbl">Explore the work</span>
+            <span class="lbl">Explore the vault</span>
           </button>
         </div>
       </div>
@@ -815,7 +803,7 @@
           <span class="liquid-stage liquid-stage--play" data-liquid-metal="play">
             <span class="liquid-plate plate" aria-hidden="true"></span>
             <canvas class="liquid-fx" aria-hidden="true"></canvas>
-            <button class="liquid-button liquid-button--play btn" type="button" aria-label="Play the film">
+            <button class="liquid-button liquid-button--play btn" type="button" aria-label="Play 4K Showreel">
               <svg class="ico" viewBox="0 0 24 24" aria-hidden="true">
                 <path d="M8 5.2v13.6L19 12z" fill="currentColor"/>
               </svg>
@@ -834,7 +822,7 @@
           <circle cx="15" cy="15" r="1.1" fill="currentColor" stroke="none"/>
         </svg>
       </span>
-      <div><dt>Canopy restored</dt><dd>282 ha</dd></div>
+      <div><dt>Master Stream</dt><dd>4K UHD HDR</dd></div>
     </dl>
 
     <dl class="stat stat--b mask" style="--d:770ms; --pd:13">
@@ -847,25 +835,24 @@
           <circle cx="15" cy="15" r="3.6"/>
         </svg>
       </span>
-      <div><dt>Native species</dt><dd>43 mapped</dd></div>
+      <div><dt>Studio Sound</dt><dd>Dolby Atmos 7.1</dd></div>
     </dl>
 
     <article class="card card--stove mask" style="--d:880ms; --pd:22; --pr:2.4">
-      <p class="label">Field Note 07</p>
-      <h2>After the Rain</h2>
+      <p class="label">Vault 07 • Spatial Master</p>
+      <h2>Dolby Vision Stream</h2>
       <figure class="portal" data-delay="1080">
-        <span class="portal-media"><img crossorigin="anonymous" src="https://ublctyddhtbgaersvxxb.supabase.co/storage/v1/object/public/threeui-media/scene-images/c74a626e396794aa239bca6f/card-ecostove.jpg" alt="Moss-covered boulders in a misty grove" loading="eager" decoding="async"></span>
+        <span class="portal-media"><img crossorigin="anonymous" src="https://images.unsplash.com/photo-1517604931442-7e0c8ed2963c?auto=format&fit=crop&w=800&q=80" alt="Grand cinematic auditorium screen in royal obsidian lighting" loading="eager" decoding="async"></span>
         <canvas class="pixel-reveal" aria-hidden="true"></canvas>
       </figure>
-      <button class="knob" aria-label="Open field note: After the Rain">
+      <button class="knob" aria-label="Launch Dolby Vision Stream">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M12 21v-7"/><path d="M12 14c0-3.3 2.4-6 5.5-6 .3 3.6-2.2 6.4-5.5 6Z"/>
-          <path d="M12 16c-.1-2.9-2.2-5.2-4.9-5.2C6.8 13.7 9 16 12 16Z"/>
+          <polygon points="5 3 19 12 5 21 5 3" fill="currentColor"/>
         </svg>
       </button>
     </article>
 
-    <a class="scroll mask" style="--d:1040ms; --pd:9" href="#">Discover<span class="track"></span></a>
+    <a class="scroll mask" style="--d:1040ms; --pd:9" href="#">Stream Matrix<span class="track"></span></a>
 
   </div>
 </main>
@@ -2750,16 +2737,16 @@ window.__seek   = v => { clock = v; drawn = null; };
         '  vec3 wood   = mix(silver, umber, mottle * 0.78);',
         '  wood *= 1.0 - 0.70 * crack;',
 
-        /* the cushion: two greens, mottled, darkest where it packs deepest */
+        /* cinematic gold veins and conduits */
         '  float mo = gfbm(vec2(vW.x * 2.6, vW.z * 2.6 + vW.y * 1.9)) * 0.5 + 0.5;',
-        '  vec3 moss = mix(vec3(0.0204, 0.0311, 0.0050), vec3(0.0914, 0.1392, 0.0227), mo);',
+        '  vec3 moss = mix(vec3(0.065, 0.050, 0.015), vec3(0.830, 0.680, 0.210), mo);',
         '  moss *= 0.80 + 0.42 * cap;',
 
         '  vec3 col = mix(wood, moss, m);',
-        /* a pale lichen crust where the wood shows and faces up */
+        /* a pale gold crust where the surface faces up */
         '  float lich = smoothstep(0.56, 0.84, gfbm(q * 0.62 + 31.0) * 0.5 + 0.5);',
         '  lich *= (1.0 - m) * smoothstep(-0.10, 0.70, N.y) * smoothstep(0.15, 0.50, h);',
-        '  col = mix(col, vec3(0.162, 0.176, 0.132), lich * 0.78);',
+        '  col = mix(col, vec3(0.550, 0.440, 0.150), lich * 0.78);',
 
         /* Contact shadow along the moss line. The cushion overhangs the bark
            it sits on, and without this the two materials meet on a clean
@@ -2865,10 +2852,10 @@ window.__seek   = v => { clock = v; drawn = null; };
            moss sits at hue 77°, saturation 56%, value 23%, which is a good
            deal more yellow and a good deal deeper than the green a shader
            reaches for on its own. */
-        '  vec3 deep = vec3(0.0126, 0.0192, 0.0031);',
-        '  vec3 mid  = vec3(0.0488, 0.0744, 0.0121);',
-        '  vec3 tip  = vec3(0.1222, 0.1860, 0.0304);',
-        '  vec3 tipHi = vec3(0.2600, 0.3900, 0.0640);',
+        '  vec3 deep = vec3(0.040, 0.030, 0.010);',
+        '  vec3 mid  = vec3(0.240, 0.180, 0.045);',
+        '  vec3 tip  = vec3(0.680, 0.540, 0.160);',
+        '  vec3 tipHi = vec3(0.950, 0.820, 0.280);',
         '  vec3 col = mix(deep, mid, smoothstep(0.0, 0.62, vT));',
         '  col = mix(col, tip, smoothstep(0.38, 1.0, vT) * (0.35 + 0.65 * vTone));',
         /* slow drifts of colour so the pile never reads as flat velvet */
@@ -2990,7 +2977,7 @@ window.__seek   = v => { clock = v; drawn = null; };
         '  vec3 N = normalize(vN);',
         '  if (!gl_FrontFacing) N = -N;',
         '  vec3 V = normalize(cameraPosition - vW);',
-        '  vec3 base = mix(vec3(0.0270, 0.0450, 0.0099), vec3(0.0690, 0.1150, 0.0253), vTint);',
+        '  vec3 base = mix(vec3(0.120, 0.090, 0.030), vec3(0.550, 0.420, 0.120), vTint);',
         '  base *= 0.80 + 0.30 * smoothstep(0.0, 0.8, vUv.x);',
         '  vec3 lit = litSurface(N, base, 0.9);',
         /* fronds are thin — light comes through them */
@@ -3060,7 +3047,7 @@ window.__seek   = v => { clock = v; drawn = null; };
         '  if (a < 0.004) discard;',
         /* survey ticks running out along the beam */
         '  a *= 0.66 + 0.34 * sin(d * 0.045 - uTime * 7.0);',
-        '  vec3 col = mix(vec3(0.30, 0.72, 0.46), vec3(0.86, 1.00, 0.90), rim);',
+        '  vec3 col = mix(vec3(0.83, 0.68, 0.21), vec3(1.00, 0.95, 0.72), rim);',
         '  gl_FragColor = vec4(col, clamp(a, 0.0, 1.0));',
         '}'
       ].join('\n')
@@ -3172,7 +3159,7 @@ window.__seek   = v => { clock = v; drawn = null; };
          the far ridge in the reference is paler than the page behind it, and
          so are the near crowns. Keep the amount small on the near root or the
          moss greys out (its saturation is the first thing to go). */
-      uHazeCol: { value: new THREE.Color(0.176, 0.195, 0.145) },
+      uHazeCol: { value: new THREE.Color(0.12, 0.09, 0.05) },
       uHaze:    { value: 0.14 },
       uHazeLift:{ value: 0.20 },
       uFog:     { value: 0.0 },
@@ -3217,7 +3204,7 @@ window.__seek   = v => { clock = v; drawn = null; };
       uBoxH:   { value: BOXW / opt.aspect },
       uHaze:   { value: opt.haze },
       uFog:    { value: opt.fog },
-      uHazeCol:{ value: new THREE.Color().fromArray(opt.hazeCol || [0.176, 0.195, 0.145]) },
+      uHazeCol:{ value: new THREE.Color().fromArray(opt.hazeCol || [0.12, 0.09, 0.05]) },
       uHazeLift:{ value: opt.hazeLift === undefined ? 0.20 : opt.hazeLift },
       uAlpha:  { value: opt.alpha },
       uMask:   { value: new THREE.Vector4(opt.mask ? opt.mask[0] : 0, opt.mask ? opt.mask[1] : 1,
@@ -3819,20 +3806,19 @@ window.__seek   = v => { clock = v; drawn = null; };
         /* Kept well under 1: on the cherry bough this ran HDR into ACES on
            purpose, but that scene was a sunset. Here the same numbers clip to
            cream and the green never arrives. */
-        '  vec3 face = vec3(0.330, 0.560, 0.042);',
-        '  vec3 edge = vec3(0.062, 0.190, 0.014);',
+        '  vec3 face = vec3(0.880, 0.720, 0.220);',
+        '  vec3 edge = vec3(0.220, 0.140, 0.030);',
         '  vec3 wing = mix(edge, face, pow(facing, 0.65));',
         '  wing *= 0.62 + 0.72 * smoothstep(0.02, 0.46, s) * (1.0 - 0.34 * smoothstep(0.45, 1.0, u));',
         /* scales lie in overlapping rows running out from the base */
         '  vec4 tx = texture2D(uTex, vUv);',
         '  float rows = tx.r, grain = tx.g, mottle = tx.b, shim = tx.a;',
         '  wing *= 0.78 + 0.44 * mottle;',
-        /* the hue swings green to yellow across the disc rather than merely
-           brightening — that swing is what reads as diffraction */
-        '  wing = mix(wing * vec3(0.46, 1.14, 0.30), wing * vec3(1.34, 1.06, 0.16), shim);',
-        '  vec3 dark  = vec3(0.030, 0.026, 0.014);',
-        '  vec3 cream = vec3(0.520, 0.500, 0.290);',
-        '  vec3 amber = vec3(0.400, 0.270, 0.045);',
+        /* gold diffraction */
+        '  wing = mix(wing * vec3(0.95, 0.82, 0.28), wing * vec3(1.15, 0.95, 0.45), shim);',
+        '  vec3 dark  = vec3(0.050, 0.035, 0.015);',
+        '  vec3 cream = vec3(0.950, 0.900, 0.670);',
+        '  vec3 amber = vec3(0.850, 0.650, 0.150);',
         /* the wide sooty border down the whole distal edge */
         '  float border = max(smoothstep(0.60, 0.74, s), smoothstep(0.78, 0.94, u));',
         '  vec3 c = mix(wing, dark, border);',
