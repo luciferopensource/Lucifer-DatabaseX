@@ -17,7 +17,7 @@ export const onRequestGet: PagesFunction<Env> = async () => {
     environment: 'Cloudflare Edge Pages',
     databaseState: {
       sovereignRecordsIndexed: 264560,
-      verifiedCitadelSources: 16,
+      verifiedCitadelSources: 0,
       catalogEntriesActive: CATALOG_DATA.length,
       encryptionMaster: 'SHA-256 Validated',
     },

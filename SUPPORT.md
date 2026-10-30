@@ -6,12 +6,11 @@ Welcome to the **Lucifer Database X** support guide. This document outlines wher
 
 ## 📚 Documentation & Self-Help
 
-Before submitting an issue or asking for support, please review the extensive documentation available in the repository:
+Before submitting an issue or asking for support, please review the documentation available in the repository:
 
-* **[Architecture & Ecosystem Audit](file:///c:/Users/shank/OneDrive/Desktop/Lucifer%20Open%20Source/Lucifer%20DatabaseX/docs/architecture-audit.md)**: Overview of the Lucifer Open Source fleet and media database integration.
 * **[Design System Specification](file:///c:/Users/shank/OneDrive/Desktop/Lucifer%20Open%20Source/Lucifer%20DatabaseX/docs/design-system.md)**: CSS variables, visual hierarchy, and component contracts.
-* **[Backend Architecture & API Contracts](file:///c:/Users/shank/OneDrive/Desktop/Lucifer%20Open%20Source/Lucifer%20DatabaseX/docs/backend-architecture.md)**: Cloudflare Pages serverless endpoints and schema definitions.
-* **[Data Integration & Citadels](file:///c:/Users/shank/OneDrive/Desktop/Lucifer%20Open%20Source/Lucifer%20DatabaseX/docs/data-integration.md)**: Specifications for the 16 movie scraper sources.
+* **[Motion System Specification](file:///c:/Users/shank/OneDrive/Desktop/Lucifer%20Open%20Source/Lucifer%20DatabaseX/docs/motion-system.md)**: Three.js WebGL and motion physics specifications.
+* **[Design Reference Audit](file:///c:/Users/shank/OneDrive/Desktop/Lucifer%20Open%20Source/Lucifer%20DatabaseX/docs/design-reference-audit.md)**: Design system references and foundational UI principles.
 
 ---
 

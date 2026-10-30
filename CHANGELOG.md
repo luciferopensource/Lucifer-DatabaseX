@@ -11,10 +11,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 - **ThreeUI Living Green (Sylva) Landing Interface**: High-fidelity Three.js WebGL procedural moss root simulation, dynamic butterfly kinematics, floating glass dock navigation, native liquid-metal interactive controls, and ethos cards.
-- **Serverless Edge API Architecture**: Cloudflare Pages Functions delivering `/api/health`, `/api/media`, `/api/media/:id`, `/api/search`, `/api/sources`, and `/api/collections`.
-- **The 16 Scraper Citadels Specifications**: Verified metadata mapping and telemetry specifications for all 16 autonomous movie scraper resolvers.
+- **Serverless Edge API Architecture**: Cloudflare Pages Functions delivering `/api/health`, `/api/media`, `/api/media/:id`, `/api/search`, and `/api/collections`.
 - **Canonical Media Dataset**: Initial sovereign catalog indexing 4K HDR, Dolby Vision, and lossless audio streams.
-- **Comprehensive Documentation Suite**: Authored architecture audits, design specifications, motion physics specifications, backend contracts, and ingestion guides in `docs/`.
+- **Design & Motion Documentation Suite**: Authored design system specifications, motion physics specifications, and design reference audits in `docs/`.
 - **Cross-Platform Tooling**: Added `.editorconfig`, `.gitattributes`, `.gitignore`, `.gitlab/changelog_config.yml`, and `CITATION.cff`.
 - **Governance & Policy**: Standardised `LICENSE` (MIT), `SECURITY.md`, `SUPPORT.md`, `CODE_OF_CONDUCT.md`, `ROADMAP.md`, and `CONTRIBUTING.md`.
 

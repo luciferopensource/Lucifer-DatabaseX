@@ -8,11 +8,9 @@ This document outlines the strategic engineering roadmap and technical milestone
 
 ### [v1.0.0] — Foundation & Living World 3D Core (Released 2026-10-30)
 - [x] Complete ThreeUI Living Green (Sylva) interactive WebGL landscape with procedural moss roots, dynamic butterfly physics, and native liquid-metal controls.
-- [x] Serverless Edge API layer implemented on Cloudflare Pages Functions (`/api/health`, `/api/media`, `/api/media/:id`, `/api/search`, `/api/sources`, `/api/collections`).
-- [x] Comprehensive telemetry and metadata specifications for the 16 autonomous Scraper Citadels.
+- [x] Serverless Edge API layer implemented on Cloudflare Pages Functions (`/api/health`, `/api/media`, `/api/media/:id`, `/api/search`, `/api/collections`).
 - [x] Canonical curated catalog indexing 4K UHD HDR, Dolby Vision, and master audio formats.
 - [x] Strict Content Security Policy (`CSP`) and production asset optimisations in `public/_headers`.
-- [x] Full architectural documentation suite in `docs/`.
 
 ---
 

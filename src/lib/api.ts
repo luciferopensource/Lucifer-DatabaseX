@@ -4,7 +4,6 @@
  */
 
 import { CATALOG_ENTRIES } from '../data/catalog'
-import { CITADEL_SOURCES } from '../data/citadels'
 import { MediaEntry, FilterState, CitadelSourceInfo } from '../types/media'
 
 export interface HealthTelemetry {
@@ -60,7 +59,7 @@ export const api = {
       environment: 'Client Sovereign Runtime',
       databaseState: {
         sovereignRecordsIndexed: 264560,
-        verifiedCitadelSources: 16,
+        verifiedCitadelSources: 0,
         catalogEntriesActive: CATALOG_ENTRIES.length,
         encryptionMaster: 'SHA-256 Validated',
       },
@@ -74,7 +73,7 @@ export const api = {
   },
 
   /**
-   * Retrieves verified 16 movie scraper sources and SmartSync metadata.
+   * Retrieves movie scraper sources.
    */
   async getSources(): Promise<CitadelSourceInfo[]> {
     try {
@@ -84,9 +83,9 @@ export const api = {
         if (data.sources) return data.sources
       }
     } catch {
-      // Fallback to local verified citadels
+      // Fallback
     }
-    return CITADEL_SOURCES
+    return []
   },
 
   /**
