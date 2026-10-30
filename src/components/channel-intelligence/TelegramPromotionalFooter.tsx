@@ -26,110 +26,358 @@ export const TelegramPromotionalFooter: React.FC = () => {
   }
 
   return (
-    <footer className="mt-16 pt-10 border-t border-[#d4af37]/25 space-y-10" id="sovereign-community">
-      {/* ── Brand Framing Header ── */}
-      <div className="relative rounded-3xl bg-gradient-to-b from-[#15121e] via-[#0b0b10] to-[#08080c] p-8 lg:p-12 border-2 border-[#d4af37]/40 shadow-[0_20px_60px_rgba(0,0,0,0.85)] overflow-hidden">
-        {/* Cinematic Backdrop Glows */}
-        <div className="absolute top-0 right-1/4 w-96 h-96 bg-[#d4af37]/8 rounded-full blur-3xl pointer-events-none" />
-        <div className="absolute -bottom-10 left-10 w-72 h-72 bg-purple-900/10 rounded-full blur-3xl pointer-events-none" />
+    <footer
+      id="sovereign-community"
+      style={{
+        marginTop: '64px',
+        paddingTop: '40px',
+        borderTop: '1px solid rgba(212, 175, 55, 0.3)',
+        display: 'flex',
+        flexDirection: 'column',
+        gap: '40px',
+        position: 'relative'
+      }}
+    >
+      {/* ── Brand Framing Header (Liquid Glass & Double-Line Frame) ── */}
+      <div
+        style={{
+          position: 'relative',
+          borderRadius: '24px',
+          background: 'linear-gradient(135deg, rgba(22, 18, 32, 0.82) 0%, rgba(12, 11, 18, 0.88) 50%, rgba(8, 8, 12, 0.92) 100%)',
+          backdropFilter: 'blur(28px) saturate(200%)',
+          WebkitBackdropFilter: 'blur(28px) saturate(200%)',
+          padding: '40px 32px',
+          border: '1.5px solid rgba(212, 175, 55, 0.45)',
+          boxShadow: '0 24px 60px rgba(0, 0, 0, 0.85), inset 0 1px 2px rgba(255, 255, 255, 0.22), 0 0 35px rgba(212, 175, 55, 0.1)',
+          overflow: 'hidden'
+        }}
+      >
+        {/* Cinematic Backdrop Glow */}
+        <div
+          style={{
+            position: 'absolute',
+            top: '-60px',
+            right: '20%',
+            width: '380px',
+            height: '380px',
+            background: 'radial-gradient(circle, rgba(212, 175, 55, 0.14) 0%, transparent 70%)',
+            pointerEvents: 'none',
+            borderRadius: '50%'
+          }}
+        />
 
         {/* Double-Line Framing Indicator */}
-        <div className="text-center font-mono text-[11px] text-[#d4af37]/60 tracking-[0.3em] select-none mb-4">
+        <div
+          style={{
+            textAlign: 'center',
+            fontFamily: "'JetBrains Mono', monospace",
+            fontSize: '11px',
+            color: 'rgba(212, 175, 55, 0.65)',
+            letterSpacing: '0.3em',
+            userSelect: 'none',
+            marginBottom: '18px'
+          }}
+        >
           ╔═══════════════════════════════════════════════════════════════════╗
         </div>
 
-        <div className="relative z-10 max-w-3xl mx-auto text-center space-y-4">
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#d4af37]/15 border border-[#d4af37]/40 text-[#f3e5ab] text-xs font-mono tracking-widest uppercase">
-            <Crown className="w-4 h-4 text-[#d4af37]" />
-            Lucifer Open Source • Sovereign Digital Vault
+        <div
+          style={{
+            position: 'relative',
+            zIndex: 10,
+            maxWidth: '820px',
+            margin: '0 auto',
+            textAlign: 'center',
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+            gap: '16px'
+          }}
+        >
+          <div
+            style={{
+              display: 'inline-flex',
+              alignItems: 'center',
+              gap: '8px',
+              padding: '6px 16px',
+              borderRadius: '999px',
+              background: 'rgba(212, 175, 55, 0.16)',
+              border: '1px solid rgba(212, 175, 55, 0.45)',
+              color: '#f3e5ab',
+              fontSize: '0.74rem',
+              fontFamily: "'JetBrains Mono', monospace",
+              letterSpacing: '0.12em',
+              textTransform: 'uppercase',
+              fontWeight: 700
+            }}
+          >
+            <Crown size={15} style={{ color: '#d4af37' }} />
+            <span>Lucifer Open Source • Sovereign Digital Vault</span>
           </div>
 
-          <h2 className="text-3xl sm:text-4xl font-serif font-bold text-[#f3e5ab] tracking-tight">
+          <h2
+            style={{
+              fontFamily: "'Cinzel', serif",
+              fontSize: 'clamp(1.6rem, 2.8vw, 2.4rem)',
+              fontWeight: 800,
+              color: '#f3e5ab',
+              letterSpacing: '0.03em',
+              margin: '6px 0 0',
+              textShadow: '0 2px 14px rgba(0, 0, 0, 0.8)'
+            }}
+          >
             Connect With the Sovereign Intelligence Network
           </h2>
 
-          <p className="text-sm sm:text-base text-slate-300 font-light leading-relaxed">
+          <p
+            style={{
+              fontSize: '0.92rem',
+              color: '#cbd5e1',
+              fontWeight: 400,
+              lineHeight: 1.7,
+              maxWidth: '720px',
+              margin: 0
+            }}
+          >
             Curated and governed by{' '}
-            <strong className="text-[#f3e5ab] font-serif font-semibold">{OWNER_INFO.name}</strong>.
-            Gain direct access to verified stream archives, catalogue dispatch channels, priority media
+            <strong style={{ color: '#f3e5ab', fontFamily: "'Cinzel', serif", fontWeight: 700 }}>
+              {OWNER_INFO.name}
+            </strong>
+            . Gain direct access to verified stream archives, catalogue dispatch channels, priority media
             request pipelines, and the Lucifer Open Source engineering community.
           </p>
 
-          <div className="pt-2 flex flex-wrap items-center justify-center gap-3 text-xs font-mono text-slate-400">
-            <span className="flex items-center gap-1.5">
-              <Shield className="w-3.5 h-3.5 text-emerald-400" /> End-to-End Cryptographic Integrity
+          <div
+            style={{
+              paddingTop: '8px',
+              display: 'flex',
+              flexWrap: 'wrap',
+              alignItems: 'center',
+              justifyContent: 'center',
+              gap: '14px',
+              fontSize: '0.76rem',
+              fontFamily: "'JetBrains Mono', monospace",
+              color: '#94a3b8'
+            }}
+          >
+            <span style={{ display: 'inline-flex', alignItems: 'center', gap: '6px', color: '#6ee7b7' }}>
+              <Shield size={14} style={{ color: '#34d399' }} /> End-to-End Cryptographic Integrity
             </span>
-            <span>•</span>
-            <span className="flex items-center gap-1.5">
-              <Sparkles className="w-3.5 h-3.5 text-[#d4af37]" /> 945+ TB Verified Media Volume
+            <span style={{ color: 'rgba(212, 175, 55, 0.4)' }}>•</span>
+            <span style={{ display: 'inline-flex', alignItems: 'center', gap: '6px', color: '#f3e5ab' }}>
+              <Sparkles size={14} style={{ color: '#d4af37' }} /> 945+ TB Verified Media Volume
             </span>
-            <span>•</span>
-            <span className="flex items-center gap-1.5">
-              <Users className="w-3.5 h-3.5 text-sky-400" /> Decentralised Community Mirrors
+            <span style={{ color: 'rgba(212, 175, 55, 0.4)' }}>•</span>
+            <span style={{ display: 'inline-flex', alignItems: 'center', gap: '6px', color: '#7dd3fc' }}>
+              <Users size={14} style={{ color: '#38bdf8' }} /> Decentralised Community Mirrors
             </span>
           </div>
         </div>
 
-        <div className="text-center font-mono text-[11px] text-[#d4af37]/60 tracking-[0.3em] select-none mt-4">
+        <div
+          style={{
+            textAlign: 'center',
+            fontFamily: "'JetBrains Mono', monospace",
+            fontSize: '11px',
+            color: 'rgba(212, 175, 55, 0.65)',
+            letterSpacing: '0.3em',
+            userSelect: 'none',
+            marginTop: '18px'
+          }}
+        >
           ╚═══════════════════════════════════════════════════════════════════╝
         </div>
       </div>
 
-      {/* ── Official Community & Request Links Grid ── */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+      {/* ── Official Community & Request Links Grid (Liquid Glass Cards) ── */}
+      <div
+        style={{
+          display: 'grid',
+          gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))',
+          gap: '20px'
+        }}
+      >
         {TELEGRAM_COMMUNITY_LINKS.map((link: TelegramCommunityLink) => {
           const isCopied = copiedId === link.id
 
           return (
             <div
               key={link.id}
-              className="group relative rounded-2xl bg-gradient-to-b from-[#13111b] via-[#0d0c13] to-[#08080c] p-6 border border-white/10 hover:border-[#d4af37]/60 hover:shadow-[0_10px_35px_rgba(212,175,55,0.2)] transition-all duration-300 flex flex-col justify-between"
+              style={{
+                position: 'relative',
+                borderRadius: '18px',
+                background: 'linear-gradient(135deg, rgba(20, 18, 30, 0.78) 0%, rgba(12, 11, 18, 0.85) 100%)',
+                backdropFilter: 'blur(24px) saturate(180%)',
+                WebkitBackdropFilter: 'blur(24px) saturate(180%)',
+                padding: '24px',
+                border: '1px solid rgba(212, 175, 55, 0.32)',
+                boxShadow: '0 12px 35px rgba(0, 0, 0, 0.65), inset 0 1px 1.5px rgba(255, 255, 255, 0.15)',
+                display: 'flex',
+                flexDirection: 'column',
+                justifyContent: 'space-between',
+                gap: '18px',
+                transition: 'all 0.25s cubic-bezier(0.16, 1, 0.3, 1)'
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.borderColor = 'rgba(212, 175, 55, 0.7)'
+                e.currentTarget.style.transform = 'translateY(-2px)'
+                e.currentTarget.style.boxShadow = '0 16px 45px rgba(212, 175, 55, 0.2), inset 0 1px 1.5px rgba(255, 255, 255, 0.25)'
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.borderColor = 'rgba(212, 175, 55, 0.32)'
+                e.currentTarget.style.transform = 'none'
+                e.currentTarget.style.boxShadow = '0 12px 35px rgba(0, 0, 0, 0.65), inset 0 1px 1.5px rgba(255, 255, 255, 0.15)'
+              }}
             >
               <div>
                 {/* Header: Badge & Icon */}
-                <div className="flex items-center justify-between gap-3 mb-3">
-                  <span className="text-[10px] font-mono uppercase tracking-wider px-2.5 py-1 rounded-md bg-[#d4af37]/15 border border-[#d4af37]/30 text-[#f3e5ab] font-medium">
+                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '12px', marginBottom: '12px' }}>
+                  <span
+                    style={{
+                      fontSize: '0.72rem',
+                      fontFamily: "'JetBrains Mono', monospace",
+                      textTransform: 'uppercase',
+                      letterSpacing: '0.08em',
+                      padding: '4px 10px',
+                      borderRadius: '8px',
+                      background: 'rgba(212, 175, 55, 0.15)',
+                      border: '1px solid rgba(212, 175, 55, 0.4)',
+                      color: '#f3e5ab',
+                      fontWeight: 700
+                    }}
+                  >
                     {link.badge}
                   </span>
-                  <div className="w-8 h-8 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-[#d4af37] group-hover:scale-110 group-hover:bg-[#d4af37]/20 transition-all">
-                    {link.isEmail ? <Mail className="w-4 h-4" /> : <Send className="w-4 h-4" />}
+
+                  <div
+                    style={{
+                      width: '36px',
+                      height: '36px',
+                      borderRadius: '10px',
+                      background: 'rgba(212, 175, 55, 0.12)',
+                      border: '1px solid rgba(212, 175, 55, 0.35)',
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      color: '#d4af37'
+                    }}
+                  >
+                    {link.isEmail ? <Mail size={16} /> : <Send size={16} />}
                   </div>
                 </div>
 
                 {/* Title */}
-                <h3 className="text-lg font-serif font-bold text-white group-hover:text-[#f3e5ab] transition-colors">
+                <h3
+                  style={{
+                    fontFamily: "'Cinzel', serif",
+                    fontSize: '1.15rem',
+                    fontWeight: 700,
+                    color: '#ffffff',
+                    margin: '0 0 6px 0',
+                    letterSpacing: '0.02em'
+                  }}
+                >
                   {link.title}
                 </h3>
 
                 {/* Handle / Address */}
-                <div className="mt-1 font-mono text-xs text-[#d4af37] flex items-center gap-1.5">
-                  <span>{link.handleOrEmail}</span>
+                <div
+                  style={{
+                    fontFamily: "'JetBrains Mono', monospace",
+                    fontSize: '0.8rem',
+                    color: '#d4af37',
+                    fontWeight: 600,
+                    marginBottom: '10px'
+                  }}
+                >
+                  {link.handleOrEmail}
                 </div>
 
                 {/* Description */}
-                <p className="mt-3 text-xs text-slate-400 font-light leading-relaxed">
+                <p
+                  style={{
+                    fontSize: '0.82rem',
+                    color: '#94a3b8',
+                    fontWeight: 400,
+                    lineHeight: 1.6,
+                    margin: 0
+                  }}
+                >
                   {link.description}
                 </p>
               </div>
 
               {/* Action Buttons */}
-              <div className="mt-6 pt-4 border-t border-white/10 flex items-center gap-2">
+              <div
+                style={{
+                  paddingTop: '16px',
+                  borderTop: '1px solid rgba(255, 255, 255, 0.08)',
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: '10px'
+                }}
+              >
                 <a
                   href={link.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex-1 inline-flex items-center justify-center gap-2 py-2.5 px-4 rounded-xl bg-gradient-to-r from-[#d4af37] to-[#b39029] text-black font-semibold text-xs font-mono uppercase tracking-wider hover:brightness-110 hover:shadow-[0_0_18px_rgba(212,175,55,0.35)] transition-all"
+                  style={{
+                    flex: 1,
+                    display: 'inline-flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    gap: '8px',
+                    padding: '10px 18px',
+                    borderRadius: '10px',
+                    background: 'linear-gradient(135deg, #d4af37 0%, #aa771c 100%)',
+                    color: '#08080c',
+                    fontWeight: 700,
+                    fontSize: '0.78rem',
+                    fontFamily: "'JetBrains Mono', monospace",
+                    textTransform: 'uppercase',
+                    letterSpacing: '0.06em',
+                    textDecoration: 'none',
+                    boxShadow: '0 4px 14px rgba(212, 175, 55, 0.35)',
+                    transition: 'all 0.2s cubic-bezier(0.16, 1, 0.3, 1)'
+                  }}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.filter = 'brightness(1.15)'
+                    e.currentTarget.style.boxShadow = '0 6px 20px rgba(212, 175, 55, 0.5)'
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.filter = 'none'
+                    e.currentTarget.style.boxShadow = '0 4px 14px rgba(212, 175, 55, 0.35)'
+                  }}
                 >
                   <span>{link.isEmail ? 'Send Email' : 'Join Telegram'}</span>
-                  <ExternalLink className="w-3.5 h-3.5" />
+                  <ExternalLink size={14} />
                 </a>
 
                 <button
                   onClick={() => handleCopy(link.id, link.handleOrEmail)}
                   title="Copy Handle to Clipboard"
-                  className="p-2.5 rounded-xl bg-white/5 border border-white/10 text-slate-300 hover:text-white hover:bg-white/10 transition-colors"
+                  style={{
+                    padding: '10px 14px',
+                    borderRadius: '10px',
+                    background: 'rgba(255, 255, 255, 0.06)',
+                    border: '1px solid rgba(212, 175, 55, 0.3)',
+                    color: isCopied ? '#34d399' : '#cbd5e1',
+                    cursor: 'pointer',
+                    display: 'inline-flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    transition: 'all 0.2s'
+                  }}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.background = 'rgba(212, 175, 55, 0.15)'
+                    e.currentTarget.style.borderColor = '#d4af37'
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.background = 'rgba(255, 255, 255, 0.06)'
+                    e.currentTarget.style.borderColor = 'rgba(212, 175, 55, 0.3)'
+                  }}
                 >
-                  {isCopied ? <Check className="w-4 h-4 text-emerald-400" /> : <Copy className="w-4 h-4" />}
+                  {isCopied ? <Check size={16} style={{ color: '#34d399' }} /> : <Copy size={16} />}
                 </button>
               </div>
             </div>
@@ -137,42 +385,40 @@ export const TelegramPromotionalFooter: React.FC = () => {
         })}
       </div>
 
-      {/* ── Sovereign Governance Copyright Strip ── */}
-      <div className="rounded-2xl bg-black/80 p-6 border border-white/10 flex flex-col md:flex-row items-center justify-between gap-4 text-xs font-mono text-slate-400 text-center md:text-left">
+      {/* ── Sovereign Governance Copyright Strip (Liquid Glass) ── */}
+      <div
+        style={{
+          borderRadius: '16px',
+          background: 'rgba(10, 10, 16, 0.82)',
+          backdropFilter: 'blur(20px)',
+          WebkitBackdropFilter: 'blur(20px)',
+          padding: '20px 28px',
+          border: '1px solid rgba(212, 175, 55, 0.25)',
+          display: 'flex',
+          flexWrap: 'wrap',
+          alignItems: 'center',
+          justifyContent: 'space-between',
+          gap: '14px',
+          fontSize: '0.76rem',
+          fontFamily: "'JetBrains Mono', monospace",
+          color: '#94a3b8'
+        }}
+      >
         <div>
-          <div className="text-slate-300 font-medium">
+          <div style={{ color: '#e2e8f0', fontWeight: 600 }}>
             © {new Date().getFullYear()} Lucifer Open Source • Governed by Lucifer Morningstar
           </div>
-          <div className="text-slate-400 text-[11px] mt-0.5">
+          <div style={{ color: '#64748b', fontSize: '0.7rem', marginTop: '3px' }}>
             Sovereign Media Intelligence &amp; Decentralised High-Definition Stream Vault
           </div>
         </div>
 
-        <div className="flex flex-wrap items-center justify-center gap-4 text-[11px] text-slate-400">
-          <a
-            href="https://t.me/LuciferOpenSource"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="hover:text-[#f3e5ab] transition-colors"
-          >
-            @LuciferOpenSource
-          </a>
-          <span>•</span>
-          <a
-            href="https://t.me/luciferdatabase"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="hover:text-[#f3e5ab] transition-colors"
-          >
-            @luciferdatabase
-          </a>
-          <span>•</span>
-          <a
-            href="mailto:ailuciferbaba@gmail.com"
-            className="hover:text-[#f3e5ab] transition-colors"
-          >
-            ailuciferbaba@gmail.com
-          </a>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '0.72rem' }}>
+          <span style={{ color: '#d4af37' }}>@LuciferOpenSource</span>
+          <span style={{ color: 'rgba(212, 175, 55, 0.3)' }}>|</span>
+          <span style={{ color: '#38bdf8' }}>@luciferdatabase</span>
+          <span style={{ color: 'rgba(212, 175, 55, 0.3)' }}>|</span>
+          <span style={{ color: '#f3e5ab' }}>ailuciferbaba@gmail.com</span>
         </div>
       </div>
     </footer>

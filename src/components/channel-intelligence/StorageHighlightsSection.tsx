@@ -19,11 +19,13 @@ export const StorageHighlightsSection: React.FC = () => {
       role="tabpanel"
       aria-labelledby="report-tab-storage"
       style={{
-        background: 'rgba(12, 12, 18, 0.95)',
-        border: '1px solid rgba(212, 175, 55, 0.4)',
-        borderRadius: '16px',
-        padding: '28px',
-        boxShadow: '0 15px 40px rgba(0, 0, 0, 0.8), 0 0 25px rgba(212, 175, 55, 0.08)',
+        background: 'linear-gradient(135deg, rgba(18, 15, 28, 0.78) 0%, rgba(12, 11, 18, 0.86) 100%)',
+        backdropFilter: 'blur(28px) saturate(190%)',
+        WebkitBackdropFilter: 'blur(28px) saturate(190%)',
+        border: '1.5px solid rgba(212, 175, 55, 0.4)',
+        borderRadius: '20px',
+        padding: '28px 32px',
+        boxShadow: '0 20px 50px rgba(0, 0, 0, 0.8), inset 0 1px 1.5px rgba(255, 255, 255, 0.2), 0 0 30px rgba(212, 175, 55, 0.08)',
         marginBottom: '32px',
         animation: 'fadeIn 0.3s cubic-bezier(0.16, 1, 0.3, 1)'
       }}
@@ -104,16 +106,18 @@ export const StorageHighlightsSection: React.FC = () => {
           marginBottom: '28px'
         }}
       >
-        {/* Total Storage Hero Card */}
+        {/* Total Storage Hero Card (Hero Liquid Glass) */}
         <div
           style={{
-            background: 'linear-gradient(135deg, rgba(28, 22, 38, 0.95) 0%, rgba(14, 14, 22, 0.98) 100%)',
+            background: 'linear-gradient(135deg, rgba(28, 22, 42, 0.78) 0%, rgba(14, 14, 24, 0.88) 100%)',
+            backdropFilter: 'blur(20px)',
+            WebkitBackdropFilter: 'blur(20px)',
             border: '2px solid rgba(212, 175, 55, 0.55)',
             borderRadius: '16px',
             padding: '26px',
             position: 'relative',
             overflow: 'hidden',
-            boxShadow: '0 12px 35px rgba(0, 0, 0, 0.8), 0 0 25px rgba(212, 175, 55, 0.2)'
+            boxShadow: '0 14px 40px rgba(0, 0, 0, 0.8), 0 0 25px rgba(212, 175, 55, 0.2), inset 0 1px 1.5px rgba(255, 255, 255, 0.2)'
           }}
         >
           <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '12px' }}>
@@ -139,26 +143,28 @@ export const StorageHighlightsSection: React.FC = () => {
             {STORAGE_HIGHLIGHTS.totalStorage}
           </div>
 
-          <p style={{ fontSize: '0.84rem', color: 'rgba(243, 229, 171, 0.7)', lineHeight: 1.5, margin: 0 }}>
+          <p style={{ fontSize: '0.84rem', color: 'rgba(243, 229, 171, 0.8)', lineHeight: 1.5, margin: 0, fontWeight: 500 }}>
             Cumulative capacity across 999,973 verified catalog records. Formatted and synchronized through Archive X Engine.
           </p>
 
           <div style={{ marginTop: '18px', paddingTop: '14px', borderTop: '1px solid rgba(212, 175, 55, 0.2)', display: 'flex', justifyContent: 'space-between', fontSize: '0.78rem' }}>
-            <span style={{ color: 'rgba(243, 229, 171, 0.55)' }}>Files Counted:</span>
+            <span style={{ color: 'rgba(243, 229, 171, 0.65)' }}>Files Counted:</span>
             <span style={{ fontWeight: 800, color: '#2ecc71', fontFamily: "'JetBrains Mono', monospace" }}>{STORAGE_HIGHLIGHTS.totalFiles}</span>
           </div>
         </div>
 
-        {/* Largest File Highlight Card */}
+        {/* Largest File Highlight Card (Liquid Glass) */}
         <div
           style={{
-            background: 'linear-gradient(135deg, rgba(22, 20, 32, 0.95) 0%, rgba(12, 12, 18, 0.98) 100%)',
+            background: 'linear-gradient(135deg, rgba(22, 20, 36, 0.78) 0%, rgba(12, 12, 20, 0.88) 100%)',
+            backdropFilter: 'blur(20px)',
+            WebkitBackdropFilter: 'blur(20px)',
             border: '2px solid rgba(212, 175, 55, 0.45)',
             borderRadius: '16px',
             padding: '26px',
             position: 'relative',
             overflow: 'hidden',
-            boxShadow: '0 12px 35px rgba(0, 0, 0, 0.8), 0 0 20px rgba(212, 175, 55, 0.12)'
+            boxShadow: '0 14px 40px rgba(0, 0, 0, 0.8), 0 0 20px rgba(212, 175, 55, 0.12), inset 0 1px 1.5px rgba(255, 255, 255, 0.18)'
           }}
         >
           <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '12px' }}>
@@ -229,13 +235,16 @@ export const StorageHighlightsSection: React.FC = () => {
         {/* Average File Size */}
         <div
           style={{
-            background: '#0d0d14',
-            border: '1px solid rgba(212, 175, 55, 0.25)',
-            borderRadius: '12px',
+            background: 'linear-gradient(135deg, rgba(20, 18, 30, 0.7) 0%, rgba(12, 11, 18, 0.8) 100%)',
+            backdropFilter: 'blur(16px)',
+            WebkitBackdropFilter: 'blur(16px)',
+            border: '1px solid rgba(212, 175, 55, 0.28)',
+            borderRadius: '14px',
             padding: '20px',
             display: 'flex',
             alignItems: 'center',
-            gap: '16px'
+            gap: '16px',
+            boxShadow: '0 6px 20px rgba(0,0,0,0.5), inset 0 1px 1px rgba(255, 255, 255, 0.08)'
           }}
         >
           <div
@@ -243,8 +252,8 @@ export const StorageHighlightsSection: React.FC = () => {
               width: '46px',
               height: '46px',
               borderRadius: '10px',
-              background: 'rgba(212, 175, 55, 0.12)',
-              border: '1px solid rgba(212, 175, 55, 0.35)',
+              background: 'rgba(212, 175, 55, 0.15)',
+              border: '1px solid rgba(212, 175, 55, 0.4)',
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
@@ -254,13 +263,13 @@ export const StorageHighlightsSection: React.FC = () => {
             <Calculator size={22} />
           </div>
           <div>
-            <span style={{ fontSize: '0.7rem', color: 'rgba(243, 229, 171, 0.6)', textTransform: 'uppercase', letterSpacing: '0.08em', display: 'block' }}>
+            <span style={{ fontSize: '0.7rem', color: 'rgba(243, 229, 171, 0.7)', textTransform: 'uppercase', letterSpacing: '0.08em', display: 'block', fontWeight: 600 }}>
               AVERAGE FILE SIZE
             </span>
             <span style={{ fontSize: '1.35rem', fontWeight: 800, color: '#f3e5ab', fontFamily: "'Cinzel', serif" }}>
               {STORAGE_HIGHLIGHTS.averageFileSize}
             </span>
-            <span style={{ fontSize: '0.72rem', color: 'rgba(243, 229, 171, 0.45)', display: 'block', marginTop: '2px' }}>
+            <span style={{ fontSize: '0.72rem', color: 'rgba(243, 229, 171, 0.55)', display: 'block', marginTop: '2px' }}>
               Reported audit average
             </span>
           </div>
@@ -269,13 +278,16 @@ export const StorageHighlightsSection: React.FC = () => {
         {/* Total Files Audited */}
         <div
           style={{
-            background: '#0d0d14',
-            border: '1px solid rgba(212, 175, 55, 0.25)',
-            borderRadius: '12px',
+            background: 'linear-gradient(135deg, rgba(20, 18, 30, 0.7) 0%, rgba(12, 11, 18, 0.8) 100%)',
+            backdropFilter: 'blur(16px)',
+            WebkitBackdropFilter: 'blur(16px)',
+            border: '1px solid rgba(212, 175, 55, 0.28)',
+            borderRadius: '14px',
             padding: '20px',
             display: 'flex',
             alignItems: 'center',
-            gap: '16px'
+            gap: '16px',
+            boxShadow: '0 6px 20px rgba(0,0,0,0.5), inset 0 1px 1px rgba(255, 255, 255, 0.08)'
           }}
         >
           <div
@@ -283,8 +295,8 @@ export const StorageHighlightsSection: React.FC = () => {
               width: '46px',
               height: '46px',
               borderRadius: '10px',
-              background: 'rgba(46, 204, 113, 0.12)',
-              border: '1px solid rgba(46, 204, 113, 0.35)',
+              background: 'rgba(46, 204, 113, 0.15)',
+              border: '1px solid rgba(46, 204, 113, 0.4)',
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
@@ -294,13 +306,13 @@ export const StorageHighlightsSection: React.FC = () => {
             <FileDigit size={22} />
           </div>
           <div>
-            <span style={{ fontSize: '0.7rem', color: 'rgba(243, 229, 171, 0.6)', textTransform: 'uppercase', letterSpacing: '0.08em', display: 'block' }}>
+            <span style={{ fontSize: '0.7rem', color: 'rgba(243, 229, 171, 0.7)', textTransform: 'uppercase', letterSpacing: '0.08em', display: 'block', fontWeight: 600 }}>
               TOTAL FILES RECORDED
             </span>
             <span style={{ fontSize: '1.35rem', fontWeight: 800, color: '#f3e5ab', fontFamily: "'Cinzel', serif" }}>
               {STORAGE_HIGHLIGHTS.totalFiles}
             </span>
-            <span style={{ fontSize: '0.72rem', color: '#2ecc71', display: 'block', marginTop: '2px', fontWeight: 600 }}>
+            <span style={{ fontSize: '0.72rem', color: '#2ecc71', display: 'block', marginTop: '2px', fontWeight: 700 }}>
               100% catalog integrity verified
             </span>
           </div>
@@ -309,13 +321,16 @@ export const StorageHighlightsSection: React.FC = () => {
         {/* Channel Target Reference */}
         <div
           style={{
-            background: '#0d0d14',
-            border: '1px solid rgba(212, 175, 55, 0.25)',
-            borderRadius: '12px',
+            background: 'linear-gradient(135deg, rgba(20, 18, 30, 0.7) 0%, rgba(12, 11, 18, 0.8) 100%)',
+            backdropFilter: 'blur(16px)',
+            WebkitBackdropFilter: 'blur(16px)',
+            border: '1px solid rgba(212, 175, 55, 0.28)',
+            borderRadius: '14px',
             padding: '20px',
             display: 'flex',
             alignItems: 'center',
-            gap: '16px'
+            gap: '16px',
+            boxShadow: '0 6px 20px rgba(0,0,0,0.5), inset 0 1px 1px rgba(255, 255, 255, 0.08)'
           }}
         >
           <div
@@ -323,8 +338,8 @@ export const StorageHighlightsSection: React.FC = () => {
               width: '46px',
               height: '46px',
               borderRadius: '10px',
-              background: 'rgba(52, 152, 219, 0.12)',
-              border: '1px solid rgba(52, 152, 219, 0.35)',
+              background: 'rgba(52, 152, 219, 0.15)',
+              border: '1px solid rgba(52, 152, 219, 0.4)',
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
@@ -334,7 +349,7 @@ export const StorageHighlightsSection: React.FC = () => {
             <Database size={22} />
           </div>
           <div>
-            <span style={{ fontSize: '0.7rem', color: 'rgba(243, 229, 171, 0.6)', textTransform: 'uppercase', letterSpacing: '0.08em', display: 'block' }}>
+            <span style={{ fontSize: '0.7rem', color: 'rgba(243, 229, 171, 0.7)', textTransform: 'uppercase', letterSpacing: '0.08em', display: 'block', fontWeight: 600 }}>
               TARGET CHANNEL
             </span>
             <span style={{ fontSize: '0.98rem', fontWeight: 700, color: '#f3e5ab' }}>
@@ -350,9 +365,10 @@ export const StorageHighlightsSection: React.FC = () => {
       {/* ── Scan Record Dossier Footer ── */}
       <div
         style={{
-          background: '#0a0a10',
-          border: '1px solid rgba(212, 175, 55, 0.2)',
-          borderRadius: '10px',
+          background: 'rgba(10, 10, 16, 0.85)',
+          backdropFilter: 'blur(16px)',
+          border: '1px solid rgba(212, 175, 55, 0.25)',
+          borderRadius: '12px',
           padding: '14px 20px',
           display: 'flex',
           alignItems: 'center',
@@ -360,7 +376,7 @@ export const StorageHighlightsSection: React.FC = () => {
           flexWrap: 'wrap',
           gap: '12px',
           fontSize: '0.78rem',
-          color: 'rgba(243, 229, 171, 0.7)'
+          color: 'rgba(243, 229, 171, 0.8)'
         }}
       >
         <div style={{ display: 'flex', alignItems: 'center', gap: '16px', flexWrap: 'wrap' }}>

@@ -26,62 +26,54 @@ import {
 type CategoryFilter = 'All' | 'Video' | 'Audio' | 'Subtitle' | 'Archive' | 'Document' | 'Image' | 'Software' | 'Other / Unknown'
 type SortMode = 'report' | 'files-desc' | 'files-asc' | 'alpha'
 
-const CATEGORY_COLORS: Record<string, { bg: string; border: string; text: string; glow: string; icon: React.ReactNode }> = {
+const CATEGORY_STYLES: Record<string, { bg: string; border: string; text: string; icon: React.ReactNode }> = {
   Video: {
-    bg: 'rgba(212, 175, 55, 0.12)',
-    border: 'rgba(212, 175, 55, 0.4)',
+    bg: 'rgba(212, 175, 55, 0.15)',
+    border: 'rgba(212, 175, 55, 0.5)',
     text: '#f3e5ab',
-    glow: 'rgba(212, 175, 55, 0.25)',
-    icon: <Video className="w-3.5 h-3.5 text-[#d4af37]" />
+    icon: <Video size={13} style={{ color: '#d4af37' }} />
   },
   Audio: {
-    bg: 'rgba(56, 189, 248, 0.12)',
-    border: 'rgba(56, 189, 248, 0.4)',
+    bg: 'rgba(56, 189, 248, 0.15)',
+    border: 'rgba(56, 189, 248, 0.5)',
     text: '#7dd3fc',
-    glow: 'rgba(56, 189, 248, 0.25)',
-    icon: <Music className="w-3.5 h-3.5 text-sky-400" />
+    icon: <Music size={13} style={{ color: '#38bdf8' }} />
   },
   Subtitle: {
-    bg: 'rgba(52, 211, 153, 0.12)',
-    border: 'rgba(52, 211, 153, 0.4)',
+    bg: 'rgba(52, 211, 153, 0.15)',
+    border: 'rgba(52, 211, 153, 0.5)',
     text: '#6ee7b7',
-    glow: 'rgba(52, 211, 153, 0.25)',
-    icon: <FileCheck className="w-3.5 h-3.5 text-emerald-400" />
+    icon: <FileCheck size={13} style={{ color: '#34d399' }} />
   },
   Archive: {
-    bg: 'rgba(245, 158, 11, 0.12)',
-    border: 'rgba(245, 158, 11, 0.4)',
+    bg: 'rgba(245, 158, 11, 0.15)',
+    border: 'rgba(245, 158, 11, 0.5)',
     text: '#fcd34d',
-    glow: 'rgba(245, 158, 11, 0.25)',
-    icon: <Archive className="w-3.5 h-3.5 text-amber-400" />
+    icon: <Archive size={13} style={{ color: '#f59e0b' }} />
   },
   Document: {
-    bg: 'rgba(168, 85, 247, 0.12)',
-    border: 'rgba(168, 85, 247, 0.4)',
+    bg: 'rgba(168, 85, 247, 0.15)',
+    border: 'rgba(168, 85, 247, 0.5)',
     text: '#d8b4fe',
-    glow: 'rgba(168, 85, 247, 0.25)',
-    icon: <FileText className="w-3.5 h-3.5 text-purple-400" />
+    icon: <FileText size={13} style={{ color: '#a855f7' }} />
   },
   Image: {
-    bg: 'rgba(236, 72, 153, 0.12)',
-    border: 'rgba(236, 72, 153, 0.4)',
+    bg: 'rgba(236, 72, 153, 0.15)',
+    border: 'rgba(236, 72, 153, 0.5)',
     text: '#f472b6',
-    glow: 'rgba(236, 72, 153, 0.25)',
-    icon: <ImageIcon className="w-3.5 h-3.5 text-pink-400" />
+    icon: <ImageIcon size={13} style={{ color: '#ec4899' }} />
   },
   Software: {
-    bg: 'rgba(99, 102, 241, 0.12)',
-    border: 'rgba(99, 102, 241, 0.4)',
+    bg: 'rgba(99, 102, 241, 0.15)',
+    border: 'rgba(99, 102, 241, 0.5)',
     text: '#a5b4fc',
-    glow: 'rgba(99, 102, 241, 0.25)',
-    icon: <Binary className="w-3.5 h-3.5 text-indigo-400" />
+    icon: <Binary size={13} style={{ color: '#6366f1' }} />
   },
   'Other / Unknown': {
-    bg: 'rgba(148, 163, 184, 0.10)',
-    border: 'rgba(148, 163, 184, 0.3)',
+    bg: 'rgba(148, 163, 184, 0.12)',
+    border: 'rgba(148, 163, 184, 0.35)',
     text: '#cbd5e1',
-    glow: 'rgba(148, 163, 184, 0.15)',
-    icon: <HelpCircle className="w-3.5 h-3.5 text-slate-400" />
+    icon: <HelpCircle size={13} style={{ color: '#94a3b8' }} />
   }
 }
 
@@ -90,9 +82,7 @@ export const FileExtensionSection: React.FC = () => {
   const [categoryFilter, setCategoryFilter] = useState<CategoryFilter>('All')
   const [searchQuery, setSearchQuery] = useState('')
   const [sortMode, setSortMode] = useState<SortMode>('report')
-  const [viewDensity, setViewDensity] = useState<'comfortable' | 'compact'>('comfortable')
 
-  // Available categories
   const categories: CategoryFilter[] = [
     'All',
     'Video',
@@ -138,78 +128,166 @@ export const FileExtensionSection: React.FC = () => {
     } else if (sortMode === 'alpha') {
       list.sort((a, b) => a.extension.localeCompare(b.extension))
     }
-    // 'report' keeps the source report sequence
 
     return list
   }, [selectedPage, categoryFilter, searchQuery, sortMode])
 
-  // Count per page helper
-  const pageStats = useMemo(() => {
-    const stats: Record<number, number> = { 1: 0, 2: 0, 3: 0, 4: 0, 5: 0, 6: 0, 7: 0 }
+  const pageCounts = useMemo(() => {
+    const counts: Record<number, number> = { 1: 0, 2: 0, 3: 0, 4: 0, 5: 0, 6: 0, 7: 0 }
     for (const r of EXTENSION_RECORDS) {
-      if (stats[r.page] !== undefined) stats[r.page]++
+      if (counts[r.page] !== undefined) counts[r.page]++
     }
-    return stats
+    return counts
   }, [])
 
   return (
-    <div className="space-y-8" id="file-extension-report">
-      {/* ── Section Title Banner ── */}
-      <div className="relative rounded-2xl bg-gradient-to-r from-[#0d0d14] via-[#15121b] to-[#0d0d14] p-6 lg:p-8 border border-[#d4af37]/30 shadow-[0_12px_40px_rgba(0,0,0,0.65)] overflow-hidden">
-        <div className="absolute top-0 right-0 w-80 h-80 bg-[#d4af37]/5 rounded-full blur-3xl pointer-events-none" />
-        <div className="relative z-10 flex flex-col lg:flex-row lg:items-center justify-between gap-6">
-          <div>
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#d4af37]/10 border border-[#d4af37]/40 text-[#d4af37] text-xs font-mono tracking-wider uppercase mb-3">
-              <FileCode2 className="w-3.5 h-3.5" />
-              Sovereign Report Section 04 • All 7 Pages Audited
-            </div>
-            <h2 className="text-2xl lg:text-3xl font-serif text-[#f3e5ab] font-bold tracking-tight">
-              File Extension Intelligence Report
-            </h2>
-            <p className="text-sm text-slate-300 mt-1 max-w-2xl font-light">
-              Exhaustive inventory of all <strong className="text-[#f3e5ab] font-mono">364 unique file formats</strong>,
-              container variants, subtitle packages, split-archives, and bespoke metadata signatures across the digital vault.
-            </p>
+    <div
+      id="report-panel-extensions"
+      style={{
+        display: 'flex',
+        flexDirection: 'column',
+        gap: '24px'
+      }}
+    >
+      {/* ── Top Header Card (Liquid Glass) ── */}
+      <div
+        style={{
+          background: 'linear-gradient(135deg, rgba(212, 175, 55, 0.12) 0%, rgba(20, 18, 30, 0.75) 50%, rgba(10, 10, 16, 0.85) 100%)',
+          backdropFilter: 'blur(24px) saturate(180%)',
+          WebkitBackdropFilter: 'blur(24px) saturate(180%)',
+          border: '1.5px solid rgba(212, 175, 55, 0.35)',
+          borderRadius: '20px',
+          padding: '28px 32px',
+          boxShadow: '0 16px 45px rgba(0, 0, 0, 0.75), inset 0 1px 1.5px rgba(255, 255, 255, 0.25)',
+          display: 'flex',
+          flexWrap: 'wrap',
+          alignItems: 'center',
+          justifyContent: 'space-between',
+          gap: '20px',
+          position: 'relative',
+          overflow: 'hidden'
+        }}
+      >
+        <div>
+          <div
+            style={{
+              display: 'inline-flex',
+              alignItems: 'center',
+              gap: '8px',
+              padding: '4px 12px',
+              borderRadius: '999px',
+              background: 'rgba(212, 175, 55, 0.15)',
+              border: '1px solid rgba(212, 175, 55, 0.4)',
+              color: '#d4af37',
+              fontSize: '0.75rem',
+              fontFamily: "'JetBrains Mono', monospace",
+              fontWeight: 700,
+              textTransform: 'uppercase',
+              letterSpacing: '0.08em',
+              marginBottom: '10px'
+            }}
+          >
+            <FileCode2 size={14} />
+            <span>Sovereign Report Section 04 • All 7 Pages Audited</span>
           </div>
 
-          {/* Quick Metrics Cluster */}
-          <div className="grid grid-cols-3 gap-3 sm:gap-4 shrink-0">
-            <div className="px-4 py-3 rounded-xl bg-black/50 border border-white/10 text-center backdrop-blur-sm">
-              <div className="text-xs uppercase font-mono text-slate-400">Total Formats</div>
-              <div className="text-xl sm:text-2xl font-mono font-bold text-[#f3e5ab]">
-                {EXTENSION_SUMMARY.uniqueExtensions}
-              </div>
-            </div>
-            <div className="px-4 py-3 rounded-xl bg-black/50 border border-white/10 text-center backdrop-blur-sm">
-              <div className="text-xs uppercase font-mono text-slate-400">Total Files</div>
-              <div className="text-xl sm:text-2xl font-mono font-bold text-amber-300">
-                {EXTENSION_SUMMARY.totalFilesAnalysed}
-              </div>
-            </div>
-            <div className="px-4 py-3 rounded-xl bg-black/50 border border-white/10 text-center backdrop-blur-sm">
-              <div className="text-xs uppercase font-mono text-slate-400">Audited Volume</div>
-              <div className="text-xl sm:text-2xl font-mono font-bold text-[#d4af37]">
-                {EXTENSION_SUMMARY.totalAnalysedStorage}
-              </div>
-            </div>
+          <h2
+            style={{
+              margin: '0 0 6px',
+              fontSize: '1.8rem',
+              fontFamily: "'Cinzel', serif",
+              fontWeight: 800,
+              color: '#f3e5ab',
+              letterSpacing: '0.02em'
+            }}
+          >
+            File Extension Intelligence Report
+          </h2>
+
+          <p
+            style={{
+              margin: 0,
+              fontSize: '0.86rem',
+              color: 'rgba(243, 229, 171, 0.75)',
+              fontWeight: 300,
+              maxWidth: '680px'
+            }}
+          >
+            Exhaustive inventory of all <strong style={{ color: '#d4af37', fontFamily: "'JetBrains Mono', monospace" }}>364 unique format extensions</strong> across all 7 source report pages. Filter, sort, or paginate through every audited format.
+          </p>
+        </div>
+
+        {/* 3 Quick Metric Pills */}
+        <div style={{ display: 'flex', alignItems: 'center', gap: '12px', flexWrap: 'wrap' }}>
+          <div
+            style={{
+              background: 'rgba(8, 8, 14, 0.8)',
+              border: '1px solid rgba(212, 175, 55, 0.3)',
+              borderRadius: '12px',
+              padding: '12px 18px',
+              textAlign: 'center',
+              minWidth: '110px'
+            }}
+          >
+            <div style={{ fontSize: '0.7rem', color: '#94a3b8', fontFamily: "'JetBrains Mono', monospace", textTransform: 'uppercase' }}>Unique Formats</div>
+            <div style={{ fontSize: '1.5rem', fontWeight: 800, color: '#f3e5ab', fontFamily: "'JetBrains Mono', monospace" }}>{EXTENSION_SUMMARY.uniqueExtensions}</div>
+          </div>
+
+          <div
+            style={{
+              background: 'rgba(8, 8, 14, 0.8)',
+              border: '1px solid rgba(212, 175, 55, 0.3)',
+              borderRadius: '12px',
+              padding: '12px 18px',
+              textAlign: 'center',
+              minWidth: '110px'
+            }}
+          >
+            <div style={{ fontSize: '0.7rem', color: '#94a3b8', fontFamily: "'JetBrains Mono', monospace", textTransform: 'uppercase' }}>Total Files</div>
+            <div style={{ fontSize: '1.5rem', fontWeight: 800, color: '#f59e0b', fontFamily: "'JetBrains Mono', monospace" }}>{EXTENSION_SUMMARY.totalFilesAnalysed}</div>
+          </div>
+
+          <div
+            style={{
+              background: 'rgba(8, 8, 14, 0.8)',
+              border: '1px solid rgba(212, 175, 55, 0.3)',
+              borderRadius: '12px',
+              padding: '12px 18px',
+              textAlign: 'center',
+              minWidth: '110px'
+            }}
+          >
+            <div style={{ fontSize: '0.7rem', color: '#94a3b8', fontFamily: "'JetBrains Mono', monospace", textTransform: 'uppercase' }}>Audited Size</div>
+            <div style={{ fontSize: '1.5rem', fontWeight: 800, color: '#d4af37', fontFamily: "'JetBrains Mono', monospace" }}>{EXTENSION_SUMMARY.totalAnalysedStorage}</div>
           </div>
         </div>
       </div>
 
-      {/* ── Page Navigator Tabs (All 7 Source Pages) ── */}
-      <div className="rounded-2xl bg-[#0d0d14]/90 p-5 border border-white/10 shadow-lg backdrop-blur-md">
-        <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-4">
-          <div className="flex items-center gap-2">
-            <Layers className="w-4 h-4 text-[#d4af37]" />
-            <span className="text-xs uppercase font-mono tracking-widest text-[#d4af37] font-semibold">
-              Source Report Page Navigation
+      {/* ── Page Navigator Tabs (Compact 7 Pages Bar) ── */}
+      <div
+        style={{
+          background: 'rgba(12, 11, 18, 0.75)',
+          backdropFilter: 'blur(20px)',
+          border: '1px solid rgba(212, 175, 55, 0.25)',
+          borderRadius: '16px',
+          padding: '16px 20px',
+          display: 'flex',
+          flexDirection: 'column',
+          gap: '14px'
+        }}
+      >
+        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: '12px' }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+            <Layers size={16} style={{ color: '#d4af37' }} />
+            <span style={{ fontSize: '0.8rem', fontFamily: "'JetBrains Mono', monospace", fontWeight: 700, color: '#d4af37', textTransform: 'uppercase', letterSpacing: '0.08em' }}>
+              Source Report Page Navigator
             </span>
-            <span className="text-xs text-slate-400 font-mono">
-              ({EXTENSION_SUMMARY.uniqueExtensions} total extensions across 7 source pages)
+            <span style={{ fontSize: '0.78rem', color: '#94a3b8', fontFamily: "'JetBrains Mono', monospace" }}>
+              (7 Audit Pages)
             </span>
           </div>
 
-          <div className="flex items-center gap-2">
+          <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
             <button
               onClick={() => {
                 if (typeof selectedPage === 'number' && selectedPage > 1) {
@@ -217,14 +295,21 @@ export const FileExtensionSection: React.FC = () => {
                 }
               }}
               disabled={selectedPage === 1 || selectedPage === 'all'}
-              className="p-1.5 rounded-lg bg-white/5 border border-white/10 text-slate-300 hover:text-white hover:bg-white/10 disabled:opacity-30 disabled:pointer-events-none transition-colors"
+              style={{
+                background: 'rgba(255, 255, 255, 0.05)',
+                border: '1px solid rgba(255, 255, 255, 0.12)',
+                borderRadius: '8px',
+                padding: '6px 10px',
+                color: selectedPage === 1 || selectedPage === 'all' ? 'rgba(255,255,255,0.2)' : '#f3e5ab',
+                cursor: selectedPage === 1 || selectedPage === 'all' ? 'not-allowed' : 'pointer'
+              }}
               title="Previous Page"
             >
-              <ChevronLeft className="w-4 h-4" />
+              <ChevronLeft size={16} />
             </button>
 
-            <span className="text-xs font-mono text-slate-300 px-2">
-              {selectedPage === 'all' ? 'All Pages' : `Page ${selectedPage} of 7`}
+            <span style={{ fontSize: '0.8rem', fontFamily: "'JetBrains Mono', monospace", color: '#ffffff', minWidth: '90px', textAlign: 'center' }}>
+              {selectedPage === 'all' ? 'All 7 Pages' : `Page ${selectedPage} of 7`}
             </span>
 
             <button
@@ -234,65 +319,92 @@ export const FileExtensionSection: React.FC = () => {
                 }
               }}
               disabled={selectedPage === 7 || selectedPage === 'all'}
-              className="p-1.5 rounded-lg bg-white/5 border border-white/10 text-slate-300 hover:text-white hover:bg-white/10 disabled:opacity-30 disabled:pointer-events-none transition-colors"
+              style={{
+                background: 'rgba(255, 255, 255, 0.05)',
+                border: '1px solid rgba(255, 255, 255, 0.12)',
+                borderRadius: '8px',
+                padding: '6px 10px',
+                color: selectedPage === 7 || selectedPage === 'all' ? 'rgba(255,255,255,0.2)' : '#f3e5ab',
+                cursor: selectedPage === 7 || selectedPage === 'all' ? 'not-allowed' : 'pointer'
+              }}
               title="Next Page"
             >
-              <ChevronRight className="w-4 h-4" />
+              <ChevronRight size={16} />
             </button>
-
-            <div className="w-px h-5 bg-white/15 mx-1" />
 
             <button
               onClick={() => setSelectedPage(selectedPage === 'all' ? 1 : 'all')}
-              className={`px-3 py-1.5 rounded-lg text-xs font-mono font-medium border transition-all ${
-                selectedPage === 'all'
-                  ? 'bg-[#d4af37] text-black border-[#d4af37] shadow-[0_0_15px_rgba(212,175,55,0.4)]'
-                  : 'bg-white/5 text-slate-300 border-white/10 hover:bg-white/10 hover:text-white'
-              }`}
+              style={{
+                background: selectedPage === 'all'
+                  ? 'linear-gradient(135deg, #d4af37 0%, #aa771c 100%)'
+                  : 'rgba(255, 255, 255, 0.06)',
+                color: selectedPage === 'all' ? '#08080c' : '#f3e5ab',
+                border: `1px solid ${selectedPage === 'all' ? '#d4af37' : 'rgba(212, 175, 55, 0.3)'}`,
+                borderRadius: '8px',
+                padding: '6px 14px',
+                fontSize: '0.78rem',
+                fontFamily: "'JetBrains Mono', monospace",
+                fontWeight: 700,
+                cursor: 'pointer',
+                marginLeft: '6px'
+              }}
             >
-              {selectedPage === 'all' ? 'Split into Pages' : 'View All 364 Together'}
+              {selectedPage === 'all' ? 'Split into Pages' : 'View All 364'}
             </button>
           </div>
         </div>
 
-        {/* 7 Page Buttons */}
-        <div className="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-7 gap-2">
-          {[1, 2, 3, 4, 5, 6, 7].map((page) => {
-            const isActive = selectedPage === page
-            const count = pageStats[page] || 0
-            const pageTheme =
-              page === 1
+        {/* 7 Compact Page Buttons */}
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(130px, 1fr))', gap: '8px' }}>
+          {[1, 2, 3, 4, 5, 6, 7].map((pg) => {
+            const isActive = selectedPage === pg
+            const count = pageCounts[pg] || 0
+            const subtitle =
+              pg === 1
                 ? 'Video & Audio'
-                : page === 2
+                : pg === 2
                 ? 'Archives & Docs'
-                : page === 3
+                : pg === 3
                 ? 'Software & Misc'
-                : `Other Misc (${page})`
+                : `Misc Pack (${pg})`
 
             return (
               <button
-                key={page}
-                onClick={() => setSelectedPage(page)}
-                className={`relative px-3 py-2.5 rounded-xl border text-left transition-all ${
-                  isActive
-                    ? 'bg-gradient-to-b from-[#d4af37]/25 to-[#d4af37]/10 border-[#d4af37] text-[#f3e5ab] shadow-[0_0_20px_rgba(212,175,55,0.25)]'
-                    : 'bg-black/40 border-white/10 text-slate-400 hover:text-slate-200 hover:border-white/20 hover:bg-white/5'
-                }`}
+                key={pg}
+                onClick={() => setSelectedPage(pg)}
+                style={{
+                  background: isActive
+                    ? 'linear-gradient(135deg, rgba(212, 175, 55, 0.28) 0%, rgba(20, 18, 30, 0.8) 100%)'
+                    : 'rgba(8, 8, 14, 0.65)',
+                  border: `1px solid ${isActive ? '#d4af37' : 'rgba(212, 175, 55, 0.2)'}`,
+                  borderRadius: '10px',
+                  padding: '8px 12px',
+                  textAlign: 'left',
+                  cursor: 'pointer',
+                  boxShadow: isActive ? '0 0 16px rgba(212, 175, 55, 0.3)' : 'none',
+                  transition: 'all 0.18s'
+                }}
               >
-                <div className="flex items-center justify-between">
-                  <span className={`text-xs font-mono font-bold ${isActive ? 'text-[#f3e5ab]' : 'text-slate-300'}`}>
-                    PAGE {page} / 7
+                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+                  <span style={{ fontSize: '0.76rem', fontFamily: "'JetBrains Mono', monospace", fontWeight: 700, color: isActive ? '#f3e5ab' : '#ffffff' }}>
+                    PAGE {pg}
                   </span>
                   <span
-                    className={`text-[10px] font-mono px-1.5 py-0.5 rounded-md ${
-                      isActive ? 'bg-[#d4af37] text-black font-semibold' : 'bg-white/10 text-slate-400'
-                    }`}
+                    style={{
+                      fontSize: '0.68rem',
+                      fontFamily: "'JetBrains Mono', monospace",
+                      padding: '1px 6px',
+                      borderRadius: '4px',
+                      background: isActive ? '#d4af37' : 'rgba(255, 255, 255, 0.08)',
+                      color: isActive ? '#08080c' : '#94a3b8',
+                      fontWeight: 700
+                    }}
                   >
                     {count}
                   </span>
                 </div>
-                <div className="text-[11px] font-sans truncate text-slate-400 mt-1">
-                  {pageTheme}
+                <div style={{ fontSize: '0.7rem', color: '#94a3b8', marginTop: '2px', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
+                  {subtitle}
                 </div>
               </button>
             )
@@ -300,85 +412,114 @@ export const FileExtensionSection: React.FC = () => {
         </div>
       </div>
 
-      {/* ── Interactive Controls Bar (Search, Category Filter, Sort, View Density) ── */}
-      <div className="rounded-2xl bg-[#0d0d14]/90 p-5 border border-white/10 shadow-lg space-y-4">
-        {/* Search & Sort Controls */}
-        <div className="flex flex-col md:flex-row gap-3 md:items-center justify-between">
-          {/* Search Bar */}
-          <div className="relative flex-1 max-w-md">
-            <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
+      {/* ── Interactive Filter & Search Controls Bar ── */}
+      <div
+        style={{
+          background: 'rgba(12, 11, 18, 0.75)',
+          backdropFilter: 'blur(20px)',
+          border: '1px solid rgba(212, 175, 55, 0.25)',
+          borderRadius: '16px',
+          padding: '16px 20px',
+          display: 'flex',
+          flexDirection: 'column',
+          gap: '14px'
+        }}
+      >
+        {/* Row 1: Search & Sort */}
+        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: '12px' }}>
+          {/* Search Box */}
+          <div style={{ position: 'relative', flex: '1', minWidth: '260px', maxWidth: '420px' }}>
+            <Search
+              size={15}
+              style={{
+                position: 'absolute',
+                left: '12px',
+                top: '50%',
+                transform: 'translateY(-50%)',
+                color: '#d4af37',
+                pointerEvents: 'none'
+              }}
+            />
             <input
               type="text"
-              placeholder="Filter extension (e.g. .mkv, .001, .srt, zip)..."
+              placeholder="Search extension (e.g. .mkv, .001, .srt, zip)..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full pl-10 pr-4 py-2.5 rounded-xl bg-black/60 border border-white/15 text-sm text-[#f3e5ab] placeholder:text-slate-500 focus:outline-none focus:border-[#d4af37] focus:ring-1 focus:ring-[#d4af37]/50 font-mono transition-colors"
+              style={{
+                width: '100%',
+                padding: '9px 14px 9px 36px',
+                background: 'rgba(8, 8, 14, 0.85)',
+                border: '1px solid rgba(212, 175, 55, 0.3)',
+                borderRadius: '10px',
+                color: '#f3e5ab',
+                fontSize: '0.82rem',
+                fontFamily: "'JetBrains Mono', monospace",
+                outline: 'none',
+                boxSizing: 'border-box'
+              }}
+              onFocus={(e) => {
+                e.currentTarget.style.borderColor = '#d4af37'
+                e.currentTarget.style.boxShadow = '0 0 12px rgba(212, 175, 55, 0.3)'
+              }}
+              onBlur={(e) => {
+                e.currentTarget.style.borderColor = 'rgba(212, 175, 55, 0.3)'
+                e.currentTarget.style.boxShadow = 'none'
+              }}
             />
             {searchQuery && (
               <button
                 onClick={() => setSearchQuery('')}
-                className="absolute right-3 top-1/2 -translate-y-1/2 text-xs font-mono text-slate-400 hover:text-white"
+                style={{
+                  position: 'absolute',
+                  right: '10px',
+                  top: '50%',
+                  transform: 'translateY(-50%)',
+                  background: 'none',
+                  border: 'none',
+                  color: '#94a3b8',
+                  fontSize: '0.72rem',
+                  fontFamily: "'JetBrains Mono', monospace",
+                  cursor: 'pointer'
+                }}
               >
                 Clear
               </button>
             )}
           </div>
 
-          {/* Sort & Density Controls */}
-          <div className="flex flex-wrap items-center gap-2">
-            <div className="flex items-center gap-1.5 bg-black/50 border border-white/10 rounded-xl px-2.5 py-1.5">
-              <ArrowUpDown className="w-3.5 h-3.5 text-[#d4af37]" />
-              <select
-                value={sortMode}
-                onChange={(e) => setSortMode(e.target.value as SortMode)}
-                aria-label="Sort extensions"
-                className="bg-transparent text-xs text-slate-300 font-mono focus:outline-none cursor-pointer"
-              >
-                <option value="report" className="bg-[#0d0d14] text-slate-200">
-                  Source Report Sequence
-                </option>
-                <option value="files-desc" className="bg-[#0d0d14] text-slate-200">
-                  Files (Highest First)
-                </option>
-                <option value="files-asc" className="bg-[#0d0d14] text-slate-200">
-                  Files (Lowest First)
-                </option>
-                <option value="alpha" className="bg-[#0d0d14] text-slate-200">
-                  Extension Name (A–Z)
-                </option>
-              </select>
-            </div>
-
-            {/* Density switch */}
-            <div className="flex items-center bg-black/50 border border-white/10 rounded-xl p-0.5">
-              <button
-                onClick={() => setViewDensity('comfortable')}
-                className={`px-2.5 py-1 rounded-lg text-xs font-mono transition-colors ${
-                  viewDensity === 'comfortable'
-                    ? 'bg-[#d4af37]/20 text-[#f3e5ab] border border-[#d4af37]/40 font-semibold'
-                    : 'text-slate-400 hover:text-white'
-                }`}
-              >
-                Cards
-              </button>
-              <button
-                onClick={() => setViewDensity('compact')}
-                className={`px-2.5 py-1 rounded-lg text-xs font-mono transition-colors ${
-                  viewDensity === 'compact'
-                    ? 'bg-[#d4af37]/20 text-[#f3e5ab] border border-[#d4af37]/40 font-semibold'
-                    : 'text-slate-400 hover:text-white'
-                }`}
-              >
-                Compact Table
-              </button>
-            </div>
+          {/* Sort Selector */}
+          <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+            <ArrowUpDown size={14} style={{ color: '#d4af37' }} />
+            <span style={{ fontSize: '0.76rem', fontFamily: "'JetBrains Mono', monospace", color: '#94a3b8' }}>Sort:</span>
+            <select
+              value={sortMode}
+              onChange={(e) => setSortMode(e.target.value as SortMode)}
+              aria-label="Sort File Extensions"
+              style={{
+                background: 'rgba(8, 8, 14, 0.85)',
+                border: '1px solid rgba(212, 175, 55, 0.3)',
+                borderRadius: '8px',
+                padding: '6px 10px',
+                color: '#f3e5ab',
+                fontSize: '0.78rem',
+                fontFamily: "'JetBrains Mono', monospace",
+                cursor: 'pointer',
+                outline: 'none'
+              }}
+            >
+              <option value="report">Source Report Order</option>
+              <option value="files-desc">File Count (High to Low)</option>
+              <option value="files-asc">File Count (Low to High)</option>
+              <option value="alpha">Extension (A–Z)</option>
+            </select>
           </div>
         </div>
 
-        {/* Category Pills */}
-        <div className="flex items-center gap-2 overflow-x-auto pb-1 scrollbar-thin">
-          <span className="text-[11px] font-mono uppercase tracking-wider text-slate-400 shrink-0 flex items-center gap-1">
-            <Filter className="w-3 h-3 text-[#d4af37]" /> Filter:
+        {/* Row 2: Category Filter Pills */}
+        <div style={{ display: 'flex', alignItems: 'center', gap: '6px', flexWrap: 'wrap' }}>
+          <span style={{ fontSize: '0.72rem', fontFamily: "'JetBrains Mono', monospace", color: '#94a3b8', textTransform: 'uppercase', marginRight: '4px' }}>
+            <Filter size={12} style={{ display: 'inline', marginRight: '4px', color: '#d4af37' }} />
+            Filter:
           </span>
           {categories.map((cat) => {
             const isSelected = categoryFilter === cat
@@ -386,11 +527,21 @@ export const FileExtensionSection: React.FC = () => {
               <button
                 key={cat}
                 onClick={() => setCategoryFilter(cat)}
-                className={`px-3 py-1 rounded-full text-xs font-mono shrink-0 transition-all ${
-                  isSelected
-                    ? 'bg-[#d4af37] text-black font-bold shadow-[0_0_12px_rgba(212,175,55,0.4)]'
-                    : 'bg-white/5 border border-white/10 text-slate-300 hover:bg-white/10 hover:text-white'
-                }`}
+                style={{
+                  background: isSelected
+                    ? 'linear-gradient(135deg, #d4af37 0%, #aa771c 100%)'
+                    : 'rgba(255, 255, 255, 0.05)',
+                  color: isSelected ? '#08080c' : '#cbd5e1',
+                  border: `1px solid ${isSelected ? '#d4af37' : 'rgba(212, 175, 55, 0.2)'}`,
+                  borderRadius: '999px',
+                  padding: '4px 12px',
+                  fontSize: '0.74rem',
+                  fontFamily: "'JetBrains Mono', monospace",
+                  fontWeight: isSelected ? 700 : 500,
+                  cursor: 'pointer',
+                  boxShadow: isSelected ? '0 0 12px rgba(212, 175, 55, 0.35)' : 'none',
+                  transition: 'all 0.15s'
+                }}
               >
                 {cat}
               </button>
@@ -398,190 +549,179 @@ export const FileExtensionSection: React.FC = () => {
           })}
         </div>
 
-        {/* Status message */}
-        <div className="flex items-center justify-between text-xs text-slate-400 pt-2 border-t border-white/5">
-          <div>
-            Showing <strong className="text-[#f3e5ab] font-mono">{processedRecords.length}</strong> of{' '}
-            <span className="font-mono">{EXTENSION_SUMMARY.uniqueExtensions}</span> extensions
-            {selectedPage !== 'all' && (
-              <span>
-                {' '}
-                on <strong className="text-[#d4af37] font-mono">Page {selectedPage}</strong>
-              </span>
-            )}
-            {categoryFilter !== 'All' && <span> in category &ldquo;{categoryFilter}&rdquo;</span>}
-            {searchQuery && <span> matching &ldquo;{searchQuery}&rdquo;</span>}
-          </div>
-          <div className="text-[11px] font-mono text-slate-400">
-            Source Integrity: Complete &amp; Unmodified
-          </div>
+        {/* Counter Info */}
+        <div style={{ fontSize: '0.74rem', fontFamily: "'JetBrains Mono', monospace", color: '#94a3b8', borderTop: '1px solid rgba(255, 255, 255, 0.06)', paddingTop: '10px' }}>
+          Displaying <strong style={{ color: '#f3e5ab' }}>{processedRecords.length}</strong> format records
+          {selectedPage !== 'all' ? ` for Page ${selectedPage}` : ' across All 7 Pages'}
+          {categoryFilter !== 'All' ? ` (Filtered: ${categoryFilter})` : ''}
+          {searchQuery ? ` matching "${searchQuery}"` : ''}
         </div>
       </div>
 
-      {/* ── View 1: Comfortable Card Grid ── */}
-      {viewDensity === 'comfortable' && (
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3.5">
-          {processedRecords.map((item, index) => {
-            const theme = CATEGORY_COLORS[item.category] || CATEGORY_COLORS['Other / Unknown']
-            const isMultiLine = item.extension.includes('\n')
-
-            return (
-              <div
-                key={`${item.extension}-${item.page}-${index}`}
-                className="group relative rounded-xl bg-gradient-to-b from-[#12111a] to-[#0a0a0f] p-4 border border-white/10 hover:border-[#d4af37]/50 hover:shadow-[0_4px_24px_rgba(212,175,55,0.18)] transition-all duration-200"
-              >
-                <div className="flex items-start justify-between gap-3">
-                  {/* Category Pill */}
-                  <div
-                    className="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-md text-[11px] font-mono border"
+      {/* ── Compact High-Density Format Table (Liquid Glass) ── */}
+      <div
+        style={{
+          background: 'rgba(10, 10, 16, 0.85)',
+          backdropFilter: 'blur(24px) saturate(180%)',
+          WebkitBackdropFilter: 'blur(24px) saturate(180%)',
+          border: '1.5px solid rgba(212, 175, 55, 0.35)',
+          borderRadius: '16px',
+          overflow: 'hidden',
+          boxShadow: '0 16px 40px rgba(0, 0, 0, 0.75)'
+        }}
+      >
+        <div style={{ overflowX: 'auto', maxHeight: '680px', overflowY: 'auto' }}>
+          <table style={{ width: '100%', borderCollapse: 'collapse', textAlign: 'left', fontSize: '0.82rem', fontFamily: "'JetBrains Mono', monospace" }}>
+            <thead
+              style={{
+                position: 'sticky',
+                top: 0,
+                zIndex: 10,
+                background: 'rgba(16, 14, 24, 0.98)',
+                borderBottom: '1.5px solid rgba(212, 175, 55, 0.4)',
+                boxShadow: '0 4px 12px rgba(0, 0, 0, 0.6)'
+              }}
+            >
+              <tr>
+                <th style={{ padding: '12px 14px', width: '50px', textAlign: 'center', color: '#94a3b8', fontSize: '0.74rem', textTransform: 'uppercase' }}>#</th>
+                <th style={{ padding: '12px 16px', color: '#d4af37', fontSize: '0.74rem', textTransform: 'uppercase', letterSpacing: '0.06em' }}>Extension Format Signature</th>
+                <th style={{ padding: '12px 16px', color: '#d4af37', fontSize: '0.74rem', textTransform: 'uppercase', letterSpacing: '0.06em' }}>Category</th>
+                <th style={{ padding: '12px 16px', textAlign: 'right', color: '#d4af37', fontSize: '0.74rem', textTransform: 'uppercase', letterSpacing: '0.06em' }}>Files</th>
+                <th style={{ padding: '12px 16px', textAlign: 'right', color: '#d4af37', fontSize: '0.74rem', textTransform: 'uppercase', letterSpacing: '0.06em' }}>Storage Volume</th>
+                <th style={{ padding: '12px 14px', textAlign: 'center', color: '#94a3b8', fontSize: '0.74rem', textTransform: 'uppercase' }}>Page</th>
+              </tr>
+            </thead>
+            <tbody>
+              {processedRecords.map((item, idx) => {
+                const style = CATEGORY_STYLES[item.category] || CATEGORY_STYLES['Other / Unknown']
+                return (
+                  <tr
+                    key={`${item.extension}-${item.page}-${idx}`}
                     style={{
-                      backgroundColor: theme.bg,
-                      borderColor: theme.border,
-                      color: theme.text
+                      borderBottom: '1px solid rgba(255, 255, 255, 0.05)',
+                      transition: 'background 0.15s'
+                    }}
+                    onMouseEnter={(e) => {
+                      e.currentTarget.style.background = 'rgba(212, 175, 55, 0.08)'
+                    }}
+                    onMouseLeave={(e) => {
+                      e.currentTarget.style.background = 'transparent'
                     }}
                   >
-                    {theme.icon}
-                    <span>{item.category}</span>
-                  </div>
+                    {/* Index */}
+                    <td style={{ padding: '10px 14px', textAlign: 'center', color: '#64748b', fontSize: '0.76rem' }}>
+                      {idx + 1}
+                    </td>
 
-                  {/* Source Page Tag */}
-                  <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-white/5 border border-white/10 text-slate-400">
-                    Pg {item.page}
-                  </span>
-                </div>
-
-                {/* Extension String */}
-                <div className="mt-3">
-                  <div className="text-xs uppercase font-mono tracking-wider text-slate-400">Extension Format</div>
-                  <div
-                    className={`font-mono text-base font-bold text-[#f3e5ab] mt-0.5 break-all ${
-                      isMultiLine ? 'whitespace-pre-line text-xs bg-black/60 p-2 rounded border border-white/10' : ''
-                    }`}
-                  >
-                    {item.extension}
-                  </div>
-                </div>
-
-                {/* Metrics: Files & Storage */}
-                <div className="mt-3 pt-3 border-t border-white/5 grid grid-cols-2 gap-2 text-xs">
-                  <div>
-                    <span className="text-slate-400 block text-[11px]">File Count</span>
-                    <span className="font-mono font-bold text-white group-hover:text-[#f3e5ab] transition-colors">
-                      {item.files}
-                    </span>
-                  </div>
-                  <div className="text-right">
-                    <span className="text-slate-400 block text-[11px]">Storage Allocated</span>
-                    <span className="font-mono font-bold text-[#d4af37]">
-                      {item.storage}
-                    </span>
-                  </div>
-                </div>
-              </div>
-            )
-          })}
-        </div>
-      )}
-
-      {/* ── View 2: Compact Table ── */}
-      {viewDensity === 'compact' && (
-        <div className="rounded-2xl bg-[#0d0d14]/90 border border-white/10 overflow-hidden shadow-2xl">
-          <div className="overflow-x-auto">
-            <table className="w-full text-left text-xs">
-              <thead className="bg-black/60 border-b border-white/10 text-slate-400 font-mono uppercase tracking-wider">
-                <tr>
-                  <th className="px-4 py-3 text-center w-12">#</th>
-                  <th className="px-4 py-3">Format / Extension Signature</th>
-                  <th className="px-4 py-3">Category</th>
-                  <th className="px-4 py-3 text-right">File Count</th>
-                  <th className="px-4 py-3 text-right">Storage Volume</th>
-                  <th className="px-4 py-3 text-center">Source Page</th>
-                </tr>
-              </thead>
-              <tbody className="divide-y divide-white/5 font-mono">
-                {processedRecords.map((item, index) => {
-                  const theme = CATEGORY_COLORS[item.category] || CATEGORY_COLORS['Other / Unknown']
-                  return (
-                    <tr
-                      key={`${item.extension}-${item.page}-${index}`}
-                      className="hover:bg-white/[0.03] transition-colors"
-                    >
-                      <td className="px-4 py-2.5 text-center text-slate-400 font-mono">{index + 1}</td>
-                      <td className="px-4 py-2.5 text-[#f3e5ab] font-bold break-all max-w-xs whitespace-pre-line">
+                    {/* Extension Format */}
+                    <td style={{ padding: '10px 16px', color: '#f3e5ab', fontWeight: 700, wordBreak: 'break-all', whiteSpace: 'pre-line' }}>
+                      <span
+                        style={{
+                          background: 'rgba(0, 0, 0, 0.45)',
+                          padding: '3px 8px',
+                          borderRadius: '6px',
+                          border: '1px solid rgba(255, 255, 255, 0.08)',
+                          display: 'inline-block'
+                        }}
+                      >
                         {item.extension}
-                      </td>
-                      <td className="px-4 py-2.5">
-                        <span
-                          className="inline-flex items-center gap-1 px-2 py-0.5 rounded text-[10px] border"
-                          style={{
-                            backgroundColor: theme.bg,
-                            borderColor: theme.border,
-                            color: theme.text
-                          }}
-                        >
-                          {theme.icon}
-                          {item.category}
-                        </span>
-                      </td>
-                      <td className="px-4 py-2.5 text-right text-white font-semibold">{item.files}</td>
-                      <td className="px-4 py-2.5 text-right text-[#d4af37] font-semibold">{item.storage}</td>
-                      <td className="px-4 py-2.5 text-center">
-                        <span className="text-[10px] px-1.5 py-0.5 rounded bg-white/5 border border-white/10 text-slate-400">
-                          Pg {item.page}/7
-                        </span>
-                      </td>
-                    </tr>
-                  )
-                })}
-              </tbody>
-            </table>
+                      </span>
+                    </td>
+
+                    {/* Category */}
+                    <td style={{ padding: '10px 16px' }}>
+                      <span
+                        style={{
+                          display: 'inline-flex',
+                          alignItems: 'center',
+                          gap: '6px',
+                          padding: '2px 8px',
+                          borderRadius: '6px',
+                          fontSize: '0.72rem',
+                          background: style.bg,
+                          border: `1px solid ${style.border}`,
+                          color: style.text,
+                          fontWeight: 600
+                        }}
+                      >
+                        {style.icon}
+                        <span>{item.category}</span>
+                      </span>
+                    </td>
+
+                    {/* Files */}
+                    <td style={{ padding: '10px 16px', textAlign: 'right', color: '#ffffff', fontWeight: 700 }}>
+                      {item.files}
+                    </td>
+
+                    {/* Storage */}
+                    <td style={{ padding: '10px 16px', textAlign: 'right', color: '#d4af37', fontWeight: 700 }}>
+                      {item.storage}
+                    </td>
+
+                    {/* Page */}
+                    <td style={{ padding: '10px 14px', textAlign: 'center' }}>
+                      <span
+                        style={{
+                          fontSize: '0.68rem',
+                          padding: '2px 6px',
+                          borderRadius: '4px',
+                          background: 'rgba(255, 255, 255, 0.05)',
+                          color: '#94a3b8'
+                        }}
+                      >
+                        Pg {item.page}/7
+                      </span>
+                    </td>
+                  </tr>
+                )
+              })}
+            </tbody>
+          </table>
+        </div>
+
+        {/* Empty State */}
+        {processedRecords.length === 0 && (
+          <div style={{ padding: '40px 20px', textAlign: 'center', color: '#94a3b8' }}>
+            <HelpCircle size={32} style={{ color: 'rgba(212, 175, 55, 0.5)', margin: '0 auto 10px' }} />
+            <div style={{ color: '#f3e5ab', fontWeight: 600 }}>No Extensions Found</div>
+            <div style={{ fontSize: '0.78rem', marginTop: '4px' }}>Try resetting your search query or category filter.</div>
           </div>
-        </div>
-      )}
+        )}
+      </div>
 
-      {/* ── Empty State ── */}
-      {processedRecords.length === 0 && (
-        <div className="rounded-2xl bg-[#0d0d14]/80 border border-white/10 p-12 text-center">
-          <HelpCircle className="w-10 h-10 text-slate-500 mx-auto mb-3" />
-          <h3 className="text-base font-serif text-[#f3e5ab] font-semibold">No Extensions Found</h3>
-          <p className="text-xs text-slate-400 mt-1 max-w-md mx-auto">
-            No file extensions matched your current search &ldquo;{searchQuery}&rdquo; and category filter.
-          </p>
-          <button
-            onClick={() => {
-              setSearchQuery('')
-              setCategoryFilter('All')
-              setSelectedPage(1)
-            }}
-            className="mt-4 px-4 py-2 rounded-xl bg-[#d4af37]/20 border border-[#d4af37]/40 text-[#f3e5ab] text-xs font-mono hover:bg-[#d4af37]/30 transition-colors"
-          >
-            Reset All Filters
-          </button>
+      {/* ── Footer Audit Summary Strip (Liquid Glass) ── */}
+      <div
+        style={{
+          background: 'rgba(8, 8, 14, 0.85)',
+          border: '1px solid rgba(212, 175, 55, 0.3)',
+          borderRadius: '12px',
+          padding: '14px 20px',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'space-between',
+          flexWrap: 'wrap',
+          gap: '12px',
+          fontSize: '0.76rem',
+          fontFamily: "'JetBrains Mono', monospace",
+          color: '#94a3b8'
+        }}
+      >
+        <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+          <ShieldCheck size={16} style={{ color: '#2ecc71' }} />
+          <span style={{ color: '#ffffff' }}>Audit Status: <strong style={{ color: '#2ecc71' }}>{EXTENSION_SCAN_RECORD.status}</strong></span>
+          <span style={{ color: 'rgba(255, 255, 255, 0.2)' }}>•</span>
+          <span>Database Cache: <strong style={{ color: '#d4af37' }}>{EXTENSION_SCAN_RECORD.databaseCache}</strong></span>
         </div>
-      )}
 
-      {/* ── Section Footer: Complete Audit Verification ── */}
-      <div className="rounded-xl bg-black/60 p-4 border border-[#d4af37]/30 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs font-mono text-slate-400">
-        <div className="flex items-center gap-2">
-          <ShieldCheck className="w-4 h-4 text-emerald-400" />
-          <span className="text-slate-300">
-            Source Status:{' '}
-            <strong className="text-emerald-400 uppercase tracking-wider">{EXTENSION_SCAN_RECORD.status}</strong>
-          </span>
-          <span className="text-slate-600">•</span>
-          <span>
-            Database Cache:{' '}
-            <strong className="text-[#d4af37]">{EXTENSION_SCAN_RECORD.databaseCache}</strong>
-          </span>
-        </div>
-        <div className="flex items-center gap-3 text-[11px] text-slate-400">
+        <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+          <span>Scan ID: <strong style={{ color: '#f3e5ab' }}>{EXTENSION_SCAN_RECORD.scanId}</strong></span>
+          <span style={{ color: 'rgba(255, 255, 255, 0.2)' }}>•</span>
           <span>Engine: {EXTENSION_SCAN_RECORD.reportVersion}</span>
-          <span className="text-slate-600">•</span>
-          <span>Scan ID: {EXTENSION_SCAN_RECORD.scanId}</span>
-          <span className="text-slate-600">•</span>
-          <span>{EXTENSION_SCAN_RECORD.completed}</span>
         </div>
       </div>
     </div>
   )
 }
+
+export default FileExtensionSection

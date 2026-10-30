@@ -62,100 +62,209 @@ export const LuciferStreamBackup: React.FC<LuciferStreamBackupProps> = ({ onBack
 
   return (
     <div
-      className="min-h-screen bg-[#08080c] text-[#f3e5ab] selection:bg-[#d4af37]/30 selection:text-[#f3e5ab]"
       style={{
+        minHeight: '100vh',
+        background: 'rgba(8, 8, 14, 0.52)',
+        backdropFilter: 'blur(12px) saturate(160%)',
+        WebkitBackdropFilter: 'blur(12px) saturate(160%)',
+        color: '#f3e5ab',
         fontFamily: "'Outfit', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif",
         overflowY: 'visible',
-        width: '100%'
+        width: '100%',
+        position: 'relative'
       }}
     >
-      {/* ── Sub-Navigation / Breadcrumb Bar ── */}
-      <div className="sticky top-[58px] z-40 bg-[#08080c]/95 backdrop-blur-md border-b border-[#d4af37]/20 px-4 sm:px-8 py-3">
-        <div className="max-w-7xl mx-auto flex items-center justify-between gap-4 flex-wrap">
-          {/* Back button & Location */}
-          <div className="flex items-center gap-3">
+      {/* ── Sub-Navigation / Breadcrumb Bar (Liquid Glass) ── */}
+      <div
+        style={{
+          position: 'sticky',
+          top: '58px',
+          zIndex: 40,
+          background: 'rgba(10, 10, 16, 0.85)',
+          backdropFilter: 'blur(24px) saturate(200%)',
+          WebkitBackdropFilter: 'blur(24px) saturate(200%)',
+          borderBottom: '1px solid rgba(212, 175, 55, 0.25)',
+          boxShadow: '0 8px 32px rgba(0, 0, 0, 0.65)',
+          padding: '12px 24px'
+        }}
+      >
+        <div
+          style={{
+            maxWidth: '1440px',
+            margin: '0 auto',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'space-between',
+            gap: '16px',
+            flexWrap: 'wrap'
+          }}
+        >
+          {/* Left: Back button & Breadcrumb */}
+          <div style={{ display: 'flex', alignItems: 'center', gap: '14px', flexWrap: 'wrap' }}>
             {onBack && (
               <button
                 onClick={onBack}
-                className="inline-flex items-center gap-2 px-3 py-1.5 rounded-xl bg-white/5 hover:bg-white/10 text-slate-300 hover:text-white border border-white/10 text-xs font-mono transition-colors"
-                title="Return to 3D Cinema Experience"
+                style={{
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  gap: '8px',
+                  background: 'linear-gradient(135deg, rgba(212, 175, 55, 0.18) 0%, rgba(20, 18, 30, 0.7) 100%)',
+                  border: '1px solid rgba(212, 175, 55, 0.45)',
+                  borderRadius: '10px',
+                  padding: '7px 14px',
+                  color: '#f3e5ab',
+                  fontSize: '0.82rem',
+                  fontFamily: "'JetBrains Mono', monospace",
+                  fontWeight: 600,
+                  cursor: 'pointer',
+                  boxShadow: '0 4px 14px rgba(0, 0, 0, 0.4), inset 0 1px 1px rgba(255, 255, 255, 0.2)',
+                  transition: 'all 0.2s cubic-bezier(0.16, 1, 0.3, 1)'
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.transform = 'translateY(-1px)'
+                  e.currentTarget.style.background = 'linear-gradient(135deg, rgba(212, 175, 55, 0.32) 0%, rgba(30, 26, 42, 0.85) 100%)'
+                  e.currentTarget.style.borderColor = '#d4af37'
+                  e.currentTarget.style.boxShadow = '0 6px 20px rgba(212, 175, 55, 0.25)'
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.transform = 'none'
+                  e.currentTarget.style.background = 'linear-gradient(135deg, rgba(212, 175, 55, 0.18) 0%, rgba(20, 18, 30, 0.7) 100%)'
+                  e.currentTarget.style.borderColor = 'rgba(212, 175, 55, 0.45)'
+                  e.currentTarget.style.boxShadow = '0 4px 14px rgba(0, 0, 0, 0.4), inset 0 1px 1px rgba(255, 255, 255, 0.2)'
+                }}
               >
-                <ArrowLeft className="w-3.5 h-3.5" />
+                <ArrowLeft size={14} style={{ color: '#d4af37' }} />
                 <span>Return to Cinema 3D</span>
               </button>
             )}
 
-            <div className="hidden sm:flex items-center gap-2 text-xs font-mono text-slate-400">
-              <span className="text-[#d4af37]">Lucifer Database X</span>
-              <span>/</span>
-              <span className="text-[#f3e5ab]">Digital Vault Archive</span>
-              <span>/</span>
-              <span className="text-white font-semibold">Lucifer Stream Site 1 Backup</span>
+            <div
+              style={{
+                display: 'flex',
+                alignItems: 'center',
+                gap: '8px',
+                fontSize: '0.8rem',
+                fontFamily: "'JetBrains Mono', monospace",
+                color: 'rgba(243, 229, 171, 0.65)'
+              }}
+            >
+              <span style={{ color: '#d4af37' }}>Lucifer Database X</span>
+              <span style={{ color: 'rgba(243, 229, 171, 0.3)' }}>/</span>
+              <span>Digital Vault</span>
+              <span style={{ color: 'rgba(243, 229, 171, 0.3)' }}>/</span>
+              <span style={{ color: '#ffffff', fontWeight: 600 }}>Lucifer Stream Site 1 Backup</span>
             </div>
           </div>
 
-          {/* Quick Actions */}
-          <div className="flex items-center gap-2">
+          {/* Right: Quick Actions */}
+          <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
             <button
               onClick={handleToggleShowAll}
-              className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-mono border transition-all ${
-                showAllSections
-                  ? 'bg-[#d4af37] text-black border-[#d4af37] font-bold shadow-[0_0_15px_rgba(212,175,55,0.4)]'
-                  : 'bg-white/5 text-slate-300 border-white/10 hover:bg-white/10 hover:text-white'
-              }`}
+              style={{
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: '8px',
+                background: showAllSections
+                  ? 'linear-gradient(135deg, #d4af37 0%, #b39029 100%)'
+                  : 'rgba(255, 255, 255, 0.05)',
+                color: showAllSections ? '#08080c' : '#f3e5ab',
+                border: `1px solid ${showAllSections ? '#d4af37' : 'rgba(212, 175, 55, 0.3)'}`,
+                borderRadius: '10px',
+                padding: '7px 14px',
+                fontSize: '0.8rem',
+                fontFamily: "'JetBrains Mono', monospace",
+                fontWeight: 600,
+                cursor: 'pointer',
+                boxShadow: showAllSections
+                  ? '0 0 20px rgba(212, 175, 55, 0.4)'
+                  : '0 2px 8px rgba(0, 0, 0, 0.3)',
+                transition: 'all 0.2s'
+              }}
             >
-              <Layers className="w-3.5 h-3.5" />
+              <Layers size={14} />
               <span>{showAllSections ? 'Collapse to Tabbed View' : 'Expand All 4 Reports'}</span>
             </button>
 
             <a
               href="#sovereign-community"
-              className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-gradient-to-r from-[#d4af37]/20 to-[#b39029]/20 hover:from-[#d4af37]/30 hover:to-[#b39029]/30 text-[#f3e5ab] border border-[#d4af37]/40 text-xs font-mono transition-all"
+              style={{
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: '8px',
+                background: 'linear-gradient(135deg, rgba(212, 175, 55, 0.16) 0%, rgba(212, 175, 55, 0.06) 100%)',
+                color: '#f3e5ab',
+                border: '1px solid rgba(212, 175, 55, 0.4)',
+                borderRadius: '10px',
+                padding: '7px 14px',
+                fontSize: '0.8rem',
+                fontFamily: "'JetBrains Mono', monospace",
+                fontWeight: 600,
+                textDecoration: 'none',
+                boxShadow: '0 2px 8px rgba(0, 0, 0, 0.3)',
+                transition: 'all 0.2s'
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.borderColor = '#d4af37'
+                e.currentTarget.style.boxShadow = '0 0 16px rgba(212, 175, 55, 0.3)'
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.borderColor = 'rgba(212, 175, 55, 0.4)'
+                e.currentTarget.style.boxShadow = '0 2px 8px rgba(0, 0, 0, 0.3)'
+              }}
             >
-              <Sparkles className="w-3.5 h-3.5 text-[#d4af37]" />
+              <Sparkles size={14} style={{ color: '#d4af37' }} />
               <span>Community Dispatch</span>
             </a>
           </div>
         </div>
       </div>
 
-      {/* ── Main Dashboard Body ── */}
-      <main className="max-w-7xl mx-auto px-4 sm:px-8 py-8 sm:py-12 space-y-12">
+      {/* ── Main Dashboard Body (Liquid Glass Architecture) ── */}
+      <main
+        style={{
+          maxWidth: '1440px',
+          margin: '0 auto',
+          padding: '36px 24px 80px',
+          display: 'flex',
+          flexDirection: 'column',
+          gap: '36px'
+        }}
+      >
         {/* 1. Header & Target Dossier Strip */}
         <IntelligenceHeader />
 
-        {/* 2. Interactive 4-Report Selector Accordion Tabs */}
+        {/* 2. Interactive 4-Report Selector Accordion Tabs (Liquid Glass) */}
         <ReportAccordionSelector
           activeTab={showAllSections ? null : activeTab}
           onToggleTab={handleToggleTab}
         />
 
         {/* 3. Report Content Panels */}
-        <div className="space-y-16">
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '48px' }}>
           {/* Section 1: Channel Analysis Report */}
           {(showAllSections || activeTab === 'channel-analysis') && (
-            <section id="channel-analysis-report" className="transition-opacity duration-300">
+            <section id="channel-analysis-report">
               <ChannelAnalysisSection />
             </section>
           )}
 
           {/* Section 2: Resolution Intelligence Report */}
           {(showAllSections || activeTab === 'resolution') && (
-            <section id="resolution-report" className="transition-opacity duration-300">
+            <section id="resolution-report">
               <ResolutionIntelligenceSection />
             </section>
           )}
 
           {/* Section 3: Storage Highlights Report */}
           {(showAllSections || activeTab === 'storage') && (
-            <section id="storage-report" className="transition-opacity duration-300">
+            <section id="storage-report">
               <StorageHighlightsSection />
             </section>
           )}
 
           {/* Section 4: File Extension Intelligence Report (All 7 Pages) */}
           {(showAllSections || activeTab === 'extensions') && (
-            <section id="extensions-report" className="transition-opacity duration-300">
+            <section id="extensions-report">
               <FileExtensionSection />
             </section>
           )}

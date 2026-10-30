@@ -81,12 +81,14 @@ export const ReportAccordionSelector: React.FC<ReportAccordionSelectorProps> = (
             aria-controls={`report-panel-${tab.id}`}
             onClick={() => onToggleTab(tab.id)}
             style={{
+              backdropFilter: 'blur(28px) saturate(200%)',
+              WebkitBackdropFilter: 'blur(28px) saturate(200%)',
               background: isOpen
-                ? 'linear-gradient(145deg, rgba(32, 28, 44, 0.98) 0%, rgba(16, 16, 26, 0.98) 100%)'
-                : 'linear-gradient(145deg, rgba(16, 16, 24, 0.85) 0%, rgba(10, 10, 16, 0.9) 100%)',
-              border: `1px solid ${isOpen ? '#d4af37' : 'rgba(212, 175, 55, 0.28)'}`,
-              borderRadius: '12px',
-              padding: '16px 18px',
+                ? 'linear-gradient(135deg, rgba(212, 175, 55, 0.28) 0%, rgba(28, 24, 42, 0.82) 45%, rgba(10, 10, 18, 0.90) 100%)'
+                : 'linear-gradient(135deg, rgba(255, 255, 255, 0.10) 0%, rgba(18, 16, 26, 0.68) 50%, rgba(8, 8, 14, 0.82) 100%)',
+              border: `1.5px solid ${isOpen ? '#d4af37' : 'rgba(212, 175, 55, 0.35)'}`,
+              borderRadius: '16px',
+              padding: '18px 20px',
               cursor: 'pointer',
               textAlign: 'left',
               display: 'flex',
@@ -95,8 +97,8 @@ export const ReportAccordionSelector: React.FC<ReportAccordionSelectorProps> = (
               position: 'relative',
               overflow: 'hidden',
               boxShadow: isOpen
-                ? '0 10px 30px rgba(0, 0, 0, 0.8), 0 0 20px rgba(212, 175, 55, 0.2), inset 0 1px 0 rgba(243, 229, 171, 0.3)'
-                : '0 4px 14px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(212, 175, 55, 0.1)',
+                ? '0 18px 45px rgba(0, 0, 0, 0.85), 0 0 32px rgba(212, 175, 55, 0.35), inset 0 1px 2px rgba(255, 255, 255, 0.45), inset 0 -1px 2px rgba(0, 0, 0, 0.7)'
+                : '0 8px 24px rgba(0, 0, 0, 0.6), inset 0 1px 1.5px rgba(255, 255, 255, 0.18), inset 0 -1px 1.5px rgba(0, 0, 0, 0.5)',
               transition: 'transform 0.22s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.2s, box-shadow 0.2s, background 0.2s',
               transform: isOpen ? 'translateY(-2px)' : 'none',
               outline: 'none'
@@ -123,6 +125,21 @@ export const ReportAccordionSelector: React.FC<ReportAccordionSelectorProps> = (
               e.currentTarget.style.outline = 'none'
             }}
           >
+            {/* Liquid glass top specular reflection highlight */}
+            <span
+              style={{
+                position: 'absolute',
+                top: 0,
+                left: 0,
+                right: 0,
+                height: '1.5px',
+                background: isOpen
+                  ? 'linear-gradient(90deg, transparent 0%, rgba(255, 255, 255, 0.6) 30%, rgba(243, 229, 171, 0.9) 50%, rgba(255, 255, 255, 0.6) 70%, transparent 100%)'
+                  : 'linear-gradient(90deg, transparent 0%, rgba(255, 255, 255, 0.25) 50%, transparent 100%)',
+                pointerEvents: 'none'
+              }}
+            />
+
             {/* Top gold active glow bar */}
             {isOpen && (
               <span
@@ -133,7 +150,7 @@ export const ReportAccordionSelector: React.FC<ReportAccordionSelectorProps> = (
                   right: 0,
                   height: '3px',
                   background: 'linear-gradient(90deg, #aa771c 0%, #d4af37 50%, #f3e5ab 100%)',
-                  boxShadow: '0 0 10px #d4af37'
+                  boxShadow: '0 0 14px #d4af37'
                 }}
               />
             )}

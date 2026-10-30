@@ -179,36 +179,43 @@ export const App: React.FC = () => {
         </div>
       </header>
 
-      {/* Page Content */}
-      <div style={{ paddingTop: '58px', minHeight: 'calc(100vh - 58px)', width: '100%' }}>
+      {/* ── Sovereign Live 3D / WebGL Ambient Background Layer ── */}
+      <div
+        style={{
+          position: 'fixed',
+          top: '58px',
+          left: 0,
+          width: '100vw',
+          height: 'calc(100vh - 58px)',
+          zIndex: 0,
+          pointerEvents: currentPage === 'stream-backup-1' ? 'none' : 'auto',
+          opacity: currentPage === 'stream-backup-1' ? 0.55 : 1,
+          filter: currentPage === 'stream-backup-1' ? 'blur(12px) brightness(0.72) saturate(1.35)' : 'none',
+          transform: 'translateZ(0)',
+          transition: 'opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), filter 0.6s cubic-bezier(0.16, 1, 0.3, 1)',
+          overflow: 'hidden',
+          background: '#09090f',
+        }}
+      >
+        <SylvaHero
+          headingFont="lexend"
+          bodyFont="lexend"
+          headingWeight="300"
+          bodyWeight="300"
+          primaryColor="#f3e5ab"
+          headingSize={56}
+          bodySize={16.5}
+          headingLetterSpacing={-0.006}
+        />
+      </div>
+
+      {/* ── Sovereign Page Foreground ── */}
+      <div style={{ paddingTop: '58px', minHeight: 'calc(100vh - 58px)', width: '100%', position: 'relative', zIndex: 10 }}>
         {currentPage === 'stream-backup-1' ? (
           <div style={{ width: '100%', minHeight: 'calc(100vh - 58px)' }}>
             <LuciferStreamBackup onBack={handleBackToHero} />
           </div>
-        ) : (
-          <div
-            className="sylva-app-container"
-            style={{
-              width: '100vw',
-              height: 'calc(100vh - 58px)',
-              overflow: 'hidden',
-              margin: 0,
-              padding: 0,
-              background: '#09090f',
-            }}
-          >
-            <SylvaHero
-              headingFont="lexend"
-              bodyFont="lexend"
-              headingWeight="300"
-              bodyWeight="300"
-              primaryColor="#f3e5ab"
-              headingSize={56}
-              bodySize={16.5}
-              headingLetterSpacing={-0.006}
-            />
-          </div>
-        )}
+        ) : null}
       </div>
     </div>
   )
