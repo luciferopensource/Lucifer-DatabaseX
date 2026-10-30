@@ -1,0 +1,385 @@
+import React from 'react'
+import {
+  HardDrive,
+  Radio,
+  Trophy,
+  FileDigit,
+  Calculator,
+  ShieldCheck,
+  CheckCircle2,
+  Database,
+  Layers,
+  Sparkles
+} from 'lucide-react'
+import {
+  TARGET_INFO,
+  STORAGE_HIGHLIGHTS,
+  STORAGE_SCAN_RECORD
+} from '../../data/channelIntelligenceData'
+
+export const StorageHighlightsSection: React.FC = () => {
+  return (
+    <div
+      id="report-panel-storage"
+      role="tabpanel"
+      aria-labelledby="report-tab-storage"
+      style={{
+        background: 'rgba(12, 12, 18, 0.95)',
+        border: '1px solid rgba(212, 175, 55, 0.4)',
+        borderRadius: '16px',
+        padding: '28px',
+        boxShadow: '0 15px 40px rgba(0, 0, 0, 0.8), 0 0 25px rgba(212, 175, 55, 0.08)',
+        marginBottom: '32px',
+        animation: 'fadeIn 0.3s cubic-bezier(0.16, 1, 0.3, 1)'
+      }}
+    >
+      {/* ── Section Title Banner ── */}
+      <div
+        style={{
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'space-between',
+          flexWrap: 'wrap',
+          gap: '12px',
+          paddingBottom: '18px',
+          borderBottom: '1px solid rgba(212, 175, 55, 0.25)',
+          marginBottom: '24px'
+        }}
+      >
+        <div>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '8px', color: '#d4af37', fontSize: '0.74rem', letterSpacing: '0.12em', textTransform: 'uppercase', fontWeight: 700 }}>
+            <Radio size={14} />
+            <span>ARCHIVE X ENGINE • STORAGE ARCHITECTURE AUDIT</span>
+          </div>
+          <h2
+            style={{
+              fontFamily: "'Cinzel', serif",
+              fontSize: '1.45rem',
+              fontWeight: 800,
+              color: '#f3e5ab',
+              margin: '4px 0 0 0',
+              letterSpacing: '0.04em'
+            }}
+          >
+            STORAGE HIGHLIGHTS REPORT
+          </h2>
+        </div>
+
+        <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+          <span
+            style={{
+              padding: '4px 12px',
+              borderRadius: '999px',
+              background: 'rgba(46, 204, 113, 0.15)',
+              border: '1px solid rgba(46, 204, 113, 0.4)',
+              color: '#2ecc71',
+              fontSize: '0.72rem',
+              fontWeight: 700,
+              display: 'inline-flex',
+              alignItems: 'center',
+              gap: '6px'
+            }}
+          >
+            <span style={{ width: '6px', height: '6px', borderRadius: '50%', background: '#2ecc71' }} />
+            DATABASE CACHE: {STORAGE_SCAN_RECORD.databaseCache}
+          </span>
+          <span
+            style={{
+              padding: '4px 12px',
+              borderRadius: '999px',
+              background: 'rgba(212, 175, 55, 0.15)',
+              border: '1px solid rgba(212, 175, 55, 0.4)',
+              color: '#d4af37',
+              fontSize: '0.72rem',
+              fontWeight: 700,
+              fontFamily: "'JetBrains Mono', monospace"
+            }}
+          >
+            ID: {STORAGE_SCAN_RECORD.scanId}
+          </span>
+        </div>
+      </div>
+
+      {/* ── Visual Hero Storage Cards Grid ── */}
+      <div
+        style={{
+          display: 'grid',
+          gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))',
+          gap: '20px',
+          marginBottom: '28px'
+        }}
+      >
+        {/* Total Storage Hero Card */}
+        <div
+          style={{
+            background: 'linear-gradient(135deg, rgba(28, 22, 38, 0.95) 0%, rgba(14, 14, 22, 0.98) 100%)',
+            border: '2px solid rgba(212, 175, 55, 0.55)',
+            borderRadius: '16px',
+            padding: '26px',
+            position: 'relative',
+            overflow: 'hidden',
+            boxShadow: '0 12px 35px rgba(0, 0, 0, 0.8), 0 0 25px rgba(212, 175, 55, 0.2)'
+          }}
+        >
+          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '12px' }}>
+            <span style={{ fontSize: '0.74rem', color: '#d4af37', fontWeight: 800, letterSpacing: '0.12em', textTransform: 'uppercase' }}>
+              TOTAL ARCHIVED STORAGE
+            </span>
+            <span style={{ padding: '4px 10px', borderRadius: '6px', background: 'rgba(212, 175, 55, 0.15)', color: '#f3e5ab', fontSize: '0.7rem', fontWeight: 700 }}>
+              VERIFIED QUOTA
+            </span>
+          </div>
+
+          <div
+            style={{
+              fontFamily: "'Cinzel', serif",
+              fontSize: 'clamp(2.4rem, 4.5vw, 3.4rem)',
+              fontWeight: 900,
+              color: '#f3e5ab',
+              lineHeight: 1.1,
+              textShadow: '0 4px 18px rgba(212, 175, 55, 0.45)',
+              margin: '8px 0 14px 0'
+            }}
+          >
+            {STORAGE_HIGHLIGHTS.totalStorage}
+          </div>
+
+          <p style={{ fontSize: '0.84rem', color: 'rgba(243, 229, 171, 0.7)', lineHeight: 1.5, margin: 0 }}>
+            Cumulative capacity across 999,973 verified catalog records. Formatted and synchronized through Archive X Engine.
+          </p>
+
+          <div style={{ marginTop: '18px', paddingTop: '14px', borderTop: '1px solid rgba(212, 175, 55, 0.2)', display: 'flex', justifyContent: 'space-between', fontSize: '0.78rem' }}>
+            <span style={{ color: 'rgba(243, 229, 171, 0.55)' }}>Files Counted:</span>
+            <span style={{ fontWeight: 800, color: '#2ecc71', fontFamily: "'JetBrains Mono', monospace" }}>{STORAGE_HIGHLIGHTS.totalFiles}</span>
+          </div>
+        </div>
+
+        {/* Largest File Highlight Card */}
+        <div
+          style={{
+            background: 'linear-gradient(135deg, rgba(22, 20, 32, 0.95) 0%, rgba(12, 12, 18, 0.98) 100%)',
+            border: '2px solid rgba(212, 175, 55, 0.45)',
+            borderRadius: '16px',
+            padding: '26px',
+            position: 'relative',
+            overflow: 'hidden',
+            boxShadow: '0 12px 35px rgba(0, 0, 0, 0.8), 0 0 20px rgba(212, 175, 55, 0.12)'
+          }}
+        >
+          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '12px' }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '8px', color: '#d4af37', fontSize: '0.74rem', fontWeight: 800, letterSpacing: '0.12em', textTransform: 'uppercase' }}>
+              <Trophy size={16} />
+              <span>LARGEST SINGLE FILE RECORD</span>
+            </div>
+            <span style={{ padding: '3px 8px', borderRadius: '4px', background: 'rgba(46, 204, 113, 0.15)', color: '#2ecc71', fontSize: '0.68rem', fontWeight: 700 }}>
+              MAX PAYLOAD
+            </span>
+          </div>
+
+          <div
+            style={{
+              fontFamily: "'Cinzel', serif",
+              fontSize: 'clamp(2.1rem, 3.8vw, 3rem)',
+              fontWeight: 900,
+              color: '#d4af37',
+              lineHeight: 1.1,
+              margin: '8px 0 10px 0'
+            }}
+          >
+            {STORAGE_HIGHLIGHTS.largestFileSize}
+          </div>
+
+          <div
+            style={{
+              background: '#08080c',
+              border: '1px solid rgba(212, 175, 55, 0.3)',
+              borderRadius: '8px',
+              padding: '12px 14px',
+              marginBottom: '14px'
+            }}
+          >
+            <span style={{ fontSize: '0.66rem', color: 'rgba(243, 229, 171, 0.5)', display: 'block', textTransform: 'uppercase', letterSpacing: '0.08em' }}>
+              EXACT TRUNCATED FILENAME
+            </span>
+            <span
+              style={{
+                fontFamily: "'JetBrains Mono', monospace",
+                fontSize: '0.86rem',
+                color: '#f3e5ab',
+                fontWeight: 700,
+                wordBreak: 'break-all',
+                display: 'block',
+                marginTop: '4px'
+              }}
+            >
+              {STORAGE_HIGHLIGHTS.largestFileName}
+            </span>
+          </div>
+
+          <p style={{ fontSize: '0.78rem', color: 'rgba(243, 229, 171, 0.55)', margin: 0, fontStyle: 'italic' }}>
+            Note: Source report preserves filename truncation. No extrapolation or manufactured characters applied.
+          </p>
+        </div>
+      </div>
+
+      {/* ── Sub-metrics Strip: Average Size & File Metrics ── */}
+      <div
+        style={{
+          display: 'grid',
+          gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))',
+          gap: '16px',
+          marginBottom: '28px'
+        }}
+      >
+        {/* Average File Size */}
+        <div
+          style={{
+            background: '#0d0d14',
+            border: '1px solid rgba(212, 175, 55, 0.25)',
+            borderRadius: '12px',
+            padding: '20px',
+            display: 'flex',
+            alignItems: 'center',
+            gap: '16px'
+          }}
+        >
+          <div
+            style={{
+              width: '46px',
+              height: '46px',
+              borderRadius: '10px',
+              background: 'rgba(212, 175, 55, 0.12)',
+              border: '1px solid rgba(212, 175, 55, 0.35)',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              color: '#d4af37'
+            }}
+          >
+            <Calculator size={22} />
+          </div>
+          <div>
+            <span style={{ fontSize: '0.7rem', color: 'rgba(243, 229, 171, 0.6)', textTransform: 'uppercase', letterSpacing: '0.08em', display: 'block' }}>
+              AVERAGE FILE SIZE
+            </span>
+            <span style={{ fontSize: '1.35rem', fontWeight: 800, color: '#f3e5ab', fontFamily: "'Cinzel', serif" }}>
+              {STORAGE_HIGHLIGHTS.averageFileSize}
+            </span>
+            <span style={{ fontSize: '0.72rem', color: 'rgba(243, 229, 171, 0.45)', display: 'block', marginTop: '2px' }}>
+              Reported audit average
+            </span>
+          </div>
+        </div>
+
+        {/* Total Files Audited */}
+        <div
+          style={{
+            background: '#0d0d14',
+            border: '1px solid rgba(212, 175, 55, 0.25)',
+            borderRadius: '12px',
+            padding: '20px',
+            display: 'flex',
+            alignItems: 'center',
+            gap: '16px'
+          }}
+        >
+          <div
+            style={{
+              width: '46px',
+              height: '46px',
+              borderRadius: '10px',
+              background: 'rgba(46, 204, 113, 0.12)',
+              border: '1px solid rgba(46, 204, 113, 0.35)',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              color: '#2ecc71'
+            }}
+          >
+            <FileDigit size={22} />
+          </div>
+          <div>
+            <span style={{ fontSize: '0.7rem', color: 'rgba(243, 229, 171, 0.6)', textTransform: 'uppercase', letterSpacing: '0.08em', display: 'block' }}>
+              TOTAL FILES RECORDED
+            </span>
+            <span style={{ fontSize: '1.35rem', fontWeight: 800, color: '#f3e5ab', fontFamily: "'Cinzel', serif" }}>
+              {STORAGE_HIGHLIGHTS.totalFiles}
+            </span>
+            <span style={{ fontSize: '0.72rem', color: '#2ecc71', display: 'block', marginTop: '2px', fontWeight: 600 }}>
+              100% catalog integrity verified
+            </span>
+          </div>
+        </div>
+
+        {/* Channel Target Reference */}
+        <div
+          style={{
+            background: '#0d0d14',
+            border: '1px solid rgba(212, 175, 55, 0.25)',
+            borderRadius: '12px',
+            padding: '20px',
+            display: 'flex',
+            alignItems: 'center',
+            gap: '16px'
+          }}
+        >
+          <div
+            style={{
+              width: '46px',
+              height: '46px',
+              borderRadius: '10px',
+              background: 'rgba(52, 152, 219, 0.12)',
+              border: '1px solid rgba(52, 152, 219, 0.35)',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              color: '#3498db'
+            }}
+          >
+            <Database size={22} />
+          </div>
+          <div>
+            <span style={{ fontSize: '0.7rem', color: 'rgba(243, 229, 171, 0.6)', textTransform: 'uppercase', letterSpacing: '0.08em', display: 'block' }}>
+              TARGET CHANNEL
+            </span>
+            <span style={{ fontSize: '0.98rem', fontWeight: 700, color: '#f3e5ab' }}>
+              {TARGET_INFO.name}
+            </span>
+            <span style={{ fontSize: '0.72rem', color: '#d4af37', fontFamily: "'JetBrains Mono', monospace", display: 'block', marginTop: '2px' }}>
+              {TARGET_INFO.channelId}
+            </span>
+          </div>
+        </div>
+      </div>
+
+      {/* ── Scan Record Dossier Footer ── */}
+      <div
+        style={{
+          background: '#0a0a10',
+          border: '1px solid rgba(212, 175, 55, 0.2)',
+          borderRadius: '10px',
+          padding: '14px 20px',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'space-between',
+          flexWrap: 'wrap',
+          gap: '12px',
+          fontSize: '0.78rem',
+          color: 'rgba(243, 229, 171, 0.7)'
+        }}
+      >
+        <div style={{ display: 'flex', alignItems: 'center', gap: '16px', flexWrap: 'wrap' }}>
+          <span><strong>SCAN ID:</strong> <span style={{ fontFamily: "'JetBrains Mono', monospace", color: '#d4af37' }}>{STORAGE_SCAN_RECORD.scanId}</span></span>
+          <span><strong>COMPLETED:</strong> {STORAGE_SCAN_RECORD.completed}</span>
+          <span><strong>STATUS:</strong> <span style={{ color: '#2ecc71', fontWeight: 700 }}>✅ {STORAGE_SCAN_RECORD.status}</span></span>
+        </div>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+          <span><strong>DATABASE CACHE:</strong> <span style={{ color: '#2ecc71', fontWeight: 700 }}>● {STORAGE_SCAN_RECORD.databaseCache}</span></span>
+          <span style={{ color: 'rgba(212, 175, 55, 0.3)' }}>|</span>
+          <span>{STORAGE_SCAN_RECORD.reportVersion}</span>
+        </div>
+      </div>
+    </div>
+  )
+}
+
