@@ -117,7 +117,7 @@
   .dock-wrap{
     position:absolute; z-index:5;
     top:calc(38 * var(--u)); left:0; right:0;
-    display:flex; justify-content:center;
+    display:flex; flex-direction:column; align-items:center; gap:calc(24 * var(--u));
     pointer-events:none;
   }
   .dock{
@@ -133,6 +133,66 @@
     box-shadow:0 calc(8 * var(--u)) calc(22 * var(--u)) rgba(0,0,0,.60),
                inset 0 1px rgba(212,175,55,.14);
     isolation:isolate;
+  }
+
+  /* ── Sovereign Movie Universe Floating Announcer Pill ── */
+  .movie-announcer-pill {
+    pointer-events: auto;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: calc(10 * var(--u));
+    background: rgba(14, 14, 22, 0.94);
+    border: 1px solid rgba(212, 175, 55, 0.45);
+    padding: calc(7 * var(--u)) calc(20 * var(--u));
+    border-radius: 999px;
+    box-shadow: 0 calc(8 * var(--u)) calc(24 * var(--u)) rgba(0, 0, 0, 0.8),
+                0 0 calc(14 * var(--u)) rgba(212, 175, 55, 0.12),
+                inset 0 1px 0 rgba(212, 175, 55, 0.25);
+    cursor: pointer;
+    font-size: calc(12.5 * var(--u));
+    font-weight: 500;
+    color: #f3e5ab;
+    text-decoration: none;
+    white-space: nowrap;
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    transition: transform 0.22s var(--ease), border-color 0.22s var(--ease), box-shadow 0.22s var(--ease), background 0.22s var(--ease), color 0.22s var(--ease);
+  }
+  .movie-announcer-pill:hover {
+    transform: translateY(calc(-2 * var(--u)));
+    border-color: rgba(212, 175, 55, 0.85);
+    background: rgba(22, 22, 34, 0.98);
+    box-shadow: 0 calc(12 * var(--u)) calc(30 * var(--u)) rgba(212, 175, 55, 0.28),
+                inset 0 1px 0 rgba(243, 229, 171, 0.4);
+    color: #ffffff;
+  }
+  .announcer-dot {
+    display: inline-block;
+    width: calc(8 * var(--u));
+    height: calc(8 * var(--u));
+    border-radius: 50%;
+    background: #2ecc71;
+    box-shadow: 0 0 calc(10 * var(--u)) #2ecc71;
+    flex-shrink: 0;
+    animation: livePulse 2s infinite ease-in-out;
+  }
+  @keyframes livePulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.55; transform: scale(0.85); }
+  }
+  .announcer-tag {
+    color: #d4af37;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+  }
+  .announcer-arrow {
+    color: #d4af37;
+    margin-left: calc(2 * var(--u));
+    transition: transform 0.2s ease;
+  }
+  .movie-announcer-pill:hover .announcer-arrow {
+    transform: translateX(calc(3 * var(--u)));
   }
   /* Anchored at the top so growth runs downward, out of the headline's way —
      a dock that grew from its centre would push into the nav's own row. */
@@ -648,12 +708,19 @@
     /* Floored with max(), not left on the design unit alone: this breakpoint
        runs from 900px down to 320px, so a pure --u dock is a 24px bar with
        12px targets on a phone. The floor only bites at the small end. */
-    .dock-wrap{ top:calc(30 * var(--u)); }
+    .dock-wrap{ top:calc(26 * var(--u)); gap:max(8px, calc(10 * var(--u))); }
     .dock{
       height:max(56px, calc(58 * var(--u)));
       padding:max(6px, calc(6 * var(--u)));
       gap:max(4px, calc(4 * var(--u)));
       border-radius:max(17px, calc(18 * var(--u)));
+    }
+    .movie-announcer-pill {
+      font-size: max(11px, calc(11.5 * var(--u)));
+      padding: max(5px, calc(5 * var(--u))) max(14px, calc(14 * var(--u)));
+      max-width: 92vw;
+      white-space: normal;
+      text-align: center;
     }
     .dock-item{
       height:max(44px, calc(46 * var(--u)));
@@ -698,6 +765,12 @@
 
     .scroll{ left:calc(702 * var(--u)); top:calc(470 * var(--u)); }
     .ghost{ font-size:calc(184 * var(--u)); letter-spacing:calc(14 * var(--u)); bottom:calc(660 * var(--u)); left:calc(-10 * var(--u)); }
+  }
+
+  @media (max-width:520px) {
+    .movie-announcer-pill {
+      display: none !important;
+    }
   }
 
   /* ── Cinematic Modals & Video Player ── */
@@ -869,17 +942,17 @@
         <span>Stream Backup 1</span>
       </a>
     </nav>
+
+    <!-- ── Sovereign Movie Universe Floating Announcer ── -->
+    <aside class="fade movie-announcer-pill" style="--d:400ms;" onclick="navigateToBackup1()" aria-label="Lucifer Stream Site Backup 1 Live Vault">
+      <span class="announcer-dot" aria-hidden="true"></span>
+      <strong class="announcer-tag">NEW:</strong>
+      <span class="announcer-text">Lucifer Stream Site Backup 1 is Live — Click to Enter 4K Vault</span>
+      <span class="announcer-arrow" aria-hidden="true">→</span>
+    </aside>
   </div>
 
   <div class="stage" id="stage">
-
-    <!-- ── Sovereign Movie Universe Floating Announcer ── -->
-    <aside class="fade" style="--d:400ms; position:absolute; top:calc(68 * var(--u)); left:50%; transform:translateX(-50%); z-index:999; display:flex; align-items:center; gap:10px; background:rgba(16,16,24,0.92); border:1px solid rgba(212,175,55,0.4); padding:6px 18px; border-radius:999px; box-shadow:0 10px 30px rgba(0,0,0,0.8); cursor:pointer; font-size:calc(13 * var(--u)); color:#f3e5ab; transition:transform 0.2s, border-color 0.2s;" onclick="navigateToBackup1()">
-      <span style="display:inline-block; width:8px; height:8px; border-radius:50%; background:#2ecc71; box-shadow:0 0 10px #2ecc71;"></span>
-      <strong style="color:#d4af37; letter-spacing:0.04em;">NEW:</strong>
-      <span>Lucifer Stream Site Backup 1 is Live — Click to Enter 4K Vault</span>
-      <span style="color:#d4af37;">→</span>
-    </aside>
 
     <div class="guides fade" style="--d:900ms" aria-hidden="true">
       <i style="left:calc(405 * var(--u))"></i>
