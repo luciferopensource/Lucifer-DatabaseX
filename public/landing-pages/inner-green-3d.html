@@ -699,44 +699,174 @@
     .scroll{ left:calc(702 * var(--u)); top:calc(470 * var(--u)); }
     .ghost{ font-size:calc(184 * var(--u)); letter-spacing:calc(14 * var(--u)); bottom:calc(660 * var(--u)); left:calc(-10 * var(--u)); }
   }
+
+  /* ── Cinematic Modals & Video Player ── */
+  .cinema-modal-backdrop {
+    position: fixed;
+    inset: 0;
+    z-index: 99999;
+    background: rgba(4, 4, 8, 0.92);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+  }
+  .cinema-modal-backdrop.is-open {
+    opacity: 1;
+    pointer-events: auto;
+  }
+  .cinema-modal-container {
+    width: min(920px, 94vw);
+    background: #0d0d14;
+    border: 1px solid rgba(212, 175, 55, 0.45);
+    border-radius: 16px;
+    box-shadow: 0 25px 60px rgba(0, 0, 0, 0.9), 0 0 40px rgba(212, 175, 55, 0.15);
+    overflow: hidden;
+    position: relative;
+    transform: scale(0.95);
+    transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    font-family: inherit;
+    color: #f3e5ab;
+  }
+  .cinema-modal-backdrop.is-open .cinema-modal-container {
+    transform: scale(1);
+  }
+  .modal-header {
+    padding: 16px 20px;
+    background: #101018;
+    border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .modal-close-btn {
+    background: transparent;
+    border: 1px solid rgba(212, 175, 55, 0.3);
+    color: #d4af37;
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    transition: all 0.2s;
+  }
+  .modal-close-btn:hover {
+    background: #d4af37;
+    color: #08080c;
+  }
+  .modal-cta-btn {
+    background: linear-gradient(135deg, #d4af37 0%, #aa771c 100%);
+    color: #08080c;
+    border: none;
+    border-radius: 8px;
+    padding: 10px 18px;
+    font-size: 0.85rem;
+    font-weight: 700;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    text-decoration: none;
+    transition: transform 0.15s, background 0.15s;
+  }
+  .modal-cta-btn:hover {
+    background: #f3e5ab;
+    transform: translateY(-1px);
+  }
+  .vault-row {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    background: rgba(16, 16, 24, 0.9);
+    border: 1px solid rgba(212, 175, 55, 0.18);
+    border-radius: 10px;
+    padding: 12px;
+    transition: border-color 0.2s;
+  }
+  .vault-row:hover {
+    border-color: #d4af37;
+  }
 </style>
 </head>
 <body>
+<script>
+  window.navigateToBackup1 = function() {
+    if (window.parent && window.parent !== window) {
+      window.parent.postMessage({ type: 'NAVIGATE', page: 'stream-backup-1' }, '*');
+    }
+    try { window.top.location.hash = '#stream-backup-1'; } catch (e) {}
+    if (window.self === window.top) {
+      window.location.href = '/lucifer-stream-site-backup-1.html';
+    }
+  };
+  window.openTrailerModal = function() {
+    var m = document.getElementById('trailerModal');
+    if (m) {
+      m.classList.add('is-open');
+      var v = document.getElementById('modalVideo');
+      if (v) { v.currentTime = 0; v.play().catch(function(){}); }
+    }
+  };
+  window.closeTrailerModal = function() {
+    var m = document.getElementById('trailerModal');
+    if (m) {
+      m.classList.remove('is-open');
+      var v = document.getElementById('modalVideo');
+      if (v) v.pause();
+    }
+  };
+  window.openVaultModal = function() {
+    var m = document.getElementById('vaultModal');
+    if (m) m.classList.add('is-open');
+  };
+  window.closeVaultModal = function() {
+    var m = document.getElementById('vaultModal');
+    if (m) m.classList.remove('is-open');
+  };
+</script>
 
 <main class="hero" id="hero">
   <canvas id="scene"></canvas>
 
   <div class="dock-wrap">
     <nav class="dock par-dock" style="--pd:5" data-spec aria-label="Lucifer Movie Universe">
-      <a class="dock-item dock-mark" data-dock data-spec data-burst href="#" style="--d:120ms" aria-label="Lucifer Database X — Cinema Universe">
+      <a class="dock-item dock-mark" data-dock data-spec data-burst data-action="home" href="#" style="--d:120ms" aria-label="Lucifer Stream Site Backup 1 — Home">
         <svg viewBox="0 0 22 24" aria-hidden="true">
           <path d="M11 1.3c-2.1 0-3.95 1.2-4.75 2.95C3.95 4.55 2.3 6.25 2.3 8.35c0 2.3 1.9 4.2 4.3 4.2h8.8c2.4 0 4.3-1.9 4.3-4.2 0-2.1-1.65-3.8-4-4.1C14.95 2.5 13.1 1.3 11 1.3Z"/>
           <path d="M9.6 12.55h2.8v4.2c1.35.3 2.45 1.15 3.15 2.4-1.35.4-2.4.15-3.15-.4v4.15H9.6v-4.15c-.75.55-1.8.8-3.15.4.7-1.25 1.8-2.1 3.15-2.4v-4.2Z"/>
         </svg>
       </a>
-      <a class="dock-item is-active" data-dock data-spec data-burst href="#" style="--d:180ms">
+      <a class="dock-item is-active" data-dock data-spec data-burst data-action="movies" href="#" style="--d:180ms">
         <span class="glyph" aria-hidden="true">
           <svg viewBox="0 0 16 16"><path d="M2 3h12a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1z"/><path d="M5 3v10M11 3v10M1 8h14"/></svg>
         </span>
-        <span>Cinema</span>
+        <span>Movies</span>
       </a>
-      <a class="dock-item" data-dock data-spec data-burst href="#" style="--d:230ms">
+      <a class="dock-item" data-dock data-spec data-burst data-action="vault" href="#" style="--d:230ms">
         <span class="glyph" aria-hidden="true">
           <svg viewBox="0 0 16 16"><circle cx="8" cy="8" r="7"/><circle cx="8" cy="8" r="2.5"/><path d="M8 1v2M8 13v2M1 8h2M13 8h2"/></svg>
         </span>
-        <span>4K Vaults</span>
+        <span>4K UHD Vault</span>
       </a>
-      <a class="dock-item" data-dock data-spec data-burst href="#" style="--d:280ms">
+      <a class="dock-item" data-dock data-spec data-burst data-action="trailers" href="#" style="--d:280ms">
         <span class="glyph" aria-hidden="true">
-          <svg viewBox="0 0 16 16"><path d="M2 10V6h3l4-3v10l-4-3H2z"/><path d="M12 5.5a4 4 0 0 1 0 5M14 3.5a7 7 0 0 1 0 9"/></svg>
+          <svg viewBox="0 0 16 16"><polygon points="4 2 14 8 4 14 4 2"/></svg>
         </span>
-        <span>Soundstage</span>
+        <span>4K Trailers</span>
       </a>
-      <a class="dock-item dock-item--enter" data-dock data-spec data-burst href="#" style="--d:330ms">
+      <a class="dock-item dock-item--enter" data-dock data-spec data-burst data-action="stream-backup-1" href="/lucifer-stream-site-backup-1.html" style="--d:330ms">
         <span class="glyph" aria-hidden="true">
-          <svg viewBox="0 0 16 16"><path d="M4 2v12l10-6z"/></svg>
+          <svg viewBox="0 0 16 16"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
         </span>
-        <span>Stream</span>
+        <span>Stream Backup 1</span>
       </a>
     </nav>
   </div>
@@ -752,18 +882,18 @@
     <div class="ghost fade" style="--d:1150ms" aria-hidden="true">CINEMA</div>
 
     <!-- card 1 sits behind the holographic roots -->
-    <article class="card card--about mask" style="--d:760ms; --pd:10; --pr:2.2">
+    <article class="card card--about mask" style="--d:760ms; --pd:10; --pr:2.2; cursor:pointer;" id="cardAbout" onclick="openVaultModal()">
       <figure class="portal" data-delay="920">
         <span class="portal-media"><img crossorigin="anonymous" src="https://images.unsplash.com/photo-1478720568477-152d9b164e26?auto=format&fit=crop&w=800&q=80" alt="Cinematic 35mm optical projector lens casting beam in darkness" loading="eager" decoding="async"></span>
         <canvas class="pixel-reveal" aria-hidden="true"></canvas>
       </figure>
-      <p class="label">Director's Cut</p>
-      <h2>Pure 4K Master.</h2>
+      <p class="label">Director's Cut • 4K Master</p>
+      <h2>Watch Film Master.</h2>
     </article>
 
     <!-- the About knob rides *outside* the card -->
     <span class="knob-float" style="--pd:10; --pr:2.2">
-      <button class="knob knob--about mask-circle" style="--d:1100ms" aria-label="Access Director's Vault">
+      <button class="knob knob--about mask-circle" style="--d:1100ms; cursor:pointer;" aria-label="Watch Film Master" id="knobCardAbout" onclick="openVaultModal()">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
           <circle cx="12" cy="12" r="9"/>
           <path d="M10 8l6 4-6 4V8z" fill="currentColor"/>
@@ -780,18 +910,14 @@
 
     <div class="pill-clip">
       <div class="pill mask" style="--d:600ms; --pd:15; --pr:1.4">
-        <div class="liquid-stage liquid-stage--explore" data-liquid-metal="explore">
+        <div class="liquid-stage liquid-stage--explore" data-liquid-metal="explore" onclick="navigateToBackup1()" style="cursor:pointer;">
           <div class="liquid-plate plate" aria-hidden="true"></div>
           <canvas class="liquid-fx" aria-hidden="true"></canvas>
-          <button class="liquid-button liquid-button--explore btn" type="button">
+          <button class="liquid-button liquid-button--explore btn" type="button" id="btnStreamMovies" onclick="navigateToBackup1()">
             <svg class="ico" viewBox="0 0 115 115" aria-hidden="true">
-              <g stroke="currentColor" stroke-width="11" stroke-linecap="round">
-                <path d="M14 34.5 H101"/>
-                <path d="M14 57.5 H101"/>
-                <path d="M14 80.5 H68"/>
-              </g>
+              <polygon points="25 15 95 57.5 25 100 25 15" fill="currentColor"/>
             </svg>
-            <span class="lbl">Explore the vault</span>
+            <span class="lbl">Stream Movies Now</span>
           </button>
         </div>
       </div>
@@ -800,10 +926,10 @@
     <span class="play-wrap" style="--pd:20">
       <span class="play-clip">
         <span class="play-glass mask-circle" style="--d:900ms">
-          <span class="liquid-stage liquid-stage--play" data-liquid-metal="play">
+          <span class="liquid-stage liquid-stage--play" data-liquid-metal="play" onclick="openTrailerModal()" style="cursor:pointer;">
             <span class="liquid-plate plate" aria-hidden="true"></span>
             <canvas class="liquid-fx" aria-hidden="true"></canvas>
-            <button class="liquid-button liquid-button--play btn" type="button" aria-label="Play 4K Showreel">
+            <button class="liquid-button liquid-button--play btn" type="button" aria-label="Watch 4K Trailer" id="btnPlayTrailer" onclick="openTrailerModal()">
               <svg class="ico" viewBox="0 0 24 24" aria-hidden="true">
                 <path d="M8 5.2v13.6L19 12z" fill="currentColor"/>
               </svg>
@@ -838,21 +964,99 @@
       <div><dt>Studio Sound</dt><dd>Dolby Atmos 7.1</dd></div>
     </dl>
 
-    <article class="card card--stove mask" style="--d:880ms; --pd:22; --pr:2.4">
-      <p class="label">Vault 07 • Spatial Master</p>
-      <h2>Dolby Vision Stream</h2>
+    <article class="card card--stove mask" style="--d:880ms; --pd:22; --pr:2.4; cursor:pointer;" id="cardStove" onclick="navigateToBackup1()">
+      <p class="label">Official Sovereign Mirror</p>
+      <h2>Lucifer Stream Site Backup 1</h2>
       <figure class="portal" data-delay="1080">
         <span class="portal-media"><img crossorigin="anonymous" src="https://images.unsplash.com/photo-1517604931442-7e0c8ed2963c?auto=format&fit=crop&w=800&q=80" alt="Grand cinematic auditorium screen in royal obsidian lighting" loading="eager" decoding="async"></span>
         <canvas class="pixel-reveal" aria-hidden="true"></canvas>
       </figure>
-      <button class="knob" aria-label="Launch Dolby Vision Stream">
+      <button class="knob" aria-label="Open Lucifer Stream Site Backup 1" id="knobCardBackup" onclick="navigateToBackup1()" style="cursor:pointer;">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
           <polygon points="5 3 19 12 5 21 5 3" fill="currentColor"/>
         </svg>
       </button>
     </article>
 
-    <a class="scroll mask" style="--d:1040ms; --pd:9" href="#">Stream Matrix<span class="track"></span></a>
+    <a class="scroll mask" style="--d:1040ms; --pd:9" href="/lucifer-stream-site-backup-1.html" id="linkStreamBackup" onclick="event.preventDefault(); navigateToBackup1();">Open Stream Site Backup 1<span class="track"></span></a>
+
+  </div>
+
+  <!-- ── 4K Trailer Modal ── -->
+  <div class="cinema-modal-backdrop" id="trailerModal" aria-hidden="true">
+    <div class="cinema-modal-container">
+      <div class="modal-header">
+        <div style="display:flex; align-items:center; gap:10px;">
+          <span style="color:#d4af37; font-weight:700; font-size:0.95rem; letter-spacing:0.04em;">LUCIFER 4K THEATRICAL TRAILER</span>
+          <span style="background:rgba(212,175,55,0.15); border:1px solid rgba(212,175,55,0.3); color:#f3e5ab; font-size:0.72rem; padding:2px 8px; border-radius:4px;">IMAX HDR</span>
+        </div>
+        <button class="modal-close-btn" id="closeTrailerModal" aria-label="Close Trailer">✕</button>
+      </div>
+      <div style="position:relative; width:100%; aspect-ratio:16/9; background:#000;">
+        <video id="modalVideo" style="width:100%; height:100%; object-fit:cover;" controls playsinline>
+          <source src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4" type="video/mp4">
+        </video>
+      </div>
+      <div style="padding:16px 20px; background:#101018; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:12px;">
+        <div>
+          <div style="color:#ffffff; font-weight:700; font-size:1.05rem;">Interstellar: The IMAX 70mm Master</div>
+          <div style="color:rgba(243,229,171,0.65); font-size:0.8rem; margin-top:2px;">Dolby Atmos TrueHD 7.1 • 86.4 Mbps HEVC • 4K UHD</div>
+        </div>
+        <button class="modal-cta-btn" id="btnModalStreamBackup">
+          <span>Stream Full Movie on Backup 1</span>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── 4K Movie Vault Showcase Modal ── -->
+  <div class="cinema-modal-backdrop" id="vaultModal" aria-hidden="true">
+    <div class="cinema-modal-container" style="max-height:85vh; display:flex; flex-direction:column;">
+      <div class="modal-header">
+        <div style="display:flex; align-items:center; gap:10px;">
+          <span style="color:#d4af37; font-weight:700; font-size:0.95rem; letter-spacing:0.04em;">SOVEREIGN 4K MOVIE VAULT</span>
+          <span style="background:rgba(46,204,113,0.15); border:1px solid rgba(46,204,113,0.3); color:#2ecc71; font-size:0.72rem; padding:2px 8px; border-radius:4px;">16 CITADELS ONLINE</span>
+        </div>
+        <button class="modal-close-btn" id="closeVaultModal" aria-label="Close Vault">✕</button>
+      </div>
+      <div style="padding:20px; overflow-y:auto; display:grid; gap:12px;">
+        <div class="vault-row">
+          <img src="https://images.unsplash.com/photo-1534447677768-be436bb09401?auto=format&fit=crop&w=120&q=80" alt="Interstellar" style="width:70px; height:90px; object-fit:cover; border-radius:6px;">
+          <div style="flex:1;">
+            <div style="color:#ffffff; font-weight:700;">Interstellar (2014) — IMAX 70mm</div>
+            <div style="color:rgba(243,229,171,0.65); font-size:0.78rem;">4K UHD • 86.4 Mbps • Dolby Atmos 7.1</div>
+            <div style="color:#d4af37; font-size:0.75rem; margin-top:4px;">Director: Christopher Nolan</div>
+          </div>
+          <button class="modal-cta-btn" id="btnVaultMovie1">Stream Now</button>
+        </div>
+        <div class="vault-row">
+          <img src="https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&w=120&q=80" alt="Blade Runner" style="width:70px; height:90px; object-fit:cover; border-radius:6px;">
+          <div style="flex:1;">
+            <div style="color:#ffffff; font-weight:700;">Blade Runner 2049 — Director's Cut</div>
+            <div style="color:rgba(243,229,171,0.65); font-size:0.78rem;">4K UHD • 74.2 Mbps • Dolby Vision</div>
+            <div style="color:#d4af37; font-size:0.75rem; margin-top:4px;">Director: Denis Villeneuve</div>
+          </div>
+          <button class="modal-cta-btn" id="btnVaultMovie2">Stream Now</button>
+        </div>
+        <div class="vault-row">
+          <img src="https://images.unsplash.com/photo-1509198397868-475647b2a1e5?auto=format&fit=crop&w=120&q=80" alt="Dune" style="width:70px; height:90px; object-fit:cover; border-radius:6px;">
+          <div style="flex:1;">
+            <div style="color:#ffffff; font-weight:700;">Dune: Part Two (2024)</div>
+            <div style="color:rgba(243,229,171,0.65); font-size:0.78rem;">4K UHD • 92.1 Mbps • DTS:X Enhanced</div>
+            <div style="color:#d4af37; font-size:0.75rem; margin-top:4px;">Director: Denis Villeneuve</div>
+          </div>
+          <button class="modal-cta-btn" id="btnVaultMovie3">Stream Now</button>
+        </div>
+      </div>
+      <div style="padding:14px 20px; background:#101018; border-top:1px solid rgba(212,175,55,0.2); text-align:center;">
+        <button class="modal-cta-btn" style="width:100%; justify-content:center;" id="btnVaultAllMovies">
+          <span>Open All 264,560 Movies on Lucifer Stream Site Backup 1</span>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </button>
+      </div>
+    </div>
+  </div>
 
   </div>
 </main>
@@ -2112,24 +2316,181 @@ window.__seek   = v => { clock = v; drawn = null; };
         item.classList.add('is-active');
       }
       burstAt(e.clientX, e.clientY);
+
+      var action = item.dataset.action;
+      if (action === 'stream-backup-1') {
+        navigateToBackup1();
+      } else if (action === 'trailers') {
+        openTrailerModal();
+      } else if (action === 'movies' || action === 'vault') {
+        openVaultModal();
+      } else if (action === 'home') {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
+    });
+  }
+
+  function navigateToBackup1() {
+    if (window.parent && window.parent !== window) {
+      window.parent.postMessage({ type: 'NAVIGATE', page: 'stream-backup-1' }, '*');
+    }
+    try {
+      window.top.location.hash = '#stream-backup-1';
+    } catch (e) {}
+    if (window.self === window.top) {
+      window.location.href = '/lucifer-stream-site-backup-1.html';
+    }
+  }
+  globalThis.navigateToBackup1 = navigateToBackup1;
+
+  function openTrailerModal() {
+    var m = document.getElementById('trailerModal');
+    if (!m) return;
+    m.classList.add('is-open');
+    var v = document.getElementById('modalVideo');
+    if (v) { v.currentTime = 0; v.play().catch(function(){}); }
+  }
+  globalThis.openTrailerModal = openTrailerModal;
+
+  function closeTrailerModal() {
+    var m = document.getElementById('trailerModal');
+    if (!m) return;
+    m.classList.remove('is-open');
+    var v = document.getElementById('modalVideo');
+    if (v) v.pause();
+  }
+  globalThis.closeTrailerModal = closeTrailerModal;
+
+  function openVaultModal() {
+    var m = document.getElementById('vaultModal');
+    if (m) m.classList.add('is-open');
+  }
+  globalThis.openVaultModal = openVaultModal;
+
+  function closeVaultModal() {
+    var m = document.getElementById('vaultModal');
+    if (m) m.classList.remove('is-open');
+  }
+  globalThis.closeVaultModal = closeVaultModal;
+
+  function initMovieInteractions() {
+    // 1. Stream Movies CTA button
+    var btnStream = document.getElementById('btnStreamMovies');
+    if (btnStream) {
+      btnStream.addEventListener('click', function (e) {
+        e.stopPropagation();
+        navigateToBackup1();
+      });
+    }
+
+    // 2. Play Trailer button
+    var btnPlay = document.getElementById('btnPlayTrailer');
+    if (btnPlay) {
+      btnPlay.addEventListener('click', function (e) {
+        e.stopPropagation();
+        openTrailerModal();
+      });
+    }
+
+    // 3. Card 1 Knob (Watch Film Master)
+    var knobAbout = document.getElementById('knobCardAbout');
+    if (knobAbout) {
+      knobAbout.addEventListener('click', function (e) {
+        e.stopPropagation();
+        openVaultModal();
+      });
+    }
+
+    var cardAbout = document.getElementById('cardAbout');
+    if (cardAbout) {
+      cardAbout.addEventListener('click', function (e) {
+        openVaultModal();
+      });
+    }
+
+    // 4. Card 2 Knob (Lucifer Stream Site Backup 1)
+    var knobBackup = document.getElementById('knobCardBackup');
+    if (knobBackup) {
+      knobBackup.addEventListener('click', function (e) {
+        e.stopPropagation();
+        navigateToBackup1();
+      });
+    }
+
+    var cardStove = document.getElementById('cardStove');
+    if (cardStove) {
+      cardStove.addEventListener('click', function (e) {
+        navigateToBackup1();
+      });
+    }
+
+    // 5. Scroll link at bottom
+    var linkScroll = document.getElementById('linkStreamBackup');
+    if (linkScroll) {
+      linkScroll.addEventListener('click', function (e) {
+        e.preventDefault();
+        navigateToBackup1();
+      });
+    }
+
+    // 6. Modal close handlers
+    var closeTrailer = document.getElementById('closeTrailerModal');
+    if (closeTrailer) closeTrailer.addEventListener('click', closeTrailerModal);
+
+    var closeVault = document.getElementById('closeVaultModal');
+    if (closeVault) closeVault.addEventListener('click', closeVaultModal);
+
+    var btnModalStream = document.getElementById('btnModalStreamBackup');
+    if (btnModalStream) {
+      btnModalStream.addEventListener('click', function () {
+        closeTrailerModal();
+        navigateToBackup1();
+      });
+    }
+
+    ['btnVaultMovie1', 'btnVaultMovie2', 'btnVaultMovie3', 'btnVaultAllMovies'].forEach(function (id) {
+      var el = document.getElementById(id);
+      if (el) {
+        el.addEventListener('click', function () {
+          closeVaultModal();
+          navigateToBackup1();
+        });
+      }
+    });
+
+    // Close on backdrop click
+    var trailerBackdrop = document.getElementById('trailerModal');
+    if (trailerBackdrop) {
+      trailerBackdrop.addEventListener('click', function (e) {
+        if (e.target === trailerBackdrop) closeTrailerModal();
+      });
+    }
+
+    var vaultBackdrop = document.getElementById('vaultModal');
+    if (vaultBackdrop) {
+      vaultBackdrop.addEventListener('click', function (e) {
+        if (e.target === vaultBackdrop) closeVaultModal();
+      });
+    }
+
+    // Escape key
+    window.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape') {
+        closeTrailerModal();
+        closeVaultModal();
+      }
     });
   }
 
   function ready() {
     if (readyStarted) return;
     readyStarted = true;
-    /* The pre-intro styles come from .js on <html>, set while the head was
-       parsing, and this runs in the same task as the rest of the script — so
-       nothing has forced the browser to compute them yet. Without a recalc
-       here it computes once, sees the finished state, and every transition is
-       skipped. */
     void document.body.offsetHeight;
     document.body.classList.add('is-ready');
     startParallax();
     startPortalReveal();
     initDock();
-    /* the wipes are done — drop the clips so nothing keeps a stacking
-       context alive (the About knob has to stay above the moss) */
+    initMovieInteractions();
     setTimeout(function () { document.body.classList.add('intro-done'); }, REDUCED ? 0 : 2900);
   }
 

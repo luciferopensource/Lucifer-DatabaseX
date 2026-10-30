@@ -1,7 +1,51 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import { SylvaHero } from './components/SylvaHero'
+import { LuciferStreamBackup } from './components/LuciferStreamBackup'
 
 export const App: React.FC = () => {
+  const [currentPage, setCurrentPage] = useState<'hero' | 'stream-backup-1'>(() => {
+    return window.location.hash === '#stream-backup-1' ? 'stream-backup-1' : 'hero'
+  })
+
+  useEffect(() => {
+    const handleHashChange = () => {
+      if (window.location.hash === '#stream-backup-1') {
+        setCurrentPage('stream-backup-1')
+      } else {
+        setCurrentPage('hero')
+      }
+    }
+
+    const handleMessage = (event: MessageEvent) => {
+      if (event.data?.type === 'NAVIGATE') {
+        if (event.data.page === 'stream-backup-1') {
+          window.location.hash = '#stream-backup-1'
+          setCurrentPage('stream-backup-1')
+        } else if (event.data.page === 'hero') {
+          window.location.hash = ''
+          setCurrentPage('hero')
+        }
+      }
+    }
+
+    window.addEventListener('hashchange', handleHashChange)
+    window.addEventListener('message', handleMessage)
+
+    return () => {
+      window.removeEventListener('hashchange', handleHashChange)
+      window.removeEventListener('message', handleMessage)
+    }
+  }, [])
+
+  const handleBackToHero = () => {
+    window.location.hash = ''
+    setCurrentPage('hero')
+  }
+
+  if (currentPage === 'stream-backup-1') {
+    return <LuciferStreamBackup onBack={handleBackToHero} />
+  }
+
   return (
     <div
       className="sylva-app-container"
