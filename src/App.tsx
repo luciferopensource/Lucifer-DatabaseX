@@ -37,6 +37,17 @@ export const App: React.FC = () => {
     }
   }, [])
 
+  useEffect(() => {
+    if (currentPage === 'stream-backup-1') {
+      document.documentElement.style.overflowY = 'auto'
+      document.body.style.overflowY = 'auto'
+      window.scrollTo({ top: 0, behavior: 'smooth' })
+    } else {
+      document.documentElement.style.overflowY = 'hidden'
+      document.body.style.overflowY = 'hidden'
+    }
+  }, [currentPage])
+
   const handleBackToHero = () => {
     window.location.hash = ''
     setCurrentPage('hero')
@@ -169,9 +180,11 @@ export const App: React.FC = () => {
       </header>
 
       {/* Page Content */}
-      <div style={{ paddingTop: '58px', minHeight: '100vh' }}>
+      <div style={{ paddingTop: '58px', minHeight: 'calc(100vh - 58px)', width: '100%' }}>
         {currentPage === 'stream-backup-1' ? (
-          <LuciferStreamBackup onBack={handleBackToHero} />
+          <div style={{ width: '100%', minHeight: 'calc(100vh - 58px)' }}>
+            <LuciferStreamBackup onBack={handleBackToHero} />
+          </div>
         ) : (
           <div
             className="sylva-app-container"
@@ -190,7 +203,7 @@ export const App: React.FC = () => {
               headingWeight="300"
               bodyWeight="300"
               primaryColor="#f3e5ab"
-              headingSize={63}
+              headingSize={56}
               bodySize={16.5}
               headingLetterSpacing={-0.006}
             />

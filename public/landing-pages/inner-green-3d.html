@@ -278,7 +278,8 @@
   .headline{
     position:absolute; z-index:4;
     left:calc(46 * var(--u)); top:calc(202 * var(--u));
-    font-size:calc(63 * var(--u)); line-height:calc(65 * var(--u));
+    max-width:calc(475 * var(--u));
+    font-size:calc(56 * var(--u)); line-height:calc(60 * var(--u));
     font-weight:300; letter-spacing:calc(-0.4 * var(--u));
     color:var(--ink);
   }
@@ -286,13 +287,13 @@
      of "Step" and "living" at the moment they land. The padding stays even
      though the clip is gone — it set the two lines' metrics, and removing it
      would shift line two. */
-  .headline span{ display:block; padding-bottom:.04em; }
+  .headline span{ display:block; padding-bottom:.04em; white-space:nowrap; }
   .headline span i{ display:inline-block; font-style:normal; }
 
   .lede{
     position:absolute; z-index:4;
-    left:calc(520 * var(--u)); top:calc(196 * var(--u));
-    width:calc(208 * var(--u));
+    left:calc(535 * var(--u)); top:calc(196 * var(--u));
+    width:calc(215 * var(--u));
     font-size:calc(16.5 * var(--u)); line-height:calc(22 * var(--u));
     font-weight:300; color:var(--ink-soft);
   }
@@ -731,7 +732,8 @@
     .dock-item .glyph{ width:max(19px, calc(20 * var(--u))); height:max(19px, calc(20 * var(--u))); }
     .dock-mark svg{ width:52%; height:52%; }
     .knob-float{ left:calc(644 * var(--u)); top:calc(1218 * var(--u)); transform-origin:calc(-264 * var(--u)) calc(-43 * var(--u)); }
-    .headline{ left:calc(34 * var(--u)); top:calc(128 * var(--u)); font-size:calc(62 * var(--u)); line-height:calc(66 * var(--u)); }
+    .headline{ left:calc(34 * var(--u)); top:calc(128 * var(--u)); max-width:none; font-size:calc(54 * var(--u)); line-height:calc(58 * var(--u)); }
+    .headline span{ white-space:normal; }
     .lede{ left:calc(34 * var(--u)); top:calc(288 * var(--u)); width:calc(400 * var(--u)); font-size:calc(19 * var(--u)); line-height:calc(27 * var(--u)); }
     /* one column: the frame keeps its aspect, re-anchored to the left rail */
     .pill-clip{
@@ -983,8 +985,8 @@
     </span>
 
     <h1 class="headline" style="--pd:18; --pr:1.2">
-      <span><i style="--d:260ms">Step into</i></span>
-      <span><i style="--d:360ms">the movie universe</i></span>
+      <span><i style="--d:260ms">Step into the</i></span>
+      <span><i style="--d:360ms">movie universe</i></span>
     </h1>
 
     <p class="lede mask" style="--d:480ms; --pd:14; --pr:1">Experience sovereign cinematic storytelling through lossless 4K HDR mastering, uncompressed spatial audio, and curated motion picture archives.</p>
