@@ -9,12 +9,7 @@ import {
   Cpu,
   Paperclip,
   CheckCircle2,
-  Database,
-  Lock,
-  GitCommit,
-  Radio,
-  Clock,
-  HardDrive
+  Radio
 } from 'lucide-react'
 import {
   TARGET_INFO,

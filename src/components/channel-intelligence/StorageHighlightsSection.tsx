@@ -1,15 +1,10 @@
 import React from 'react'
 import {
-  HardDrive,
   Radio,
   Trophy,
   FileDigit,
   Calculator,
-  ShieldCheck,
-  CheckCircle2,
-  Database,
-  Layers,
-  Sparkles
+  Database
 } from 'lucide-react'
 import {
   TARGET_INFO,

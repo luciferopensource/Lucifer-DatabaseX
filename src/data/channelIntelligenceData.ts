@@ -706,3 +706,76 @@ export const EXTENSION_RECORDS: ExtensionRecord[] = [
   { extension: '.x265-mkv', files: '1', numericFiles: 1, storage: '226.00 MB', category: 'Other / Unknown', page: 7 }
 ]
 
+export const EXTENSION_SCAN_RECORD: ScanRecord = {
+  scanId: 'LMS-4D0E-6C2A',
+  completed: '27 Oct 2026',
+  status: 'AUDITED',
+  databaseCache: 'SAVED',
+  reportVersion: 'Archive X v1.0.0'
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+// TELEGRAM COMMUNITY & CONTACT DISPATCH
+// ─────────────────────────────────────────────────────────────────────────────
+
+export interface TelegramCommunityLink {
+  id: string
+  title: string
+  handleOrEmail: string
+  url: string
+  badge: string
+  description: string
+  isEmail?: boolean
+}
+
+export const OWNER_INFO = {
+  name: 'Lucifer Morningstar',
+  role: 'Sovereign Architect & Founder',
+  entity: 'Lucifer Open Source'
+}
+
+export const TELEGRAM_COMMUNITY_LINKS: TelegramCommunityLink[] = [
+  {
+    id: 'lucifer-open-source',
+    title: 'Lucifer Open Source',
+    handleOrEmail: '@LuciferOpenSource',
+    url: 'https://t.me/LuciferOpenSource',
+    badge: 'Official Channel',
+    description: 'Core updates, system releases, intelligence reports, and sovereign open source repositories.'
+  },
+  {
+    id: 'discussion-group',
+    title: 'Lucifer Open Source Discussion Group',
+    handleOrEmail: '@LuciferOpenSourceDiscussionGroup',
+    url: 'https://t.me/LuciferOpenSourceDiscussionGroup',
+    badge: 'Discussion Community',
+    description: 'Architect roundtable, feature discussions, and peer engineering inquiries.'
+  },
+  {
+    id: 'request-database',
+    title: 'Request Lucifer DataBase',
+    handleOrEmail: '@RequestLuciferDatabase',
+    url: 'https://t.me/RequestLuciferDatabase',
+    badge: 'Direct Request',
+    description: 'Priority requests for media intelligence, index pipelines, and stream catalogue curation.'
+  },
+  {
+    id: 'media-database',
+    title: 'Lucifer Media Database',
+    handleOrEmail: '@luciferdatabase',
+    url: 'https://t.me/luciferdatabase',
+    badge: 'Primary Media Index',
+    description: 'Centralised high-definition stream vault, archive mirrors, and catalogued metadata records.'
+  },
+  {
+    id: 'contact-email',
+    title: 'Direct Strategic Contact',
+    handleOrEmail: 'ailuciferbaba@gmail.com',
+    url: 'mailto:ailuciferbaba@gmail.com',
+    badge: 'Direct Dispatch',
+    description: 'Direct inquiry channel to Lucifer Morningstar for enterprise partnerships and inquiries.',
+    isEmail: true
+  }
+]
+
+

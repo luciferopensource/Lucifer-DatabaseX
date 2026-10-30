@@ -1,16 +1,9 @@
 import React, { useState } from 'react'
 import {
-  Tv,
   Radio,
-  Sparkles,
-  BarChart3,
-  CheckCircle2,
-  HardDrive,
-  FileDigit,
-  Info
+  BarChart3
 } from 'lucide-react'
 import {
-  TARGET_INFO,
   RESOLUTION_BREAKDOWN,
   RESOLUTION_SCAN_RECORD
 } from '../../data/channelIntelligenceData'

@@ -1065,76 +1065,94 @@
 
   </div>
 
-  <!-- ── 4K Trailer Modal ── -->
+  <!-- ── Sovereign Media Intelligence Showcase Modal ── -->
   <div class="cinema-modal-backdrop" id="trailerModal" aria-hidden="true">
     <div class="cinema-modal-container">
       <div class="modal-header">
         <div style="display:flex; align-items:center; gap:10px;">
-          <span style="color:#d4af37; font-weight:700; font-size:0.95rem; letter-spacing:0.04em;">LUCIFER 4K THEATRICAL TRAILER</span>
-          <span style="background:rgba(212,175,55,0.15); border:1px solid rgba(212,175,55,0.3); color:#f3e5ab; font-size:0.72rem; padding:2px 8px; border-radius:4px;">IMAX HDR</span>
+          <span style="color:#d4af37; font-weight:700; font-size:0.95rem; letter-spacing:0.04em;">LUCIFER STREAM SITE BACKUP 1 — INTELLIGENCE DOSSIER</span>
+          <span style="background:rgba(212,175,55,0.15); border:1px solid rgba(212,175,55,0.3); color:#f3e5ab; font-size:0.72rem; padding:2px 8px; border-radius:4px;">945.67 TB AUDITED</span>
         </div>
-        <button class="modal-close-btn" id="closeTrailerModal" aria-label="Close Trailer">✕</button>
+        <button class="modal-close-btn" id="closeTrailerModal" aria-label="Close Modal">✕</button>
       </div>
-      <div style="position:relative; width:100%; aspect-ratio:16/9; background:#000;">
-        <video id="modalVideo" style="width:100%; height:100%; object-fit:cover;" controls playsinline>
-          <source src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4" type="video/mp4">
-        </video>
+      <div style="padding:24px; background:#0c0b11; display:grid; gap:16px;">
+        <div style="background:#13111b; border:1px solid rgba(212,175,55,0.25); border-radius:12px; padding:18px;">
+          <div style="color:#d4af37; font-size:0.75rem; font-family:'JetBrains Mono',monospace; text-transform:uppercase;">Target Channel Dossier</div>
+          <div style="color:#ffffff; font-weight:700; font-size:1.2rem; margin-top:4px;">Lucifer Stream Site 1 Backup</div>
+          <div style="color:rgba(243,229,171,0.7); font-size:0.82rem; font-family:'JetBrains Mono',monospace; margin-top:4px;">Channel ID: -1004300598114 • Node: Scanner-Node-01</div>
+        </div>
+        <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(180px, 1fr)); gap:10px;">
+          <div style="background:#13111b; padding:12px; border-radius:8px; border:1px solid rgba(255,255,255,0.08);">
+            <div style="font-size:0.72rem; color:#94a3b8; font-family:'JetBrains Mono',monospace;">TOTAL FILES</div>
+            <div style="font-size:1.25rem; font-weight:700; color:#f59e0b; font-family:'JetBrains Mono',monospace;">999,973</div>
+          </div>
+          <div style="background:#13111b; padding:12px; border-radius:8px; border:1px solid rgba(255,255,255,0.08);">
+            <div style="font-size:0.72rem; color:#94a3b8; font-family:'JetBrains Mono',monospace;">VAULT VOLUME</div>
+            <div style="font-size:1.25rem; font-weight:700; color:#d4af37; font-family:'JetBrains Mono',monospace;">945.67 TB</div>
+          </div>
+          <div style="background:#13111b; padding:12px; border-radius:8px; border:1px solid rgba(255,255,255,0.08);">
+            <div style="font-size:0.72rem; color:#94a3b8; font-family:'JetBrains Mono',monospace;">FORMATS AUDITED</div>
+            <div style="font-size:1.25rem; font-weight:700; color:#38bdf8; font-family:'JetBrains Mono',monospace;">364 Types</div>
+          </div>
+        </div>
       </div>
       <div style="padding:16px 20px; background:#101018; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:12px;">
-        <div>
-          <div style="color:#ffffff; font-weight:700; font-size:1.05rem;">Interstellar: The IMAX 70mm Master</div>
-          <div style="color:rgba(243,229,171,0.65); font-size:0.8rem; margin-top:2px;">Dolby Atmos TrueHD 7.1 • 86.4 Mbps HEVC • 4K UHD</div>
-        </div>
-        <button class="modal-cta-btn" id="btnModalStreamBackup">
-          <span>Stream Full Movie on Backup 1</span>
+        <div style="color:rgba(243,229,171,0.65); font-size:0.8rem;">Full cryptographic scan report with 7-page extension audit.</div>
+        <button class="modal-cta-btn" id="btnModalStreamBackup" onclick="navigateToBackup1();">
+          <span>Open Full Backup 1 Dashboard</span>
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
         </button>
       </div>
     </div>
   </div>
 
-  <!-- ── 4K Movie Vault Showcase Modal ── -->
+  <!-- ── Sovereign Stream Matrix Showcase Modal ── -->
   <div class="cinema-modal-backdrop" id="vaultModal" aria-hidden="true">
     <div class="cinema-modal-container" style="max-height:85vh; display:flex; flex-direction:column;">
       <div class="modal-header">
         <div style="display:flex; align-items:center; gap:10px;">
-          <span style="color:#d4af37; font-weight:700; font-size:0.95rem; letter-spacing:0.04em;">SOVEREIGN 4K MOVIE VAULT</span>
-          <span style="background:rgba(46,204,113,0.15); border:1px solid rgba(46,204,113,0.3); color:#2ecc71; font-size:0.72rem; padding:2px 8px; border-radius:4px;">16 CITADELS ONLINE</span>
+          <span style="color:#d4af37; font-weight:700; font-size:0.95rem; letter-spacing:0.04em;">LUCIFER STREAM SITE 1 BACKUP — RESOLUTION MATRIX</span>
+          <span style="background:rgba(46,204,113,0.15); border:1px solid rgba(46,204,113,0.3); color:#2ecc71; font-size:0.72rem; padding:2px 8px; border-radius:4px;">9 PROFILES VERIFIED</span>
         </div>
         <button class="modal-close-btn" id="closeVaultModal" aria-label="Close Vault">✕</button>
       </div>
       <div style="padding:20px; overflow-y:auto; display:grid; gap:12px;">
         <div class="vault-row">
-          <img src="https://images.unsplash.com/photo-1534447677768-be436bb09401?auto=format&fit=crop&w=120&q=80" alt="Interstellar" style="width:70px; height:90px; object-fit:cover; border-radius:6px;">
+          <div style="width:48px; height:48px; border-radius:10px; background:rgba(212,175,55,0.15); border:1px solid rgba(212,175,55,0.4); display:flex; align-items:center; justify-content:center; color:#d4af37; font-weight:700; font-family:'JetBrains Mono',monospace;">4K</div>
           <div style="flex:1;">
-            <div style="color:#ffffff; font-weight:700;">Interstellar (2014) — IMAX 70mm</div>
-            <div style="color:rgba(243,229,171,0.65); font-size:0.78rem;">4K UHD • 86.4 Mbps • Dolby Atmos 7.1</div>
-            <div style="color:#d4af37; font-size:0.75rem; margin-top:4px;">Director: Christopher Nolan</div>
+            <div style="color:#ffffff; font-weight:700;">2160p 4K UHD Tier</div>
+            <div style="color:rgba(243,229,171,0.65); font-size:0.78rem;">23,873 Files • 47.78 TB Storage Volume (2.39%)</div>
           </div>
-          <button class="modal-cta-btn" id="btnVaultMovie1">Stream Now</button>
+          <button class="modal-cta-btn" onclick="navigateToBackup1();">Inspect Tier</button>
         </div>
         <div class="vault-row">
-          <img src="https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&w=120&q=80" alt="Blade Runner" style="width:70px; height:90px; object-fit:cover; border-radius:6px;">
+          <div style="width:48px; height:48px; border-radius:10px; background:rgba(56,189,248,0.15); border:1px solid rgba(56,189,248,0.4); display:flex; align-items:center; justify-content:center; color:#38bdf8; font-weight:700; font-family:'JetBrains Mono',monospace;">FHD</div>
           <div style="flex:1;">
-            <div style="color:#ffffff; font-weight:700;">Blade Runner 2049 — Director's Cut</div>
-            <div style="color:rgba(243,229,171,0.65); font-size:0.78rem;">4K UHD • 74.2 Mbps • Dolby Vision</div>
-            <div style="color:#d4af37; font-size:0.75rem; margin-top:4px;">Director: Denis Villeneuve</div>
+            <div style="color:#ffffff; font-weight:700;">1080p Full HD Tier</div>
+            <div style="color:rgba(243,229,171,0.65); font-size:0.78rem;">215,907 Files • 328.60 TB Storage Volume (21.59%)</div>
           </div>
-          <button class="modal-cta-btn" id="btnVaultMovie2">Stream Now</button>
+          <button class="modal-cta-btn" onclick="navigateToBackup1();">Inspect Tier</button>
         </div>
         <div class="vault-row">
-          <img src="https://images.unsplash.com/photo-1509198397868-475647b2a1e5?auto=format&fit=crop&w=120&q=80" alt="Dune" style="width:70px; height:90px; object-fit:cover; border-radius:6px;">
+          <div style="width:48px; height:48px; border-radius:10px; background:rgba(52,211,153,0.15); border:1px solid rgba(52,211,153,0.4); display:flex; align-items:center; justify-content:center; color:#34d399; font-weight:700; font-family:'JetBrains Mono',monospace;">HD</div>
           <div style="flex:1;">
-            <div style="color:#ffffff; font-weight:700;">Dune: Part Two (2024)</div>
-            <div style="color:rgba(243,229,171,0.65); font-size:0.78rem;">4K UHD • 92.1 Mbps • DTS:X Enhanced</div>
-            <div style="color:#d4af37; font-size:0.75rem; margin-top:4px;">Director: Denis Villeneuve</div>
+            <div style="color:#ffffff; font-weight:700;">720p High Definition Tier</div>
+            <div style="color:rgba(243,229,171,0.65); font-size:0.78rem;">501,155 Files • 452.92 TB Storage Volume (50.12%)</div>
           </div>
-          <button class="modal-cta-btn" id="btnVaultMovie3">Stream Now</button>
+          <button class="modal-cta-btn" onclick="navigateToBackup1();">Inspect Tier</button>
+        </div>
+        <div class="vault-row">
+          <div style="width:48px; height:48px; border-radius:10px; background:rgba(245,158,11,0.15); border:1px solid rgba(245,158,11,0.4); display:flex; align-items:center; justify-content:center; color:#f59e0b; font-weight:700; font-family:'JetBrains Mono',monospace;">SD</div>
+          <div style="flex:1;">
+            <div style="color:#ffffff; font-weight:700;">480p Standard Definition Tier</div>
+            <div style="color:rgba(243,229,171,0.65); font-size:0.78rem;">242,478 Files • 113.62 TB Storage Volume (24.25%)</div>
+          </div>
+          <button class="modal-cta-btn" onclick="navigateToBackup1();">Inspect Tier</button>
         </div>
       </div>
       <div style="padding:14px 20px; background:#101018; border-top:1px solid rgba(212,175,55,0.2); text-align:center;">
-        <button class="modal-cta-btn" style="width:100%; justify-content:center;" id="btnVaultAllMovies">
-          <span>Open All 264,560 Movies on Lucifer Stream Site Backup 1</span>
+        <button class="modal-cta-btn" style="width:100%; justify-content:center;" id="btnVaultAllMovies" onclick="navigateToBackup1();">
+          <span>Enter Lucifer Stream Site 1 Backup Dashboard (945.67 TB Vault)</span>
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
         </button>
       </div>

@@ -1,7 +1,8 @@
 import React, { useState } from 'react'
 import {
   TELEGRAM_COMMUNITY_LINKS,
-  OWNER_INFO
+  OWNER_INFO,
+  TelegramCommunityLink
 } from '../../data/channelIntelligenceData'
 import {
   Send,
@@ -76,7 +77,7 @@ export const TelegramPromotionalFooter: React.FC = () => {
 
       {/* ── Official Community & Request Links Grid ── */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-        {TELEGRAM_COMMUNITY_LINKS.map((link) => {
+        {TELEGRAM_COMMUNITY_LINKS.map((link: TelegramCommunityLink) => {
           const isCopied = copiedId === link.id
 
           return (

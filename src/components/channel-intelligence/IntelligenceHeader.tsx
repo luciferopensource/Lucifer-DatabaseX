@@ -1,15 +1,12 @@
 import React from 'react'
 import {
   ShieldCheck,
-  Server,
   Radio,
   Clock,
   HardDrive,
   FileDigit,
   MessageSquare,
-  CheckCircle2,
-  Cpu,
-  Layers
+  CheckCircle2
 } from 'lucide-react'
 import { TARGET_INFO, SCAN_SUMMARY } from '../../data/channelIntelligenceData'
 
