@@ -1,51 +1,29 @@
-import React, { useState } from 'react'
-import { Navbar } from './components/Navbar'
-import { Hero } from './components/Hero'
-import { SourceCitadels } from './components/SourceCitadels'
-import { SchemaExplorer } from './components/SchemaExplorer'
-import { AboutSection } from './components/AboutSection'
-import { Footer } from './components/Footer'
-import { SourceCitadelType } from './types/media'
+import React from 'react'
+import { SylvaHero } from './components/SylvaHero'
 
 export const App: React.FC = () => {
-  const [selectedCitadel, setSelectedCitadel] = useState<'All' | SourceCitadelType>('All')
-
-  const handleSourcesClick = () => {
-    const sourcesSection = document.getElementById('sources')
-    if (sourcesSection) {
-      sourcesSection.scrollIntoView({ behavior: 'smooth' })
-    }
-  }
-
-  const handleSelectCitadel = (citadel: SourceCitadelType | 'All') => {
-    setSelectedCitadel(citadel)
-  }
-
   return (
-    <div className="lucifer-database-x-app" style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column' }}>
-      {/* Royal Fixed Navbar */}
-      <Navbar />
-
-      {/* Main Sections */}
-      <main style={{ flex: 1, width: '100%', minWidth: 0 }}>
-        {/* Cinematic Hero with 3D WebGL ThreePortalField */}
-        <Hero onSourcesClick={handleSourcesClick} />
-
-        {/* 16 Autonomous Scraper Citadels & Fleet Architecture */}
-        <SourceCitadels
-          activeCitadel={selectedCitadel}
-          onSelectCitadel={handleSelectCitadel}
-        />
-
-        {/* Architectural Schema Explorer */}
-        <SchemaExplorer />
-
-        {/* Archival Mission & Monorepo Integration */}
-        <AboutSection />
-      </main>
-
-      {/* Royal Footer */}
-      <Footer />
+    <div
+      className="sylva-app-container"
+      style={{
+        width: '100vw',
+        height: '100vh',
+        overflow: 'hidden',
+        margin: 0,
+        padding: 0,
+        background: '#383b34',
+      }}
+    >
+      <SylvaHero
+        headingFont="lexend"
+        bodyFont="lexend"
+        headingWeight="300"
+        bodyWeight="300"
+        primaryColor="#ffffff"
+        headingSize={63}
+        bodySize={16.5}
+        headingLetterSpacing={-0.006}
+      />
     </div>
   )
 }
