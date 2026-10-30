@@ -3,6 +3,8 @@
  * Lucifer Database X Sovereign Telemetry API
  */
 
+import { CATALOG_DATA } from './_catalog'
+
 export interface Env {
   // Cloudflare Pages bindings if configured
 }
@@ -16,7 +18,7 @@ export const onRequestGet: PagesFunction<Env> = async () => {
     databaseState: {
       sovereignRecordsIndexed: 264560,
       verifiedCitadelSources: 16,
-      catalogEntriesActive: 0,
+      catalogEntriesActive: CATALOG_DATA.length,
       encryptionMaster: 'SHA-256 Validated',
     },
     cluster: {

@@ -20,16 +20,16 @@ export const onRequestGet: PagesFunction = async (context) => {
 
   const results = CATALOG_DATA.filter((m) => {
     return (
-      m.title.toLowerCase().includes(q) ||
+      m.title?.toLowerCase().includes(q) ||
       (m.originalTitle && m.originalTitle.toLowerCase().includes(q)) ||
       (m.director && m.director.toLowerCase().includes(q)) ||
-      m.studio.toLowerCase().includes(q) ||
-      m.genres.some((g) => g.toLowerCase().includes(q)) ||
-      m.overview.toLowerCase().includes(q) ||
-      m.format.resolution.toLowerCase().includes(q) ||
-      m.format.videoCodec.toLowerCase().includes(q) ||
-      m.audio.primaryFormat.toLowerCase().includes(q) ||
-      m.luciferFleet.catalogHash.toLowerCase().includes(q)
+      m.studio?.toLowerCase().includes(q) ||
+      m.genres?.some((g) => g.toLowerCase().includes(q)) ||
+      m.overview?.toLowerCase().includes(q) ||
+      m.format?.resolution?.toLowerCase().includes(q) ||
+      m.format?.videoCodec?.toLowerCase().includes(q) ||
+      m.audio?.primaryFormat?.toLowerCase().includes(q) ||
+      m.luciferFleet?.catalogHash?.toLowerCase().includes(q)
     )
   })
 

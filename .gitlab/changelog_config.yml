@@ -1,0 +1,31 @@
+# ==============================================================================
+# GitLab Changelog Configuration — Lucifer Database X
+# Reference: https://docs.gitlab.com/ee/user/project/changelogs.html
+# ==============================================================================
+
+---
+# Category mappings linking commit trailers to user-facing changelog sections
+categories:
+  added: Features
+  fixed: Bug Fixes
+  changed: Changes
+  performance: Performance Improvements
+  security: Security Fixes
+  deprecated: Deprecations
+  removed: Removals
+  other: Maintenance
+
+# Template specifying the rendering format for each release entry
+template: |
+  {% if categories %}
+  {% for category in categories %}
+  ### {{ category.title }}
+
+  {% for entry in category.entries %}
+  - {{ entry.title }} ({% if entry.commit %}{{ entry.commit.reference }}{% endif %}{% if entry.author %} by {{ entry.author.name }}{% endif %})
+  {% endfor %}
+
+  {% endfor %}
+  {% else %}
+  No recorded user-facing changes in this release.
+  {% endif %}

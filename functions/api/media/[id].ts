@@ -9,7 +9,7 @@ export const onRequestGet: PagesFunction = async (context) => {
   const idOrSlug = (context.params.id as string || '').toLowerCase()
 
   const entry = CATALOG_DATA.find(
-    (m) => m.id.toLowerCase() === idOrSlug || m.slug.toLowerCase() === idOrSlug
+    (m) => m.id?.toLowerCase() === idOrSlug || m.slug?.toLowerCase() === idOrSlug
   )
 
   if (!entry) {

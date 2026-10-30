@@ -18,11 +18,11 @@ export const onRequestGet: PagesFunction = async (context) => {
   let results: MediaEntry[] = CATALOG_DATA
 
   if (category && category !== 'All') {
-    results = results.filter((m) => m.category.toLowerCase() === category.toLowerCase())
+    results = results.filter((m) => m.category?.toLowerCase() === category.toLowerCase())
   }
 
   if (resolution && resolution !== 'All') {
-    results = results.filter((m) => m.format.resolution.toLowerCase().includes(resolution.toLowerCase()))
+    results = results.filter((m) => m.format?.resolution?.toLowerCase().includes(resolution.toLowerCase()))
   }
 
   if (source && source !== 'All') {
@@ -30,20 +30,20 @@ export const onRequestGet: PagesFunction = async (context) => {
   }
 
   if (tag) {
-    results = results.filter((m) => m.collectionTags.some((t) => t.toLowerCase() === tag.toLowerCase()))
+    results = results.filter((m) => m.collectionTags?.some((t) => t.toLowerCase() === tag.toLowerCase()))
   }
 
   if (query) {
     results = results.filter((m) => {
       return (
-        m.title.toLowerCase().includes(query) ||
+        m.title?.toLowerCase().includes(query) ||
         (m.originalTitle && m.originalTitle.toLowerCase().includes(query)) ||
         (m.director && m.director.toLowerCase().includes(query)) ||
-        m.studio.toLowerCase().includes(query) ||
-        m.genres.some((g) => g.toLowerCase().includes(query)) ||
-        m.overview.toLowerCase().includes(query) ||
-        m.curatorNote.toLowerCase().includes(query) ||
-        m.luciferFleet.catalogHash.toLowerCase().includes(query)
+        m.studio?.toLowerCase().includes(query) ||
+        m.genres?.some((g) => g.toLowerCase().includes(query)) ||
+        m.overview?.toLowerCase().includes(query) ||
+        m.curatorNote?.toLowerCase().includes(query) ||
+        m.luciferFleet?.catalogHash?.toLowerCase().includes(query)
       )
     })
   }

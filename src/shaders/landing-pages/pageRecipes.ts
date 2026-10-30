@@ -18,7 +18,20 @@ const n = (value: number) => Number(value.toFixed(3));
 const unit = (value: number) => `calc(${n(value)} * var(--u))`;
 
 function withAlpha(hex: string, alpha: number) {
-  const [red, green, blue] = [1, 3, 5].map((index) => Number.parseInt(hex.slice(index, index + 2), 16));
+  let cleaned = hex.replace('#', '').trim();
+  if (cleaned.length === 3) {
+    cleaned = cleaned
+      .split('')
+      .map((c) => c + c)
+      .join('');
+  }
+  const num = Number.parseInt(cleaned, 16);
+  if (Number.isNaN(num) || cleaned.length !== 6) {
+    return `rgba(255, 255, 255, ${alpha})`;
+  }
+  const red = (num >> 16) & 255;
+  const green = (num >> 8) & 255;
+  const blue = num & 255;
   return `rgba(${red}, ${green}, ${blue}, ${alpha})`;
 }
 

@@ -761,7 +761,7 @@ img.sunset-valley-fallback {
   font-style: normal;
   font-weight: 400;
   font-display: swap;
-  src: url("./fonts/fragment-mono.woff2") format("woff2");
+  src: local("Courier New"), local("Menlo"), monospace;
 }
 
 .article-headings-component,

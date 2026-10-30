@@ -2,6 +2,17 @@
   "name": "lucifer-database-x",
   "private": true,
   "version": "1.0.0",
+  "description": "Sovereign media database, technical metadata indexing engine, and cinematic 3D exploration portal for the Lucifer Open Source media fleet.",
+  "license": "MIT",
+  "author": "Lucifer Open Source <ailuciferbaba@gmail.com>",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/luciferopensource/Lucifer-DatabaseX.git"
+  },
+  "homepage": "https://luciferdatabase.pages.dev",
+  "bugs": {
+    "url": "https://github.com/luciferopensource/Lucifer-DatabaseX/issues"
+  },
   "type": "module",
   "scripts": {
     "dev": "vite",
@@ -9,7 +20,6 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@types/three": "^0.186.0",
     "lucide-react": "^1.16.0",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
@@ -19,6 +29,7 @@
     "@types/node": "^22.13.0",
     "@types/react": "^19.0.8",
     "@types/react-dom": "^19.0.3",
+    "@types/three": "^0.186.0",
     "@vitejs/plugin-react": "^4.3.4",
     "typescript": "~5.7.3",
     "vite": "^6.1.0"
