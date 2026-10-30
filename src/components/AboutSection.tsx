@@ -53,7 +53,7 @@ export const AboutSection: React.FC = () => {
         <div
           style={{
             display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 300px), 1fr))',
             gap: '2rem',
             marginBottom: '4rem',
           }}
@@ -189,7 +189,7 @@ export const AboutSection: React.FC = () => {
               justifyContent: 'space-between',
             }}
           >
-            <div style={{ flex: '1 1 450px' }}>
+            <div style={{ flex: '1 1 320px', minWidth: 0, maxWidth: '100%' }}>
               <div
                 style={{
                   fontFamily: 'var(--font-mono)',
@@ -234,7 +234,9 @@ export const AboutSection: React.FC = () => {
             {/* Terminal Command Snapshot */}
             <div
               style={{
-                flex: '1 1 320px',
+                flex: '1 1 280px',
+                minWidth: 0,
+                maxWidth: '100%',
                 background: '#060608',
                 borderRadius: '6px',
                 border: '1px solid rgba(212, 175, 55, 0.2)',

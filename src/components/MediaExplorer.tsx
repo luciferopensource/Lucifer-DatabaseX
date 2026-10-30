@@ -441,7 +441,7 @@ export const MediaExplorer: React.FC<MediaExplorerProps> = ({
                 paddingTop: '1.25rem',
                 borderTop: '1px solid rgba(212, 175, 55, 0.15)',
                 display: 'grid',
-                gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))',
+                gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 200px), 1fr))',
                 gap: '1.25rem',
               }}
             >
@@ -679,7 +679,7 @@ export const MediaExplorer: React.FC<MediaExplorerProps> = ({
           <div
             style={{
               display: 'grid',
-              gridTemplateColumns: 'repeat(auto-fill, minmax(280px, 1fr))',
+              gridTemplateColumns: 'repeat(auto-fill, minmax(min(100%, 280px), 1fr))',
               gap: '2rem',
             }}
           >

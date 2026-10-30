@@ -69,7 +69,7 @@ export const App: React.FC = () => {
       <Navbar onSearchClick={handleSearchClick} />
 
       {/* Main Sections */}
-      <main style={{ flex: 1 }}>
+      <main style={{ flex: 1, width: '100%', minWidth: 0 }}>
         {/* Cinematic Hero with 3D WebGL ThreePortalField */}
         <Hero onExploreClick={handleExploreClick} onSourcesClick={handleSourcesClick} />
 

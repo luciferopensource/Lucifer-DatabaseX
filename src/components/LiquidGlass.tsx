@@ -32,6 +32,7 @@ export const LiquidGlass: React.FC<LiquidGlassProps> = ({
     y: 50,
     opacity: 0,
   })
+  const [isHovered, setIsHovered] = useState(false)
 
   const handlePointerMove = useCallback(
     (e: React.PointerEvent<HTMLDivElement>) => {
@@ -60,7 +61,12 @@ export const LiquidGlass: React.FC<LiquidGlassProps> = ({
     [tilt, specular]
   )
 
+  const handlePointerEnter = useCallback(() => {
+    setIsHovered(true)
+  }, [])
+
   const handlePointerLeave = useCallback(() => {
+    setIsHovered(false)
     setTransform('perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)')
     setSpecularPos((prev) => ({ ...prev, opacity: 0 }))
   }, [])
@@ -69,34 +75,42 @@ export const LiquidGlass: React.FC<LiquidGlassProps> = ({
     <div
       ref={containerRef}
       onClick={onClick}
+      onPointerEnter={handlePointerEnter}
       onPointerMove={handlePointerMove}
       onPointerLeave={handlePointerLeave}
-      className={`relative rounded-2xl bg-obsidian-900/60 backdrop-blur-xl border border-gold-900/40 shadow-card transition-transform duration-200 ease-out overflow-hidden group ${
-        borderGlow ? 'hover:border-gold-500/50 hover:shadow-gold' : ''
-      } ${className}`}
+      className={`relative overflow-hidden ${className}`}
       style={{
         transform,
         transformStyle: 'preserve-3d',
+        transition: 'transform 0.2s ease-out, border-color 0.25s ease, box-shadow 0.25s ease',
+        background: 'rgba(14, 14, 22, 0.72)',
+        backdropFilter: 'blur(16px)',
+        WebkitBackdropFilter: 'blur(16px)',
+        border: isHovered && borderGlow
+          ? '1px solid var(--color-gold-primary)'
+          : '1px solid var(--color-obsidian-border)',
+        borderRadius: '12px',
+        boxShadow: isHovered && borderGlow
+          ? '0 15px 35px rgba(0, 0, 0, 0.8), 0 0 20px rgba(212, 175, 55, 0.25)'
+          : '0 10px 25px rgba(0, 0, 0, 0.6)',
         ...style,
       }}
     >
       {/* Dynamic Specular Light Glint */}
       {specular && (
         <div
-          className="absolute inset-0 pointer-events-none transition-opacity duration-300 z-10"
+          className="absolute inset-0 pointer-events-none"
           style={{
             opacity: specularPos.opacity,
+            transition: 'opacity 0.3s ease',
             background: `radial-gradient(circle 240px at ${specularPos.x}% ${specularPos.y}%, rgba(252, 246, 186, 0.25), transparent 80%)`,
+            zIndex: 1,
           }}
         />
       )}
 
-      {/* Subtle Golden Sheen on Hover */}
-      <div className="absolute inset-0 bg-gradient-to-b from-gold-500/5 via-transparent to-transparent pointer-events-none opacity-50 group-hover:opacity-100 transition-opacity" />
-
       {/* Pane Content */}
-      <div className="relative z-0">{children}</div>
+      <div className="relative" style={{ zIndex: 0 }}>{children}</div>
     </div>
   )
 }
-

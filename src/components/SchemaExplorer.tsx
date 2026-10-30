@@ -256,6 +256,7 @@ export const SchemaExplorer: React.FC = () => {
             <pre
               style={{
                 margin: 0,
+                maxWidth: '100%',
                 fontFamily: 'var(--font-mono)',
                 fontSize: '0.86rem',
                 lineHeight: 1.6,

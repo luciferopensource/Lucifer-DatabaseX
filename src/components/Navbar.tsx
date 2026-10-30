@@ -65,9 +65,11 @@ export const Navbar: React.FC<NavbarProps> = ({ onSearchClick }) => {
             style={{
               display: 'flex',
               alignItems: 'center',
-              gap: '0.85rem',
+              gap: '0.65rem',
               textDecoration: 'none',
               color: 'inherit',
+              minWidth: 0,
+              flexShrink: 1,
             }}
           >
             <div
@@ -111,10 +113,11 @@ export const Navbar: React.FC<NavbarProps> = ({ onSearchClick }) => {
                 }}
               >
                 <span className="text-gold-gradient">LUCIFER</span>
-                <span style={{ color: '#ffffff' }}>DATABASE X</span>
+                <span className="brand-title-extra" style={{ color: '#ffffff' }}>DATABASE X</span>
                 <span style={{ fontSize: '0.95rem' }}>🗄️</span>
               </div>
               <div
+                className="brand-subtitle"
                 style={{
                   fontFamily: 'var(--font-mono)',
                   fontSize: '0.66rem',
@@ -133,7 +136,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onSearchClick }) => {
             style={{
               display: 'none',
               alignItems: 'center',
-              gap: '2rem',
+              gap: '1.4rem',
             }}
             className="desktop-nav"
           >
@@ -245,29 +248,17 @@ export const Navbar: React.FC<NavbarProps> = ({ onSearchClick }) => {
 
           {/* Right Action Icons: Search & Git Repos */}
           <div
+            className="nav-actions-container"
             style={{
               display: 'flex',
               alignItems: 'center',
-              gap: '0.85rem',
+              flexShrink: 0,
             }}
           >
             {/* Quick Search Trigger */}
             <button
               onClick={onSearchClick}
-              style={{
-                display: 'flex',
-                alignItems: 'center',
-                gap: '0.55rem',
-                background: 'rgba(212, 175, 55, 0.08)',
-                border: '1px solid rgba(212, 175, 55, 0.3)',
-                padding: '0.45rem 0.95rem',
-                borderRadius: '6px',
-                color: '#eaeaf2',
-                fontFamily: 'var(--font-modern)',
-                fontSize: '0.84rem',
-                cursor: 'pointer',
-                transition: 'all 0.2s ease',
-              }}
+              className="nav-search-btn"
               onMouseEnter={(e) => {
                 e.currentTarget.style.background = 'rgba(212, 175, 55, 0.16)'
                 e.currentTarget.style.borderColor = 'var(--color-gold-primary)'
@@ -285,6 +276,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onSearchClick }) => {
                 Search Catalog
               </span>
               <kbd
+                className="search-shortcut-kbd"
                 style={{
                   fontFamily: 'var(--font-mono)',
                   fontSize: '0.68rem',
@@ -304,12 +296,8 @@ export const Navbar: React.FC<NavbarProps> = ({ onSearchClick }) => {
               href="https://github.com/luciferopensource"
               target="_blank"
               rel="noopener noreferrer"
+              className="nav-social-btn"
               style={{
-                width: '38px',
-                height: '38px',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
                 borderRadius: '6px',
                 background: 'rgba(255, 255, 255, 0.04)',
                 border: '1px solid rgba(255, 255, 255, 0.08)',
@@ -337,12 +325,8 @@ export const Navbar: React.FC<NavbarProps> = ({ onSearchClick }) => {
               href="https://gitlab.com/luciferopensource"
               target="_blank"
               rel="noopener noreferrer"
+              className="nav-social-btn"
               style={{
-                width: '38px',
-                height: '38px',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
                 borderRadius: '6px',
                 background: 'rgba(255, 255, 255, 0.04)',
                 border: '1px solid rgba(255, 255, 255, 0.08)',
@@ -377,6 +361,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onSearchClick }) => {
                 borderRadius: '6px',
                 color: 'var(--color-gold-primary)',
                 cursor: 'pointer',
+                flexShrink: 0,
               }}
               className="mobile-nav-toggle"
               aria-label="Toggle navigation menu"
@@ -480,11 +465,43 @@ export const Navbar: React.FC<NavbarProps> = ({ onSearchClick }) => {
             <Info size={18} color="var(--color-gold-primary)" />
             <span>About Lucifer Database X</span>
           </a>
+
+          {/* Mobile Drawer Social Links */}
+          <div
+            style={{
+              display: 'flex',
+              gap: '0.75rem',
+              marginTop: '0.5rem',
+              paddingTop: '1rem',
+              borderTop: '1px solid rgba(212, 175, 55, 0.2)',
+            }}
+          >
+            <a
+              href="https://github.com/luciferopensource"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn-royal-secondary"
+              style={{ flex: 1, padding: '0.55rem 0.75rem', fontSize: '0.78rem', gap: '0.45rem' }}
+            >
+              <GithubIcon size={15} />
+              <span>GitHub</span>
+            </a>
+            <a
+              href="https://gitlab.com/luciferopensource"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn-royal-secondary"
+              style={{ flex: 1, padding: '0.55rem 0.75rem', fontSize: '0.78rem', gap: '0.45rem', color: '#fc6d26' }}
+            >
+              <GitlabIcon size={15} />
+              <span>GitLab</span>
+            </a>
+          </div>
         </div>
       )}
 
       <style>{`
-        @media (min-width: 900px) {
+        @media (min-width: 1080px) {
           .desktop-nav {
             display: flex !important;
           }
@@ -493,6 +510,11 @@ export const Navbar: React.FC<NavbarProps> = ({ onSearchClick }) => {
           }
           .search-label {
             display: inline !important;
+          }
+        }
+        @media (max-width: 768px) {
+          .nav-social-btn {
+            display: none !important;
           }
         }
       `}</style>
