@@ -1,23 +1,22 @@
 import React from 'react'
 import {
   Sparkles,
-  Film,
   Disc3,
   ShieldCheck,
   ChevronDown,
   Layers,
   Cpu,
   Radio,
+  Shield,
 } from 'lucide-react'
 import { ThreePortalField } from './ThreePortalField'
 import { GoldParticleCanvas } from './GoldParticleCanvas'
 
 interface HeroProps {
-  onExploreClick: () => void
   onSourcesClick?: () => void
 }
 
-export const Hero: React.FC<HeroProps> = ({ onExploreClick, onSourcesClick }) => {
+export const Hero: React.FC<HeroProps> = ({ onSourcesClick }) => {
   return (
     <section className="hero-section">
       {/* Ambient Gold Particle Background Layer */}
@@ -104,21 +103,19 @@ export const Hero: React.FC<HeroProps> = ({ onExploreClick, onSourcesClick }) =>
 
             {/* Call to Actions */}
             <div className="hero-actions">
-              <button onClick={onExploreClick} className="btn-royal-primary">
-                <Film size={18} />
-                <span>Explore Master Catalog</span>
-              </button>
-
-              {onSourcesClick && (
-                <button onClick={onSourcesClick} className="btn-royal-secondary">
-                  <Radio size={18} />
-                  <span>16 Scraper Citadels</span>
-                </button>
-              )}
+              <a href="#sources" onClick={onSourcesClick} className="btn-royal-primary">
+                <Radio size={18} />
+                <span>16 Scraper Citadels</span>
+              </a>
 
               <a href="#schema" className="btn-royal-secondary">
                 <Cpu size={18} />
-                <span>Architecture</span>
+                <span>Registry Schema</span>
+              </a>
+
+              <a href="#about" className="btn-royal-secondary">
+                <Shield size={18} />
+                <span>Ecosystem Architecture</span>
               </a>
             </div>
 

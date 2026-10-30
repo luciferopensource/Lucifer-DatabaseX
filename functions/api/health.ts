@@ -16,7 +16,7 @@ export const onRequestGet: PagesFunction<Env> = async () => {
     databaseState: {
       sovereignRecordsIndexed: 264560,
       verifiedCitadelSources: 16,
-      catalogEntriesActive: 12,
+      catalogEntriesActive: 0,
       encryptionMaster: 'SHA-256 Validated',
     },
     cluster: {

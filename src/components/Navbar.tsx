@@ -1,22 +1,15 @@
 import React, { useState, useEffect } from 'react'
 import {
   Database,
-  Film,
-  Layers,
   Code2,
   Info,
-  Search,
   Menu,
   X,
   Crown,
 } from 'lucide-react'
 import { GithubIcon, GitlabIcon } from './Icons'
 
-interface NavbarProps {
-  onSearchClick: () => void
-}
-
-export const Navbar: React.FC<NavbarProps> = ({ onSearchClick }) => {
+export const Navbar: React.FC = () => {
   const [isScrolled, setIsScrolled] = useState(false)
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
 
@@ -141,48 +134,6 @@ export const Navbar: React.FC<NavbarProps> = ({ onSearchClick }) => {
             className="desktop-nav"
           >
             <a
-              href="#explorer"
-              style={{
-                display: 'flex',
-                alignItems: 'center',
-                gap: '0.4rem',
-                color: '#d4d4e2',
-                textDecoration: 'none',
-                fontFamily: 'var(--font-modern)',
-                fontSize: '0.92rem',
-                fontWeight: 500,
-                letterSpacing: '0.02em',
-                transition: 'color 0.2s',
-              }}
-              onMouseEnter={(e) => (e.currentTarget.style.color = '#fcf6ba')}
-              onMouseLeave={(e) => (e.currentTarget.style.color = '#d4d4e2')}
-            >
-              <Film size={15} color="var(--color-gold-primary)" />
-              <span>Media Explorer</span>
-            </a>
-
-            <a
-              href="#collections"
-              style={{
-                display: 'flex',
-                alignItems: 'center',
-                gap: '0.4rem',
-                color: '#d4d4e2',
-                textDecoration: 'none',
-                fontFamily: 'var(--font-modern)',
-                fontSize: '0.92rem',
-                fontWeight: 500,
-                letterSpacing: '0.02em',
-                transition: 'color 0.2s',
-              }}
-              onMouseEnter={(e) => (e.currentTarget.style.color = '#fcf6ba')}
-              onMouseLeave={(e) => (e.currentTarget.style.color = '#d4d4e2')}
-            >
-              <Layers size={15} color="var(--color-gold-primary)" />
-              <span>Royal Collections</span>
-            </a>
-
-            <a
               href="#sources"
               style={{
                 display: 'flex',
@@ -255,10 +206,11 @@ export const Navbar: React.FC<NavbarProps> = ({ onSearchClick }) => {
               flexShrink: 0,
             }}
           >
-            {/* Quick Search Trigger */}
-            <button
-              onClick={onSearchClick}
+            {/* Quick Citadels Jump Trigger */}
+            <a
+              href="#sources"
               className="nav-search-btn"
+              style={{ textDecoration: 'none', display: 'flex', alignItems: 'center', gap: '0.45rem' }}
               onMouseEnter={(e) => {
                 e.currentTarget.style.background = 'rgba(212, 175, 55, 0.16)'
                 e.currentTarget.style.borderColor = 'var(--color-gold-primary)'
@@ -269,27 +221,14 @@ export const Navbar: React.FC<NavbarProps> = ({ onSearchClick }) => {
                 e.currentTarget.style.borderColor = 'rgba(212, 175, 55, 0.3)'
                 e.currentTarget.style.boxShadow = 'none'
               }}
-              aria-label="Search media catalog"
+              aria-label="View 16 Scraper Citadels"
+              title="16 Scraper Citadels"
             >
-              <Search size={15} color="var(--color-gold-primary)" />
-              <span style={{ display: 'none' }} className="search-label">
-                Search Catalog
+              <Database size={15} color="var(--color-gold-primary)" />
+              <span className="search-label" style={{ color: '#eaeaf2', fontSize: '0.82rem', fontWeight: 500 }}>
+                Citadels
               </span>
-              <kbd
-                className="search-shortcut-kbd"
-                style={{
-                  fontFamily: 'var(--font-mono)',
-                  fontSize: '0.68rem',
-                  padding: '0.1rem 0.35rem',
-                  borderRadius: '3px',
-                  background: 'rgba(0, 0, 0, 0.45)',
-                  border: '1px solid rgba(212, 175, 55, 0.3)',
-                  color: 'var(--color-gold-light)',
-                }}
-              >
-                /
-              </kbd>
-            </button>
+            </a>
 
             {/* GitHub Link */}
             <a
@@ -386,38 +325,6 @@ export const Navbar: React.FC<NavbarProps> = ({ onSearchClick }) => {
           className="mobile-drawer"
         >
           <a
-            href="#explorer"
-            onClick={() => setMobileMenuOpen(false)}
-            style={{
-              display: 'flex',
-              alignItems: 'center',
-              gap: '0.75rem',
-              color: '#f0f0fa',
-              textDecoration: 'none',
-              fontSize: '1.05rem',
-              fontFamily: 'var(--font-royal)',
-            }}
-          >
-            <Film size={18} color="var(--color-gold-primary)" />
-            <span>Media Explorer</span>
-          </a>
-          <a
-            href="#collections"
-            onClick={() => setMobileMenuOpen(false)}
-            style={{
-              display: 'flex',
-              alignItems: 'center',
-              gap: '0.75rem',
-              color: '#f0f0fa',
-              textDecoration: 'none',
-              fontSize: '1.05rem',
-              fontFamily: 'var(--font-royal)',
-            }}
-          >
-            <Layers size={18} color="var(--color-gold-primary)" />
-            <span>Royal Collections</span>
-          </a>
-          <a
             href="#sources"
             onClick={() => setMobileMenuOpen(false)}
             style={{
@@ -447,7 +354,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onSearchClick }) => {
             }}
           >
             <Code2 size={18} color="var(--color-gold-primary)" />
-            <span>Architecture</span>
+            <span>Architecture & Schema</span>
           </a>
           <a
             href="#about"
