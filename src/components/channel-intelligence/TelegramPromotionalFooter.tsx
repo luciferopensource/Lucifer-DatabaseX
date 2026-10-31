@@ -206,9 +206,9 @@ export const TelegramPromotionalFooter: React.FC = () => {
               style={{
                 position: 'relative',
                 borderRadius: '18px',
-                background: 'linear-gradient(135deg, rgba(20, 18, 30, 0.78) 0%, rgba(12, 11, 18, 0.85) 100%)',
-                backdropFilter: 'blur(24px) saturate(180%)',
-                WebkitBackdropFilter: 'blur(24px) saturate(180%)',
+                background: 'linear-gradient(135deg, rgba(255, 255, 255, 0.08) 0%, rgba(22, 18, 36, 0.38) 50%, rgba(10, 10, 18, 0.52) 100%)',
+                backdropFilter: 'blur(20px) saturate(200%) contrast(104%)',
+                WebkitBackdropFilter: 'blur(20px) saturate(200%) contrast(104%)',
                 padding: '24px',
                 border: '1px solid rgba(212, 175, 55, 0.32)',
                 boxShadow: '0 12px 35px rgba(0, 0, 0, 0.65), inset 0 1px 1.5px rgba(255, 255, 255, 0.15)',

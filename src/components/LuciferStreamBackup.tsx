@@ -64,9 +64,7 @@ export const LuciferStreamBackup: React.FC<LuciferStreamBackupProps> = ({ onBack
     <div
       style={{
         minHeight: '100vh',
-        background: 'rgba(8, 8, 14, 0.42)',
-        backdropFilter: 'blur(16px) saturate(175%)',
-        WebkitBackdropFilter: 'blur(16px) saturate(175%)',
+        background: 'transparent',
         color: '#f3e5ab',
         fontFamily: "'Outfit', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif",
         overflowY: 'visible',

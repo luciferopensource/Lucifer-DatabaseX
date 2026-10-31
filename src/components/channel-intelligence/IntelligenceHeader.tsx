@@ -22,11 +22,13 @@ export const IntelligenceHeader: React.FC = () => {
           flexWrap: 'wrap',
           gap: '12px',
           padding: '10px 18px',
-          background: 'linear-gradient(90deg, rgba(16,16,24,0.96) 0%, rgba(26,22,34,0.92) 50%, rgba(16,16,24,0.96) 100%)',
+          background: 'linear-gradient(90deg, rgba(255, 255, 255, 0.08) 0%, rgba(26, 22, 38, 0.52) 50%, rgba(16, 16, 26, 0.6) 100%)',
+          backdropFilter: 'blur(20px) saturate(200%)',
+          WebkitBackdropFilter: 'blur(20px) saturate(200%)',
           border: '1px solid rgba(212, 175, 55, 0.32)',
           borderBottom: '2px solid rgba(212, 175, 55, 0.55)',
           borderRadius: '12px 12px 0 0',
-          boxShadow: '0 8px 32px rgba(0,0,0,0.7)',
+          boxShadow: '0 8px 32px rgba(0,0,0,0.5), inset 0 1px 1px rgba(255,255,255,0.2)',
         }}
       >
         <div style={{ display: 'flex', alignItems: 'center', gap: '10px', flexWrap: 'wrap' }}>
@@ -82,14 +84,17 @@ export const IntelligenceHeader: React.FC = () => {
         </div>
       </div>
 
-      {/* ── Main Hero Title Console ── */}
+      {/* ── Main Hero Title Console (macOS Translucent Liquid Glass) ── */}
       <div
         style={{
           padding: '28px 24px',
-          background: 'radial-gradient(ellipse at 50% 0%, rgba(30, 24, 40, 0.85) 0%, rgba(10, 10, 16, 0.98) 100%)',
-          borderLeft: '1px solid rgba(212, 175, 55, 0.35)',
-          borderRight: '1px solid rgba(212, 175, 55, 0.35)',
-          borderBottom: '1px solid rgba(212, 175, 55, 0.25)',
+          background: 'linear-gradient(135deg, rgba(255, 255, 255, 0.08) 0%, rgba(28, 22, 42, 0.42) 50%, rgba(10, 10, 18, 0.55) 100%)',
+          backdropFilter: 'blur(22px) saturate(210%) contrast(104%) brightness(1.08)',
+          WebkitBackdropFilter: 'blur(22px) saturate(210%) contrast(104%) brightness(1.08)',
+          borderLeft: '1.5px solid rgba(212, 175, 55, 0.35)',
+          borderRight: '1.5px solid rgba(212, 175, 55, 0.35)',
+          borderBottom: '1.5px solid rgba(212, 175, 55, 0.28)',
+          boxShadow: '0 20px 50px rgba(0, 0, 0, 0.55), inset 0 1.5px 1.5px rgba(255, 255, 255, 0.35)',
           position: 'relative',
           overflow: 'hidden'
         }}
@@ -127,20 +132,22 @@ export const IntelligenceHeader: React.FC = () => {
               >
                 {TARGET_INFO.name}
               </h1>
-              <p style={{ fontSize: '0.86rem', color: 'rgba(243, 229, 171, 0.65)', marginTop: '8px', maxWidth: '780px', lineHeight: 1.5 }}>
+              <p style={{ fontSize: '0.86rem', color: 'rgba(243, 229, 171, 0.75)', marginTop: '8px', maxWidth: '780px', lineHeight: 1.5 }}>
                 Comprehensive Media Archive & Cinematic Stream Collection audit. Real-time telemetry, resolution matrices, storage distribution, and complete 7-page extension audit powered by Archive X Engine.
               </p>
             </div>
 
-            {/* Target ID Badge */}
+            {/* Target ID Badge (Frosted Acrylic Capsule) */}
             <div
               style={{
-                background: 'rgba(16, 16, 24, 0.85)',
-                border: '1px solid rgba(212, 175, 55, 0.35)',
+                background: 'linear-gradient(135deg, rgba(255, 255, 255, 0.08) 0%, rgba(22, 18, 34, 0.45) 100%)',
+                backdropFilter: 'blur(16px)',
+                WebkitBackdropFilter: 'blur(16px)',
+                border: '1.5px solid rgba(212, 175, 55, 0.38)',
                 padding: '12px 18px',
-                borderRadius: '10px',
+                borderRadius: '12px',
                 minWidth: '220px',
-                boxShadow: 'inset 0 1px 0 rgba(212, 175, 55, 0.2)'
+                boxShadow: '0 8px 24px rgba(0, 0, 0, 0.4), inset 0 1px 1px rgba(255, 255, 255, 0.25)'
               }}
             >
               <div style={{ fontSize: '0.7rem', color: 'rgba(243, 229, 171, 0.55)', letterSpacing: '0.08em', textTransform: 'uppercase' }}>
@@ -168,14 +175,16 @@ export const IntelligenceHeader: React.FC = () => {
             {/* KPI 1: Total Storage */}
             <div
               style={{
-                background: 'rgba(16, 16, 24, 0.9)',
-                border: '1px solid rgba(212, 175, 55, 0.3)',
-                borderRadius: '10px',
+                background: 'linear-gradient(135deg, rgba(255, 255, 255, 0.08) 0%, rgba(22, 18, 36, 0.42) 100%)',
+                backdropFilter: 'blur(16px)',
+                WebkitBackdropFilter: 'blur(16px)',
+                border: '1.5px solid rgba(212, 175, 55, 0.35)',
+                borderRadius: '12px',
                 padding: '16px',
                 display: 'flex',
                 alignItems: 'center',
                 gap: '14px',
-                boxShadow: '0 6px 20px rgba(0,0,0,0.5)',
+                boxShadow: '0 8px 24px rgba(0,0,0,0.45), inset 0 1px 1px rgba(255,255,255,0.25)',
                 transition: 'transform 0.2s, border-color 0.2s'
               }}
             >
@@ -207,14 +216,16 @@ export const IntelligenceHeader: React.FC = () => {
             {/* KPI 2: Total Files Found */}
             <div
               style={{
-                background: 'rgba(16, 16, 24, 0.9)',
-                border: '1px solid rgba(212, 175, 55, 0.3)',
-                borderRadius: '10px',
+                background: 'linear-gradient(135deg, rgba(255, 255, 255, 0.08) 0%, rgba(22, 18, 36, 0.42) 100%)',
+                backdropFilter: 'blur(16px)',
+                WebkitBackdropFilter: 'blur(16px)',
+                border: '1.5px solid rgba(212, 175, 55, 0.35)',
+                borderRadius: '12px',
                 padding: '16px',
                 display: 'flex',
                 alignItems: 'center',
                 gap: '14px',
-                boxShadow: '0 6px 20px rgba(0,0,0,0.5)'
+                boxShadow: '0 8px 24px rgba(0,0,0,0.45), inset 0 1px 1px rgba(255,255,255,0.25)'
               }}
             >
               <div
@@ -245,14 +256,16 @@ export const IntelligenceHeader: React.FC = () => {
             {/* KPI 3: Messages Checked */}
             <div
               style={{
-                background: 'rgba(16, 16, 24, 0.9)',
-                border: '1px solid rgba(212, 175, 55, 0.3)',
-                borderRadius: '10px',
+                background: 'linear-gradient(135deg, rgba(255, 255, 255, 0.08) 0%, rgba(22, 18, 36, 0.42) 100%)',
+                backdropFilter: 'blur(16px)',
+                WebkitBackdropFilter: 'blur(16px)',
+                border: '1.5px solid rgba(212, 175, 55, 0.35)',
+                borderRadius: '12px',
                 padding: '16px',
                 display: 'flex',
                 alignItems: 'center',
                 gap: '14px',
-                boxShadow: '0 6px 20px rgba(0,0,0,0.5)'
+                boxShadow: '0 8px 24px rgba(0,0,0,0.45), inset 0 1px 1px rgba(255,255,255,0.25)'
               }}
             >
               <div
@@ -283,14 +296,16 @@ export const IntelligenceHeader: React.FC = () => {
             {/* KPI 4: Scan Duration */}
             <div
               style={{
-                background: 'rgba(16, 16, 24, 0.9)',
-                border: '1px solid rgba(212, 175, 55, 0.3)',
-                borderRadius: '10px',
+                background: 'linear-gradient(135deg, rgba(255, 255, 255, 0.08) 0%, rgba(22, 18, 36, 0.42) 100%)',
+                backdropFilter: 'blur(16px)',
+                WebkitBackdropFilter: 'blur(16px)',
+                border: '1.5px solid rgba(212, 175, 55, 0.35)',
+                borderRadius: '12px',
                 padding: '16px',
                 display: 'flex',
                 alignItems: 'center',
                 gap: '14px',
-                boxShadow: '0 6px 20px rgba(0,0,0,0.5)'
+                boxShadow: '0 8px 24px rgba(0,0,0,0.45), inset 0 1px 1px rgba(255,255,255,0.25)'
               }}
             >
               <div

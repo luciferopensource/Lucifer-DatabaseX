@@ -81,12 +81,16 @@ export const ReportAccordionSelector: React.FC<ReportAccordionSelectorProps> = (
             aria-controls={`report-panel-${tab.id}`}
             onClick={() => onToggleTab(tab.id)}
             style={{
-              backdropFilter: 'blur(36px) saturate(210%) contrast(105%) brightness(1.08)',
-              WebkitBackdropFilter: 'blur(36px) saturate(210%) contrast(105%) brightness(1.08)',
+              backdropFilter: isOpen
+                ? 'blur(20px) saturate(220%) contrast(105%) brightness(1.1)'
+                : 'blur(16px) saturate(200%) contrast(104%) brightness(1.08)',
+              WebkitBackdropFilter: isOpen
+                ? 'blur(20px) saturate(220%) contrast(105%) brightness(1.1)'
+                : 'blur(16px) saturate(200%) contrast(104%) brightness(1.08)',
               background: isOpen
-                ? 'linear-gradient(135deg, rgba(212, 175, 55, 0.28) 0%, rgba(28, 24, 42, 0.82) 45%, rgba(10, 10, 18, 0.90) 100%)'
-                : 'linear-gradient(135deg, rgba(255, 255, 255, 0.10) 0%, rgba(18, 16, 26, 0.68) 50%, rgba(8, 8, 14, 0.82) 100%)',
-              border: `1.5px solid ${isOpen ? '#d4af37' : 'rgba(212, 175, 55, 0.35)'}`,
+                ? 'linear-gradient(135deg, rgba(212, 175, 55, 0.24) 0%, rgba(42, 32, 60, 0.45) 50%, rgba(18, 14, 28, 0.58) 100%)'
+                : 'linear-gradient(135deg, rgba(255, 255, 255, 0.12) 0%, rgba(26, 22, 40, 0.35) 50%, rgba(12, 10, 20, 0.48) 100%)',
+              border: `1.5px solid ${isOpen ? '#d4af37' : 'rgba(212, 175, 55, 0.32)'}`,
               borderRadius: '16px',
               padding: '18px 20px',
               cursor: 'pointer',
@@ -97,8 +101,8 @@ export const ReportAccordionSelector: React.FC<ReportAccordionSelectorProps> = (
               position: 'relative',
               overflow: 'hidden',
               boxShadow: isOpen
-                ? '0 18px 45px rgba(0, 0, 0, 0.85), 0 0 32px rgba(212, 175, 55, 0.35), inset 0 1.5px 1.5px rgba(255, 255, 255, 0.45), inset 0 -1px 2px rgba(0, 0, 0, 0.7)'
-                : '0 8px 24px rgba(0, 0, 0, 0.6), inset 0 1.5px 1.5px rgba(255, 255, 255, 0.25), inset 0 -1px 1.5px rgba(0, 0, 0, 0.5)',
+                ? '0 20px 48px rgba(0, 0, 0, 0.55), 0 0 32px rgba(212, 175, 55, 0.4), inset 0 1.5px 1.5px rgba(255, 255, 255, 0.6), inset 0 -1px 2px rgba(0, 0, 0, 0.4)'
+                : '0 16px 36px rgba(0, 0, 0, 0.45), inset 0 1.5px 1.5px rgba(255, 255, 255, 0.4), inset 0 -1px 1px rgba(0, 0, 0, 0.3), 0 0 20px rgba(212, 175, 55, 0.08)',
               transition: 'transform 0.22s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.2s, box-shadow 0.2s, background 0.2s',
               transform: isOpen ? 'translateY(-2px)' : 'none',
               outline: 'none'

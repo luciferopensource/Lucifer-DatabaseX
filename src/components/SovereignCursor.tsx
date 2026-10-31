@@ -34,6 +34,7 @@ export const SovereignCursor: React.FC = () => {
     let isHovering = false
     let isClicking = false
     let isVisible = false
+    let idleTimer: ReturnType<typeof setTimeout> | null = null
 
     const particles: Particle[] = []
     const GOLD_COLORS = [
@@ -68,6 +69,17 @@ export const SovereignCursor: React.FC = () => {
       }
     }
 
+    const resetIdleTimer = () => {
+      if (idleTimer) clearTimeout(idleTimer)
+      idleTimer = setTimeout(() => {
+        // If cursor has been completely motionless for 3 seconds, fade gently
+        if (isVisible && !isHovering) {
+          if (dotRef.current) dotRef.current.style.opacity = '0.35'
+          if (ringRef.current) ringRef.current.style.opacity = '0.35'
+        }
+      }, 3000)
+    }
+
     const updateCursorPosition = (x: number, y: number, hovering: boolean) => {
       mouseX = x
       mouseY = y
@@ -81,6 +93,7 @@ export const SovereignCursor: React.FC = () => {
 
       // Spawn stardust trail particles
       spawnParticles(mouseX, mouseY, 2)
+      resetIdleTimer()
     }
 
     const handleMouseMove = (e: MouseEvent) => {
@@ -95,6 +108,49 @@ export const SovereignCursor: React.FC = () => {
       updateCursorPosition(e.clientX, e.clientY, interactive)
     }
 
+    // Direct event bridge to iframes (eliminates cross-window cursor stalls)
+    const attachIframeBridges = () => {
+      const iframes = document.querySelectorAll('iframe')
+      iframes.forEach((iframe) => {
+        try {
+          const win = iframe.contentWindow
+          if (!win || (win as any).__sovereignCursorAttached) return
+          ;(win as any).__sovereignCursorAttached = true
+
+          win.addEventListener('mousemove', (e: MouseEvent) => {
+            const rect = iframe.getBoundingClientRect()
+            const target = e.target as HTMLElement | null
+            const interactive = target
+              ? !!target.closest(
+                  'a, button, [role="button"], input, select, textarea, .btn, .card, .dock-item, .knob, .liquid-stage, .movie-announcer-pill'
+                )
+              : false
+            updateCursorPosition(e.clientX + rect.left, e.clientY + rect.top, interactive)
+          }, { passive: true })
+
+          win.addEventListener('mousedown', (e: MouseEvent) => {
+            const rect = iframe.getBoundingClientRect()
+            isClicking = true
+            spawnParticles(e.clientX + rect.left, e.clientY + rect.top, 12, 2.5)
+          })
+
+          win.addEventListener('mouseup', () => {
+            isClicking = false
+          })
+
+          win.addEventListener('mouseleave', () => {
+            handleMouseLeave()
+          })
+        } catch {
+          // Cross-origin fallback via postMessage
+        }
+      })
+    }
+
+    // Periodically poll for newly rendered iframes during the first few seconds
+    const bridgeInterval = setInterval(attachIframeBridges, 500)
+    attachIframeBridges()
+
     const handleMessage = (event: MessageEvent) => {
       if (event.data?.type === 'SOVEREIGN_CURSOR_MOVE') {
         updateCursorPosition(event.data.x, event.data.y, !!event.data.isHovering)
@@ -104,9 +160,7 @@ export const SovereignCursor: React.FC = () => {
       } else if (event.data?.type === 'SOVEREIGN_CURSOR_UP') {
         isClicking = false
       } else if (event.data?.type === 'SOVEREIGN_CURSOR_LEAVE') {
-        if (mouseY > 58) {
-          handleMouseLeave()
-        }
+        handleMouseLeave()
       }
     }
 
@@ -183,6 +237,8 @@ export const SovereignCursor: React.FC = () => {
     animId = requestAnimationFrame(animate)
 
     return () => {
+      clearInterval(bridgeInterval)
+      if (idleTimer) clearTimeout(idleTimer)
       window.removeEventListener('resize', handleResize)
       window.removeEventListener('mousemove', handleMouseMove)
       window.removeEventListener('mousedown', handleMouseDown)

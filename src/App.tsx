@@ -180,7 +180,7 @@ export const App: React.FC = () => {
         </div>
       </header>
 
-      {/* ── Sovereign Live 3D / WebGL Ambient Layer ── */}
+      {/* ── Sovereign Live 3D / WebGL Ambient Layer (Universal Living Backdrop for All Pages) ── */}
       <div
         style={{
           position: 'fixed',
@@ -190,8 +190,8 @@ export const App: React.FC = () => {
           height: 'calc(100vh - 58px)',
           zIndex: currentPage === 'hero' ? 2 : 0,
           pointerEvents: currentPage === 'hero' ? 'auto' : 'none',
-          opacity: currentPage === 'stream-backup-1' ? 0.55 : 1,
-          filter: currentPage === 'stream-backup-1' ? 'blur(12px) brightness(0.72) saturate(1.35)' : 'none',
+          opacity: currentPage === 'hero' ? 1 : 0.92,
+          filter: currentPage === 'hero' ? 'none' : 'blur(5px) brightness(0.92) saturate(1.22)',
           transform: 'translateZ(0)',
           transition: 'opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), filter 0.6s cubic-bezier(0.16, 1, 0.3, 1)',
           overflow: 'hidden',

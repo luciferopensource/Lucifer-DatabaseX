@@ -147,13 +147,13 @@ export const FileExtensionSection: React.FC = () => {
         display: 'flex',
         flexDirection: 'column',
         gap: '24px',
-        background: 'linear-gradient(135deg, rgba(20, 16, 32, 0.62) 0%, rgba(12, 11, 20, 0.72) 100%)',
-        backdropFilter: 'blur(40px) saturate(210%) contrast(105%) brightness(1.08)',
-        WebkitBackdropFilter: 'blur(40px) saturate(210%) contrast(105%) brightness(1.08)',
+        background: 'linear-gradient(135deg, rgba(255, 255, 255, 0.08) 0%, rgba(22, 18, 36, 0.38) 50%, rgba(10, 10, 18, 0.52) 100%)',
+        backdropFilter: 'blur(20px) saturate(210%) contrast(104%) brightness(1.06)',
+        WebkitBackdropFilter: 'blur(20px) saturate(210%) contrast(104%) brightness(1.06)',
         border: '1.5px solid rgba(212, 175, 55, 0.38)',
         borderRadius: '24px',
         padding: '32px',
-        boxShadow: '0 30px 70px rgba(0, 0, 0, 0.75), inset 0 1.5px 1.5px rgba(255, 255, 255, 0.32), inset 0 -1px 1px rgba(0, 0, 0, 0.4), 0 0 35px rgba(212, 175, 55, 0.12)',
+        boxShadow: '0 25px 60px rgba(0, 0, 0, 0.55), inset 0 1.5px 1.5px rgba(255, 255, 255, 0.4), inset 0 -1px 1px rgba(0, 0, 0, 0.3), 0 0 35px rgba(212, 175, 55, 0.12)',
         position: 'relative',
         overflow: 'hidden'
       }}
