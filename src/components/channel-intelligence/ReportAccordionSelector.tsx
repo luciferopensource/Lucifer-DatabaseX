@@ -10,6 +10,7 @@ import {
   ChannelIntelligenceDataset,
   BACKUP_1_DATASET
 } from '../../data/channelIntelligenceData'
+import { useStorageUnit } from '../../data/storageUnitContext'
 
 export type ActiveReportTab = 'channel-analysis' | 'resolution' | 'storage' | 'extensions'
 
@@ -32,6 +33,7 @@ export const ReportAccordionSelector: React.FC<ReportAccordionSelectorProps> = (
   onToggleTab,
   dataset = BACKUP_1_DATASET
 }) => {
+  const { formatString } = useStorageUnit()
   const tabs: ReportTabConfig[] = [
     {
       id: 'channel-analysis',
@@ -50,7 +52,7 @@ export const ReportAccordionSelector: React.FC<ReportAccordionSelectorProps> = (
     {
       id: 'storage',
       title: 'STORAGE HIGHLIGHTS REPORT',
-      subtitle: `${dataset.storageHighlights.totalStorage} Total • ${dataset.storageHighlights.largestFileSize} Largest • ${dataset.storageHighlights.averageFileSize} Avg`,
+      subtitle: `${formatString(dataset.storageHighlights.totalStorage)} Total • ${formatString(dataset.storageHighlights.largestFileSize)} Largest • ${formatString(dataset.storageHighlights.averageFileSize)} Avg`,
       icon: <HardDrive size={20} />,
       tag: 'AUDITED'
     },

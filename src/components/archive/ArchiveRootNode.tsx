@@ -1,5 +1,6 @@
-import React, { useState } from 'react'
+import React, { useState, useRef, useEffect } from 'react'
 import { AggregatedDatabaseResult } from '../../data/aggregateDatabase'
+import { useStorageUnit } from '../../data/storageUnitContext'
 
 interface ArchiveRootNodeProps {
   aggregatedData: AggregatedDatabaseResult
@@ -8,9 +9,31 @@ interface ArchiveRootNodeProps {
 
 export const ArchiveRootNode: React.FC<ArchiveRootNodeProps> = ({ aggregatedData, onSelectRoot }) => {
   const [isHovered, setIsHovered] = useState(false)
+  const [isVisible, setIsVisible] = useState(false)
+  const rootRef = useRef<HTMLDivElement | null>(null)
+  const { formatString } = useStorageUnit()
+
+  // Bidirectional Mac OS-style Scroll Reveal
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        setIsVisible(entry.isIntersecting)
+      },
+      { threshold: 0.1, rootMargin: '0px 0px -40px 0px' }
+    )
+
+    if (rootRef.current) {
+      observer.observe(rootRef.current)
+    }
+
+    return () => {
+      observer.disconnect()
+    }
+  }, [])
 
   return (
     <div
+      ref={rootRef}
       style={{
         display: 'flex',
         flexDirection: 'column',
@@ -18,9 +41,13 @@ export const ArchiveRootNode: React.FC<ArchiveRootNodeProps> = ({ aggregatedData
         position: 'relative',
         zIndex: 10,
         marginBottom: '40px',
+        opacity: isVisible ? 1 : 0,
+        filter: isVisible ? 'blur(0px)' : 'blur(10px)',
+        transform: isVisible ? 'translateY(0) scale(1)' : 'translateY(40px) scale(0.95)',
+        transition: 'opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1), filter 0.8s cubic-bezier(0.16, 1, 0.3, 1)',
       }}
     >
-      {/* ── Imperial Root Card ── */}
+      {/* ── Imperial Root Card (Translucent Liquid Glass) ── */}
       <div
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
@@ -39,18 +66,18 @@ export const ArchiveRootNode: React.FC<ArchiveRootNodeProps> = ({ aggregatedData
           width: '100%',
           maxWidth: '680px',
           padding: '32px 36px',
-          borderRadius: '20px',
+          borderRadius: '24px',
           background: isHovered
-            ? 'linear-gradient(135deg, rgba(24, 20, 10, 0.96) 0%, rgba(12, 12, 18, 0.98) 100%)'
-            : 'linear-gradient(135deg, rgba(16, 14, 8, 0.92) 0%, rgba(8, 8, 12, 0.95) 100%)',
-          backdropFilter: 'blur(24px)',
-          WebkitBackdropFilter: 'blur(24px)',
+            ? 'linear-gradient(135deg, rgba(24, 20, 12, 0.88) 0%, rgba(12, 12, 22, 0.94) 100%)'
+            : 'linear-gradient(135deg, rgba(16, 14, 10, 0.78) 0%, rgba(8, 8, 16, 0.84) 100%)',
+          backdropFilter: 'blur(24px) saturate(190%)',
+          WebkitBackdropFilter: 'blur(24px) saturate(190%)',
           border: isHovered
             ? '1.5px solid rgba(212, 175, 55, 0.95)'
             : '1.5px solid rgba(212, 175, 55, 0.45)',
           boxShadow: isHovered
             ? '0 20px 60px rgba(0, 0, 0, 0.9), 0 0 40px rgba(212, 175, 55, 0.45)'
-            : '0 12px 40px rgba(0, 0, 0, 0.8), 0 0 20px rgba(212, 175, 55, 0.2)',
+            : '0 12px 40px rgba(0, 0, 0, 0.75), 0 0 20px rgba(212, 175, 55, 0.18)',
           transform: isHovered ? 'scale(1.015)' : 'scale(1)',
           transition: 'all 0.3s cubic-bezier(0.16, 1, 0.3, 1)',
           cursor: 'pointer',
@@ -67,7 +94,7 @@ export const ArchiveRootNode: React.FC<ArchiveRootNodeProps> = ({ aggregatedData
             right: '10px',
             bottom: '10px',
             border: '1px solid rgba(212, 175, 55, 0.22)',
-            borderRadius: '14px',
+            borderRadius: '16px',
             pointerEvents: 'none',
           }}
         />
@@ -181,7 +208,7 @@ export const ArchiveRootNode: React.FC<ArchiveRootNodeProps> = ({ aggregatedData
               Combined Storage
             </div>
             <div style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: '1.25rem', fontWeight: 900, color: '#d4af37', marginTop: '4px' }}>
-              {aggregatedData.combinedStorage}
+              {formatString(aggregatedData.combinedStorage)}
             </div>
             <div style={{ color: '#2ecc71', fontSize: '0.68rem', fontWeight: 700, marginTop: '2px' }}>
               {aggregatedData.combinedStoragePB}
@@ -287,4 +314,3 @@ export const ArchiveRootNode: React.FC<ArchiveRootNodeProps> = ({ aggregatedData
 }
 
 export default ArchiveRootNode
-

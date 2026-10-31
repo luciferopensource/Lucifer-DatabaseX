@@ -215,7 +215,7 @@ export function getAggregatedDatabase(
   }
 
   const combinedStorageTB = totalStorageBytes / (1024 ** 4)
-  const combinedStoragePB = (combinedStorageTB / 1024).toFixed(2) + ' PB'
+  const combinedStoragePB = (combinedStorageTB / 1000).toFixed(2) + ' PB'
 
   // 2. Channel Contributions
   const channelContributions: ChannelContributionItem[] = archives.map((arc) => {

@@ -12,6 +12,7 @@ import {
   ChannelIntelligenceDataset,
   BACKUP_1_DATASET
 } from '../../data/channelIntelligenceData'
+import { useStorageUnit } from '../../data/storageUnitContext'
 
 interface IntelligenceHeaderProps {
   dataset?: ChannelIntelligenceDataset
@@ -20,6 +21,7 @@ interface IntelligenceHeaderProps {
 export const IntelligenceHeader: React.FC<IntelligenceHeaderProps> = ({ dataset = BACKUP_1_DATASET }) => {
   const targetInfo = dataset.targetInfo
   const scanSummary = dataset.scanSummary
+  const { formatString } = useStorageUnit()
   return (
     <div style={{ marginBottom: '32px' }}>
       {/* ── Top Royal Frame & Console Breadcrumb ── */}
@@ -217,7 +219,7 @@ export const IntelligenceHeader: React.FC<IntelligenceHeaderProps> = ({ dataset 
                   COMBINED STORAGE
                 </span>
                 <span style={{ fontSize: '1.45rem', fontWeight: 800, color: '#f3e5ab', fontFamily: "'Cinzel', serif" }}>
-                  {scanSummary.combinedSize}
+                  {formatString(scanSummary.combinedSize)}
                 </span>
               </div>
             </div>

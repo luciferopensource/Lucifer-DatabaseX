@@ -15,6 +15,7 @@ import {
   ChannelIntelligenceDataset,
   BACKUP_1_DATASET
 } from '../../data/channelIntelligenceData'
+import { useStorageUnit } from '../../data/storageUnitContext'
 
 interface ChannelAnalysisSectionProps {
   dataset?: ChannelIntelligenceDataset
@@ -23,6 +24,7 @@ interface ChannelAnalysisSectionProps {
 export const ChannelAnalysisSection: React.FC<ChannelAnalysisSectionProps> = ({
   dataset = BACKUP_1_DATASET
 }) => {
+  const { formatString } = useStorageUnit()
   const targetInfo = dataset.targetInfo
   const scanSummary = dataset.scanSummary
   const categoryBreakdown = dataset.categoryBreakdown
@@ -300,7 +302,7 @@ export const ChannelAnalysisSection: React.FC<ChannelAnalysisSectionProps> = ({
                 </div>
                 <div style={{ textAlign: 'right' }}>
                   <span style={{ color: 'rgba(243, 229, 171, 0.5)', display: 'block', fontSize: '0.7rem' }}>STORAGE</span>
-                  <span style={{ fontWeight: 700, color: '#f3e5ab' }}>{item.storage}</span>
+                  <span style={{ fontWeight: 700, color: '#f3e5ab' }}>{formatString(item.storage)}</span>
                 </div>
               </div>
             </div>

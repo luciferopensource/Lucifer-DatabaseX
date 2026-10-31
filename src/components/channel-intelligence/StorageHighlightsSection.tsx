@@ -10,6 +10,7 @@ import {
   ChannelIntelligenceDataset,
   BACKUP_1_DATASET
 } from '../../data/channelIntelligenceData'
+import { useStorageUnit } from '../../data/storageUnitContext'
 
 interface StorageHighlightsSectionProps {
   dataset?: ChannelIntelligenceDataset
@@ -21,6 +22,7 @@ export const StorageHighlightsSection: React.FC<StorageHighlightsSectionProps> =
   const targetInfo = dataset.targetInfo
   const storageHighlights = dataset.storageHighlights
   const scanRecord = dataset.storageScanRecord
+  const { formatString } = useStorageUnit()
 
   return (
     <div
@@ -158,7 +160,7 @@ export const StorageHighlightsSection: React.FC<StorageHighlightsSectionProps> =
               margin: '8px 0 14px 0'
             }}
           >
-            {storageHighlights.totalStorage}
+            {formatString(storageHighlights.totalStorage)}
           </div>
 
           <p style={{ fontSize: '0.84rem', color: 'rgba(243, 229, 171, 0.85)', lineHeight: 1.5, margin: 0, fontWeight: 500 }}>
@@ -205,7 +207,7 @@ export const StorageHighlightsSection: React.FC<StorageHighlightsSectionProps> =
               margin: '8px 0 10px 0'
             }}
           >
-            {storageHighlights.largestFileSize}
+            {formatString(storageHighlights.largestFileSize)}
           </div>
 
           <div
@@ -286,7 +288,7 @@ export const StorageHighlightsSection: React.FC<StorageHighlightsSectionProps> =
               AVERAGE FILE SIZE
             </span>
             <span style={{ fontSize: '1.35rem', fontWeight: 800, color: '#f3e5ab', fontFamily: "'Cinzel', serif" }}>
-              {storageHighlights.averageFileSize}
+              {formatString(storageHighlights.averageFileSize)}
             </span>
             <span style={{ fontSize: '0.72rem', color: 'rgba(243, 229, 171, 0.55)', display: 'block', marginTop: '2px' }}>
               Reported audit average

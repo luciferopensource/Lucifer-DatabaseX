@@ -97,6 +97,12 @@ export const SovereignCursor: React.FC = () => {
     }
 
     const handleMouseMove = (e: MouseEvent) => {
+      // If cursor moves to the extreme top edge (browser titlebar border)
+      if (e.clientY <= 2 || e.clientX <= 0 || e.clientX >= window.innerWidth || e.clientY >= window.innerHeight) {
+        handleMouseLeave()
+        return
+      }
+
       // Detect hovering over clickable elements
       const target = e.target as HTMLElement | null
       const interactive = target

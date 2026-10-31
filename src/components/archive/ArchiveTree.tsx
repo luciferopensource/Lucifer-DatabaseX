@@ -5,6 +5,7 @@ import { ArchiveRootNode } from './ArchiveRootNode'
 import { ArchiveConnector } from './ArchiveConnector'
 import { ArchiveNode } from './ArchiveNode'
 import { ArchivePagination } from './ArchivePagination'
+import { StorageUnitSelector } from '../StorageUnitSelector'
 
 interface ArchiveTreeProps {
   onSelectRoute: (route: string) => void
@@ -30,7 +31,7 @@ export const ArchiveTree: React.FC<ArchiveTreeProps> = ({ onSelectRoute }) => {
       }}
     >
       {/* ── Section Title & Atmosphere ── */}
-      <div style={{ textAlign: 'center', marginBottom: '40px' }}>
+      <div style={{ textAlign: 'center', marginBottom: '32px' }}>
         <div
           style={{
             fontFamily: "'JetBrains Mono', monospace",
@@ -61,12 +62,17 @@ export const ArchiveTree: React.FC<ArchiveTreeProps> = ({ onSelectRoute }) => {
             color: 'rgba(243, 229, 171, 0.75)',
             fontSize: '1rem',
             maxWidth: '640px',
-            margin: '0 auto',
+            margin: '0 auto 20px',
             lineHeight: 1.6,
           }}
         >
           Explore the sovereign multi-channel network. Scroll down to inspect individual stream backup channel vaults branching from the central Total Database core.
         </p>
+
+        {/* Global Storage Unit Switcher */}
+        <div style={{ display: 'flex', justifyContent: 'center', marginTop: '12px' }}>
+          <StorageUnitSelector />
+        </div>
       </div>
 
       {/* ── 1. The Majestic Root Archive Node ── */}
@@ -112,4 +118,3 @@ export const ArchiveTree: React.FC<ArchiveTreeProps> = ({ onSelectRoute }) => {
 }
 
 export default ArchiveTree
-

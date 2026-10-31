@@ -1,6 +1,8 @@
 import React, { useState } from 'react'
 import { getAggregatedDatabase, AggregatedExtensionRecord } from '../data/aggregateDatabase'
 import { TelegramPromotionalFooter } from './channel-intelligence/TelegramPromotionalFooter'
+import { useStorageUnit } from '../data/storageUnitContext'
+import { StorageUnitSelector } from './StorageUnitSelector'
 
 interface TotalDatabaseProps {
   onBack: () => void
@@ -11,6 +13,7 @@ type ActiveReportType = 'channel' | 'resolution' | 'storage' | 'extension'
 
 export const TotalDatabase: React.FC<TotalDatabaseProps> = ({ onBack, onSelectArchive }) => {
   const aggregatedData = getAggregatedDatabase()
+  const { formatString } = useStorageUnit()
   const [activeReport, setActiveReport] = useState<ActiveReportType>('channel')
 
   // Extension filtering & pagination states
@@ -48,7 +51,7 @@ export const TotalDatabase: React.FC<TotalDatabaseProps> = ({ onBack, onSelectAr
         boxSizing: 'border-box',
       }}
     >
-      {/* ── Top Floating Navigation Bar ── */}
+      {/* ── Top Floating Navigation Bar & Unit Selector ── */}
       <div
         style={{
           maxWidth: '1280px',
@@ -85,8 +88,10 @@ export const TotalDatabase: React.FC<TotalDatabaseProps> = ({ onBack, onSelectAr
           <span>Return to 3D Cinema</span>
         </button>
 
-        {/* Global Aggregate Verification Badge */}
-        <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+        {/* Storage Unit Selector & Verification Badges */}
+        <div style={{ display: 'flex', alignItems: 'center', gap: '12px', flexWrap: 'wrap' }}>
+          <StorageUnitSelector />
+
           <span
             style={{
               display: 'inline-flex',
@@ -97,25 +102,12 @@ export const TotalDatabase: React.FC<TotalDatabaseProps> = ({ onBack, onSelectAr
               color: '#2ecc71',
               background: 'rgba(46, 204, 113, 0.12)',
               border: '1px solid rgba(46, 204, 113, 0.35)',
-              padding: '4px 10px',
-              borderRadius: '6px',
+              padding: '5px 12px',
+              borderRadius: '20px',
             }}
           >
             <span style={{ width: '6px', height: '6px', borderRadius: '50%', background: '#2ecc71', boxShadow: '0 0 8px #2ecc71' }} />
             COMPLETE & AUDITED
-          </span>
-          <span
-            style={{
-              fontSize: '0.74rem',
-              fontWeight: 700,
-              color: '#d4af37',
-              background: 'rgba(212, 175, 55, 0.12)',
-              border: '1px solid rgba(212, 175, 55, 0.3)',
-              padding: '4px 10px',
-              borderRadius: '6px',
-            }}
-          >
-            INTEGRITY: 100% VERIFIED
           </span>
         </div>
       </div>
@@ -217,7 +209,7 @@ export const TotalDatabase: React.FC<TotalDatabaseProps> = ({ onBack, onSelectAr
             </div>
           </div>
 
-          {/* Primary Telemetry Quad-Grid */}
+          {/* Primary Telemetry Quad-Grid with Dynamic Unit Converter */}
           <div
             style={{
               display: 'grid',
@@ -237,10 +229,10 @@ export const TotalDatabase: React.FC<TotalDatabaseProps> = ({ onBack, onSelectAr
                 Combined Storage
               </div>
               <div style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: '1.5rem', fontWeight: 900, color: '#d4af37', marginTop: '6px' }}>
-                {aggregatedData.combinedStorage}
+                {formatString(aggregatedData.combinedStorage)}
               </div>
               <div style={{ color: '#2ecc71', fontSize: '0.75rem', fontWeight: 700, marginTop: '2px' }}>
-                {aggregatedData.combinedStoragePB}
+                {aggregatedData.combinedStoragePB} Full Quota
               </div>
             </div>
 
@@ -419,7 +411,7 @@ export const TotalDatabase: React.FC<TotalDatabaseProps> = ({ onBack, onSelectAr
               STORAGE HIGHLIGHTS REPORT
             </h4>
             <div style={{ fontSize: '0.74rem', color: 'rgba(243, 229, 171, 0.65)' }}>
-              {aggregatedData.combinedStorage} Total • 3.91 GB Largest • 890.41 MB Avg
+              {formatString(aggregatedData.combinedStorage)} Total • 3.91 GB Largest • 890.41 MB Avg
             </div>
           </div>
 
@@ -537,7 +529,7 @@ export const TotalDatabase: React.FC<TotalDatabaseProps> = ({ onBack, onSelectAr
                     </div>
                     <div style={{ display: 'flex', justifyContent: 'space-between' }}>
                       <span style={{ color: 'rgba(243, 229, 171, 0.65)' }}>Combined Size:</span>
-                      <strong style={{ color: '#d4af37', fontFamily: "'JetBrains Mono', monospace" }}>{aggregatedData.combinedStorage}</strong>
+                      <strong style={{ color: '#d4af37', fontFamily: "'JetBrains Mono', monospace" }}>{formatString(aggregatedData.combinedStorage)}</strong>
                     </div>
                     <div style={{ display: 'flex', justifyContent: 'space-between' }}>
                       <span style={{ color: 'rgba(243, 229, 171, 0.65)' }}>Scan Duration:</span>
@@ -570,7 +562,7 @@ export const TotalDatabase: React.FC<TotalDatabaseProps> = ({ onBack, onSelectAr
                     </div>
                     <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '0.8rem', color: 'rgba(243, 229, 171, 0.7)' }}>
                       <span>Files: <strong style={{ color: '#f3e5ab' }}>{cat.files}</strong></span>
-                      <span>Storage: <strong style={{ color: '#d4af37' }}>{cat.storage}</strong></span>
+                      <span>Storage: <strong style={{ color: '#d4af37' }}>{formatString(cat.storage)}</strong></span>
                     </div>
                   </div>
                 ))}
@@ -606,7 +598,7 @@ export const TotalDatabase: React.FC<TotalDatabaseProps> = ({ onBack, onSelectAr
                       </div>
                       <div>
                         <span style={{ color: 'rgba(243, 229, 171, 0.6)' }}>Storage:</span>
-                        <div style={{ fontFamily: "'JetBrains Mono', monospace", fontWeight: 800, color: '#d4af37' }}>{contrib.storage}</div>
+                        <div style={{ fontFamily: "'JetBrains Mono', monospace", fontWeight: 800, color: '#d4af37' }}>{formatString(contrib.storage)}</div>
                       </div>
                       <div>
                         <span style={{ color: 'rgba(243, 229, 171, 0.6)' }}>Storage Share:</span>
@@ -753,7 +745,7 @@ export const TotalDatabase: React.FC<TotalDatabaseProps> = ({ onBack, onSelectAr
                       </div>
                       <div>
                         <span style={{ color: 'rgba(243, 229, 171, 0.6)' }}>Storage:</span>
-                        <div style={{ fontFamily: "'JetBrains Mono', monospace", fontWeight: 700, color: '#d4af37' }}>{tier.storage}</div>
+                        <div style={{ fontFamily: "'JetBrains Mono', monospace", fontWeight: 700, color: '#d4af37' }}>{formatString(tier.storage)}</div>
                       </div>
                     </div>
 
@@ -762,7 +754,7 @@ export const TotalDatabase: React.FC<TotalDatabaseProps> = ({ onBack, onSelectAr
                       {tier.contributions.map((c, i) => (
                         <div key={i} style={{ display: 'flex', justifyContent: 'space-between', marginTop: '2px' }}>
                           <span>{c.channelName.replace('Lucifer Stream Site ', '')}:</span>
-                          <span>{c.files} files ({c.storage})</span>
+                          <span>{c.files} files ({formatString(c.storage)})</span>
                         </div>
                       ))}
                     </div>
@@ -806,7 +798,7 @@ export const TotalDatabase: React.FC<TotalDatabaseProps> = ({ onBack, onSelectAr
                     </span>
                   </div>
                   <div style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: '2.4rem', fontWeight: 900, color: '#d4af37', margin: '8px 0' }}>
-                    {aggregatedData.storageHighlights.combinedStorage}
+                    {formatString(aggregatedData.storageHighlights.combinedStorage)}
                   </div>
                   <div style={{ color: '#2ecc71', fontSize: '0.95rem', fontWeight: 700, marginBottom: '8px' }}>
                     {aggregatedData.storageHighlights.combinedStoragePB} Unified Capacity
@@ -827,7 +819,7 @@ export const TotalDatabase: React.FC<TotalDatabaseProps> = ({ onBack, onSelectAr
                     </span>
                   </div>
                   <div style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: '2.4rem', fontWeight: 900, color: '#f3e5ab', margin: '8px 0' }}>
-                    {aggregatedData.storageHighlights.largestFileSize}
+                    {formatString(aggregatedData.storageHighlights.largestFileSize)}
                   </div>
                   <div style={{ background: 'rgba(0, 0, 0, 0.4)', border: '1px solid rgba(212, 175, 55, 0.2)', borderRadius: '8px', padding: '10px 12px', marginTop: '10px' }}>
                     {aggregatedData.storageHighlights.largestFileRecords.map((item, idx) => (
@@ -845,7 +837,7 @@ export const TotalDatabase: React.FC<TotalDatabaseProps> = ({ onBack, onSelectAr
                 <div style={{ background: 'rgba(255, 255, 255, 0.02)', border: '1px solid rgba(212, 175, 55, 0.2)', borderRadius: '10px', padding: '14px' }}>
                   <span style={{ color: 'rgba(243, 229, 171, 0.6)', fontSize: '0.72rem', textTransform: 'uppercase' }}>AVERAGE FILE SIZE</span>
                   <div style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: '1.2rem', fontWeight: 800, color: '#ffffff', marginTop: '4px' }}>
-                    {aggregatedData.storageHighlights.averageFileSize}
+                    {formatString(aggregatedData.storageHighlights.averageFileSize)}
                   </div>
                   <span style={{ fontSize: '0.7rem', color: 'rgba(243, 229, 171, 0.4)' }}>Weighted across all archives</span>
                 </div>
@@ -972,12 +964,12 @@ export const TotalDatabase: React.FC<TotalDatabaseProps> = ({ onBack, onSelectAr
                           {rec.files}
                         </td>
                         <td style={{ padding: '10px 16px', fontFamily: "'JetBrains Mono', monospace", color: '#d4af37', fontWeight: 700 }}>
-                          {rec.storage}
+                          {formatString(rec.storage)}
                         </td>
                         <td style={{ padding: '10px 16px', fontSize: '0.74rem', color: 'rgba(243, 229, 171, 0.65)' }}>
                           {rec.channelContributions.map((c, i) => (
                             <span key={i} style={{ marginRight: '10px' }}>
-                              <strong style={{ color: '#2ecc71' }}>{c.channelName.replace('Lucifer Stream Site ', '')}:</strong> {c.files} ({c.storage})
+                              <strong style={{ color: '#2ecc71' }}>{c.channelName.replace('Lucifer Stream Site ', '')}:</strong> {c.files} ({formatString(c.storage)})
                             </span>
                           ))}
                         </td>
@@ -1048,4 +1040,3 @@ export const TotalDatabase: React.FC<TotalDatabaseProps> = ({ onBack, onSelectAr
 }
 
 export default TotalDatabase
-

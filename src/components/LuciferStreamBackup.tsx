@@ -9,6 +9,7 @@ import { ResolutionIntelligenceSection } from './channel-intelligence/Resolution
 import { StorageHighlightsSection } from './channel-intelligence/StorageHighlightsSection'
 import { FileExtensionSection } from './channel-intelligence/FileExtensionSection'
 import { TelegramPromotionalFooter } from './channel-intelligence/TelegramPromotionalFooter'
+import { StorageUnitSelector } from './StorageUnitSelector'
 import {
   ArrowLeft,
   Sparkles,
@@ -204,6 +205,7 @@ export const LuciferStreamBackup: React.FC<LuciferStreamBackupProps> = ({ onBack
 
           {/* Right: Quick Action Controls */}
           <div style={{ display: 'flex', alignItems: 'center', gap: '10px', flexWrap: 'wrap' }}>
+            <StorageUnitSelector compact />
             <button
               type="button"
               onClick={handleToggleShowAll}

@@ -1,5 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react'
 import { ArchiveRecord } from '../../data/archiveSchemas'
+import { useStorageUnit } from '../../data/storageUnitContext'
 
 interface ArchiveNodeProps {
   archive: ArchiveRecord
@@ -12,15 +13,15 @@ export const ArchiveNode: React.FC<ArchiveNodeProps> = ({ archive, position, onS
   const [mouseTilt, setMouseTilt] = useState({ x: 0, y: 0 })
   const [isHovered, setIsHovered] = useState(false)
   const nodeRef = useRef<HTMLDivElement | null>(null)
+  const { formatString } = useStorageUnit()
 
+  // Bidirectional Mac OS-style Scroll Reveal (emerges on scroll down, recedes on scroll up)
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsVisible(true)
-        }
+        setIsVisible(entry.isIntersecting)
       },
-      { threshold: 0.15 }
+      { threshold: 0.12, rootMargin: '0px 0px -50px 0px' }
     )
 
     if (nodeRef.current) {
@@ -57,12 +58,13 @@ export const ArchiveNode: React.FC<ArchiveNodeProps> = ({ archive, position, onS
         justifyContent: isLeft ? 'flex-end' : 'flex-start',
         position: 'relative',
         width: '100%',
-        margin: '40px 0',
+        margin: '36px 0',
         opacity: isVisible ? 1 : 0,
+        filter: isVisible ? 'blur(0px)' : 'blur(8px)',
         transform: isVisible
-          ? 'translateY(0)'
-          : `translateY(40px) ${isLeft ? 'translateX(-30px)' : 'translateX(30px)'}`,
-        transition: 'opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1)',
+          ? 'translateY(0) scale(1)'
+          : `translateY(45px) scale(0.94) ${isLeft ? 'translateX(-20px)' : 'translateX(20px)'}`,
+        transition: 'opacity 0.75s cubic-bezier(0.16, 1, 0.3, 1), transform 0.75s cubic-bezier(0.16, 1, 0.3, 1), filter 0.75s cubic-bezier(0.16, 1, 0.3, 1)',
       }}
     >
       {/* ── Desktop Horizontal Connector Arm ── */}
@@ -83,7 +85,6 @@ export const ArchiveNode: React.FC<ArchiveNodeProps> = ({ archive, position, onS
           pointerEvents: 'none',
         }}
       >
-        {/* Pulse beacon dot */}
         <div
           style={{
             position: 'absolute',
@@ -99,7 +100,7 @@ export const ArchiveNode: React.FC<ArchiveNodeProps> = ({ archive, position, onS
         />
       </div>
 
-      {/* ── Archive Node Interactive Card ── */}
+      {/* ── Archive Node Interactive Card (Translucent Liquid Glass) ── */}
       <div
         className="archive-card-wrapper"
         onMouseEnter={() => setIsHovered(true)}
@@ -120,18 +121,18 @@ export const ArchiveNode: React.FC<ArchiveNodeProps> = ({ archive, position, onS
           width: '100%',
           maxWidth: '460px',
           padding: '24px',
-          borderRadius: '16px',
+          borderRadius: '18px',
           background: isHovered
-            ? 'linear-gradient(135deg, rgba(20, 20, 28, 0.92) 0%, rgba(12, 12, 18, 0.95) 100%)'
-            : 'linear-gradient(135deg, rgba(14, 14, 20, 0.88) 0%, rgba(8, 8, 12, 0.92) 100%)',
-          backdropFilter: 'blur(20px)',
-          WebkitBackdropFilter: 'blur(20px)',
+            ? 'linear-gradient(135deg, rgba(20, 20, 30, 0.88) 0%, rgba(12, 12, 20, 0.92) 100%)'
+            : 'linear-gradient(135deg, rgba(14, 14, 22, 0.75) 0%, rgba(8, 8, 14, 0.82) 100%)',
+          backdropFilter: 'blur(20px) saturate(180%)',
+          WebkitBackdropFilter: 'blur(20px) saturate(180%)',
           border: isHovered
-            ? '1px solid rgba(212, 175, 55, 0.85)'
-            : '1px solid rgba(212, 175, 55, 0.3)',
+            ? '1.5px solid rgba(212, 175, 55, 0.85)'
+            : '1px solid rgba(212, 175, 55, 0.32)',
           boxShadow: isHovered
-            ? '0 16px 40px rgba(0, 0, 0, 0.85), 0 0 30px rgba(212, 175, 55, 0.35)'
-            : '0 10px 30px rgba(0, 0, 0, 0.7), 0 0 15px rgba(212, 175, 55, 0.1)',
+            ? '0 18px 45px rgba(0, 0, 0, 0.85), 0 0 30px rgba(212, 175, 55, 0.35)'
+            : '0 10px 30px rgba(0, 0, 0, 0.65), 0 0 15px rgba(212, 175, 55, 0.1)',
           transform: `perspective(1000px) rotateX(${mouseTilt.y}deg) rotateY(${mouseTilt.x}deg) translateZ(${isHovered ? '12px' : '0px'})`,
           transition: 'transform 0.15s ease-out, border 0.3s ease, box-shadow 0.3s ease, background 0.3s ease',
           cursor: 'pointer',
@@ -148,7 +149,7 @@ export const ArchiveNode: React.FC<ArchiveNodeProps> = ({ archive, position, onS
             right: '8px',
             bottom: '8px',
             border: '1px solid rgba(212, 175, 55, 0.12)',
-            borderRadius: '10px',
+            borderRadius: '12px',
             pointerEvents: 'none',
           }}
         />
@@ -243,7 +244,7 @@ export const ArchiveNode: React.FC<ArchiveNodeProps> = ({ archive, position, onS
                 marginTop: '4px',
               }}
             >
-              {archive.combinedStorage}
+              {formatString(archive.combinedStorage)}
             </div>
           </div>
 
@@ -322,4 +323,3 @@ export const ArchiveNode: React.FC<ArchiveNodeProps> = ({ archive, position, onS
 }
 
 export default ArchiveNode
-

@@ -894,6 +894,12 @@
       window.location.href = '/lucifer-stream-site-backup-1.html';
     }
   };
+  // Forward wheel events to parent document so scrolling works naturally across the 3D scene
+  window.addEventListener('wheel', function(e) {
+    if (window.parent && window.parent !== window) {
+      window.parent.scrollBy({ top: e.deltaY, behavior: 'auto' });
+    }
+  }, { passive: true });
   window.openTrailerModal = function() {
     var m = document.getElementById('trailerModal');
     if (m) {
@@ -979,37 +985,8 @@
     <!-- card 1 sits behind the holographic roots -->
     <article class="card card--about mask" style="--d:760ms; --pd:10; --pr:2.2; cursor:pointer;" id="cardAbout" onclick="navigateToTotalDatabase()">
       <figure class="portal" data-delay="920">
-        <span class="portal-media" style="background: radial-gradient(circle at center, #1e1906 0%, #08080c 85%); display:flex; align-items:center; justify-content:center; width:100%; height:100%;">
-          <svg viewBox="0 0 200 200" width="100%" height="100%" style="filter: drop-shadow(0 0 16px rgba(212,175,55,0.7));">
-            <defs>
-              <radialGradient id="coreGlow" cx="50%" cy="50%" r="50%">
-                <stop offset="0%" stop-color="#ffffff"/>
-                <stop offset="25%" stop-color="#f3e5ab"/>
-                <stop offset="60%" stop-color="#d4af37"/>
-                <stop offset="100%" stop-color="#08080c" stop-opacity="0"/>
-              </radialGradient>
-              <linearGradient id="goldCircuit" x1="0%" y1="0%" x2="100%" y2="100%">
-                <stop offset="0%" stop-color="#f3e5ab"/>
-                <stop offset="50%" stop-color="#d4af37"/>
-                <stop offset="100%" stop-color="#aa771c"/>
-              </linearGradient>
-            </defs>
-            <!-- Outer dimensional orbital rings -->
-            <ellipse cx="100" cy="100" rx="84" ry="42" fill="none" stroke="url(#goldCircuit)" stroke-width="1.2" opacity="0.45" transform="rotate(-25 100 100)"/>
-            <ellipse cx="100" cy="100" rx="84" ry="42" fill="none" stroke="url(#goldCircuit)" stroke-width="1.2" opacity="0.45" transform="rotate(35 100 100)"/>
-            <circle cx="100" cy="100" r="62" fill="none" stroke="rgba(212,175,55,0.3)" stroke-width="1" stroke-dasharray="4 6"/>
-            <!-- Data highway connectors -->
-            <line x1="100" y1="20" x2="100" y2="180" stroke="rgba(212,175,55,0.3)" stroke-width="1"/>
-            <line x1="20" y1="100" x2="180" y2="100" stroke="rgba(212,175,55,0.3)" stroke-width="1"/>
-            <!-- Floating channel nodes -->
-            <circle cx="45" cy="55" r="5" fill="#2ecc71" opacity="0.9"/>
-            <circle cx="155" cy="65" r="5" fill="#d4af37" opacity="0.9"/>
-            <circle cx="50" cy="145" r="4" fill="#38bdf8" opacity="0.9"/>
-            <circle cx="150" cy="140" r="5" fill="#f59e0b" opacity="0.9"/>
-            <!-- Central Luminous Archive Core Sphere -->
-            <circle cx="100" cy="100" r="32" fill="url(#coreGlow)"/>
-            <circle cx="100" cy="100" r="16" fill="#ffffff" opacity="0.95"/>
-          </svg>
+        <span class="portal-media">
+          <img crossorigin="anonymous" src="inner-green-assets/total-database-core.svg" alt="Total Database Sovereign Core" loading="eager" decoding="async">
         </span>
         <canvas class="pixel-reveal" aria-hidden="true"></canvas>
       </figure>

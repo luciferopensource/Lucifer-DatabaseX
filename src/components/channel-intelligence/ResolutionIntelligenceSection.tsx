@@ -7,6 +7,7 @@ import {
   ChannelIntelligenceDataset,
   BACKUP_1_DATASET
 } from '../../data/channelIntelligenceData'
+import { useStorageUnit } from '../../data/storageUnitContext'
 
 interface ResolutionIntelligenceSectionProps {
   dataset?: ChannelIntelligenceDataset
@@ -15,6 +16,7 @@ interface ResolutionIntelligenceSectionProps {
 export const ResolutionIntelligenceSection: React.FC<ResolutionIntelligenceSectionProps> = ({
   dataset = BACKUP_1_DATASET
 }) => {
+  const { formatString } = useStorageUnit()
   const resolutionBreakdown = dataset.resolutionBreakdown
   const scanRecord = dataset.resolutionScanRecord
   const [selectedResolutionId, setSelectedResolutionId] = useState<string | null>(null)
@@ -201,7 +203,7 @@ export const ResolutionIntelligenceSection: React.FC<ResolutionIntelligenceSecti
             </div>
             <div style={{ display: 'flex', alignItems: 'center', gap: '20px', fontSize: '0.82rem' }}>
               <span><strong>FILES:</strong> <span style={{ color: '#ffffff' }}>{selectedItem.files}</span></span>
-              <span><strong>STORAGE:</strong> <span style={{ color: '#d4af37' }}>{selectedItem.storage}</span></span>
+              <span><strong>STORAGE:</strong> <span style={{ color: '#d4af37' }}>{formatString(selectedItem.storage)}</span></span>
               <span><strong>REPORTED RATIO:</strong> <span style={{ color: '#2ecc71', fontWeight: 800 }}>{selectedItem.percentage}</span></span>
             </div>
           </div>
@@ -346,7 +348,7 @@ export const ResolutionIntelligenceSection: React.FC<ResolutionIntelligenceSecti
                     STORAGE
                   </span>
                   <span style={{ fontWeight: 800, color: '#d4af37', fontFamily: "'JetBrains Mono', monospace" }}>
-                    {res.storage}
+                    {formatString(res.storage)}
                   </span>
                 </div>
               </div>
