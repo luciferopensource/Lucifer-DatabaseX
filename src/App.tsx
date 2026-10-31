@@ -2,20 +2,32 @@ import React, { useState, useEffect } from 'react'
 import { SylvaHero } from './components/SylvaHero'
 import { LuciferStreamBackup } from './components/LuciferStreamBackup'
 import { LuciferStreamBackup2 } from './components/LuciferStreamBackup2'
+import { TotalDatabase } from './components/TotalDatabase'
 import { SovereignCursor } from './components/SovereignCursor'
+import { ArchiveTree } from './components/archive/ArchiveTree'
+import { SeasonalEffects } from './seasonal/SeasonalEffects'
+import { getAggregatedDatabase } from './data/aggregateDatabase'
+
+export type PageRoute = 'hero' | 'total-database' | 'stream-backup-1' | 'stream-backup-2'
 
 export const App: React.FC = () => {
-  const [currentPage, setCurrentPage] = useState<'hero' | 'stream-backup-1' | 'stream-backup-2'>(() => {
+  const [currentPage, setCurrentPage] = useState<PageRoute>(() => {
+    if (window.location.hash === '#total-database') return 'total-database'
     if (window.location.hash === '#stream-backup-2') return 'stream-backup-2'
     if (window.location.hash === '#stream-backup-1') return 'stream-backup-1'
     return 'hero'
   })
 
+  const aggregatedData = getAggregatedDatabase()
+
   useEffect(() => {
     const handleHashChange = () => {
-      if (window.location.hash === '#stream-backup-2') {
+      const hash = window.location.hash
+      if (hash === '#total-database') {
+        setCurrentPage('total-database')
+      } else if (hash === '#stream-backup-2') {
         setCurrentPage('stream-backup-2')
-      } else if (window.location.hash === '#stream-backup-1') {
+      } else if (hash === '#stream-backup-1') {
         setCurrentPage('stream-backup-1')
       } else {
         setCurrentPage('hero')
@@ -24,7 +36,10 @@ export const App: React.FC = () => {
 
     const handleMessage = (event: MessageEvent) => {
       if (event.data?.type === 'NAVIGATE') {
-        if (event.data.page === 'stream-backup-2') {
+        if (event.data.page === 'total-database') {
+          window.location.hash = '#total-database'
+          setCurrentPage('total-database')
+        } else if (event.data.page === 'stream-backup-2') {
           window.location.hash = '#stream-backup-2'
           setCurrentPage('stream-backup-2')
         } else if (event.data.page === 'stream-backup-1') {
@@ -47,19 +62,19 @@ export const App: React.FC = () => {
   }, [])
 
   useEffect(() => {
-    if (currentPage === 'stream-backup-1' || currentPage === 'stream-backup-2') {
-      document.documentElement.style.overflowY = 'auto'
-      document.body.style.overflowY = 'auto'
-      window.scrollTo({ top: 0, behavior: 'smooth' })
-    } else {
-      document.documentElement.style.overflowY = 'hidden'
-      document.body.style.overflowY = 'hidden'
-    }
+    document.documentElement.style.overflowY = 'auto'
+    document.body.style.overflowY = 'auto'
+    window.scrollTo({ top: 0, behavior: 'smooth' })
   }, [currentPage])
 
   const handleBackToHero = () => {
     window.location.hash = ''
     setCurrentPage('hero')
+  }
+
+  const handleGoToTotalDatabase = () => {
+    window.location.hash = '#total-database'
+    setCurrentPage('total-database')
   }
 
   const handleGoToBackup1 = () => {
@@ -70,6 +85,18 @@ export const App: React.FC = () => {
   const handleGoToBackup2 = () => {
     window.location.hash = '#stream-backup-2'
     setCurrentPage('stream-backup-2')
+  }
+
+  const handleSelectRoute = (route: string) => {
+    if (route === 'total-database') {
+      handleGoToTotalDatabase()
+    } else if (route === 'stream-backup-1') {
+      handleGoToBackup1()
+    } else if (route === 'stream-backup-2') {
+      handleGoToBackup2()
+    } else {
+      window.location.hash = `#${route}`
+    }
   }
 
   return (
@@ -124,12 +151,12 @@ export const App: React.FC = () => {
             fontWeight: 700,
             letterSpacing: '0.04em',
           }}>
-            MOVIE PLATFORM
+            THE LIVING ARCHIVE
           </span>
         </div>
 
         {/* Center: Navigation Tabs */}
-        <nav style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+        <nav style={{ display: 'flex', alignItems: 'center', gap: '8px', flexWrap: 'wrap' }}>
           <button
             onClick={handleBackToHero}
             style={{
@@ -139,7 +166,7 @@ export const App: React.FC = () => {
               padding: '7px 16px',
               borderRadius: '8px',
               cursor: 'pointer',
-              fontSize: '0.84rem',
+              fontSize: '0.82rem',
               fontWeight: 700,
               display: 'flex',
               alignItems: 'center',
@@ -151,29 +178,59 @@ export const App: React.FC = () => {
           </button>
 
           <button
-            onClick={handleGoToBackup1}
+            onClick={handleGoToTotalDatabase}
             style={{
-              background: currentPage === 'stream-backup-1' ? 'linear-gradient(135deg, #d4af37 0%, #aa771c 100%)' : 'rgba(212, 175, 55, 0.18)',
-              color: currentPage === 'stream-backup-1' ? '#08080c' : '#ffffff',
-              border: `1px solid ${currentPage === 'stream-backup-1' ? '#d4af37' : 'rgba(212, 175, 55, 0.5)'}`,
-              padding: '7px 18px',
+              background: currentPage === 'total-database' ? 'linear-gradient(135deg, #d4af37 0%, #aa771c 100%)' : 'rgba(212, 175, 55, 0.18)',
+              color: currentPage === 'total-database' ? '#08080c' : '#ffffff',
+              border: `1px solid ${currentPage === 'total-database' ? '#d4af37' : 'rgba(212, 175, 55, 0.55)'}`,
+              padding: '7px 16px',
               borderRadius: '8px',
               cursor: 'pointer',
-              fontSize: '0.84rem',
+              fontSize: '0.82rem',
               fontWeight: 800,
               display: 'flex',
               alignItems: 'center',
-              gap: '8px',
-              boxShadow: currentPage === 'stream-backup-1' ? '0 0 15px rgba(212, 175, 55, 0.5)' : '0 0 10px rgba(212, 175, 55, 0.25)',
+              gap: '6px',
+              boxShadow: currentPage === 'total-database' ? '0 0 15px rgba(212, 175, 55, 0.55)' : '0 0 10px rgba(212, 175, 55, 0.25)',
               transition: 'all 0.2s',
             }}
           >
-            <span>📺 Lucifer Stream Site Backup 1</span>
+            <span>👑 TOTAL DATABASE</span>
+            <span style={{
+              background: currentPage === 'total-database' ? '#08080c' : '#d4af37',
+              color: currentPage === 'total-database' ? '#d4af37' : '#08080c',
+              fontSize: '0.64rem',
+              padding: '1px 6px',
+              borderRadius: '4px',
+              fontWeight: 900,
+            }}>
+              1.65 PB
+            </span>
+          </button>
+
+          <button
+            onClick={handleGoToBackup1}
+            style={{
+              background: currentPage === 'stream-backup-1' ? 'linear-gradient(135deg, #d4af37 0%, #aa771c 100%)' : 'rgba(212, 175, 55, 0.12)',
+              color: currentPage === 'stream-backup-1' ? '#08080c' : '#ffffff',
+              border: `1px solid ${currentPage === 'stream-backup-1' ? '#d4af37' : 'rgba(212, 175, 55, 0.4)'}`,
+              padding: '7px 14px',
+              borderRadius: '8px',
+              cursor: 'pointer',
+              fontSize: '0.82rem',
+              fontWeight: 800,
+              display: 'flex',
+              alignItems: 'center',
+              gap: '6px',
+              transition: 'all 0.2s',
+            }}
+          >
+            <span>📺 Backup 1</span>
             <span style={{
               background: currentPage === 'stream-backup-1' ? '#08080c' : '#2ecc71',
               color: currentPage === 'stream-backup-1' ? '#d4af37' : '#08080c',
-              fontSize: '0.66rem',
-              padding: '1px 6px',
+              fontSize: '0.64rem',
+              padding: '1px 5px',
               borderRadius: '4px',
               fontWeight: 900,
             }}>
@@ -184,27 +241,26 @@ export const App: React.FC = () => {
           <button
             onClick={handleGoToBackup2}
             style={{
-              background: currentPage === 'stream-backup-2' ? 'linear-gradient(135deg, #d4af37 0%, #aa771c 100%)' : 'rgba(212, 175, 55, 0.18)',
+              background: currentPage === 'stream-backup-2' ? 'linear-gradient(135deg, #d4af37 0%, #aa771c 100%)' : 'rgba(212, 175, 55, 0.12)',
               color: currentPage === 'stream-backup-2' ? '#08080c' : '#ffffff',
-              border: `1px solid ${currentPage === 'stream-backup-2' ? '#d4af37' : 'rgba(212, 175, 55, 0.5)'}`,
-              padding: '7px 18px',
+              border: `1px solid ${currentPage === 'stream-backup-2' ? '#d4af37' : 'rgba(212, 175, 55, 0.4)'}`,
+              padding: '7px 14px',
               borderRadius: '8px',
               cursor: 'pointer',
-              fontSize: '0.84rem',
+              fontSize: '0.82rem',
               fontWeight: 800,
               display: 'flex',
               alignItems: 'center',
-              gap: '8px',
-              boxShadow: currentPage === 'stream-backup-2' ? '0 0 15px rgba(212, 175, 55, 0.5)' : '0 0 10px rgba(212, 175, 55, 0.25)',
+              gap: '6px',
               transition: 'all 0.2s',
             }}
           >
-            <span>📺 Lucifer Stream Site Backup 2</span>
+            <span>📺 Backup 2</span>
             <span style={{
               background: currentPage === 'stream-backup-2' ? '#08080c' : '#2ecc71',
               color: currentPage === 'stream-backup-2' ? '#d4af37' : '#08080c',
-              fontSize: '0.66rem',
-              padding: '1px 6px',
+              fontSize: '0.64rem',
+              padding: '1px 5px',
               borderRadius: '4px',
               fontWeight: 900,
             }}>
@@ -217,18 +273,20 @@ export const App: React.FC = () => {
         <div style={{ display: 'flex', alignItems: 'center', gap: '14px', fontSize: '0.78rem' }}>
           <span style={{ color: '#2ecc71', display: 'flex', alignItems: 'center', gap: '6px', fontWeight: 600 }}>
             <span style={{ width: '6px', height: '6px', borderRadius: '50%', background: '#2ecc71' }} />
-            16/16 Mirrors Online
+            {aggregatedData.archiveCount} Channels Audited
           </span>
           <span style={{ color: 'rgba(243, 229, 171, 0.45)' }}>|</span>
-          <span style={{ color: '#d4af37', fontWeight: 600 }}>264,560 4K Assets</span>
+          <span style={{ color: '#d4af37', fontWeight: 600 }}>{aggregatedData.combinedStoragePB} Volume</span>
+          <span style={{ color: 'rgba(243, 229, 171, 0.45)' }}>|</span>
+          <span style={{ color: '#f3e5ab', fontWeight: 600 }}>{aggregatedData.totalFiles} Assets</span>
         </div>
       </header>
 
       {/* ── Sovereign Live 3D / WebGL Ambient Layer (Universal Living Backdrop for All Pages) ── */}
       <div
         style={{
-          position: 'fixed',
-          top: '58px',
+          position: currentPage === 'hero' ? 'relative' : 'fixed',
+          top: currentPage === 'hero' ? '58px' : '58px',
           left: 0,
           width: '100vw',
           height: 'calc(100vh - 58px)',
@@ -254,7 +312,38 @@ export const App: React.FC = () => {
         />
       </div>
 
-      {/* ── Sovereign Page Foreground (Only Mounted When Active) ── */}
+      {/* ── Homepage Living Archive Tree Section (Scroll-driven below 3D Hero) ── */}
+      {currentPage === 'hero' && (
+        <div
+          style={{
+            position: 'relative',
+            zIndex: 10,
+            marginTop: '58px',
+            background: 'linear-gradient(to bottom, #09090f 0%, #0c0c14 100%)',
+            borderTop: '1px solid rgba(212, 175, 55, 0.25)',
+            boxShadow: '0 -20px 50px rgba(0, 0, 0, 0.9)',
+          }}
+        >
+          <ArchiveTree onSelectRoute={handleSelectRoute} />
+        </div>
+      )}
+
+      {/* ── Total Database Dedicated Root Page ── */}
+      {currentPage === 'total-database' && (
+        <div
+          style={{
+            paddingTop: '58px',
+            minHeight: 'calc(100vh - 58px)',
+            width: '100%',
+            position: 'relative',
+            zIndex: 10,
+          }}
+        >
+          <TotalDatabase onBack={handleBackToHero} onSelectArchive={handleSelectRoute} />
+        </div>
+      )}
+
+      {/* ── Sovereign Stream Site Backup 1 Page ── */}
       {currentPage === 'stream-backup-1' && (
         <div
           style={{
@@ -265,12 +354,11 @@ export const App: React.FC = () => {
             zIndex: 10,
           }}
         >
-          <div style={{ width: '100%', minHeight: 'calc(100vh - 58px)' }}>
-            <LuciferStreamBackup onBack={handleBackToHero} />
-          </div>
+          <LuciferStreamBackup onBack={handleBackToHero} />
         </div>
       )}
 
+      {/* ── Sovereign Stream Site Backup 2 Page ── */}
       {currentPage === 'stream-backup-2' && (
         <div
           style={{
@@ -281,11 +369,12 @@ export const App: React.FC = () => {
             zIndex: 10,
           }}
         >
-          <div style={{ width: '100%', minHeight: 'calc(100vh - 58px)' }}>
-            <LuciferStreamBackup2 onBack={handleBackToHero} />
-          </div>
+          <LuciferStreamBackup2 onBack={handleBackToHero} />
         </div>
       )}
+
+      {/* ── Seasonal Effects Layer (Gentle Snowfall with 96px ceiling + Golden Halloween Accents) ── */}
+      <SeasonalEffects />
 
       {/* ── Royal Sovereign Gold Mouse Cursor & Stardust Trail ── */}
       <SovereignCursor />

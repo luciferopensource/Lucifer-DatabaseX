@@ -876,6 +876,15 @@
 </head>
 <body>
 <script>
+  window.navigateToTotalDatabase = function() {
+    if (window.parent && window.parent !== window) {
+      window.parent.postMessage({ type: 'NAVIGATE', page: 'total-database' }, '*');
+    }
+    try { window.top.location.hash = '#total-database'; } catch (e) {}
+    if (window.self === window.top) {
+      window.location.hash = '#total-database';
+    }
+  };
   window.navigateToBackup1 = function() {
     if (window.parent && window.parent !== window) {
       window.parent.postMessage({ type: 'NAVIGATE', page: 'stream-backup-1' }, '*');
@@ -968,18 +977,49 @@
     <div class="ghost fade" style="--d:1150ms" aria-hidden="true">CINEMA</div>
 
     <!-- card 1 sits behind the holographic roots -->
-    <article class="card card--about mask" style="--d:760ms; --pd:10; --pr:2.2; cursor:pointer;" id="cardAbout" onclick="openVaultModal()">
+    <article class="card card--about mask" style="--d:760ms; --pd:10; --pr:2.2; cursor:pointer;" id="cardAbout" onclick="navigateToTotalDatabase()">
       <figure class="portal" data-delay="920">
-        <span class="portal-media"><img crossorigin="anonymous" src="https://images.unsplash.com/photo-1478720568477-152d9b164e26?auto=format&fit=crop&w=800&q=80" alt="Cinematic 35mm optical projector lens casting beam in darkness" loading="eager" decoding="async"></span>
+        <span class="portal-media" style="background: radial-gradient(circle at center, #1e1906 0%, #08080c 85%); display:flex; align-items:center; justify-content:center; width:100%; height:100%;">
+          <svg viewBox="0 0 200 200" width="100%" height="100%" style="filter: drop-shadow(0 0 16px rgba(212,175,55,0.7));">
+            <defs>
+              <radialGradient id="coreGlow" cx="50%" cy="50%" r="50%">
+                <stop offset="0%" stop-color="#ffffff"/>
+                <stop offset="25%" stop-color="#f3e5ab"/>
+                <stop offset="60%" stop-color="#d4af37"/>
+                <stop offset="100%" stop-color="#08080c" stop-opacity="0"/>
+              </radialGradient>
+              <linearGradient id="goldCircuit" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#f3e5ab"/>
+                <stop offset="50%" stop-color="#d4af37"/>
+                <stop offset="100%" stop-color="#aa771c"/>
+              </linearGradient>
+            </defs>
+            <!-- Outer dimensional orbital rings -->
+            <ellipse cx="100" cy="100" rx="84" ry="42" fill="none" stroke="url(#goldCircuit)" stroke-width="1.2" opacity="0.45" transform="rotate(-25 100 100)"/>
+            <ellipse cx="100" cy="100" rx="84" ry="42" fill="none" stroke="url(#goldCircuit)" stroke-width="1.2" opacity="0.45" transform="rotate(35 100 100)"/>
+            <circle cx="100" cy="100" r="62" fill="none" stroke="rgba(212,175,55,0.3)" stroke-width="1" stroke-dasharray="4 6"/>
+            <!-- Data highway connectors -->
+            <line x1="100" y1="20" x2="100" y2="180" stroke="rgba(212,175,55,0.3)" stroke-width="1"/>
+            <line x1="20" y1="100" x2="180" y2="100" stroke="rgba(212,175,55,0.3)" stroke-width="1"/>
+            <!-- Floating channel nodes -->
+            <circle cx="45" cy="55" r="5" fill="#2ecc71" opacity="0.9"/>
+            <circle cx="155" cy="65" r="5" fill="#d4af37" opacity="0.9"/>
+            <circle cx="50" cy="145" r="4" fill="#38bdf8" opacity="0.9"/>
+            <circle cx="150" cy="140" r="5" fill="#f59e0b" opacity="0.9"/>
+            <!-- Central Luminous Archive Core Sphere -->
+            <circle cx="100" cy="100" r="32" fill="url(#coreGlow)"/>
+            <circle cx="100" cy="100" r="16" fill="#ffffff" opacity="0.95"/>
+          </svg>
+        </span>
         <canvas class="pixel-reveal" aria-hidden="true"></canvas>
       </figure>
-      <p class="label">Director's Cut • 4K Master</p>
-      <h2>Watch Film Master.</h2>
+      <p class="label">Living Archive • 1.65 PB Sovereign Vault</p>
+      <h2>Total Database</h2>
     </article>
 
     <!-- the About knob rides *outside* the card -->
     <span class="knob-float" style="--pd:10; --pr:2.2">
-      <button class="knob knob--about mask-circle" style="--d:1100ms; cursor:pointer;" aria-label="Watch Film Master" id="knobCardAbout" onclick="openVaultModal()">
+      <button class="knob knob--about mask-circle" style="--d:1100ms; cursor:pointer;" aria-label="Total Database" id="knobCardAbout" onclick="navigateToTotalDatabase()">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
           <circle cx="12" cy="12" r="9"/>
           <path d="M10 8l6 4-6 4V8z" fill="currentColor"/>
@@ -1114,8 +1154,8 @@
     <div class="cinema-modal-container" style="max-height:85vh; display:flex; flex-direction:column;">
       <div class="modal-header">
         <div style="display:flex; align-items:center; gap:10px;">
-          <span style="color:#d4af37; font-weight:700; font-size:0.95rem; letter-spacing:0.04em;">LUCIFER STREAM SITE 1 BACKUP — RESOLUTION MATRIX</span>
-          <span style="background:rgba(46,204,113,0.15); border:1px solid rgba(46,204,113,0.3); color:#2ecc71; font-size:0.72rem; padding:2px 8px; border-radius:4px;">9 PROFILES VERIFIED</span>
+          <span style="color:#d4af37; font-weight:700; font-size:0.95rem; letter-spacing:0.04em;">TOTAL DATABASE — RESOLUTION MATRIX</span>
+          <span style="background:rgba(46,204,113,0.15); border:1px solid rgba(46,204,113,0.3); color:#2ecc71; font-size:0.72rem; padding:2px 8px; border-radius:4px;">1.65 PB UNIFIED SPECTRUM</span>
         </div>
         <button class="modal-close-btn" id="closeVaultModal" aria-label="Close Vault">✕</button>
       </div>
@@ -1124,38 +1164,38 @@
           <div style="width:48px; height:48px; border-radius:10px; background:rgba(212,175,55,0.15); border:1px solid rgba(212,175,55,0.4); display:flex; align-items:center; justify-content:center; color:#d4af37; font-weight:700; font-family:'JetBrains Mono',monospace;">4K</div>
           <div style="flex:1;">
             <div style="color:#ffffff; font-weight:700;">2160p 4K UHD Tier</div>
-            <div style="color:rgba(243,229,171,0.65); font-size:0.78rem;">23,873 Files • 47.78 TB Storage Volume (2.39%)</div>
+            <div style="color:rgba(243,229,171,0.65); font-size:0.78rem;">33,843 Files • 64.33 TB Storage Volume (3.89%)</div>
           </div>
-          <button class="modal-cta-btn" onclick="navigateToBackup1();">Inspect Tier</button>
+          <button class="modal-cta-btn" onclick="navigateToTotalDatabase();">Inspect Tier</button>
         </div>
         <div class="vault-row">
           <div style="width:48px; height:48px; border-radius:10px; background:rgba(56,189,248,0.15); border:1px solid rgba(56,189,248,0.4); display:flex; align-items:center; justify-content:center; color:#38bdf8; font-weight:700; font-family:'JetBrains Mono',monospace;">FHD</div>
           <div style="flex:1;">
             <div style="color:#ffffff; font-weight:700;">1080p Full HD Tier</div>
-            <div style="color:rgba(243,229,171,0.65); font-size:0.78rem;">215,907 Files • 328.60 TB Storage Volume (21.59%)</div>
+            <div style="color:rgba(243,229,171,0.65); font-size:0.78rem;">678,443 Files • 860.07 TB Storage Volume (51.99%)</div>
           </div>
-          <button class="modal-cta-btn" onclick="navigateToBackup1();">Inspect Tier</button>
+          <button class="modal-cta-btn" onclick="navigateToTotalDatabase();">Inspect Tier</button>
         </div>
         <div class="vault-row">
           <div style="width:48px; height:48px; border-radius:10px; background:rgba(52,211,153,0.15); border:1px solid rgba(52,211,153,0.4); display:flex; align-items:center; justify-content:center; color:#34d399; font-weight:700; font-family:'JetBrains Mono',monospace;">HD</div>
           <div style="flex:1;">
             <div style="color:#ffffff; font-weight:700;">720p High Definition Tier</div>
-            <div style="color:rgba(243,229,171,0.65); font-size:0.78rem;">501,155 Files • 452.92 TB Storage Volume (50.12%)</div>
+            <div style="color:rgba(243,229,171,0.65); font-size:0.78rem;">826,069 Files • 608.33 TB Storage Volume (36.77%)</div>
           </div>
-          <button class="modal-cta-btn" onclick="navigateToBackup1();">Inspect Tier</button>
+          <button class="modal-cta-btn" onclick="navigateToTotalDatabase();">Inspect Tier</button>
         </div>
         <div class="vault-row">
           <div style="width:48px; height:48px; border-radius:10px; background:rgba(245,158,11,0.15); border:1px solid rgba(245,158,11,0.4); display:flex; align-items:center; justify-content:center; color:#f59e0b; font-weight:700; font-family:'JetBrains Mono',monospace;">SD</div>
           <div style="flex:1;">
             <div style="color:#ffffff; font-weight:700;">480p Standard Definition Tier</div>
-            <div style="color:rgba(243,229,171,0.65); font-size:0.78rem;">242,478 Files • 113.62 TB Storage Volume (24.25%)</div>
+            <div style="color:rgba(243,229,171,0.65); font-size:0.78rem;">232,672 Files • 76.59 TB Storage Volume (4.63%)</div>
           </div>
-          <button class="modal-cta-btn" onclick="navigateToBackup1();">Inspect Tier</button>
+          <button class="modal-cta-btn" onclick="navigateToTotalDatabase();">Inspect Tier</button>
         </div>
       </div>
       <div style="padding:14px 20px; background:#101018; border-top:1px solid rgba(212,175,55,0.2); text-align:center;">
-        <button class="modal-cta-btn" style="width:100%; justify-content:center;" id="btnVaultAllMovies" onclick="navigateToBackup1();">
-          <span>Enter Lucifer Stream Site 1 Backup Dashboard (945.67 TB Vault)</span>
+        <button class="modal-cta-btn" style="width:100%; justify-content:center;" id="btnVaultAllMovies" onclick="navigateToTotalDatabase();">
+          <span>Enter Total Database Unified Vault (1.65 PB)</span>
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
         </button>
       </div>
@@ -2496,19 +2536,19 @@ window.__seek   = v => { clock = v; drawn = null; };
       });
     }
 
-    // 3. Card 1 Knob (Watch Film Master)
+    // 3. Card 1 Knob (Total Database)
     var knobAbout = document.getElementById('knobCardAbout');
     if (knobAbout) {
       knobAbout.addEventListener('click', function (e) {
         e.stopPropagation();
-        openVaultModal();
+        navigateToTotalDatabase();
       });
     }
 
     var cardAbout = document.getElementById('cardAbout');
     if (cardAbout) {
       cardAbout.addEventListener('click', function (e) {
-        openVaultModal();
+        navigateToTotalDatabase();
       });
     }
 
