@@ -8,9 +8,18 @@ import {
   MessageSquare,
   CheckCircle2
 } from 'lucide-react'
-import { TARGET_INFO, SCAN_SUMMARY } from '../../data/channelIntelligenceData'
+import {
+  ChannelIntelligenceDataset,
+  BACKUP_1_DATASET
+} from '../../data/channelIntelligenceData'
 
-export const IntelligenceHeader: React.FC = () => {
+interface IntelligenceHeaderProps {
+  dataset?: ChannelIntelligenceDataset
+}
+
+export const IntelligenceHeader: React.FC<IntelligenceHeaderProps> = ({ dataset = BACKUP_1_DATASET }) => {
+  const targetInfo = dataset.targetInfo
+  const scanSummary = dataset.scanSummary
   return (
     <div style={{ marginBottom: '32px' }}>
       {/* ── Top Royal Frame & Console Breadcrumb ── */}
@@ -49,7 +58,7 @@ export const IntelligenceHeader: React.FC = () => {
             }}
           >
             <span style={{ width: '7px', height: '7px', borderRadius: '50%', background: '#2ecc71', boxShadow: '0 0 8px #2ecc71' }} />
-            {TARGET_INFO.status}
+            {targetInfo.status}
           </span>
 
           <span
@@ -68,19 +77,19 @@ export const IntelligenceHeader: React.FC = () => {
             }}
           >
             <ShieldCheck size={12} color="#d4af37" />
-            INTEGRITY: {SCAN_SUMMARY.scanIntegrity}
+            INTEGRITY: {scanSummary.scanIntegrity}
           </span>
 
           <span style={{ color: 'rgba(243, 229, 171, 0.4)', fontSize: '0.8rem' }}>•</span>
           <span style={{ fontSize: '0.75rem', color: 'rgba(243, 229, 171, 0.7)', fontFamily: "'JetBrains Mono', monospace" }}>
-            ENGINE: {TARGET_INFO.reportVersion} ({TARGET_INFO.intelligenceEngine})
+            ENGINE: {targetInfo.reportVersion} ({targetInfo.intelligenceEngine})
           </span>
         </div>
 
         <div style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '0.75rem', color: '#d4af37', fontFamily: "'JetBrains Mono', monospace" }}>
-          <span>NODE: {TARGET_INFO.scanner}</span>
+          <span>NODE: {targetInfo.scanner}</span>
           <span style={{ color: 'rgba(212, 175, 55, 0.3)' }}>|</span>
-          <span>SCAN ID: {TARGET_INFO.scanId}</span>
+          <span>SCAN ID: {targetInfo.scanId}</span>
         </div>
       </div>
 
@@ -130,10 +139,10 @@ export const IntelligenceHeader: React.FC = () => {
                   textShadow: '0 2px 14px rgba(212, 175, 55, 0.3)'
                 }}
               >
-                {TARGET_INFO.name}
+                {targetInfo.name}
               </h1>
               <p style={{ fontSize: '0.86rem', color: 'rgba(243, 229, 171, 0.75)', marginTop: '8px', maxWidth: '780px', lineHeight: 1.5 }}>
-                Comprehensive Media Archive & Cinematic Stream Collection audit. Real-time telemetry, resolution matrices, storage distribution, and complete 7-page extension audit powered by Archive X Engine.
+                Comprehensive Media Archive & Cinematic Stream Collection audit. Real-time telemetry, resolution matrices, storage distribution, and complete {dataset.extensionSummary.totalPages}-page extension audit powered by Archive X Engine.
               </p>
             </div>
 
@@ -154,7 +163,7 @@ export const IntelligenceHeader: React.FC = () => {
                 TARGET CHANNEL ID
               </div>
               <div style={{ fontSize: '1.05rem', fontWeight: 800, color: '#d4af37', fontFamily: "'JetBrains Mono', monospace", margin: '4px 0' }}>
-                {TARGET_INFO.channelId}
+                {targetInfo.channelId}
               </div>
               <div style={{ display: 'flex', alignItems: 'center', gap: '6px', fontSize: '0.72rem', color: '#2ecc71' }}>
                 <CheckCircle2 size={12} />
@@ -208,7 +217,7 @@ export const IntelligenceHeader: React.FC = () => {
                   COMBINED STORAGE
                 </span>
                 <span style={{ fontSize: '1.45rem', fontWeight: 800, color: '#f3e5ab', fontFamily: "'Cinzel', serif" }}>
-                  {SCAN_SUMMARY.combinedSize}
+                  {scanSummary.combinedSize}
                 </span>
               </div>
             </div>
@@ -248,7 +257,7 @@ export const IntelligenceHeader: React.FC = () => {
                   TOTAL FILES FOUND
                 </span>
                 <span style={{ fontSize: '1.45rem', fontWeight: 800, color: '#f3e5ab', fontFamily: "'Cinzel', serif" }}>
-                  {SCAN_SUMMARY.totalFilesFound}
+                  {scanSummary.totalFilesFound}
                 </span>
               </div>
             </div>
@@ -288,7 +297,7 @@ export const IntelligenceHeader: React.FC = () => {
                   MESSAGES CHECKED
                 </span>
                 <span style={{ fontSize: '1.45rem', fontWeight: 800, color: '#f3e5ab', fontFamily: "'Cinzel', serif" }}>
-                  {SCAN_SUMMARY.messagesChecked}
+                  {scanSummary.messagesChecked}
                 </span>
               </div>
             </div>
@@ -328,7 +337,7 @@ export const IntelligenceHeader: React.FC = () => {
                   SCAN DURATION
                 </span>
                 <span style={{ fontSize: '1.45rem', fontWeight: 800, color: '#f3e5ab', fontFamily: "'Cinzel', serif" }}>
-                  {SCAN_SUMMARY.scanDuration}
+                  {scanSummary.scanDuration}
                 </span>
               </div>
             </div>

@@ -7,12 +7,21 @@ import {
   Database
 } from 'lucide-react'
 import {
-  TARGET_INFO,
-  STORAGE_HIGHLIGHTS,
-  STORAGE_SCAN_RECORD
+  ChannelIntelligenceDataset,
+  BACKUP_1_DATASET
 } from '../../data/channelIntelligenceData'
 
-export const StorageHighlightsSection: React.FC = () => {
+interface StorageHighlightsSectionProps {
+  dataset?: ChannelIntelligenceDataset
+}
+
+export const StorageHighlightsSection: React.FC<StorageHighlightsSectionProps> = ({
+  dataset = BACKUP_1_DATASET
+}) => {
+  const targetInfo = dataset.targetInfo
+  const storageHighlights = dataset.storageHighlights
+  const scanRecord = dataset.storageScanRecord
+
   return (
     <div
       id="report-panel-storage"
@@ -87,7 +96,7 @@ export const StorageHighlightsSection: React.FC = () => {
             }}
           >
             <span style={{ width: '6px', height: '6px', borderRadius: '50%', background: '#2ecc71' }} />
-            DATABASE CACHE: {STORAGE_SCAN_RECORD.databaseCache}
+            DATABASE CACHE: {scanRecord.databaseCache}
           </span>
           <span
             style={{
@@ -101,7 +110,7 @@ export const StorageHighlightsSection: React.FC = () => {
               fontFamily: "'JetBrains Mono', monospace"
             }}
           >
-            ID: {STORAGE_SCAN_RECORD.scanId}
+            ID: {scanRecord.scanId}
           </span>
         </div>
       </div>
@@ -149,16 +158,16 @@ export const StorageHighlightsSection: React.FC = () => {
               margin: '8px 0 14px 0'
             }}
           >
-            {STORAGE_HIGHLIGHTS.totalStorage}
+            {storageHighlights.totalStorage}
           </div>
 
           <p style={{ fontSize: '0.84rem', color: 'rgba(243, 229, 171, 0.85)', lineHeight: 1.5, margin: 0, fontWeight: 500 }}>
-            Cumulative capacity across 999,973 verified catalog records. Formatted and synchronized through Archive X Engine.
+            Cumulative capacity across {storageHighlights.totalFiles} verified catalog records. Formatted and synchronized through Archive X Engine.
           </p>
 
           <div style={{ marginTop: '18px', paddingTop: '14px', borderTop: '1px solid rgba(212, 175, 55, 0.2)', display: 'flex', justifyContent: 'space-between', fontSize: '0.78rem' }}>
             <span style={{ color: 'rgba(243, 229, 171, 0.65)' }}>Files Counted:</span>
-            <span style={{ fontWeight: 800, color: '#2ecc71', fontFamily: "'JetBrains Mono', monospace" }}>{STORAGE_HIGHLIGHTS.totalFiles}</span>
+            <span style={{ fontWeight: 800, color: '#2ecc71', fontFamily: "'JetBrains Mono', monospace" }}>{storageHighlights.totalFiles}</span>
           </div>
         </div>
 
@@ -196,7 +205,7 @@ export const StorageHighlightsSection: React.FC = () => {
               margin: '8px 0 10px 0'
             }}
           >
-            {STORAGE_HIGHLIGHTS.largestFileSize}
+            {storageHighlights.largestFileSize}
           </div>
 
           <div
@@ -223,7 +232,7 @@ export const StorageHighlightsSection: React.FC = () => {
                 marginTop: '4px'
               }}
             >
-              {STORAGE_HIGHLIGHTS.largestFileName}
+              {storageHighlights.largestFileName}
             </span>
           </div>
 
@@ -277,7 +286,7 @@ export const StorageHighlightsSection: React.FC = () => {
               AVERAGE FILE SIZE
             </span>
             <span style={{ fontSize: '1.35rem', fontWeight: 800, color: '#f3e5ab', fontFamily: "'Cinzel', serif" }}>
-              {STORAGE_HIGHLIGHTS.averageFileSize}
+              {storageHighlights.averageFileSize}
             </span>
             <span style={{ fontSize: '0.72rem', color: 'rgba(243, 229, 171, 0.55)', display: 'block', marginTop: '2px' }}>
               Reported audit average
@@ -320,7 +329,7 @@ export const StorageHighlightsSection: React.FC = () => {
               TOTAL FILES RECORDED
             </span>
             <span style={{ fontSize: '1.35rem', fontWeight: 800, color: '#f3e5ab', fontFamily: "'Cinzel', serif" }}>
-              {STORAGE_HIGHLIGHTS.totalFiles}
+              {storageHighlights.totalFiles}
             </span>
             <span style={{ fontSize: '0.72rem', color: '#2ecc71', display: 'block', marginTop: '2px', fontWeight: 700 }}>
               100% catalog integrity verified
@@ -363,10 +372,10 @@ export const StorageHighlightsSection: React.FC = () => {
               TARGET CHANNEL
             </span>
             <span style={{ fontSize: '0.98rem', fontWeight: 700, color: '#f3e5ab' }}>
-              {TARGET_INFO.name}
+              {targetInfo.name}
             </span>
             <span style={{ fontSize: '0.72rem', color: '#d4af37', fontFamily: "'JetBrains Mono', monospace", display: 'block', marginTop: '2px' }}>
-              {TARGET_INFO.channelId}
+              {targetInfo.channelId}
             </span>
           </div>
         </div>
@@ -392,14 +401,14 @@ export const StorageHighlightsSection: React.FC = () => {
         }}
       >
         <div style={{ display: 'flex', alignItems: 'center', gap: '16px', flexWrap: 'wrap' }}>
-          <span><strong>SCAN ID:</strong> <span style={{ fontFamily: "'JetBrains Mono', monospace", color: '#d4af37' }}>{STORAGE_SCAN_RECORD.scanId}</span></span>
-          <span><strong>COMPLETED:</strong> {STORAGE_SCAN_RECORD.completed}</span>
-          <span><strong>STATUS:</strong> <span style={{ color: '#2ecc71', fontWeight: 700 }}>✅ {STORAGE_SCAN_RECORD.status}</span></span>
+          <span><strong>SCAN ID:</strong> <span style={{ fontFamily: "'JetBrains Mono', monospace", color: '#d4af37' }}>{scanRecord.scanId}</span></span>
+          <span><strong>COMPLETED:</strong> {scanRecord.completed}</span>
+          <span><strong>STATUS:</strong> <span style={{ color: '#2ecc71', fontWeight: 700 }}>✅ {scanRecord.status}</span></span>
         </div>
         <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
-          <span><strong>DATABASE CACHE:</strong> <span style={{ color: '#2ecc71', fontWeight: 700 }}>● {STORAGE_SCAN_RECORD.databaseCache}</span></span>
+          <span><strong>DATABASE CACHE:</strong> <span style={{ color: '#2ecc71', fontWeight: 700 }}>● {scanRecord.databaseCache}</span></span>
           <span style={{ color: 'rgba(212, 175, 55, 0.3)' }}>|</span>
-          <span>{STORAGE_SCAN_RECORD.reportVersion}</span>
+          <span>{scanRecord.reportVersion}</span>
         </div>
       </div>
     </div>

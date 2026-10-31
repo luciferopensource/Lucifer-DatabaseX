@@ -78,6 +78,26 @@ export interface ExtensionRecord {
   page: number
 }
 
+export interface ChannelIntelligenceDataset {
+  targetInfo: ReportTarget
+  scanSummary: ScanSummary
+  categoryBreakdown: CategoryBreakdownItem[]
+  dataIntegrity: DataIntegrityItem[]
+  channelAnalysisScanRecord: ScanRecord
+  resolutionBreakdown: ResolutionItem[]
+  resolutionScanRecord: ScanRecord
+  storageHighlights: StorageHighlights
+  storageScanRecord: ScanRecord
+  extensionSummary: {
+    totalFilesAnalysed: string
+    uniqueExtensions: number
+    totalAnalysedStorage: string
+    totalPages: number
+  }
+  extensionRecords: ExtensionRecord[]
+  extensionScanRecord: ScanRecord
+}
+
 // ─────────────────────────────────────────────────────────────────────────────
 // AUTHENTIC REPORT METADATA & CONFIGURATION
 // ─────────────────────────────────────────────────────────────────────────────
@@ -712,6 +732,26 @@ export const EXTENSION_SCAN_RECORD: ScanRecord = {
   status: 'AUDITED',
   databaseCache: 'SAVED',
   reportVersion: 'Archive X v1.0.0'
+}
+
+export const BACKUP_1_DATASET: ChannelIntelligenceDataset = {
+  targetInfo: TARGET_INFO,
+  scanSummary: SCAN_SUMMARY,
+  categoryBreakdown: CATEGORY_BREAKDOWN,
+  dataIntegrity: DATA_INTEGRITY_AUDIT,
+  channelAnalysisScanRecord: CHANNEL_ANALYSIS_SCAN_RECORD,
+  resolutionBreakdown: RESOLUTION_BREAKDOWN,
+  resolutionScanRecord: RESOLUTION_SCAN_RECORD,
+  storageHighlights: STORAGE_HIGHLIGHTS,
+  storageScanRecord: STORAGE_SCAN_RECORD,
+  extensionSummary: {
+    totalFilesAnalysed: EXTENSION_SUMMARY.totalFilesAnalysed,
+    uniqueExtensions: EXTENSION_SUMMARY.uniqueExtensions,
+    totalAnalysedStorage: EXTENSION_SUMMARY.totalAnalysedStorage,
+    totalPages: 7
+  },
+  extensionRecords: EXTENSION_RECORDS,
+  extensionScanRecord: EXTENSION_SCAN_RECORD
 }
 
 // ─────────────────────────────────────────────────────────────────────────────

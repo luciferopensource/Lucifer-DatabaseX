@@ -1,8 +1,7 @@
 import React, { useState, useMemo } from 'react'
 import {
-  EXTENSION_RECORDS,
-  EXTENSION_SUMMARY,
-  EXTENSION_SCAN_RECORD
+  ChannelIntelligenceDataset,
+  BACKUP_1_DATASET
 } from '../../data/channelIntelligenceData'
 import {
   FileCode2,
@@ -77,7 +76,18 @@ const CATEGORY_STYLES: Record<string, { bg: string; border: string; text: string
   }
 }
 
-export const FileExtensionSection: React.FC = () => {
+interface FileExtensionSectionProps {
+  dataset?: ChannelIntelligenceDataset
+}
+
+export const FileExtensionSection: React.FC<FileExtensionSectionProps> = ({
+  dataset = BACKUP_1_DATASET
+}) => {
+  const extensionRecords = dataset.extensionRecords
+  const extensionSummary = dataset.extensionSummary
+  const scanRecord = dataset.extensionScanRecord
+  const totalPages = extensionSummary.totalPages
+
   const [selectedPage, setSelectedPage] = useState<number | 'all'>(1)
   const [categoryFilter, setCategoryFilter] = useState<CategoryFilter>('All')
   const [searchQuery, setSearchQuery] = useState('')
@@ -97,7 +107,7 @@ export const FileExtensionSection: React.FC = () => {
 
   // Filtered & Sorted Records
   const processedRecords = useMemo(() => {
-    let list = [...EXTENSION_RECORDS]
+    let list = [...extensionRecords]
 
     // 1. Page Filter (if not 'all')
     if (selectedPage !== 'all') {
@@ -130,15 +140,16 @@ export const FileExtensionSection: React.FC = () => {
     }
 
     return list
-  }, [selectedPage, categoryFilter, searchQuery, sortMode])
+  }, [extensionRecords, selectedPage, categoryFilter, searchQuery, sortMode])
 
   const pageCounts = useMemo(() => {
-    const counts: Record<number, number> = { 1: 0, 2: 0, 3: 0, 4: 0, 5: 0, 6: 0, 7: 0 }
-    for (const r of EXTENSION_RECORDS) {
+    const counts: Record<number, number> = {}
+    for (let p = 1; p <= totalPages; p++) counts[p] = 0
+    for (const r of extensionRecords) {
       if (counts[r.page] !== undefined) counts[r.page]++
     }
     return counts
-  }, [])
+  }, [extensionRecords, totalPages])
 
   return (
     <div
@@ -174,7 +185,7 @@ export const FileExtensionSection: React.FC = () => {
           <span style={{ width: '11px', height: '11px', borderRadius: '50%', background: '#ffbd2e', boxShadow: '0 0 8px rgba(255, 189, 46, 0.65)' }} />
           <span style={{ width: '11px', height: '11px', borderRadius: '50%', background: '#27c93f', boxShadow: '0 0 8px rgba(39, 201, 63, 0.65)' }} />
           <span style={{ marginLeft: '12px', fontSize: '0.74rem', fontFamily: "'JetBrains Mono', monospace", color: 'rgba(243, 229, 171, 0.65)', letterSpacing: '0.08em' }}>
-            ARCHIVE X ENGINE • COMPLETE 7-PAGE EXTENSION AUDIT
+            ARCHIVE X ENGINE • COMPLETE {totalPages}-PAGE EXTENSION AUDIT
           </span>
         </div>
 
@@ -194,7 +205,7 @@ export const FileExtensionSection: React.FC = () => {
             ● DATABASE CACHE: AUDITED
           </span>
           <span style={{ fontSize: '0.72rem', fontFamily: "'JetBrains Mono', monospace", color: '#94a3b8' }}>
-            ID: LMS-4D0E-6C2A
+            ID: {scanRecord.scanId}
           </span>
         </div>
       </div>
@@ -238,7 +249,7 @@ export const FileExtensionSection: React.FC = () => {
             }}
           >
             <FileCode2 size={14} />
-            <span>Sovereign Report Section 04 • All 7 Pages Audited</span>
+            <span>Sovereign Report Section 04 • All {totalPages} Pages Audited</span>
           </div>
 
           <h2
@@ -263,7 +274,7 @@ export const FileExtensionSection: React.FC = () => {
               maxWidth: '680px'
             }}
           >
-            Exhaustive inventory of all <strong style={{ color: '#d4af37', fontFamily: "'JetBrains Mono', monospace" }}>364 unique format extensions</strong> across all 7 source report pages. Filter, sort, or paginate through every audited format.
+            Exhaustive inventory of all <strong style={{ color: '#d4af37', fontFamily: "'JetBrains Mono', monospace" }}>{extensionSummary.uniqueExtensions} unique format extensions</strong> across all {totalPages} source report pages. Filter, sort, or paginate through every audited format.
           </p>
         </div>
 
@@ -281,7 +292,7 @@ export const FileExtensionSection: React.FC = () => {
             }}
           >
             <div style={{ fontSize: '0.7rem', color: '#94a3b8', fontFamily: "'JetBrains Mono', monospace", textTransform: 'uppercase' }}>Unique Formats</div>
-            <div style={{ fontSize: '1.5rem', fontWeight: 800, color: '#f3e5ab', fontFamily: "'JetBrains Mono', monospace" }}>{EXTENSION_SUMMARY.uniqueExtensions}</div>
+            <div style={{ fontSize: '1.5rem', fontWeight: 800, color: '#f3e5ab', fontFamily: "'JetBrains Mono', monospace" }}>{extensionSummary.uniqueExtensions}</div>
           </div>
 
           <div
@@ -296,7 +307,7 @@ export const FileExtensionSection: React.FC = () => {
             }}
           >
             <div style={{ fontSize: '0.7rem', color: '#94a3b8', fontFamily: "'JetBrains Mono', monospace", textTransform: 'uppercase' }}>Total Files</div>
-            <div style={{ fontSize: '1.5rem', fontWeight: 800, color: '#f59e0b', fontFamily: "'JetBrains Mono', monospace" }}>{EXTENSION_SUMMARY.totalFilesAnalysed}</div>
+            <div style={{ fontSize: '1.5rem', fontWeight: 800, color: '#f59e0b', fontFamily: "'JetBrains Mono', monospace" }}>{extensionSummary.totalFilesAnalysed}</div>
           </div>
 
           <div
@@ -311,7 +322,7 @@ export const FileExtensionSection: React.FC = () => {
             }}
           >
             <div style={{ fontSize: '0.7rem', color: '#94a3b8', fontFamily: "'JetBrains Mono', monospace", textTransform: 'uppercase' }}>Audited Size</div>
-            <div style={{ fontSize: '1.5rem', fontWeight: 800, color: '#d4af37', fontFamily: "'JetBrains Mono', monospace" }}>{EXTENSION_SUMMARY.totalAnalysedStorage}</div>
+            <div style={{ fontSize: '1.5rem', fontWeight: 800, color: '#d4af37', fontFamily: "'JetBrains Mono', monospace" }}>{extensionSummary.totalAnalysedStorage}</div>
           </div>
         </div>
       </div>
@@ -338,7 +349,7 @@ export const FileExtensionSection: React.FC = () => {
               Source Report Page Navigator
             </span>
             <span style={{ fontSize: '0.78rem', color: '#94a3b8', fontFamily: "'JetBrains Mono', monospace" }}>
-              (7 Audit Pages)
+              ({totalPages} Audit Pages)
             </span>
           </div>
 
@@ -364,23 +375,23 @@ export const FileExtensionSection: React.FC = () => {
             </button>
 
             <span style={{ fontSize: '0.8rem', fontFamily: "'JetBrains Mono', monospace", color: '#ffffff', minWidth: '90px', textAlign: 'center' }}>
-              {selectedPage === 'all' ? 'All 7 Pages' : `Page ${selectedPage} of 7`}
+              {selectedPage === 'all' ? `All ${totalPages} Pages` : `Page ${selectedPage} of ${totalPages}`}
             </span>
 
             <button
               onClick={() => {
-                if (typeof selectedPage === 'number' && selectedPage < 7) {
+                if (typeof selectedPage === 'number' && selectedPage < totalPages) {
                   setSelectedPage(selectedPage + 1)
                 }
               }}
-              disabled={selectedPage === 7 || selectedPage === 'all'}
+              disabled={selectedPage === totalPages || selectedPage === 'all'}
               style={{
                 background: 'rgba(255, 255, 255, 0.06)',
                 border: '1px solid rgba(255, 255, 255, 0.15)',
                 borderRadius: '8px',
                 padding: '6px 10px',
-                color: selectedPage === 7 || selectedPage === 'all' ? 'rgba(255,255,255,0.2)' : '#f3e5ab',
-                cursor: selectedPage === 7 || selectedPage === 'all' ? 'not-allowed' : 'pointer'
+                color: selectedPage === totalPages || selectedPage === 'all' ? 'rgba(255,255,255,0.2)' : '#f3e5ab',
+                cursor: selectedPage === totalPages || selectedPage === 'all' ? 'not-allowed' : 'pointer'
               }}
               title="Next Page"
             >
@@ -404,14 +415,14 @@ export const FileExtensionSection: React.FC = () => {
                 marginLeft: '6px'
               }}
             >
-              {selectedPage === 'all' ? 'Split into Pages' : 'View All 364'}
+              {selectedPage === 'all' ? 'Split into Pages' : `View All ${extensionSummary.uniqueExtensions}`}
             </button>
           </div>
         </div>
 
-        {/* 7 Compact Page Buttons */}
+        {/* Compact Page Buttons */}
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(130px, 1fr))', gap: '8px' }}>
-          {[1, 2, 3, 4, 5, 6, 7].map((pg) => {
+          {Array.from({ length: totalPages }, (_, i) => i + 1).map((pg) => {
             const isActive = selectedPage === pg
             const count = pageCounts[pg] || 0
             const subtitle =
@@ -731,7 +742,7 @@ export const FileExtensionSection: React.FC = () => {
                           color: '#94a3b8'
                         }}
                       >
-                        Pg {item.page}/7
+                        Pg {item.page}/{totalPages}
                       </span>
                     </td>
                   </tr>
@@ -773,15 +784,15 @@ export const FileExtensionSection: React.FC = () => {
       >
         <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
           <ShieldCheck size={16} style={{ color: '#2ecc71' }} />
-          <span style={{ color: '#ffffff' }}>Audit Status: <strong style={{ color: '#2ecc71' }}>{EXTENSION_SCAN_RECORD.status}</strong></span>
+          <span style={{ color: '#ffffff' }}>Audit Status: <strong style={{ color: '#2ecc71' }}>{scanRecord.status}</strong></span>
           <span style={{ color: 'rgba(255, 255, 255, 0.2)' }}>•</span>
-          <span>Database Cache: <strong style={{ color: '#d4af37' }}>{EXTENSION_SCAN_RECORD.databaseCache}</strong></span>
+          <span>Database Cache: <strong style={{ color: '#d4af37' }}>{scanRecord.databaseCache}</strong></span>
         </div>
 
         <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-          <span>Scan ID: <strong style={{ color: '#f3e5ab' }}>{EXTENSION_SCAN_RECORD.scanId}</strong></span>
+          <span>Scan ID: <strong style={{ color: '#f3e5ab' }}>{scanRecord.scanId}</strong></span>
           <span style={{ color: 'rgba(255, 255, 255, 0.2)' }}>•</span>
-          <span>Engine: {EXTENSION_SCAN_RECORD.reportVersion}</span>
+          <span>Engine: {scanRecord.reportVersion}</span>
         </div>
       </div>
     </div>

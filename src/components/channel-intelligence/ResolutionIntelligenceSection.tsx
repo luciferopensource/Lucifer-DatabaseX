@@ -4,15 +4,23 @@ import {
   BarChart3
 } from 'lucide-react'
 import {
-  RESOLUTION_BREAKDOWN,
-  RESOLUTION_SCAN_RECORD
+  ChannelIntelligenceDataset,
+  BACKUP_1_DATASET
 } from '../../data/channelIntelligenceData'
 
-export const ResolutionIntelligenceSection: React.FC = () => {
+interface ResolutionIntelligenceSectionProps {
+  dataset?: ChannelIntelligenceDataset
+}
+
+export const ResolutionIntelligenceSection: React.FC<ResolutionIntelligenceSectionProps> = ({
+  dataset = BACKUP_1_DATASET
+}) => {
+  const resolutionBreakdown = dataset.resolutionBreakdown
+  const scanRecord = dataset.resolutionScanRecord
   const [selectedResolutionId, setSelectedResolutionId] = useState<string | null>(null)
 
   const selectedItem = selectedResolutionId
-    ? RESOLUTION_BREAKDOWN.find((r) => r.id === selectedResolutionId)
+    ? resolutionBreakdown.find((r) => r.id === selectedResolutionId)
     : null
 
   return (
@@ -89,7 +97,7 @@ export const ResolutionIntelligenceSection: React.FC = () => {
             }}
           >
             <span style={{ width: '6px', height: '6px', borderRadius: '50%', background: '#2ecc71' }} />
-            DATABASE CACHE: {RESOLUTION_SCAN_RECORD.databaseCache}
+            DATABASE CACHE: {scanRecord.databaseCache}
           </span>
           <span
             style={{
@@ -103,7 +111,7 @@ export const ResolutionIntelligenceSection: React.FC = () => {
               fontFamily: "'JetBrains Mono', monospace"
             }}
           >
-            ID: {RESOLUTION_SCAN_RECORD.scanId}
+            ID: {scanRecord.scanId}
           </span>
         </div>
       </div>
@@ -146,7 +154,7 @@ export const ResolutionIntelligenceSection: React.FC = () => {
             boxShadow: 'inset 0 2px 6px rgba(0,0,0,0.8)'
           }}
         >
-          {RESOLUTION_BREAKDOWN.map((res) => {
+          {resolutionBreakdown.map((res) => {
             const widthPct = Math.max(res.numericPercentage, 1.2)
             const isHighlighted = selectedResolutionId === res.id
             return (
@@ -209,7 +217,7 @@ export const ResolutionIntelligenceSection: React.FC = () => {
           marginBottom: '28px'
         }}
       >
-        {RESOLUTION_BREAKDOWN.map((res) => {
+        {resolutionBreakdown.map((res) => {
           const isSelected = selectedResolutionId === res.id
           return (
             <div
@@ -367,14 +375,14 @@ export const ResolutionIntelligenceSection: React.FC = () => {
         }}
       >
         <div style={{ display: 'flex', alignItems: 'center', gap: '16px', flexWrap: 'wrap' }}>
-          <span><strong>SCAN ID:</strong> <span style={{ fontFamily: "'JetBrains Mono', monospace", color: '#d4af37' }}>{RESOLUTION_SCAN_RECORD.scanId}</span></span>
-          <span><strong>COMPLETED:</strong> {RESOLUTION_SCAN_RECORD.completed}</span>
-          <span><strong>STATUS:</strong> <span style={{ color: '#2ecc71', fontWeight: 700 }}>✅ {RESOLUTION_SCAN_RECORD.status}</span></span>
+          <span><strong>SCAN ID:</strong> <span style={{ fontFamily: "'JetBrains Mono', monospace", color: '#d4af37' }}>{scanRecord.scanId}</span></span>
+          <span><strong>COMPLETED:</strong> {scanRecord.completed}</span>
+          <span><strong>STATUS:</strong> <span style={{ color: '#2ecc71', fontWeight: 700 }}>✅ {scanRecord.status}</span></span>
         </div>
         <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
-          <span><strong>DATABASE CACHE:</strong> <span style={{ color: '#2ecc71', fontWeight: 700 }}>● {RESOLUTION_SCAN_RECORD.databaseCache}</span></span>
+          <span><strong>DATABASE CACHE:</strong> <span style={{ color: '#2ecc71', fontWeight: 700 }}>● {scanRecord.databaseCache}</span></span>
           <span style={{ color: 'rgba(212, 175, 55, 0.3)' }}>|</span>
-          <span>{RESOLUTION_SCAN_RECORD.reportVersion}</span>
+          <span>{scanRecord.reportVersion}</span>
         </div>
       </div>
     </div>

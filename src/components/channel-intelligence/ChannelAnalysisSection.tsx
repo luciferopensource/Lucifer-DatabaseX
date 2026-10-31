@@ -12,14 +12,23 @@ import {
   Radio
 } from 'lucide-react'
 import {
-  TARGET_INFO,
-  SCAN_SUMMARY,
-  CATEGORY_BREAKDOWN,
-  DATA_INTEGRITY_AUDIT,
-  CHANNEL_ANALYSIS_SCAN_RECORD
+  ChannelIntelligenceDataset,
+  BACKUP_1_DATASET
 } from '../../data/channelIntelligenceData'
 
-export const ChannelAnalysisSection: React.FC = () => {
+interface ChannelAnalysisSectionProps {
+  dataset?: ChannelIntelligenceDataset
+}
+
+export const ChannelAnalysisSection: React.FC<ChannelAnalysisSectionProps> = ({
+  dataset = BACKUP_1_DATASET
+}) => {
+  const targetInfo = dataset.targetInfo
+  const scanSummary = dataset.scanSummary
+  const categoryBreakdown = dataset.categoryBreakdown
+  const dataIntegrity = dataset.dataIntegrity
+  const scanRecord = dataset.channelAnalysisScanRecord
+
   const getCategoryIcon = (iconName: string) => {
     switch (iconName) {
       case 'Film': return <Film size={18} />
@@ -107,7 +116,7 @@ export const ChannelAnalysisSection: React.FC = () => {
             }}
           >
             <span style={{ width: '6px', height: '6px', borderRadius: '50%', background: '#2ecc71' }} />
-            DATABASE CACHE: {CHANNEL_ANALYSIS_SCAN_RECORD.databaseCache}
+            DATABASE CACHE: {scanRecord.databaseCache}
           </span>
           <span
             style={{
@@ -121,7 +130,7 @@ export const ChannelAnalysisSection: React.FC = () => {
               fontFamily: "'JetBrains Mono', monospace"
             }}
           >
-            ID: {CHANNEL_ANALYSIS_SCAN_RECORD.scanId}
+            ID: {scanRecord.scanId}
           </span>
         </div>
       </div>
@@ -153,19 +162,19 @@ export const ChannelAnalysisSection: React.FC = () => {
           <div style={{ display: 'flex', flexDirection: 'column', gap: '10px', fontSize: '0.84rem' }}>
             <div style={{ display: 'flex', justifyContent: 'space-between', paddingBottom: '8px', borderBottom: '1px solid rgba(255,255,255,0.05)' }}>
               <span style={{ color: 'rgba(243, 229, 171, 0.6)' }}>Target Name:</span>
-              <span style={{ fontWeight: 700, color: '#f3e5ab' }}>{TARGET_INFO.name}</span>
+              <span style={{ fontWeight: 700, color: '#f3e5ab' }}>{targetInfo.name}</span>
             </div>
             <div style={{ display: 'flex', justifyContent: 'space-between', paddingBottom: '8px', borderBottom: '1px solid rgba(255,255,255,0.05)' }}>
               <span style={{ color: 'rgba(243, 229, 171, 0.6)' }}>Channel ID:</span>
-              <span style={{ fontWeight: 700, color: '#d4af37', fontFamily: "'JetBrains Mono', monospace" }}>{TARGET_INFO.channelId}</span>
+              <span style={{ fontWeight: 700, color: '#d4af37', fontFamily: "'JetBrains Mono', monospace" }}>{targetInfo.channelId}</span>
             </div>
             <div style={{ display: 'flex', justifyContent: 'space-between', paddingBottom: '8px', borderBottom: '1px solid rgba(255,255,255,0.05)' }}>
               <span style={{ color: 'rgba(243, 229, 171, 0.6)' }}>Scanner Node:</span>
-              <span style={{ fontWeight: 600, color: '#f3e5ab' }}>{TARGET_INFO.scanner}</span>
+              <span style={{ fontWeight: 600, color: '#f3e5ab' }}>{targetInfo.scanner}</span>
             </div>
             <div style={{ display: 'flex', justifyContent: 'space-between' }}>
               <span style={{ color: 'rgba(243, 229, 171, 0.6)' }}>Intelligence Engine:</span>
-              <span style={{ fontWeight: 600, color: '#2ecc71' }}>{TARGET_INFO.intelligenceEngine}</span>
+              <span style={{ fontWeight: 600, color: '#2ecc71' }}>{targetInfo.intelligenceEngine}</span>
             </div>
           </div>
         </div>
@@ -188,19 +197,19 @@ export const ChannelAnalysisSection: React.FC = () => {
           <div style={{ display: 'flex', flexDirection: 'column', gap: '10px', fontSize: '0.84rem' }}>
             <div style={{ display: 'flex', justifyContent: 'space-between', paddingBottom: '8px', borderBottom: '1px solid rgba(255,255,255,0.05)' }}>
               <span style={{ color: 'rgba(243, 229, 171, 0.6)' }}>Messages Checked:</span>
-              <span style={{ fontWeight: 700, color: '#f3e5ab' }}>{SCAN_SUMMARY.messagesChecked}</span>
+              <span style={{ fontWeight: 700, color: '#f3e5ab' }}>{scanSummary.messagesChecked}</span>
             </div>
             <div style={{ display: 'flex', justifyContent: 'space-between', paddingBottom: '8px', borderBottom: '1px solid rgba(255,255,255,0.05)' }}>
               <span style={{ color: 'rgba(243, 229, 171, 0.6)' }}>Total Files Found:</span>
-              <span style={{ fontWeight: 700, color: '#2ecc71' }}>{SCAN_SUMMARY.totalFilesFound}</span>
+              <span style={{ fontWeight: 700, color: '#2ecc71' }}>{scanSummary.totalFilesFound}</span>
             </div>
             <div style={{ display: 'flex', justifyContent: 'space-between', paddingBottom: '8px', borderBottom: '1px solid rgba(255,255,255,0.05)' }}>
               <span style={{ color: 'rgba(243, 229, 171, 0.6)' }}>Combined Size:</span>
-              <span style={{ fontWeight: 800, color: '#d4af37' }}>{SCAN_SUMMARY.combinedSize}</span>
+              <span style={{ fontWeight: 800, color: '#d4af37' }}>{scanSummary.combinedSize}</span>
             </div>
             <div style={{ display: 'flex', justifyContent: 'space-between' }}>
               <span style={{ color: 'rgba(243, 229, 171, 0.6)' }}>Scan Duration:</span>
-              <span style={{ fontWeight: 600, color: '#f3e5ab' }}>{SCAN_SUMMARY.scanDuration}</span>
+              <span style={{ fontWeight: 600, color: '#f3e5ab' }}>{scanSummary.scanDuration}</span>
             </div>
           </div>
         </div>
@@ -233,7 +242,7 @@ export const ChannelAnalysisSection: React.FC = () => {
             gap: '14px'
           }}
         >
-          {CATEGORY_BREAKDOWN.map((item) => (
+          {categoryBreakdown.map((item) => (
             <div
               key={item.id}
               style={{
@@ -273,7 +282,7 @@ export const ChannelAnalysisSection: React.FC = () => {
                   style={{
                     fontSize: '0.78rem',
                     fontWeight: 800,
-                    color: item.percentage === '99.5%' ? '#2ecc71' : '#d4af37',
+                    color: item.percentage.startsWith('99.') ? '#2ecc71' : '#d4af37',
                     background: 'rgba(255, 255, 255, 0.05)',
                     padding: '2px 8px',
                     borderRadius: '4px',
@@ -324,7 +333,7 @@ export const ChannelAnalysisSection: React.FC = () => {
             gap: '12px'
           }}
         >
-          {DATA_INTEGRITY_AUDIT.map((audit) => (
+          {dataIntegrity.map((audit) => (
             <div
               key={audit.key}
               style={{
@@ -371,14 +380,14 @@ export const ChannelAnalysisSection: React.FC = () => {
         }}
       >
         <div style={{ display: 'flex', alignItems: 'center', gap: '16px', flexWrap: 'wrap' }}>
-          <span><strong>SCAN ID:</strong> <span style={{ fontFamily: "'JetBrains Mono', monospace", color: '#d4af37' }}>{CHANNEL_ANALYSIS_SCAN_RECORD.scanId}</span></span>
-          <span><strong>COMPLETED:</strong> {CHANNEL_ANALYSIS_SCAN_RECORD.completed}</span>
-          <span><strong>STATUS:</strong> <span style={{ color: '#2ecc71', fontWeight: 700 }}>✅ {CHANNEL_ANALYSIS_SCAN_RECORD.status}</span></span>
+          <span><strong>SCAN ID:</strong> <span style={{ fontFamily: "'JetBrains Mono', monospace", color: '#d4af37' }}>{scanRecord.scanId}</span></span>
+          <span><strong>COMPLETED:</strong> {scanRecord.completed}</span>
+          <span><strong>STATUS:</strong> <span style={{ color: '#2ecc71', fontWeight: 700 }}>✅ {scanRecord.status}</span></span>
         </div>
         <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
-          <span><strong>DATABASE CACHE:</strong> <span style={{ color: '#d4af37', fontWeight: 700 }}>● {CHANNEL_ANALYSIS_SCAN_RECORD.databaseCache}</span></span>
+          <span><strong>DATABASE CACHE:</strong> <span style={{ color: '#d4af37', fontWeight: 700 }}>● {scanRecord.databaseCache}</span></span>
           <span style={{ color: 'rgba(212, 175, 55, 0.3)' }}>|</span>
-          <span>{CHANNEL_ANALYSIS_SCAN_RECORD.reportVersion}</span>
+          <span>{scanRecord.reportVersion}</span>
         </div>
       </div>
     </div>

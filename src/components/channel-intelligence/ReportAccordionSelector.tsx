@@ -6,6 +6,10 @@ import {
   FileCode,
   ChevronDown
 } from 'lucide-react'
+import {
+  ChannelIntelligenceDataset,
+  BACKUP_1_DATASET
+} from '../../data/channelIntelligenceData'
 
 export type ActiveReportTab = 'channel-analysis' | 'resolution' | 'storage' | 'extensions'
 
@@ -20,40 +24,42 @@ interface ReportTabConfig {
 interface ReportAccordionSelectorProps {
   activeTab: ActiveReportTab | null
   onToggleTab: (tab: ActiveReportTab) => void
+  dataset?: ChannelIntelligenceDataset
 }
 
 export const ReportAccordionSelector: React.FC<ReportAccordionSelectorProps> = ({
   activeTab,
-  onToggleTab
+  onToggleTab,
+  dataset = BACKUP_1_DATASET
 }) => {
   const tabs: ReportTabConfig[] = [
     {
       id: 'channel-analysis',
       title: 'CHANNEL ANALYSIS REPORT',
-      subtitle: '999,977 Messages • 8 Categories • Integrity Audit',
+      subtitle: `${dataset.scanSummary.messagesChecked} Messages • 8 Categories • Integrity Audit`,
       icon: <PieChart size={20} />,
-      tag: 'CACHED'
+      tag: dataset.channelAnalysisScanRecord.databaseCache
     },
     {
       id: 'resolution',
       title: 'RESOLUTION INTELLIGENCE REPORT',
       subtitle: '4K UHD to 240p Low • 9 Profiles • Distribution Matrix',
       icon: <Tv size={20} />,
-      tag: 'SAVED'
+      tag: dataset.resolutionScanRecord.databaseCache
     },
     {
       id: 'storage',
       title: 'STORAGE HIGHLIGHTS REPORT',
-      subtitle: '945.67 TB Total • 3.91 GB Largest • 991.64 MB Avg',
+      subtitle: `${dataset.storageHighlights.totalStorage} Total • ${dataset.storageHighlights.largestFileSize} Largest • ${dataset.storageHighlights.averageFileSize} Avg`,
       icon: <HardDrive size={20} />,
       tag: 'AUDITED'
     },
     {
       id: 'extensions',
       title: 'FILE EXTENSION REPORT',
-      subtitle: '364 Unique Extensions • Pages 1 to 7 • Full Audit',
+      subtitle: `${dataset.extensionSummary.uniqueExtensions} Unique Extensions • Pages 1 to ${dataset.extensionSummary.totalPages} • Full Audit`,
       icon: <FileCode size={20} />,
-      tag: '7 PAGES'
+      tag: `${dataset.extensionSummary.totalPages} PAGES`
     }
   ]
 

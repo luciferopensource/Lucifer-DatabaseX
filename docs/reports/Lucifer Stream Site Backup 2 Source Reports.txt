@@ -1,0 +1,1595 @@
+"THIS IS CHANNEL ANALYSIS REPORT
+
+🗄️ CACHED INTELLIGENCE
+──────────────────────────────────
+
+This report was generated from the
+latest completed scan.
+
+Last updated:
+27 Oct 2026
+
+╔══════════════════════════════════╗
+║       📦 ARCHIVE X ENGINE        ║
+║     CHANNEL ANALYSIS REPORT      ║
+╚══════════════════════════════════╝
+
+📡 TARGET
+┌─ 🎬 Lucifer Stream Site 2 Backup
+├─ 🆔 -1004400619740
+└─ 🛰️ Scanner-Node-01
+
+╔══════════════════════════════════╗
+║         📊 SCAN SUMMARY          ║
+╚══════════════════════════════════╝
+📨 MESSAGES CHECKED
+└─ 948,114
+
+📁 TOTAL FILES FOUND
+└─ 948,110
+
+💾 COMBINED SIZE
+└─ 708.57 TB
+
+⏱️ SCAN DURATION
+└─ 2h 43m 48s
+
+🛰️ SCANNER WORKER
+└─ Scanner-Node-01
+
+✅ SCAN INTEGRITY
+└─ VERIFIED
+
+╔══════════════════════════════════╗
+║      🎞️ CATEGORY BREAKDOWN       ║
+╚══════════════════════════════════╝
+🎬 VIDEOS & MEDIA
+┟ 📁 Files
+└─ 933,263
+┟ 💾 Storage
+└─ 706.59 TB · 99.7%
+
+──────────────────────────────────
+
+🗜️ SPLIT PARTS / VOLUMES
+┟ 📁 Files
+└─ 783
+┟ 💾 Storage
+└─ 1.51 TB · 0.2%
+
+──────────────────────────────────
+
+📦 ARCHIVES & COMPRESSED
+┟ 📁 Files
+└─ 692
+┟ 💾 Storage
+└─ 403.95 GB · <0.1%
+
+──────────────────────────────────
+
+📚 DOCUMENTS & TEXT
+┟ 📁 Files
+└─ 13,113
+┟ 💾 Storage
+└─ 48.34 GB · <0.1%
+
+──────────────────────────────────
+
+🎵 AUDIO & MUSIC
+┟ 📁 Files
+└─ 131
+┟ 💾 Storage
+└─ 15.18 GB · <0.1%
+
+──────────────────────────────────
+
+🖼️ PHOTOS & GRAPHICS
+┟ 📁 Files
+└─ 56
+┟ 💾 Storage
+└─ 56.89 MB · <0.1%
+
+──────────────────────────────────
+
+📱 SOFTWARE & APPLICATIONS
+┟ 📁 Files
+└─ 27
+┟ 💾 Storage
+└─ 1.17 GB · <0.1%
+
+──────────────────────────────────
+
+📎 OTHER FILES
+┟ 📁 Files
+└─ 45
+┟ 💾 Storage
+└─ 11.02 GB · <0.1%
+
+╔══════════════════════════════════╗
+║        🧮 DATA INTEGRITY         ║
+╚══════════════════════════════════╝
+🟢 MESSAGE INDEX
+└─ VERIFIED
+
+🟢 FILE TOTALS
+└─ VERIFIED
+
+🟢 STORAGE TOTALS
+└─ VERIFIED
+
+🟢 CATEGORY DISTRIBUTION
+└─ VERIFIED
+
+🟢 DATABASE RECORD
+└─ SYNCHRONIZED
+
+🟢 CHECKPOINT
+└─ COMMITTED
+
+╔══════════════════════════════════╗
+║          🗄️ SCAN RECORD          ║
+╚══════════════════════════════════╝
+🆔 SCAN ID
+└─ LMS-94E3-7DE1
+
+📅 COMPLETED
+└─ 27 Oct 2026
+
+📌 STATUS
+└─ ✅ COMPLETE
+
+🔄 DATABASE CACHE
+└─ ● CACHED
+
+📊 REPORT VERSION
+└─ Archive X v1.0.0
+
+╔══════════════════════════════════╗
+║        ✅ SCAN COMPLETED         ║
+║                                  ║
+║       📦 ARCHIVE X ENGINE        ║
+║    🧠 MEDIA INTELLIGENCE CORE    ║
+╚══════════════════════════════════╝"
+
+
+"Now This is RESOLUTION INTELLIGENCE Report
+
+╔══════════════════════════════════╗
+║       📦 ARCHIVE X ENGINE        ║
+║     RESOLUTION INTELLIGENCE      ║
+╚══════════════════════════════════╝
+
+📡 TARGET
+┌─ 🎬 Lucifer Stream Site 2 Backup
+├─ 🆔 -1004400619740
+└─ 🛰️ Scanner-Node-01
+
+╔══════════════════════════════════╗
+║     📐 RESOLUTION BREAKDOWN      ║
+╚══════════════════════════════════╝
+🎞️ 2160p / 4K
+┟ 📁 Files
+└─ 8,092
+┟ 💾 Storage
+└─ 14.94 TB · 2.1%
+
+──────────────────────────────────
+
+🎞️ 1440p / 2K
+┟ 📁 Files
+└─ 388
+┟ 💾 Storage
+└─ 507.18 GB · <0.1%
+
+──────────────────────────────────
+
+🎞️ 1080p / FHD
+┟ 📁 Files
+└─ 209,611
+┟ 💾 Storage
+└─ 306.23 TB · 43.2%
+
+──────────────────────────────────
+
+🎞️ 720p / HD
+┟ 📁 Files
+└─ 441,904
+┟ 💾 Storage
+└─ 299.33 TB · 42.2%
+
+──────────────────────────────────
+
+🎞️ 576p / SD
+┟ 📁 Files
+└─ 6,045
+┟ 💾 Storage
+└─ 3.33 TB · 0.5%
+
+──────────────────────────────────
+
+🎞️ 480p / SD
+┟ 📁 Files
+└─ 114,296
+┟ 💾 Storage
+└─ 40.35 TB · 5.7%
+
+──────────────────────────────────
+
+🎞️ 360p / Low
+┟ 📁 Files
+└─ 9,023
+┟ 💾 Storage
+└─ 2.69 TB · 0.4%
+
+──────────────────────────────────
+
+🎞️ 240p / Low
+┟ 📁 Files
+└─ 5,948
+┟ 💾 Storage
+└─ 1.57 TB · 0.2%
+
+──────────────────────────────────
+
+❔ OTHER / AUDIO / ARCHIVES
+┟ 📁 Files
+└─ 152,803
+┟ 💾 Storage
+└─ 39.63 TB · 5.6%
+
+╔══════════════════════════════════╗
+║          🗄️ SCAN RECORD          ║
+╚══════════════════════════════════╝
+🆔 SCAN ID
+└─ LMS-94E3-7DE1
+
+📅 COMPLETED
+└─ 27 Oct 2026
+
+📌 STATUS
+└─ ✅ COMPLETE
+
+🔄 DATABASE CACHE
+└─ ● SAVED
+
+📊 REPORT VERSION
+└─ Archive X v1.0.0
+
+╔══════════════════════════════════╗
+║      ✅ RESOLUTION AUDITED       ║
+║                                  ║
+║       📦 ARCHIVE X ENGINE        ║
+║    🧠 MEDIA INTELLIGENCE CORE    ║
+╚══════════════════════════════════╝"
+
+
+"Now This is STORAGE HIGHLIGHTS Report"
+
+╔══════════════════════════════════╗
+║       📦 ARCHIVE X ENGINE        ║
+║        STORAGE HIGHLIGHTS        ║
+╚══════════════════════════════════╝
+
+📡 TARGET
+┌─ 🎬 Lucifer Stream Site 2 Backup
+├─ 🆔 -1004400619740
+└─ 🛰️ Scanner-Node-01
+
+╔══════════════════════════════════╗
+║       🏆 MEDIA HIGHLIGHTS        ║
+╚══════════════════════════════════╝
+
+🥇 LARGEST FILE
+├─ 💾 3.91 GB
+└─ 📁 The.Matrix.1999.iNTERNAL.REMA…
+
+📊 AVERAGE FILE SIZE
+└─ 💾 783.65 MB
+
+📁 TOTAL FILES
+└─ 948,110
+
+💾 TOTAL STORAGE
+└─ 708.57 TB
+
+╔══════════════════════════════════╗
+║          🗄️ SCAN RECORD          ║
+╚══════════════════════════════════╝
+🆔 SCAN ID
+└─ LMS-94E3-7DE1
+
+📅 COMPLETED
+└─ 27 Oct 2026
+
+📌 STATUS
+└─ ✅ COMPLETE
+
+🔄 DATABASE CACHE
+└─ ● SAVED
+
+📊 REPORT VERSION
+└─ Archive X v1.0.0
+
+╔══════════════════════════════════╗
+║        ✅ STORAGE AUDITED        ║
+║                                  ║
+║       📦 ARCHIVE X ENGINE        ║
+║    🧠 MEDIA INTELLIGENCE CORE    ║
+╚══════════════════════════════════╝"
+
+
+"Now This is File Extension Report
+
+╔══════════════════════════════════╗
+║       📦 ARCHIVE X ENGINE        ║
+║🔎 FILE EXTENSION REPORT (P. 1/6) ║
+╚══════════════════════════════════╝
+
+📡 TARGET
+┌─ 🎬 Lucifer Stream Site 2 Backup
+├─ 🆔 -1004400619740
+└─ 🆔 LMS-94E3-7DE1
+
+╔══════════════════════════════════╗
+║        📊 EXTENSION STATS        ║
+╚══════════════════════════════════╝
+
+📁 TOTAL FILES ANALYSED
+└─ 948,110
+
+🔢 UNIQUE EXTENSIONS
+└─ 280
+
+💾 TOTAL ANALYSED STORAGE
+└─ 708.57 TB
+╔══════════════════════════════════╗
+║       🎬 VIDEO EXTENSIONS        ║
+╚══════════════════════════════════╝
+
+📄 .mkv
+┟ 📁 Files: 842,256
+└─ 💾 Storage: 666.11 TB
+
+📄 .mp4
+┟ 📁 Files: 83,200
+└─ 💾 Storage: 36.47 TB
+
+📄 .avi
+┟ 📁 Files: 1,141
+└─ 💾 Storage: 428.91 GB
+
+📄 .m4v
+┟ 📁 Files: 279
+└─ 💾 Storage: 187.36 GB
+
+📄 .mpeg
+┟ 📁 Files: 126
+└─ 💾 Storage: 93.27 GB
+
+📄 .flv
+┟ 📁 Files: 100
+└─ 💾 Storage: 19.65 GB
+
+📄 .webm
+┟ 📁 Files: 34
+└─ 💾 Storage: 11.99 GB
+
+📄 .mov
+┟ 📁 Files: 24
+└─ 💾 Storage: 9.40 GB
+
+📄 .3gp
+┟ 📁 Files: 14
+└─ 💾 Storage: 1.37 GB
+
+📄 .ts
+┟ 📁 Files: 11
+└─ 💾 Storage: 4.25 GB
+
+📄 .vob
+┟ 📁 Files: 11
+└─ 💾 Storage: 9.79 GB
+
+📄 .264
+┟ 📁 Files: 10
+└─ 💾 Storage: 20.17 GB
+
+📄 .265
+┟ 📁 Files: 9
+└─ 💾 Storage: 18.52 GB
+
+📄 .mpv
+┟ 📁 Files: 6
+└─ 💾 Storage: 4.77 GB
+
+📄 .wmv
+┟ 📁 Files: 5
+└─ 💾 Storage: 756.75 MB
+
+📄 .mpg
+┟ 📁 Files: 4
+└─ 💾 Storage: 4.21 GB
+
+╔══════════════════════════════════╗
+║       🎵 AUDIO EXTENSIONS        ║
+╚══════════════════════════════════╝
+
+📄 .eac3
+┟ 📁 Files: 60
+└─ 💾 Storage: 14.96 GB
+
+📄 .mka
+┟ 📁 Files: 37
+└─ 💾 Storage: 4.51 GB
+
+📄 .flac
+┟ 📁 Files: 30
+└─ 💾 Storage: 855.23 MB
+
+📄 .ac3
+┟ 📁 Files: 19
+└─ 💾 Storage: 3.09 GB
+
+📄 .mp3
+┟ 📁 Files: 18
+└─ 💾 Storage: 3.89 GB
+
+📄 .aac
+┟ 📁 Files: 9
+└─ 💾 Storage: 1.49 GB
+
+📄 .wma
+┟ 📁 Files: 9
+└─ 💾 Storage: 39.49 MB
+
+📄 .m4a
+┟ 📁 Files: 3
+└─ 💾 Storage: 114.00 MB
+
+📄 .wav
+┟ 📁 Files: 2
+└─ 💾 Storage: 106.36 MB
+
+╔══════════════════════════════════╗
+║      📝 SUBTITLE EXTENSIONS      ║
+╚══════════════════════════════════╝
+
+📄 .srt
+┟ 📁 Files: 10,242
+└─ 💾 Storage: 467.70 MB
+
+📄 .sub
+┟ 📁 Files: 35
+└─ 💾 Storage: 466.21 MB
+
+📄 .idx
+┟ 📁 Files: 32
+└─ 💾 Storage: 3.46 MB
+
+╔══════════════════════════════════╗
+║      📦 ARCHIVE EXTENSIONS       ║
+╚══════════════════════════════════╝
+
+📄 .zip
+┟ 📁 Files: 230
+└─ 💾 Storage: 149.96 GB
+
+📄 .001
+┟ 📁 Files: 201
+└─ 💾 Storage: 685.39 GB
+
+📄 .002
+┟ 📁 Files: 199
+└─ 💾 Storage: 315.76 GB
+
+📄 .rar
+┟ 📁 Files: 158
+└─ 💾 Storage: 134.20 GB
+
+📄 .003
+┟ 📁 Files: 50
+└─ 💾 Storage: 65.47 GB
+
+📄 .part1.rar
+┟ 📁 Files: 37
+└─ 💾 Storage: 55.73 GB
+
+📄 .part2.rar
+┟ 📁 Files: 36
+└─ 💾 Storage: 44.32 GB
+
+📄 .part3.rar
+┟ 📁 Files: 26
+└─ 💾 Storage: 32.38 GB
+
+📄 .004
+┟ 📁 Files: 16
+└─ 💾 Storage: 33.09 GB
+
+📄 .part4.rar
+┟ 📁 Files: 14
+└─ 💾 Storage: 15.50 GB
+
+📄 .part03.rar
+┟ 📁 Files: 10
+└─ 💾 Storage: 12.61 GB
+
+📄 .part07.rar
+┟ 📁 Files: 10
+└─ 💾 Storage: 12.61 GB
+
+📄 .part01.rar
+┟ 📁 Files: 9
+└─ 💾 Storage: 11.92 GB
+
+📄 .part02.rar
+┟ 📁 Files: 9
+└─ 💾 Storage: 11.92 GB
+
+📄 .part04.rar
+┟ 📁 Files: 9
+└─ 💾 Storage: 11.92 GB
+
+📄 .part05.rar
+┟ 📁 Files: 9
+└─ 💾 Storage: 11.92 GB
+
+📄 .part06.rar
+┟ 📁 Files: 9
+└─ 💾 Storage: 11.92 GB
+
+📄 .part08.rar
+┟ 📁 Files: 9
+└─ 💾 Storage: 11.92 GB
+
+📄 .part09.rar
+┟ 📁 Files: 9
+└─ 💾 Storage: 10.65 GB
+
+📄 .part10.rar
+┟ 📁 Files: 9
+└─ 💾 Storage: 9.44 GB
+
+📄 .part11.rar
+┟ 📁 Files: 7
+└─ 💾 Storage: 7.20 GB
+
+╔══════════════════════════════════╗
+║      ✅ EXTENSIONS AUDITED       ║
+║             PAGE 1/6             ║
+║                                  ║
+║       📦 ARCHIVE X ENGINE        ║
+╚══════════════════════════════════╝
+
+
+╔══════════════════════════════════╗
+║       📦 ARCHIVE X ENGINE        ║
+║    EXTENSION REPORT (P. 2/6)     ║
+╚══════════════════════════════════╝
+
+╔══════════════════════════════════╗
+║  📦 ARCHIVE EXTENSIONS (CONT.)   ║
+╚══════════════════════════════════╝
+📄 .part12.rar
+┟ 📁 Files: 7
+└─ 💾 Storage: 6.58 GB
+
+📄 .part5.rar
+┟ 📁 Files: 6
+└─ 💾 Storage: 3.41 GB
+
+📄 .005
+┟ 📁 Files: 5
+└─ 💾 Storage: 14.21 GB
+
+📄 .part13.rar
+┟ 📁 Files: 5
+└─ 💾 Storage: 4.52 GB
+
+📄 .part1.zip
+┟ 📁 Files: 3
+└─ 💾 Storage: 3.60 GB
+
+📄 .part14.rar
+┟ 📁 Files: 3
+└─ 💾 Storage: 3.65 GB
+
+📄 .part15.rar
+┟ 📁 Files: 3
+└─ 💾 Storage: 3.65 GB
+
+📄 .part16.rar
+┟ 📁 Files: 3
+└─ 💾 Storage: 3.65 GB
+
+📄 .part17.rar
+┟ 📁 Files: 3
+└─ 💾 Storage: 2.37 GB
+
+📄 .part2.zip
+┟ 📁 Files: 3
+└─ 💾 Storage: 4.88 GB
+
+📄 .part3.zip
+┟ 📁 Files: 3
+└─ 💾 Storage: 4.98 GB
+
+📄 .part4.zip
+┟ 📁 Files: 3
+└─ 💾 Storage: 4.99 GB
+
+📄 .part5.zip
+┟ 📁 Files: 3
+└─ 💾 Storage: 4.91 GB
+
+📄 .part6.zip
+┟ 📁 Files: 3
+└─ 💾 Storage: 4.70 GB
+
+📄 .part7.zip
+┟ 📁 Files: 3
+└─ 💾 Storage: 4.50 GB
+
+📄 .part8.zip
+┟ 📁 Files: 3
+└─ 💾 Storage: 4.77 GB
+
+📄 .006
+┟ 📁 Files: 2
+└─ 💾 Storage: 5.86 GB
+
+📄 .007
+┟ 📁 Files: 2
+└─ 💾 Storage: 5.86 GB
+
+📄 .008
+┟ 📁 Files: 2
+└─ 💾 Storage: 5.86 GB
+
+📄 .009
+┟ 📁 Files: 2
+└─ 💾 Storage: 5.86 GB
+
+📄 .010
+┟ 📁 Files: 2
+└─ 💾 Storage: 5.86 GB
+
+📄 .011
+┟ 📁 Files: 2
+└─ 💾 Storage: 5.86 GB
+
+📄 .012
+┟ 📁 Files: 2
+└─ 💾 Storage: 5.86 GB
+
+📄 .013
+┟ 📁 Files: 2
+└─ 💾 Storage: 5.86 GB
+
+📄 .014
+┟ 📁 Files: 2
+└─ 💾 Storage: 2.46 GB
+
+📄 .2019
+┟ 📁 Files: 2
+└─ 💾 Storage: 723.47 MB
+
+📄 .part18.rar
+┟ 📁 Files: 2
+└─ 💾 Storage: 1.20 GB
+
+📄 .00001
+┟ 📁 Files: 1
+└─ 💾 Storage: 1.95 GB
+
+📄 .00002
+┟ 📁 Files: 1
+└─ 💾 Storage: 70.75 MB
+
+📄 .1984
+┟ 📁 Files: 1
+└─ 💾 Storage: 1.01 GB
+
+📄 .part19.rar
+┟ 📁 Files: 1
+└─ 💾 Storage: 200.00 MB
+
+📄 .part20.rar
+┟ 📁 Files: 1
+└─ 💾 Storage: 200.00 MB
+
+📄 .part21.rar
+┟ 📁 Files: 1
+└─ 💾 Storage: 200.00 MB
+
+📄 .part22.rar
+┟ 📁 Files: 1
+└─ 💾 Storage: 200.00 MB
+
+📄 .part23.rar
+┟ 📁 Files: 1
+└─ 💾 Storage: 200.00 MB
+
+📄 .part24.rar
+┟ 📁 Files: 1
+└─ 💾 Storage: 200.00 MB
+
+📄 .z01
+┟ 📁 Files: 1
+└─ 💾 Storage: 1.05 GB
+
+╔══════════════════════════════════╗
+║      📄 DOCUMENT EXTENSIONS      ║
+╚══════════════════════════════════╝
+
+📄 .pdf
+┟ 📁 Files: 2,842
+└─ 💾 Storage: 47.83 GB
+
+📄 .txt
+┟ 📁 Files: 10
+└─ 💾 Storage: 216.07 KB
+
+📄 .epub
+┟ 📁 Files: 3
+└─ 💾 Storage: 51.49 MB
+
+📄 .docx
+┟ 📁 Files: 2
+└─ 💾 Storage: 71.65 KB
+
+╔══════════════════════════════════╗
+║       🖼️ IMAGE EXTENSIONS        ║
+╚══════════════════════════════════╝
+
+📄 .jpg
+┟ 📁 Files: 46
+└─ 💾 Storage: 49.65 MB
+
+📄 .png
+┟ 📁 Files: 6
+└─ 💾 Storage: 6.33 MB
+
+📄 .jpeg
+┟ 📁 Files: 3
+└─ 💾 Storage: 168.37 KB
+
+📄 .gif
+┟ 📁 Files: 1
+└─ 💾 Storage: 769.22 KB
+
+╔══════════════════════════════════╗
+║      ⚙️ SOFTWARE EXTENSIONS      ║
+╚══════════════════════════════════╝
+
+📄 .apk
+┟ 📁 Files: 24
+└─ 💾 Storage: 790.42 MB
+
+📄 .exe
+┟ 📁 Files: 3
+└─ 💾 Storage: 411.17 MB
+
+╔══════════════════════════════════╗
+║   📊 DATA & CONFIG EXTENSIONS    ║
+╚══════════════════════════════════╝
+
+📄 .bat
+┟ 📁 Files: 2
+└─ 💾 Storage: 508 B
+
+📄 .dat
+┟ 📁 Files: 1
+└─ 💾 Storage: 720.99 MB
+
+📄 .html
+┟ 📁 Files: 1
+└─ 💾 Storage: 10.67 KB
+
+╔══════════════════════════════════╗
+║     ❔ OTHER / UNKNOWN TYPES     ║
+╚══════════════════════════════════╝
+
+📄 [NO EXTENSION]
+┟ 📁 Files: 5,240
+└─ 💾 Storage: 2.70 TB
+
+╔══════════════════════════════════╗
+║      ✅ EXTENSIONS AUDITED       ║
+║             PAGE 2/6             ║
+║                                  ║
+║       📦 ARCHIVE X ENGINE        ║
+╚══════════════════════════════════╝
+
+
+╔══════════════════════════════════╗
+║       📦 ARCHIVE X ENGINE        ║
+║    EXTENSION REPORT (P. 3/6)     ║
+╚══════════════════════════════════╝
+
+╔══════════════════════════════════╗
+║ ❔ OTHER / UNKNOWN TYPES (CONT.) ║
+╚══════════════════════════════════╝
+📄 .264-mp4
+┟ 📁 Files: 195
+└─ 💾 Storage: 45.92 GB
+
+📄 .0 x264 esub-mkv
+┟ 📁 Files: 103
+└─ 💾 Storage: 46.75 GB
+
+📄 .mp4|
+┟ 📁 Files: 91
+└─ 💾 Storage: 32.52 GB
+
+📄 .264-mkv
+┟ 📁 Files: 61
+└─ 💾 Storage: 41.60 GB
+
+📄 .x264mkv
+┟ 📁 Files: 56
+└─ 💾 Storage: 13.13 GB
+
+📄 .264~mkv
+┟ 📁 Files: 50
+└─ 💾 Storage: 29.61 GB
+
+📄 .octet-stream
+┟ 📁 Files: 32
+└─ 💾 Storage: 29.35 GB
+
+📄 . mkv
+┟ 📁 Files: 31
+└─ 💾 Storage: 27.05 GB
+
+📄 .unknown_video
+┟ 📁 Files: 31
+└─ 💾 Storage: 27.95 GB
+
+📄 .0 h264 - mkv
+┟ 📁 Files: 26
+└─ 💾 Storage: 6.69 GB
+
+📄 .web-dl
+┟ 📁 Files: 18
+└─ 💾 Storage: 9.53 GB
+
+📄 .x264
+┟ 📁 Files: 15
+└─ 💾 Storage: 18.04 GB
+
+📄 .265-mkv
+┟ 📁 Files: 14
+└─ 💾 Storage: 7.07 GB
+
+📄 .esub
+┟ 📁 Files: 11
+└─ 💾 Storage: 14.87 GB
+
+📄 .720p,mkv
+┟ 📁 Files: 8
+└─ 💾 Storage: 3.34 GB
+
+📄 .aac-mp4
+┟ 📁 Files: 7
+└─ 💾 Storage: 6.84 GB
+
+📄 . [dual audio] [hindi or english] x264 esubs
+┟ 📁 Files: 6
+└─ 💾 Storage: 8.25 GB
+
+📄 .1
+┟ 📁 Files: 6
+└─ 💾 Storage: 6.48 GB
+
+📄 .1 esubs
+┟ 📁 Files: 6
+└─ 💾 Storage: 8.40 GB
+
+📄 .hdm2mkv
+┟ 📁 Files: 6
+└─ 💾 Storage: 12.50 GB
+
+📄 .mmkv
+┟ 📁 Files: 6
+└─ 💾 Storage: 5.69 GB
+
+📄 .web-dl-deeplife
+┟ 📁 Files: 6
+└─ 💾 Storage: 2.51 GB
+
+📄 .x264-mkv
+┟ 📁 Files: 6
+└─ 💾 Storage: 5.55 GB
+
+📄 .mk
+┟ 📁 Files: 5
+└─ 💾 Storage: 4.07 GB
+
+📄 .nfo
+┟ 📁 Files: 5
+└─ 💾 Storage: 1.83 MB
+
+📄 .x265
+┟ 📁 Files: 5
+└─ 💾 Storage: 3.94 GB
+
+📄 .0 esub ~rr
+┟ 📁 Files: 4
+└─ 💾 Storage: 3.89 GB
+
+📄 .0 ~ (strange) pahe~(black3at)mkv
+┟ 📁 Files: 4
+└─ 💾 Storage: 14.82 GB
+
+📄 .1-mp4
+┟ 📁 Files: 4
+└─ 💾 Storage: 7.82 GB
+
+📄 .264mkv
+┟ 📁 Files: 4
+└─ 💾 Storage: 2.66 GB
+
+📄 .2gb
+┟ 📁 Files: 4
+└─ 💾 Storage: 6.21 GB
+
+📄 .3gb
+┟ 📁 Files: 4
+└─ 💾 Storage: 9.79 GB
+
+📄 .hevc-mkv
+┟ 📁 Files: 4
+└─ 💾 Storage: 7.95 GB
+
+📄 .hevc-psa
+┟ 📁 Files: 4
+└─ 💾 Storage: 5.47 GB
+
+📄 .me movies4allrequest
+┟ 📁 Files: 4
+└─ 💾 Storage: 1.20 GB
+
+📄 .mkb
+┟ 📁 Files: 4
+└─ 💾 Storage: 6.07 GB
+
+📄 .mkkv
+┟ 📁 Files: 4
+└─ 💾 Storage: 5.42 GB
+
+📄 .panther
+┟ 📁 Files: 4
+└─ 💾 Storage: 6.79 GB
+
+📄 .tgnmovie
+┟ 📁 Files: 4
+└─ 💾 Storage: 3.99 GB
+
+📄 . [dual audio] [hindi or malayalam] x264 esubs
+┟ 📁 Files: 3
+└─ 💾 Storage: 5.27 GB
+
+📄 . joe origins (2021) 720p web-dl dual audio [
+┟ 📁 Files: 3
+└─ 💾 Storage: 3.22 GB
+
+📄 .0] 720p 
+
+@ssfilms_official3
+┟ 📁 Files: 3
+└─ 💾 Storage: 4.20 GB
+
+📄 .0] esubs -☈ohit [ak]
+┟ 📁 Files: 3
+└─ 💾 Storage: 6.06 GB
+
+📄 .mkv**
+┟ 📁 Files: 3
+└─ 💾 Storage: 5.72 GB
+
+📄 .mp4!
+┟ 📁 Files: 3
+└─ 💾 Storage: 353.10 MB
+
+📄 .  mkv
+┟ 📁 Files: 2
+└─ 💾 Storage: 809.99 MB
+
+📄 . [dual audio] [hindi or english] x265 esubs
+┟ 📁 Files: 2
+└─ 💾 Storage: 1.29 GB
+
+📄 .(1985)
+┟ 📁 Files: 2
+└─ 💾 Storage: 1.02 GB
+
+📄 .(1990)
+┟ 📁 Files: 2
+└─ 💾 Storage: 1.07 GB
+
+📄 .(2006)
+┟ 📁 Files: 2
+└─ 💾 Storage: 1.13 GB
+
+📄 .0 h264
+┟ 📁 Files: 2
+└─ 💾 Storage: 642.84 MB
+
+📄 .0 x264
+┟ 📁 Files: 2
+└─ 💾 Storage: 3.33 GB
+
+📄 .01
+┟ 📁 Files: 2
+└─ 💾 Storage: 7.45 GB
+
+📄 .02
+┟ 📁 Files: 2
+└─ 💾 Storage: 1.72 GB
+
+📄 .1] 720p
+┟ 📁 Files: 2
+└─ 💾 Storage: 2.47 GB
+
+📄 .1] 720p 
+
+@ssfilms_official3
+┟ 📁 Files: 2
+└─ 💾 Storage: 2.55 GB
+
+📄 .2018 hin+eng
+┟ 📁 Files: 2
+└─ 💾 Storage: 1.63 GB
+
+📄 .3gpp
+┟ 📁 Files: 2
+└─ 💾 Storage: 413.59 MB
+
+╔══════════════════════════════════╗
+║      ✅ EXTENSIONS AUDITED       ║
+║             PAGE 3/6             ║
+║                                  ║
+║       📦 ARCHIVE X ENGINE        ║
+╚══════════════════════════════════╝
+
+
+╔══════════════════════════════════╗
+║       📦 ARCHIVE X ENGINE        ║
+║    EXTENSION REPORT (P. 4/6)     ║
+╚══════════════════════════════════╝
+
+╔══════════════════════════════════╗
+║ ❔ OTHER / UNKNOWN TYPES (CONT.) ║
+╚══════════════════════════════════╝
+📄 .aac-mkv
+┟ 📁 Files: 2
+└─ 💾 Storage: 1.62 GB
+
+📄 .esubs mkv
+┟ 📁 Files: 2
+└─ 💾 Storage: 2.18 GB
+
+📄 .ishq
+┟ 📁 Files: 2
+└─ 💾 Storage: 2.40 GB
+
+📄 .m
+┟ 📁 Files: 2
+└─ 💾 Storage: 1.46 GB
+
+📄 .miv
+┟ 📁 Files: 2
+└─ 💾 Storage: 1.84 GB
+
+📄 .mkv
+@amzonmovies
+┟ 📁 Files: 2
+└─ 💾 Storage: 2.50 GB
+
+📄 .mlv
+┟ 📁 Files: 2
+└─ 💾 Storage: 3.68 GB
+
+📄 .mp4f
+┟ 📁 Files: 2
+└─ 💾 Storage: 741.90 MB
+
+📄 .mx]
+┟ 📁 Files: 2
+└─ 💾 Storage: 1.93 GB
+
+📄 .my darling slave 1973
+┟ 📁 Files: 2
+└─ 💾 Storage: 1.18 GB
+
+📄 .no
+┟ 📁 Files: 2
+└─ 💾 Storage: 1.48 GB
+
+📄 .one (2011) hindi 720p bluray x264
+┟ 📁 Files: 2
+└─ 💾 Storage: 2.63 GB
+
+📄 .one (2011) hindi 720p hevc bluray x265 aac
+┟ 📁 Files: 2
+└─ 💾 Storage: 1.57 GB
+
+📄 .ramam
+┟ 📁 Files: 2
+└─ 💾 Storage: 4.19 GB
+
+📄 .rr
+┟ 📁 Files: 2
+└─ 💾 Storage: 797.61 MB
+
+📄 .tmkv
+┟ 📁 Files: 2
+└─ 💾 Storage: 1.23 GB
+
+📄 .web-dl-imagine
+┟ 📁 Files: 2
+└─ 💾 Storage: 1.11 GB
+
+📄 .web-dlmkv
+┟ 📁 Files: 2
+└─ 💾 Storage: 357.84 MB
+
+📄 .x264-hdhub4umkv
+┟ 📁 Files: 2
+└─ 💾 Storage: 887.17 MB
+
+📄 . 
+game of thrones [#s02] 
+(2012) [ hindi ] 480p
+┟ 📁 Files: 1
+└─ 💾 Storage: 1.04 GB
+
+📄 . 
+game of thrones [#s03] 
+(2012) [
+┟ 📁 Files: 1
+└─ 💾 Storage: 1.08 GB
+
+📄 . [dual audio] [hi
+┟ 📁 Files: 1
+└─ 💾 Storage: 1.08 GB
+
+📄 . [dual audio] [hindi or english] x264 esubsmkv
+┟ 📁 Files: 1
+└─ 💾 Storage: 1.11 GB
+
+📄 . [dual audio] [hindi or malayalam] x265 esubs
+┟ 📁 Files: 1
+└─ 💾 Storage: 857.89 MB
+
+📄 . [hindi dd 2
+┟ 📁 Files: 1
+└─ 💾 Storage: 1.24 GB
+
+📄 . mp4
+┟ 📁 Files: 1
+└─ 💾 Storage: 743.86 MB
+
+📄 . part 1
+┟ 📁 Files: 1
+└─ 💾 Storage: 1.40 GB
+
+📄 . part 2
+┟ 📁 Files: 1
+└─ 💾 Storage: 807.13 MB
+
+📄 .(kali billi)mkv
+┟ 📁 Files: 1
+└─ 💾 Storage: 2.43 GB
+
+📄 .0 - [tamil + telugu + hindi] - 450mb - esub
+┟ 📁 Files: 1
+└─ 💾 Storage: 456.92 MB
+
+📄 .0 - tamil] 720p
+┟ 📁 Files: 1
+└─ 💾 Storage: 1.25 GB
+
+📄 .0 2016 hindi 480p bluray ×264 aac esub
+┟ 📁 Files: 1
+└─ 💾 Storage: 475.62 MB
+
+📄 .0 2016 hindi 720p bluray ×264 aac 5
+┟ 📁 Files: 1
+└─ 💾 Storage: 1.20 GB
+
+📄 .0 2016 hindi 720p bluray ×265 hevc aac 5
+┟ 📁 Files: 1
+└─ 💾 Storage: 673.69 MB
+
+📄 .0 by zafar
+┟ 📁 Files: 1
+└─ 💾 Storage: 296.44 MB
+
+📄 .0 x264 esub
+┟ 📁 Files: 1
+└─ 💾 Storage: 978.18 MB
+
+📄 .0) - 800mb - esub
+┟ 📁 Files: 1
+└─ 💾 Storage: 832.40 MB
+
+📄 .0) - rrmkv
+┟ 📁 Files: 1
+└─ 💾 Storage: 1.29 GB
+
+📄 .0) esubs mkv
+┟ 📁 Files: 1
+└─ 💾 Storage: 1.29 GB
+
+📄 .0] esub
+┟ 📁 Files: 1
+└─ 💾 Storage: 99.68 MB
+
+📄 .0] x265 hevc e
+┟ 📁 Files: 1
+└─ 💾 Storage: 1.56 GB
+
+📄 .1 - english] 1080p
+┟ 📁 Files: 1
+└─ 💾 Storage: 1.88 GB
+
+📄 .1 - english] 720p
+┟ 📁 Files: 1
+└─ 💾 Storage: 1.12 GB
+
+📄 .1 - tamil] 720p
+┟ 📁 Files: 1
+└─ 💾 Storage: 1.44 GB
+
+📄 .1 720p nf web-dl x264 aac esubs
+┟ 📁 Files: 1
+└─ 💾 Storage: 889.24 MB
+
+📄 .1 ] esub ~ mkv
+┟ 📁 Files: 1
+└─ 💾 Storage: 1.55 GB
+
+📄 .1 by zafar
+┟ 📁 Files: 1
+└─ 💾 Storage: 503.16 MB
+
+📄 .1 esub
+┟ 📁 Files: 1
+└─ 💾 Storage: 369.40 MB
+
+📄 .1 esub - immortal
+┟ 📁 Files: 1
+└─ 💾 Storage: 1,023.41 MB
+
+📄 .1 esub ~ immortal
+┟ 📁 Files: 1
+└─ 💾 Storage: 681.52 MB
+
+📄 .1 hdtvrip by zafar
+┟ 📁 Files: 1
+└─ 💾 Storage: 513.99 MB
+
+📄 .1080p
+┟ 📁 Files: 1
+└─ 💾 Storage: 983.01 MB
+
+╔══════════════════════════════════╗
+║      ✅ EXTENSIONS AUDITED       ║
+║             PAGE 4/6             ║
+║                                  ║
+║       📦 ARCHIVE X ENGINE        ║
+╚══════════════════════════════════╝
+
+
+╔══════════════════════════════════╗
+║       📦 ARCHIVE X ENGINE        ║
+║    EXTENSION REPORT (P. 5/6)     ║
+╚══════════════════════════════════╝
+
+╔══════════════════════════════════╗
+║ ❔ OTHER / UNKNOWN TYPES (CONT.) ║
+╚══════════════════════════════════╝
+📄 .1] 1080p
+┟ 📁 Files: 1
+└─ 💾 Storage: 1.89 GB
+
+📄 .1] 720p   ㅤ
+┟ 📁 Files: 1
+└─ 💾 Storage: 955.96 MB
+
+📄 .1] 720p hevc
+┟ 📁 Files: 1
+└─ 💾 Storage: 546.88 MB
+
+📄 .1] blu-ray 720p
+┟ 📁 Files: 1
+└─ 💾 Storage: 1.27 GB
+
+📄 .1] esub ~ immortal
+┟ 📁 Files: 1
+└─ 💾 Storage: 847.69 MB
+
+📄 .1gb - esub
+┟ 📁 Files: 1
+└─ 💾 Storage: 1.13 GB
+
+📄 .1gb - esub]
+┟ 📁 Files: 1
+└─ 💾 Storage: 1.14 GB
+
+📄 .2019 s01e01 480p nf web-dl hindi-x264
+┟ 📁 Files: 1
+└─ 💾 Storage: 162.73 MB
+
+📄 .2019 s01e02 480p nf web-dl hindi-x264
+┟ 📁 Files: 1
+└─ 💾 Storage: 160.09 MB
+
+📄 .2019 s01e03 480p nf web-dl hindi-x264
+┟ 📁 Files: 1
+└─ 💾 Storage: 166.17 MB
+
+📄 .2019 s01e04 480p nf web-dl hindi-x264
+┟ 📁 Files: 1
+└─ 💾 Storage: 133.53 MB
+
+📄 .2019 s01e05 480p nf web-dl hindi-x264
+┟ 📁 Files: 1
+└─ 💾 Storage: 150.74 MB
+
+📄 .2019 s01e06 480p nf web-dl hindi-x264
+┟ 📁 Files: 1
+└─ 💾 Storage: 126.20 MB
+
+📄 .264-ott_downloader_botmp4
+┟ 📁 Files: 1
+└─ 💾 Storage: 1.08 GB
+
+📄 .265-
+┟ 📁 Files: 1
+└─ 💾 Storage: 1.18 GB
+
+📄 .265mkv
+┟ 📁 Files: 1
+└─ 💾 Storage: 492.62 MB
+
+📄 .2gb - esub
+┟ 📁 Files: 1
+└─ 💾 Storage: 1.21 GB
+
+📄 .5
+┟ 📁 Files: 1
+└─ 💾 Storage: 1.78 GB
+
+📄 .5gb
+┟ 📁 Files: 1
+└─ 💾 Storage: 1.48 GB
+
+📄 .6gb
+┟ 📁 Files: 1
+└─ 💾 Storage: 2.66 GB
+
+📄 .88gb
+┟ 📁 Files: 1
+└─ 💾 Storage: 2.81 GB
+
+📄 .8gb
+┟ 📁 Files: 1
+└─ 💾 Storage: 2.90 GB
+
+📄 .av1-mkv
+┟ 📁 Files: 1
+└─ 💾 Storage: 696.43 MB
+
+📄 .came
+┟ 📁 Files: 1
+└─ 💾 Storage: 374.16 MB
+
+📄 .dubbed
+┟ 📁 Files: 1
+└─ 💾 Storage: 1.59 GB
+
+📄 .esub-pahe
+┟ 📁 Files: 1
+└─ 💾 Storage: 1.70 GB
+
+📄 .f chapter 1 (2018) blu-ray org hindi 480p
+┟ 📁 Files: 1
+└─ 💾 Storage: 540.94 MB
+
+📄 .f chapter 1 (2018) blu-ray org hindi 720p
+┟ 📁 Files: 1
+└─ 💾 Storage: 1.48 GB
+
+📄 .f chapter 1 (2018) blu-ray org hindi 720p hevc
+┟ 📁 Files: 1
+└─ 💾 Storage: 816.58 MB
+
+📄 .f chapter 2 (2022) blu-ray org hindi 480p
+┟ 📁 Files: 1
+└─ 💾 Storage: 584.98 MB
+
+📄 .f chapter 2 (2022) blu-ray org hindi 720p
+┟ 📁 Files: 1
+└─ 💾 Storage: 1.55 GB
+
+📄 .f chapter 2 (2022) blu-ray org hindi 720p hevc
+┟ 📁 Files: 1
+└─ 💾 Storage: 889.15 MB
+
+📄 .flb
+┟ 📁 Files: 1
+└─ 💾 Storage: 454.32 MB
+
+📄 .g @dubanime
+┟ 📁 Files: 1
+└─ 💾 Storage: 316.25 MB
+
+📄 .godfather
+┟ 📁 Files: 1
+└─ 💾 Storage: 908.20 MB
+
+📄 .h!nd!-ch!nese
+┟ 📁 Files: 1
+└─ 💾 Storage: 755.69 MB
+
+📄 .hdtv
+┟ 📁 Files: 1
+└─ 💾 Storage: 969.32 MB
+
+📄 .hevc-ospreay
+┟ 📁 Files: 1
+└─ 💾 Storage: 2.15 GB
+
+📄 .hevc-streamion
+┟ 📁 Files: 1
+└─ 💾 Storage: 1.56 GB
+
+📄 .hindi
+┟ 📁 Files: 1
+└─ 💾 Storage: 1.69 GB
+
+📄 .k
+┟ 📁 Files: 1
+└─ 💾 Storage: 1.57 GB
+
+📄 .kin (2018) 1080p bluray org
+┟ 📁 Files: 1
+└─ 💾 Storage: 1.88 GB
+
+📄 .mjv
+┟ 📁 Files: 1
+└─ 💾 Storage: 734.78 MB
+
+📄 .mkc
+┟ 📁 Files: 1
+└─ 💾 Storage: 399.51 MB
+
+📄 .mkv #pahe
+┟ 📁 Files: 1
+└─ 💾 Storage: 400.93 MB
+
+📄 .mkv [
+┟ 📁 Files: 1
+└─ 💾 Storage: 537.56 MB
+
+📄 .mp
+┟ 📁 Files: 1
+└─ 💾 Storage: 155.42 MB
+
+📄 .mp4mp4
+┟ 📁 Files: 1
+└─ 💾 Storage: 295.96 MB
+
+📄 .mpr
+┟ 📁 Files: 1
+└─ 💾 Storage: 412.67 MB
+
+📄 .nkv
+┟ 📁 Files: 1
+└─ 💾 Storage: 720.27 MB
+
+📄 .p s01e01 480p web-dl hindi-korean x264 esub
+┟ 📁 Files: 1
+└─ 💾 Storage: 161.77 MB
+
+╔══════════════════════════════════╗
+║      ✅ EXTENSIONS AUDITED       ║
+║             PAGE 5/6             ║
+║                                  ║
+║       📦 ARCHIVE X ENGINE        ║
+╚══════════════════════════════════╝
+
+
+╔══════════════════════════════════╗
+║       📦 ARCHIVE X ENGINE        ║
+║    EXTENSION REPORT (P. 6/6)     ║
+╚══════════════════════════════════╝
+
+╔══════════════════════════════════╗
+║ ❔ OTHER / UNKNOWN TYPES (CONT.) ║
+╚══════════════════════════════════╝
+📄 .p s01e01 720p web-dl hindi-korean x264 esub
+┟ 📁 Files: 1
+└─ 💾 Storage: 389.10 MB
+
+📄 .p s01e03 480p web-dl hindi-korean x264 esub
+┟ 📁 Files: 1
+└─ 💾 Storage: 178.10 MB
+
+📄 .p s01e03 720p web-dl hindi-korean x264 esub
+┟ 📁 Files: 1
+└─ 💾 Storage: 428.38 MB
+
+📄 .p s01e05 480p web-dl hindi-korean x264 esub
+┟ 📁 Files: 1
+└─ 💾 Storage: 146.36 MB
+
+📄 .p s01e05 720p web-dl hindi-korean x264 esub
+┟ 📁 Files: 1
+└─ 💾 Storage: 352.04 MB
+
+📄 .p s01e06 480p web-dl hindi-korean x264 esub
+┟ 📁 Files: 1
+└─ 💾 Storage: 145.18 MB
+
+📄 .p s01e06 720p web-dl hindi-korean x264 esub
+┟ 📁 Files: 1
+└─ 💾 Storage: 349.19 MB
+
+📄 .part
+┟ 📁 Files: 1
+└─ 💾 Storage: 109.70 MB
+
+📄 .php
+┟ 📁 Files: 1
+└─ 💾 Storage: 1.17 GB
+
+📄 .primefix ~ mkv
+┟ 📁 Files: 1
+└─ 💾 Storage: 2.53 GB
+
+📄 .s02e02
+┟ 📁 Files: 1
+└─ 💾 Storage: 129.08 MB
+
+📄 .s02e05
+┟ 📁 Files: 1
+└─ 💾 Storage: 117.59 MB
+
+📄 .set
+┟ 📁 Files: 1
+└─ 💾 Storage: 99.11 KB
+
+📄 .star!=-mkv
+┟ 📁 Files: 1
+└─ 💾 Storage: 1.18 GB
+
+📄 .the snows of kilimanjaro (1952)
+┟ 📁 Files: 1
+└─ 💾 Storage: 492.88 MB
+
+📄 .torrent
+┟ 📁 Files: 1
+└─ 💾 Storage: 620.36 KB
+
+📄 .x-matroska
+┟ 📁 Files: 1
+└─ 💾 Storage: 936.53 MB
+
+📄 .x265-mkv
+┟ 📁 Files: 1
+└─ 💾 Storage: 516.66 MB
+
+📄 .yify
+┟ 📁 Files: 1
+└─ 💾 Storage: 813.32 MB
+
+╔══════════════════════════════════╗
+║    ✅ ALL EXTENSIONS AUDITED     ║
+║             PAGE 6/6             ║
+║                                  ║
+║       📦 ARCHIVE X ENGINE        ║
+╚══════════════════════════════════╝"

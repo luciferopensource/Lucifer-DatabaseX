@@ -1,16 +1,21 @@
 import React, { useState, useEffect } from 'react'
 import { SylvaHero } from './components/SylvaHero'
 import { LuciferStreamBackup } from './components/LuciferStreamBackup'
+import { LuciferStreamBackup2 } from './components/LuciferStreamBackup2'
 import { SovereignCursor } from './components/SovereignCursor'
 
 export const App: React.FC = () => {
-  const [currentPage, setCurrentPage] = useState<'hero' | 'stream-backup-1'>(() => {
-    return window.location.hash === '#stream-backup-1' ? 'stream-backup-1' : 'hero'
+  const [currentPage, setCurrentPage] = useState<'hero' | 'stream-backup-1' | 'stream-backup-2'>(() => {
+    if (window.location.hash === '#stream-backup-2') return 'stream-backup-2'
+    if (window.location.hash === '#stream-backup-1') return 'stream-backup-1'
+    return 'hero'
   })
 
   useEffect(() => {
     const handleHashChange = () => {
-      if (window.location.hash === '#stream-backup-1') {
+      if (window.location.hash === '#stream-backup-2') {
+        setCurrentPage('stream-backup-2')
+      } else if (window.location.hash === '#stream-backup-1') {
         setCurrentPage('stream-backup-1')
       } else {
         setCurrentPage('hero')
@@ -19,7 +24,10 @@ export const App: React.FC = () => {
 
     const handleMessage = (event: MessageEvent) => {
       if (event.data?.type === 'NAVIGATE') {
-        if (event.data.page === 'stream-backup-1') {
+        if (event.data.page === 'stream-backup-2') {
+          window.location.hash = '#stream-backup-2'
+          setCurrentPage('stream-backup-2')
+        } else if (event.data.page === 'stream-backup-1') {
           window.location.hash = '#stream-backup-1'
           setCurrentPage('stream-backup-1')
         } else if (event.data.page === 'hero') {
@@ -39,7 +47,7 @@ export const App: React.FC = () => {
   }, [])
 
   useEffect(() => {
-    if (currentPage === 'stream-backup-1') {
+    if (currentPage === 'stream-backup-1' || currentPage === 'stream-backup-2') {
       document.documentElement.style.overflowY = 'auto'
       document.body.style.overflowY = 'auto'
       window.scrollTo({ top: 0, behavior: 'smooth' })
@@ -57,6 +65,11 @@ export const App: React.FC = () => {
   const handleGoToBackup1 = () => {
     window.location.hash = '#stream-backup-1'
     setCurrentPage('stream-backup-1')
+  }
+
+  const handleGoToBackup2 = () => {
+    window.location.hash = '#stream-backup-2'
+    setCurrentPage('stream-backup-2')
   }
 
   return (
@@ -167,6 +180,37 @@ export const App: React.FC = () => {
               LIVE
             </span>
           </button>
+
+          <button
+            onClick={handleGoToBackup2}
+            style={{
+              background: currentPage === 'stream-backup-2' ? 'linear-gradient(135deg, #d4af37 0%, #aa771c 100%)' : 'rgba(212, 175, 55, 0.18)',
+              color: currentPage === 'stream-backup-2' ? '#08080c' : '#ffffff',
+              border: `1px solid ${currentPage === 'stream-backup-2' ? '#d4af37' : 'rgba(212, 175, 55, 0.5)'}`,
+              padding: '7px 18px',
+              borderRadius: '8px',
+              cursor: 'pointer',
+              fontSize: '0.84rem',
+              fontWeight: 800,
+              display: 'flex',
+              alignItems: 'center',
+              gap: '8px',
+              boxShadow: currentPage === 'stream-backup-2' ? '0 0 15px rgba(212, 175, 55, 0.5)' : '0 0 10px rgba(212, 175, 55, 0.25)',
+              transition: 'all 0.2s',
+            }}
+          >
+            <span>📺 Lucifer Stream Site Backup 2</span>
+            <span style={{
+              background: currentPage === 'stream-backup-2' ? '#08080c' : '#2ecc71',
+              color: currentPage === 'stream-backup-2' ? '#d4af37' : '#08080c',
+              fontSize: '0.66rem',
+              padding: '1px 6px',
+              borderRadius: '4px',
+              fontWeight: 900,
+            }}>
+              LIVE
+            </span>
+          </button>
         </nav>
 
         {/* Right: Telemetry & Actions */}
@@ -223,6 +267,22 @@ export const App: React.FC = () => {
         >
           <div style={{ width: '100%', minHeight: 'calc(100vh - 58px)' }}>
             <LuciferStreamBackup onBack={handleBackToHero} />
+          </div>
+        </div>
+      )}
+
+      {currentPage === 'stream-backup-2' && (
+        <div
+          style={{
+            paddingTop: '58px',
+            minHeight: 'calc(100vh - 58px)',
+            width: '100%',
+            position: 'relative',
+            zIndex: 10,
+          }}
+        >
+          <div style={{ width: '100%', minHeight: 'calc(100vh - 58px)' }}>
+            <LuciferStreamBackup2 onBack={handleBackToHero} />
           </div>
         </div>
       )}
