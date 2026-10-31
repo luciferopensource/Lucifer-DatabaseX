@@ -68,27 +68,46 @@ export const SovereignCursor: React.FC = () => {
       }
     }
 
-    const handleMouseMove = (e: MouseEvent) => {
-      mouseX = e.clientX
-      mouseY = e.clientY
+    const updateCursorPosition = (x: number, y: number, hovering: boolean) => {
+      mouseX = x
+      mouseY = y
       isVisible = true
+      isHovering = hovering
 
       if (dotRef.current) {
         dotRef.current.style.transform = `translate3d(${mouseX}px, ${mouseY}px, 0)`
         dotRef.current.style.opacity = '1'
       }
 
-      // Detect hovering over clickable elements
-      const target = e.target as HTMLElement | null
-      if (target) {
-        const interactive = target.closest(
-          'a, button, [role="button"], input, select, textarea, .btn, .card, .dock-item, .vault-row'
-        )
-        isHovering = !!interactive
-      }
-
       // Spawn stardust trail particles
       spawnParticles(mouseX, mouseY, 2)
+    }
+
+    const handleMouseMove = (e: MouseEvent) => {
+      // Detect hovering over clickable elements
+      const target = e.target as HTMLElement | null
+      const interactive = target
+        ? !!target.closest(
+            'a, button, [role="button"], input, select, textarea, .btn, .card, .dock-item, .vault-row'
+          )
+        : false
+
+      updateCursorPosition(e.clientX, e.clientY, interactive)
+    }
+
+    const handleMessage = (event: MessageEvent) => {
+      if (event.data?.type === 'SOVEREIGN_CURSOR_MOVE') {
+        updateCursorPosition(event.data.x, event.data.y, !!event.data.isHovering)
+      } else if (event.data?.type === 'SOVEREIGN_CURSOR_DOWN') {
+        isClicking = true
+        spawnParticles(event.data.x, event.data.y, 12, 2.5)
+      } else if (event.data?.type === 'SOVEREIGN_CURSOR_UP') {
+        isClicking = false
+      } else if (event.data?.type === 'SOVEREIGN_CURSOR_LEAVE') {
+        if (mouseY > 58) {
+          handleMouseLeave()
+        }
+      }
     }
 
     const handleMouseDown = (e: MouseEvent) => {
@@ -109,6 +128,8 @@ export const SovereignCursor: React.FC = () => {
     window.addEventListener('mousemove', handleMouseMove, { passive: true })
     window.addEventListener('mousedown', handleMouseDown)
     window.addEventListener('mouseup', handleMouseUp)
+    window.addEventListener('message', handleMessage)
+    window.addEventListener('blur', handleMouseLeave)
     document.addEventListener('mouseleave', handleMouseLeave)
 
     // Smooth animation loop
@@ -166,6 +187,8 @@ export const SovereignCursor: React.FC = () => {
       window.removeEventListener('mousemove', handleMouseMove)
       window.removeEventListener('mousedown', handleMouseDown)
       window.removeEventListener('mouseup', handleMouseUp)
+      window.removeEventListener('message', handleMessage)
+      window.removeEventListener('blur', handleMouseLeave)
       document.removeEventListener('mouseleave', handleMouseLeave)
       cancelAnimationFrame(animId)
     }
@@ -231,3 +254,4 @@ export const SovereignCursor: React.FC = () => {
 }
 
 export default SovereignCursor
+

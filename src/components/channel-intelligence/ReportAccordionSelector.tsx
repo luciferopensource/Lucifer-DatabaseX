@@ -81,8 +81,8 @@ export const ReportAccordionSelector: React.FC<ReportAccordionSelectorProps> = (
             aria-controls={`report-panel-${tab.id}`}
             onClick={() => onToggleTab(tab.id)}
             style={{
-              backdropFilter: 'blur(28px) saturate(200%)',
-              WebkitBackdropFilter: 'blur(28px) saturate(200%)',
+              backdropFilter: 'blur(36px) saturate(210%) contrast(105%) brightness(1.08)',
+              WebkitBackdropFilter: 'blur(36px) saturate(210%) contrast(105%) brightness(1.08)',
               background: isOpen
                 ? 'linear-gradient(135deg, rgba(212, 175, 55, 0.28) 0%, rgba(28, 24, 42, 0.82) 45%, rgba(10, 10, 18, 0.90) 100%)'
                 : 'linear-gradient(135deg, rgba(255, 255, 255, 0.10) 0%, rgba(18, 16, 26, 0.68) 50%, rgba(8, 8, 14, 0.82) 100%)',
@@ -97,8 +97,8 @@ export const ReportAccordionSelector: React.FC<ReportAccordionSelectorProps> = (
               position: 'relative',
               overflow: 'hidden',
               boxShadow: isOpen
-                ? '0 18px 45px rgba(0, 0, 0, 0.85), 0 0 32px rgba(212, 175, 55, 0.35), inset 0 1px 2px rgba(255, 255, 255, 0.45), inset 0 -1px 2px rgba(0, 0, 0, 0.7)'
-                : '0 8px 24px rgba(0, 0, 0, 0.6), inset 0 1px 1.5px rgba(255, 255, 255, 0.18), inset 0 -1px 1.5px rgba(0, 0, 0, 0.5)',
+                ? '0 18px 45px rgba(0, 0, 0, 0.85), 0 0 32px rgba(212, 175, 55, 0.35), inset 0 1.5px 1.5px rgba(255, 255, 255, 0.45), inset 0 -1px 2px rgba(0, 0, 0, 0.7)'
+                : '0 8px 24px rgba(0, 0, 0, 0.6), inset 0 1.5px 1.5px rgba(255, 255, 255, 0.25), inset 0 -1px 1.5px rgba(0, 0, 0, 0.5)',
               transition: 'transform 0.22s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.2s, box-shadow 0.2s, background 0.2s',
               transform: isOpen ? 'translateY(-2px)' : 'none',
               outline: 'none'

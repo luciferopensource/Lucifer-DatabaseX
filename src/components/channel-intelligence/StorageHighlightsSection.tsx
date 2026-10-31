@@ -19,18 +19,18 @@ export const StorageHighlightsSection: React.FC = () => {
       role="tabpanel"
       aria-labelledby="report-tab-storage"
       style={{
-        background: 'linear-gradient(135deg, rgba(18, 15, 28, 0.78) 0%, rgba(12, 11, 18, 0.86) 100%)',
-        backdropFilter: 'blur(28px) saturate(190%)',
-        WebkitBackdropFilter: 'blur(28px) saturate(190%)',
-        border: '1.5px solid rgba(212, 175, 55, 0.4)',
-        borderRadius: '20px',
-        padding: '28px 32px',
-        boxShadow: '0 20px 50px rgba(0, 0, 0, 0.8), inset 0 1px 1.5px rgba(255, 255, 255, 0.2), 0 0 30px rgba(212, 175, 55, 0.08)',
-        marginBottom: '32px',
+        background: 'linear-gradient(135deg, rgba(20, 16, 32, 0.62) 0%, rgba(12, 11, 20, 0.72) 100%)',
+        backdropFilter: 'blur(40px) saturate(210%) contrast(105%) brightness(1.08)',
+        WebkitBackdropFilter: 'blur(40px) saturate(210%) contrast(105%) brightness(1.08)',
+        border: '1.5px solid rgba(212, 175, 55, 0.42)',
+        borderRadius: '24px',
+        padding: '30px 34px',
+        boxShadow: '0 30px 70px rgba(0, 0, 0, 0.75), inset 0 1.5px 1.5px rgba(255, 255, 255, 0.32), inset 0 -1px 1px rgba(0, 0, 0, 0.4), 0 0 35px rgba(212, 175, 55, 0.12)',
+        marginBottom: '36px',
         animation: 'fadeIn 0.3s cubic-bezier(0.16, 1, 0.3, 1)'
       }}
     >
-      {/* ── Section Title Banner ── */}
+      {/* ── macOS Title Bar Accent & Section Header ── */}
       <div
         style={{
           display: 'flex',
@@ -39,27 +39,36 @@ export const StorageHighlightsSection: React.FC = () => {
           flexWrap: 'wrap',
           gap: '12px',
           paddingBottom: '18px',
-          borderBottom: '1px solid rgba(212, 175, 55, 0.25)',
+          borderBottom: '1px solid rgba(212, 175, 55, 0.22)',
           marginBottom: '24px'
         }}
       >
-        <div>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '8px', color: '#d4af37', fontSize: '0.74rem', letterSpacing: '0.12em', textTransform: 'uppercase', fontWeight: 700 }}>
-            <Radio size={14} />
-            <span>ARCHIVE X ENGINE • STORAGE ARCHITECTURE AUDIT</span>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
+          {/* macOS Traffic Light Dots */}
+          <div style={{ display: 'flex', alignItems: 'center', gap: '7px' }}>
+            <span style={{ width: '10px', height: '10px', borderRadius: '50%', background: '#ff5f56', boxShadow: '0 0 8px rgba(255,95,86,0.6)', border: '1px solid rgba(0,0,0,0.2)' }} />
+            <span style={{ width: '10px', height: '10px', borderRadius: '50%', background: '#ffbd2e', boxShadow: '0 0 8px rgba(255,189,46,0.6)', border: '1px solid rgba(0,0,0,0.2)' }} />
+            <span style={{ width: '10px', height: '10px', borderRadius: '50%', background: '#27c93f', boxShadow: '0 0 8px rgba(39,201,63,0.6)', border: '1px solid rgba(0,0,0,0.2)' }} />
           </div>
-          <h2
-            style={{
-              fontFamily: "'Cinzel', serif",
-              fontSize: '1.45rem',
-              fontWeight: 800,
-              color: '#f3e5ab',
-              margin: '4px 0 0 0',
-              letterSpacing: '0.04em'
-            }}
-          >
-            STORAGE HIGHLIGHTS REPORT
-          </h2>
+
+          <div>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '8px', color: '#d4af37', fontSize: '0.74rem', letterSpacing: '0.12em', textTransform: 'uppercase', fontWeight: 700 }}>
+              <Radio size={14} />
+              <span>ARCHIVE X ENGINE • STORAGE ARCHITECTURE AUDIT</span>
+            </div>
+            <h2
+              style={{
+                fontFamily: "'Cinzel', serif",
+                fontSize: '1.45rem',
+                fontWeight: 800,
+                color: '#f3e5ab',
+                margin: '4px 0 0 0',
+                letterSpacing: '0.04em'
+              }}
+            >
+              STORAGE HIGHLIGHTS REPORT
+            </h2>
+          </div>
         </div>
 
         <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
@@ -109,15 +118,15 @@ export const StorageHighlightsSection: React.FC = () => {
         {/* Total Storage Hero Card (Hero Liquid Glass) */}
         <div
           style={{
-            background: 'linear-gradient(135deg, rgba(28, 22, 42, 0.78) 0%, rgba(14, 14, 24, 0.88) 100%)',
-            backdropFilter: 'blur(20px)',
-            WebkitBackdropFilter: 'blur(20px)',
+            background: 'linear-gradient(135deg, rgba(255, 255, 255, 0.08) 0%, rgba(28, 22, 42, 0.65) 100%)',
+            backdropFilter: 'blur(28px) saturate(190%)',
+            WebkitBackdropFilter: 'blur(28px) saturate(190%)',
             border: '2px solid rgba(212, 175, 55, 0.55)',
-            borderRadius: '16px',
-            padding: '26px',
+            borderRadius: '18px',
+            padding: '28px',
             position: 'relative',
             overflow: 'hidden',
-            boxShadow: '0 14px 40px rgba(0, 0, 0, 0.8), 0 0 25px rgba(212, 175, 55, 0.2), inset 0 1px 1.5px rgba(255, 255, 255, 0.2)'
+            boxShadow: '0 16px 45px rgba(0, 0, 0, 0.7), 0 0 25px rgba(212, 175, 55, 0.2), inset 0 1.5px 1.5px rgba(255, 255, 255, 0.28)'
           }}
         >
           <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '12px' }}>
@@ -143,7 +152,7 @@ export const StorageHighlightsSection: React.FC = () => {
             {STORAGE_HIGHLIGHTS.totalStorage}
           </div>
 
-          <p style={{ fontSize: '0.84rem', color: 'rgba(243, 229, 171, 0.8)', lineHeight: 1.5, margin: 0, fontWeight: 500 }}>
+          <p style={{ fontSize: '0.84rem', color: 'rgba(243, 229, 171, 0.85)', lineHeight: 1.5, margin: 0, fontWeight: 500 }}>
             Cumulative capacity across 999,973 verified catalog records. Formatted and synchronized through Archive X Engine.
           </p>
 
@@ -156,15 +165,15 @@ export const StorageHighlightsSection: React.FC = () => {
         {/* Largest File Highlight Card (Liquid Glass) */}
         <div
           style={{
-            background: 'linear-gradient(135deg, rgba(22, 20, 36, 0.78) 0%, rgba(12, 12, 20, 0.88) 100%)',
-            backdropFilter: 'blur(20px)',
-            WebkitBackdropFilter: 'blur(20px)',
+            background: 'linear-gradient(135deg, rgba(255, 255, 255, 0.07) 0%, rgba(22, 20, 36, 0.65) 100%)',
+            backdropFilter: 'blur(28px) saturate(190%)',
+            WebkitBackdropFilter: 'blur(28px) saturate(190%)',
             border: '2px solid rgba(212, 175, 55, 0.45)',
-            borderRadius: '16px',
-            padding: '26px',
+            borderRadius: '18px',
+            padding: '28px',
             position: 'relative',
             overflow: 'hidden',
-            boxShadow: '0 14px 40px rgba(0, 0, 0, 0.8), 0 0 20px rgba(212, 175, 55, 0.12), inset 0 1px 1.5px rgba(255, 255, 255, 0.18)'
+            boxShadow: '0 16px 45px rgba(0, 0, 0, 0.7), 0 0 20px rgba(212, 175, 55, 0.15), inset 0 1.5px 1.5px rgba(255, 255, 255, 0.25)'
           }}
         >
           <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '12px' }}>
@@ -192,14 +201,15 @@ export const StorageHighlightsSection: React.FC = () => {
 
           <div
             style={{
-              background: '#08080c',
-              border: '1px solid rgba(212, 175, 55, 0.3)',
-              borderRadius: '8px',
+              background: 'rgba(8, 8, 12, 0.75)',
+              backdropFilter: 'blur(12px)',
+              border: '1px solid rgba(212, 175, 55, 0.35)',
+              borderRadius: '10px',
               padding: '12px 14px',
               marginBottom: '14px'
             }}
           >
-            <span style={{ fontSize: '0.66rem', color: 'rgba(243, 229, 171, 0.5)', display: 'block', textTransform: 'uppercase', letterSpacing: '0.08em' }}>
+            <span style={{ fontSize: '0.66rem', color: 'rgba(243, 229, 171, 0.65)', display: 'block', textTransform: 'uppercase', letterSpacing: '0.08em', fontWeight: 600 }}>
               EXACT TRUNCATED FILENAME
             </span>
             <span
@@ -217,7 +227,7 @@ export const StorageHighlightsSection: React.FC = () => {
             </span>
           </div>
 
-          <p style={{ fontSize: '0.78rem', color: 'rgba(243, 229, 171, 0.55)', margin: 0, fontStyle: 'italic' }}>
+          <p style={{ fontSize: '0.78rem', color: 'rgba(243, 229, 171, 0.65)', margin: 0, fontStyle: 'italic' }}>
             Note: Source report preserves filename truncation. No extrapolation or manufactured characters applied.
           </p>
         </div>
@@ -235,16 +245,16 @@ export const StorageHighlightsSection: React.FC = () => {
         {/* Average File Size */}
         <div
           style={{
-            background: 'linear-gradient(135deg, rgba(20, 18, 30, 0.7) 0%, rgba(12, 11, 18, 0.8) 100%)',
-            backdropFilter: 'blur(16px)',
-            WebkitBackdropFilter: 'blur(16px)',
-            border: '1px solid rgba(212, 175, 55, 0.28)',
-            borderRadius: '14px',
+            background: 'linear-gradient(135deg, rgba(255, 255, 255, 0.05) 0%, rgba(20, 18, 30, 0.5) 100%)',
+            backdropFilter: 'blur(20px)',
+            WebkitBackdropFilter: 'blur(20px)',
+            border: '1px solid rgba(212, 175, 55, 0.3)',
+            borderRadius: '16px',
             padding: '20px',
             display: 'flex',
             alignItems: 'center',
             gap: '16px',
-            boxShadow: '0 6px 20px rgba(0,0,0,0.5), inset 0 1px 1px rgba(255, 255, 255, 0.08)'
+            boxShadow: '0 8px 24px rgba(0,0,0,0.45), inset 0 1px 1px rgba(255, 255, 255, 0.14)'
           }}
         >
           <div
@@ -278,16 +288,16 @@ export const StorageHighlightsSection: React.FC = () => {
         {/* Total Files Audited */}
         <div
           style={{
-            background: 'linear-gradient(135deg, rgba(20, 18, 30, 0.7) 0%, rgba(12, 11, 18, 0.8) 100%)',
-            backdropFilter: 'blur(16px)',
-            WebkitBackdropFilter: 'blur(16px)',
-            border: '1px solid rgba(212, 175, 55, 0.28)',
-            borderRadius: '14px',
+            background: 'linear-gradient(135deg, rgba(255, 255, 255, 0.05) 0%, rgba(20, 18, 30, 0.5) 100%)',
+            backdropFilter: 'blur(20px)',
+            WebkitBackdropFilter: 'blur(20px)',
+            border: '1px solid rgba(212, 175, 55, 0.3)',
+            borderRadius: '16px',
             padding: '20px',
             display: 'flex',
             alignItems: 'center',
             gap: '16px',
-            boxShadow: '0 6px 20px rgba(0,0,0,0.5), inset 0 1px 1px rgba(255, 255, 255, 0.08)'
+            boxShadow: '0 8px 24px rgba(0,0,0,0.45), inset 0 1px 1px rgba(255, 255, 255, 0.14)'
           }}
         >
           <div
@@ -321,16 +331,16 @@ export const StorageHighlightsSection: React.FC = () => {
         {/* Channel Target Reference */}
         <div
           style={{
-            background: 'linear-gradient(135deg, rgba(20, 18, 30, 0.7) 0%, rgba(12, 11, 18, 0.8) 100%)',
-            backdropFilter: 'blur(16px)',
-            WebkitBackdropFilter: 'blur(16px)',
-            border: '1px solid rgba(212, 175, 55, 0.28)',
-            borderRadius: '14px',
+            background: 'linear-gradient(135deg, rgba(255, 255, 255, 0.05) 0%, rgba(20, 18, 30, 0.5) 100%)',
+            backdropFilter: 'blur(20px)',
+            WebkitBackdropFilter: 'blur(20px)',
+            border: '1px solid rgba(212, 175, 55, 0.3)',
+            borderRadius: '16px',
             padding: '20px',
             display: 'flex',
             alignItems: 'center',
             gap: '16px',
-            boxShadow: '0 6px 20px rgba(0,0,0,0.5), inset 0 1px 1px rgba(255, 255, 255, 0.08)'
+            boxShadow: '0 8px 24px rgba(0,0,0,0.45), inset 0 1px 1px rgba(255, 255, 255, 0.14)'
           }}
         >
           <div
@@ -362,21 +372,23 @@ export const StorageHighlightsSection: React.FC = () => {
         </div>
       </div>
 
-      {/* ── Scan Record Dossier Footer ── */}
+      {/* ── Scan Record Dossier Footer (macOS Acrylic Status Strip) ── */}
       <div
         style={{
-          background: 'rgba(10, 10, 16, 0.85)',
-          backdropFilter: 'blur(16px)',
-          border: '1px solid rgba(212, 175, 55, 0.25)',
-          borderRadius: '12px',
-          padding: '14px 20px',
+          background: 'linear-gradient(135deg, rgba(255, 255, 255, 0.04) 0%, rgba(10, 10, 18, 0.65) 100%)',
+          backdropFilter: 'blur(24px)',
+          WebkitBackdropFilter: 'blur(24px)',
+          border: '1px solid rgba(212, 175, 55, 0.28)',
+          borderRadius: '14px',
+          padding: '16px 22px',
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'space-between',
           flexWrap: 'wrap',
           gap: '12px',
           fontSize: '0.78rem',
-          color: 'rgba(243, 229, 171, 0.8)'
+          color: 'rgba(243, 229, 171, 0.85)',
+          boxShadow: '0 6px 20px rgba(0, 0, 0, 0.4), inset 0 1px 1px rgba(255, 255, 255, 0.12)'
         }}
       >
         <div style={{ display: 'flex', alignItems: 'center', gap: '16px', flexWrap: 'wrap' }}>

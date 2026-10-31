@@ -4749,130 +4749,48 @@ window.__seek   = v => { clock = v; drawn = null; };
 })();
 </script>
 
-<!-- ── Royal Sovereign Gold Mouse Cursor & Stardust Trail ── -->
-<div id="sovereignCursorRing" style="position:fixed; top:-18px; left:-18px; width:36px; height:36px; border-radius:50%; border:1.5px solid rgba(212,175,55,0.65); box-shadow:0 0 16px rgba(212,175,55,0.35); pointer-events:none; z-index:999999; opacity:0; transition:transform 0.08s ease-out, border-color 0.2s, background 0.2s, opacity 0.25s; will-change:transform;"></div>
-<div id="sovereignCursorDot" style="position:fixed; top:-4px; left:-4px; width:8px; height:8px; border-radius:50%; background:linear-gradient(135deg, #f3e5ab 0%, #d4af37 100%); box-shadow:0 0 10px #f3e5ab, 0 0 18px rgba(212,175,55,0.8); pointer-events:none; z-index:1000000; opacity:0; transition:opacity 0.2s; will-change:transform;"></div>
-<canvas id="sovereignStardustCanvas" style="position:fixed; top:0; left:0; width:100vw; height:100vh; pointer-events:none; z-index:999998;"></canvas>
-
+<!-- ── Sovereign Gold Cursor Event Forwarder to Unified Parent Cursor ── -->
 <script>
 (function() {
   if (window.matchMedia && window.matchMedia('(pointer: coarse)').matches) return;
-  var canvas = document.getElementById('sovereignStardustCanvas');
-  var dot = document.getElementById('sovereignCursorDot');
-  var ring = document.getElementById('sovereignCursorRing');
-  if (!canvas || !dot || !ring) return;
-
-  var ctx = canvas.getContext('2d');
-  if (!ctx) return;
-
-  var mouseX = -100, mouseY = -100;
-  var ringX = -100, ringY = -100;
-  var isHovering = false, isClicking = false, isVisible = false;
-  var particles = [];
-  var GOLD_COLORS = ['#f3e5ab', '#d4af37', '#ffd700', '#aa771c', '#fff4cc'];
-
-  function resize() {
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
-  }
-  resize();
-  window.addEventListener('resize', resize);
-
-  function spawn(x, y, count, speedMult) {
-    count = count || 2;
-    speedMult = speedMult || 1;
-    for (var i = 0; i < count; i++) {
-      var angle = Math.random() * Math.PI * 2;
-      var speed = (Math.random() * 1.5 + 0.4) * speedMult;
-      particles.push({
-        x: x + (Math.random() - 0.5) * 4,
-        y: y + (Math.random() - 0.5) * 4,
-        vx: Math.cos(angle) * speed,
-        vy: Math.sin(angle) * speed + 0.2,
-        size: Math.random() * 2.8 + 1.2,
-        alpha: 0.9,
-        decay: Math.random() * 0.025 + 0.015,
-        color: GOLD_COLORS[Math.floor(Math.random() * GOLD_COLORS.length)]
-      });
-    }
-  }
 
   window.addEventListener('pointermove', function(e) {
     if (e.pointerType === 'touch') return;
-    mouseX = e.clientX;
-    mouseY = e.clientY;
-    isVisible = true;
-
-    dot.style.transform = 'translate3d(' + mouseX + 'px, ' + mouseY + 'px, 0)';
-    dot.style.opacity = '1';
-
+    var parentY = e.clientY + 58;
     var target = e.target;
-    if (target && target.closest) {
-      isHovering = !!target.closest('a, button, [role="button"], .btn, .card, .dock-item, .knob, .liquid-stage, .movie-announcer-pill');
-    }
+    var isHovering = !!(target && target.closest && target.closest('a, button, [role="button"], .btn, .card, .dock-item, .knob, .liquid-stage, .movie-announcer-pill'));
 
-    spawn(mouseX, mouseY, 2, 1);
+    if (window.parent && window.parent !== window) {
+      window.parent.postMessage({
+        type: 'SOVEREIGN_CURSOR_MOVE',
+        x: e.clientX,
+        y: parentY,
+        isHovering: isHovering
+      }, '*');
+    }
   }, { passive: true });
 
   window.addEventListener('mousedown', function(e) {
-    isClicking = true;
-    spawn(e.clientX, e.clientY, 12, 2.5);
+    if (window.parent && window.parent !== window) {
+      window.parent.postMessage({
+        type: 'SOVEREIGN_CURSOR_DOWN',
+        x: e.clientX,
+        y: e.clientY + 58
+      }, '*');
+    }
   });
 
   window.addEventListener('mouseup', function() {
-    isClicking = false;
+    if (window.parent && window.parent !== window) {
+      window.parent.postMessage({ type: 'SOVEREIGN_CURSOR_UP' }, '*');
+    }
   });
 
   document.addEventListener('mouseleave', function() {
-    isVisible = false;
-    dot.style.opacity = '0';
-    ring.style.opacity = '0';
+    if (window.parent && window.parent !== window) {
+      window.parent.postMessage({ type: 'SOVEREIGN_CURSOR_LEAVE' }, '*');
+    }
   });
-
-  function render() {
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-    var lerpFactor = 0.18;
-    ringX += (mouseX - ringX) * lerpFactor;
-    ringY += (mouseY - ringY) * lerpFactor;
-
-    if (isVisible) {
-      var scale = isClicking ? 0.75 : isHovering ? 1.7 : 1;
-      ring.style.transform = 'translate3d(' + ringX + 'px, ' + ringY + 'px, 0) scale(' + scale + ')';
-      ring.style.opacity = '1';
-      ring.style.borderColor = isHovering ? '#f3e5ab' : 'rgba(212, 175, 55, 0.65)';
-      ring.style.background = isHovering
-        ? 'radial-gradient(circle, rgba(212, 175, 55, 0.22) 0%, transparent 70%)'
-        : 'transparent';
-    }
-
-    for (var i = particles.length - 1; i >= 0; i--) {
-      var p = particles[i];
-      p.x += p.vx;
-      p.y += p.vy;
-      p.alpha -= p.decay;
-      p.size *= 0.98;
-
-      if (p.alpha <= 0 || p.size <= 0.2) {
-        particles.splice(i, 1);
-        continue;
-      }
-
-      ctx.save();
-      ctx.globalAlpha = Math.max(0, p.alpha);
-      ctx.fillStyle = p.color;
-      ctx.shadowBlur = 8;
-      ctx.shadowColor = '#d4af37';
-      ctx.beginPath();
-      ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
-      ctx.fill();
-      ctx.restore();
-    }
-
-    requestAnimationFrame(render);
-  }
-
-  requestAnimationFrame(render);
 })();
 </script>
 </body>

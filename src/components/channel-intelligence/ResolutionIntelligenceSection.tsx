@@ -21,18 +21,18 @@ export const ResolutionIntelligenceSection: React.FC = () => {
       role="tabpanel"
       aria-labelledby="report-tab-resolution"
       style={{
-        background: 'linear-gradient(135deg, rgba(18, 15, 28, 0.78) 0%, rgba(12, 11, 18, 0.86) 100%)',
-        backdropFilter: 'blur(28px) saturate(190%)',
-        WebkitBackdropFilter: 'blur(28px) saturate(190%)',
-        border: '1.5px solid rgba(212, 175, 55, 0.4)',
-        borderRadius: '20px',
-        padding: '28px 32px',
-        boxShadow: '0 20px 50px rgba(0, 0, 0, 0.8), inset 0 1px 1.5px rgba(255, 255, 255, 0.2), 0 0 30px rgba(212, 175, 55, 0.08)',
-        marginBottom: '32px',
+        background: 'linear-gradient(135deg, rgba(20, 16, 32, 0.62) 0%, rgba(12, 11, 20, 0.72) 100%)',
+        backdropFilter: 'blur(40px) saturate(210%) contrast(105%) brightness(1.08)',
+        WebkitBackdropFilter: 'blur(40px) saturate(210%) contrast(105%) brightness(1.08)',
+        border: '1.5px solid rgba(212, 175, 55, 0.42)',
+        borderRadius: '24px',
+        padding: '30px 34px',
+        boxShadow: '0 30px 70px rgba(0, 0, 0, 0.75), inset 0 1.5px 1.5px rgba(255, 255, 255, 0.32), inset 0 -1px 1px rgba(0, 0, 0, 0.4), 0 0 35px rgba(212, 175, 55, 0.12)',
+        marginBottom: '36px',
         animation: 'fadeIn 0.3s cubic-bezier(0.16, 1, 0.3, 1)'
       }}
     >
-      {/* ── Section Title Banner ── */}
+      {/* ── macOS Title Bar Accent & Section Header ── */}
       <div
         style={{
           display: 'flex',
@@ -41,27 +41,36 @@ export const ResolutionIntelligenceSection: React.FC = () => {
           flexWrap: 'wrap',
           gap: '12px',
           paddingBottom: '18px',
-          borderBottom: '1px solid rgba(212, 175, 55, 0.25)',
+          borderBottom: '1px solid rgba(212, 175, 55, 0.22)',
           marginBottom: '24px'
         }}
       >
-        <div>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '8px', color: '#d4af37', fontSize: '0.74rem', letterSpacing: '0.12em', textTransform: 'uppercase', fontWeight: 700 }}>
-            <Radio size={14} />
-            <span>ARCHIVE X ENGINE • QUALITY & CODEC AUDIT</span>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
+          {/* macOS Traffic Light Dots */}
+          <div style={{ display: 'flex', alignItems: 'center', gap: '7px' }}>
+            <span style={{ width: '10px', height: '10px', borderRadius: '50%', background: '#ff5f56', boxShadow: '0 0 8px rgba(255,95,86,0.6)', border: '1px solid rgba(0,0,0,0.2)' }} />
+            <span style={{ width: '10px', height: '10px', borderRadius: '50%', background: '#ffbd2e', boxShadow: '0 0 8px rgba(255,189,46,0.6)', border: '1px solid rgba(0,0,0,0.2)' }} />
+            <span style={{ width: '10px', height: '10px', borderRadius: '50%', background: '#27c93f', boxShadow: '0 0 8px rgba(39,201,63,0.6)', border: '1px solid rgba(0,0,0,0.2)' }} />
           </div>
-          <h2
-            style={{
-              fontFamily: "'Cinzel', serif",
-              fontSize: '1.45rem',
-              fontWeight: 800,
-              color: '#f3e5ab',
-              margin: '4px 0 0 0',
-              letterSpacing: '0.04em'
-            }}
-          >
-            RESOLUTION INTELLIGENCE REPORT
-          </h2>
+
+          <div>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '8px', color: '#d4af37', fontSize: '0.74rem', letterSpacing: '0.12em', textTransform: 'uppercase', fontWeight: 700 }}>
+              <Radio size={14} />
+              <span>ARCHIVE X ENGINE • QUALITY & CODEC AUDIT</span>
+            </div>
+            <h2
+              style={{
+                fontFamily: "'Cinzel', serif",
+                fontSize: '1.45rem',
+                fontWeight: 800,
+                color: '#f3e5ab',
+                margin: '4px 0 0 0',
+                letterSpacing: '0.04em'
+              }}
+            >
+              RESOLUTION INTELLIGENCE REPORT
+            </h2>
+          </div>
         </div>
 
         <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
@@ -102,14 +111,14 @@ export const ResolutionIntelligenceSection: React.FC = () => {
       {/* ── Visual Distribution Bar (100% Horizontal Stack) ── */}
       <div
         style={{
-          background: 'linear-gradient(135deg, rgba(20, 18, 30, 0.7) 0%, rgba(12, 11, 18, 0.8) 100%)',
-          backdropFilter: 'blur(16px)',
-          WebkitBackdropFilter: 'blur(16px)',
-          border: '1px solid rgba(212, 175, 55, 0.28)',
-          borderRadius: '14px',
-          padding: '20px',
+          background: 'linear-gradient(135deg, rgba(255, 255, 255, 0.06) 0%, rgba(20, 18, 30, 0.52) 100%)',
+          backdropFilter: 'blur(24px) saturate(190%)',
+          WebkitBackdropFilter: 'blur(24px) saturate(190%)',
+          border: '1px solid rgba(212, 175, 55, 0.32)',
+          borderRadius: '16px',
+          padding: '22px',
           marginBottom: '28px',
-          boxShadow: '0 8px 24px rgba(0, 0, 0, 0.5), inset 0 1px 1px rgba(255, 255, 255, 0.08)'
+          boxShadow: '0 10px 28px rgba(0, 0, 0, 0.45), inset 0 1px 1px rgba(255, 255, 255, 0.18)'
         }}
       >
         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '12px' }}>
@@ -208,19 +217,19 @@ export const ResolutionIntelligenceSection: React.FC = () => {
               onClick={() => setSelectedResolutionId(isSelected ? null : res.id)}
               style={{
                 background: isSelected
-                  ? 'linear-gradient(135deg, rgba(28, 22, 40, 0.88) 0%, rgba(16, 14, 24, 0.95) 100%)'
-                  : 'linear-gradient(135deg, rgba(20, 18, 30, 0.7) 0%, rgba(12, 11, 18, 0.8) 100%)',
-                backdropFilter: 'blur(16px)',
-                WebkitBackdropFilter: 'blur(16px)',
-                border: `1px solid ${isSelected ? res.color : 'rgba(212, 175, 55, 0.28)'}`,
-                borderRadius: '14px',
+                  ? 'linear-gradient(135deg, rgba(255, 255, 255, 0.12) 0%, rgba(28, 22, 42, 0.72) 100%)'
+                  : 'linear-gradient(135deg, rgba(255, 255, 255, 0.05) 0%, rgba(20, 18, 30, 0.5) 100%)',
+                backdropFilter: 'blur(20px) saturate(180%)',
+                WebkitBackdropFilter: 'blur(20px) saturate(180%)',
+                border: `1px solid ${isSelected ? res.color : 'rgba(212, 175, 55, 0.3)'}`,
+                borderRadius: '16px',
                 padding: '18px',
                 display: 'flex',
                 flexDirection: 'column',
                 gap: '12px',
                 boxShadow: isSelected
-                  ? `0 10px 30px rgba(0,0,0,0.85), 0 0 20px ${res.color}44, inset 0 1px 1px rgba(255, 255, 255, 0.18)`
-                  : '0 6px 20px rgba(0,0,0,0.5), inset 0 1px 1px rgba(255, 255, 255, 0.08)',
+                  ? `0 12px 32px rgba(0,0,0,0.7), 0 0 20px ${res.color}44, inset 0 1px 1px rgba(255, 255, 255, 0.25)`
+                  : '0 8px 24px rgba(0,0,0,0.45), inset 0 1px 1px rgba(255, 255, 255, 0.14)',
                 cursor: 'pointer',
                 transition: 'all 0.22s cubic-bezier(0.16, 1, 0.3, 1)',
                 transform: isSelected ? 'translateY(-3px)' : 'none'
@@ -229,14 +238,14 @@ export const ResolutionIntelligenceSection: React.FC = () => {
                 if (!isSelected) {
                   e.currentTarget.style.borderColor = res.color
                   e.currentTarget.style.transform = 'translateY(-2px)'
-                  e.currentTarget.style.boxShadow = `0 8px 24px ${res.color}22`
+                  e.currentTarget.style.boxShadow = `0 10px 28px ${res.color}25, inset 0 1px 1px rgba(255, 255, 255, 0.2)`
                 }
               }}
               onMouseLeave={(e) => {
                 if (!isSelected) {
-                  e.currentTarget.style.borderColor = 'rgba(212, 175, 55, 0.28)'
+                  e.currentTarget.style.borderColor = 'rgba(212, 175, 55, 0.3)'
                   e.currentTarget.style.transform = 'none'
-                  e.currentTarget.style.boxShadow = '0 6px 20px rgba(0,0,0,0.5), inset 0 1px 1px rgba(255, 255, 255, 0.08)'
+                  e.currentTarget.style.boxShadow = '0 8px 24px rgba(0,0,0,0.45), inset 0 1px 1px rgba(255, 255, 255, 0.14)'
                 }
               }}
             >
@@ -338,21 +347,23 @@ export const ResolutionIntelligenceSection: React.FC = () => {
         })}
       </div>
 
-      {/* ── Scan Record Dossier Footer ── */}
+      {/* ── Scan Record Dossier Footer (macOS Acrylic Status Strip) ── */}
       <div
         style={{
-          background: 'rgba(10, 10, 16, 0.85)',
-          backdropFilter: 'blur(16px)',
-          border: '1px solid rgba(212, 175, 55, 0.25)',
-          borderRadius: '12px',
-          padding: '14px 20px',
+          background: 'linear-gradient(135deg, rgba(255, 255, 255, 0.04) 0%, rgba(10, 10, 18, 0.65) 100%)',
+          backdropFilter: 'blur(24px)',
+          WebkitBackdropFilter: 'blur(24px)',
+          border: '1px solid rgba(212, 175, 55, 0.28)',
+          borderRadius: '14px',
+          padding: '16px 22px',
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'space-between',
           flexWrap: 'wrap',
           gap: '12px',
           fontSize: '0.78rem',
-          color: 'rgba(243, 229, 171, 0.8)'
+          color: 'rgba(243, 229, 171, 0.85)',
+          boxShadow: '0 6px 20px rgba(0, 0, 0, 0.4), inset 0 1px 1px rgba(255, 255, 255, 0.12)'
         }}
       >
         <div style={{ display: 'flex', alignItems: 'center', gap: '16px', flexWrap: 'wrap' }}>
