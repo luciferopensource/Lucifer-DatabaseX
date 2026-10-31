@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { SylvaHero } from './components/SylvaHero'
 import { LuciferStreamBackup } from './components/LuciferStreamBackup'
+import { SovereignCursor } from './components/SovereignCursor'
 
 export const App: React.FC = () => {
   const [currentPage, setCurrentPage] = useState<'hero' | 'stream-backup-1'>(() => {
@@ -179,7 +180,7 @@ export const App: React.FC = () => {
         </div>
       </header>
 
-      {/* ── Sovereign Live 3D / WebGL Ambient Background Layer ── */}
+      {/* ── Sovereign Live 3D / WebGL Ambient Layer ── */}
       <div
         style={{
           position: 'fixed',
@@ -187,8 +188,8 @@ export const App: React.FC = () => {
           left: 0,
           width: '100vw',
           height: 'calc(100vh - 58px)',
-          zIndex: 0,
-          pointerEvents: currentPage === 'stream-backup-1' ? 'none' : 'auto',
+          zIndex: currentPage === 'hero' ? 2 : 0,
+          pointerEvents: currentPage === 'hero' ? 'auto' : 'none',
           opacity: currentPage === 'stream-backup-1' ? 0.55 : 1,
           filter: currentPage === 'stream-backup-1' ? 'blur(12px) brightness(0.72) saturate(1.35)' : 'none',
           transform: 'translateZ(0)',
@@ -209,14 +210,25 @@ export const App: React.FC = () => {
         />
       </div>
 
-      {/* ── Sovereign Page Foreground ── */}
-      <div style={{ paddingTop: '58px', minHeight: 'calc(100vh - 58px)', width: '100%', position: 'relative', zIndex: 10 }}>
-        {currentPage === 'stream-backup-1' ? (
+      {/* ── Sovereign Page Foreground (Only Mounted When Active) ── */}
+      {currentPage === 'stream-backup-1' && (
+        <div
+          style={{
+            paddingTop: '58px',
+            minHeight: 'calc(100vh - 58px)',
+            width: '100%',
+            position: 'relative',
+            zIndex: 10,
+          }}
+        >
           <div style={{ width: '100%', minHeight: 'calc(100vh - 58px)' }}>
             <LuciferStreamBackup onBack={handleBackToHero} />
           </div>
-        ) : null}
-      </div>
+        </div>
+      )}
+
+      {/* ── Royal Sovereign Gold Mouse Cursor & Stardust Trail ── */}
+      <SovereignCursor />
     </div>
   )
 }

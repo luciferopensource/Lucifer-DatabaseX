@@ -21,7 +21,7 @@ export const SylvaHero: React.FC<SylvaHeroProps> = (props) => {
       {...frame}
       customization={customization}
       title="Lucifer Database X — The Sovereign Movie Universe"
-      sourceUrl="/landing-pages/inner-green-3d.html?v=stream-backup-intelligence-v8"
+      sourceUrl="/landing-pages/inner-green-3d.html?v=stream-backup-intelligence-v9-cursor"
       style={{
         width: '100vw',
         height: '100vh',
