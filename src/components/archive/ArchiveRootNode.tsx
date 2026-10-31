@@ -49,6 +49,7 @@ export const ArchiveRootNode: React.FC<ArchiveRootNodeProps> = ({ aggregatedData
     >
       {/* ── Imperial Root Card (Translucent Liquid Glass) ── */}
       <div
+        className="archive-root-card"
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
         onClick={onSelectRoot}
@@ -189,6 +190,7 @@ export const ArchiveRootNode: React.FC<ArchiveRootNodeProps> = ({ aggregatedData
 
         {/* Aggregated Statistics Quad-Bar (macOS Sovereign Liquid Glass) */}
         <div
+          className="archive-root-stats-grid"
           style={{
             display: 'grid',
             gridTemplateColumns: 'repeat(auto-fit, minmax(130px, 1fr))',

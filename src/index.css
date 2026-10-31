@@ -50,3 +50,127 @@ html, body {
   position: relative;
   background: #09090f;
 }
+
+/* ==========================================================================
+   SOVEREIGN RESPONSIVE ARCHITECTURE & MOBILE OPTIMISATIONS
+   ========================================================================== */
+
+:root {
+  --sovereign-header-height: 56px;
+}
+
+@media (max-width: 900px) {
+  :root {
+    --sovereign-header-height: 94px;
+  }
+}
+
+.sovereign-app-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 99999;
+  background: rgba(8, 8, 12, 0.94);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid rgba(212, 175, 55, 0.32);
+  box-shadow: 0 4px 25px rgba(0, 0, 0, 0.85);
+  padding: 8px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  height: 56px;
+  box-sizing: border-box;
+}
+
+.sovereign-header-brand-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.sovereign-header-right-mobile {
+  display: none;
+}
+
+.sovereign-header-right-desktop {
+  display: flex;
+  align-items: center;
+}
+
+.sovereign-header-nav {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+@media (max-width: 900px) {
+  .sovereign-app-header {
+    height: 94px;
+    padding: 8px 12px;
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: center;
+    gap: 6px;
+  }
+  .sovereign-header-brand-row {
+    justify-content: space-between;
+    width: 100%;
+  }
+  .sovereign-brand-badge {
+    display: none !important;
+  }
+  .sovereign-header-right-desktop {
+    display: none !important;
+  }
+  .sovereign-header-right-mobile {
+    display: flex !important;
+    align-items: center;
+  }
+  .sovereign-header-nav {
+    overflow-x: auto;
+    white-space: nowrap;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    padding-bottom: 2px;
+    width: 100%;
+  }
+  .sovereign-header-nav::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+/* Mobile responsive rules for Archive Tree, Cards, and Connectors */
+@media (max-width: 768px) {
+  .archive-connector-arm {
+    display: none !important;
+  }
+  .archive-node-row {
+    justify-content: center !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+    margin: 20px 0 !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+  }
+  .archive-central-spine {
+    display: none !important;
+  }
+  .archive-card-wrapper {
+    max-width: 100% !important;
+    padding: 18px 14px !important;
+  }
+  .archive-root-card {
+    padding: 22px 14px !important;
+  }
+  .archive-root-stats-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 8px !important;
+  }
+  .total-database-telemetry-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 8px !important;
+  }
+}

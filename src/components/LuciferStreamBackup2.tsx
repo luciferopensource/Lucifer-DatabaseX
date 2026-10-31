@@ -79,7 +79,7 @@ export const LuciferStreamBackup2: React.FC<LuciferStreamBackup2Props> = ({ onBa
         aria-label="Sovereign Breadcrumb Navigation"
         style={{
           position: 'sticky',
-          top: '58px',
+          top: 'var(--sovereign-header-height, 56px)',
           zIndex: 40,
           background: 'linear-gradient(135deg, rgba(16, 14, 26, 0.88) 0%, rgba(10, 10, 16, 0.94) 100%)',
           backdropFilter: 'blur(36px) saturate(210%) contrast(105%) brightness(1.08)',

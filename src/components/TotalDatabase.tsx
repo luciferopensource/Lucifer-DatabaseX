@@ -41,6 +41,7 @@ export const TotalDatabase: React.FC<TotalDatabaseProps> = ({ onBack, onSelectAr
 
   return (
     <div
+      className="total-database-container"
       style={{
         position: 'relative',
         width: '100%',
@@ -122,6 +123,7 @@ export const TotalDatabase: React.FC<TotalDatabaseProps> = ({ onBack, onSelectAr
       >
         {/* ── Sovereign Aggregate Dashboard Header ── */}
         <div
+          className="total-database-header-card"
           style={{
             background: 'rgba(14, 14, 22, 0.68)',
             backdropFilter: 'blur(20px) saturate(180%)',
@@ -211,6 +213,7 @@ export const TotalDatabase: React.FC<TotalDatabaseProps> = ({ onBack, onSelectAr
 
           {/* Primary Telemetry Quad-Grid with Dynamic Unit Converter (macOS Liquid Glass) */}
           <div
+            className="total-database-telemetry-grid"
             style={{
               display: 'grid',
               gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))',

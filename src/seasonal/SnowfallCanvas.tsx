@@ -44,6 +44,7 @@ export const SnowfallCanvas: React.FC = () => {
     if (!ctx) return
 
     const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+    const isMobile = window.innerWidth < 768 || window.matchMedia('(pointer: coarse)').matches
 
     let width = (canvas.width = window.innerWidth)
     let height = (canvas.height = window.innerHeight)
@@ -67,8 +68,12 @@ export const SnowfallCanvas: React.FC = () => {
     const skeletonImg = new Image()
     skeletonImg.src = `data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><circle cx="12" cy="10" r="7" fill="rgba(255,255,255,0.85)" stroke="%23f3e5ab" stroke-width="1"/><rect x="10" y="16" width="4" height="3" fill="rgba(255,255,255,0.85)" stroke="%23f3e5ab" stroke-width="0.8"/><circle cx="9.5" cy="9.5" r="1.8" fill="%2308080c"/><circle cx="14.5" cy="9.5" r="1.8" fill="%2308080c"/><polygon points="12,12 11.2,13.5 12.8,13.5" fill="%2308080c"/><line x1="10" y1="18" x2="14" y2="18" stroke="%2308080c" stroke-width="1"/></svg>`
 
-    // Initialise pure crisp white snowflakes
-    const particleCount = prefersReducedMotion ? 30 : Math.min(100, Math.floor(width / 16))
+    // Initialise pure crisp white snowflakes (compact count on mobile to preserve 60 FPS)
+    const particleCount = prefersReducedMotion
+      ? 18
+      : isMobile
+      ? Math.min(28, Math.floor(width / 24))
+      : Math.min(100, Math.floor(width / 16))
     const snowflakes: Snowflake[] = []
 
     for (let i = 0; i < particleCount; i++) {
@@ -87,7 +92,9 @@ export const SnowfallCanvas: React.FC = () => {
     // Initialise falling Halloween items (Pumpkins, Ghosts, Skeletons)
     const halloweenItems: HalloweenFallingItem[] = []
     if (halloweenActive && !prefersReducedMotion) {
-      const hCount = Math.min(14, Math.floor(width / 100))
+      const hCount = isMobile
+        ? Math.min(4, Math.floor(width / 120))
+        : Math.min(14, Math.floor(width / 100))
       const types: ('pumpkin' | 'ghost' | 'skeleton')[] = ['pumpkin', 'ghost', 'skeleton']
       for (let i = 0; i < hCount; i++) {
         halloweenItems.push({
@@ -108,6 +115,11 @@ export const SnowfallCanvas: React.FC = () => {
     let lastAccumulationTime = performance.now()
 
     const render = (time: number) => {
+      if (document.hidden) {
+        animationFrameIdRef.current = requestAnimationFrame(render)
+        return
+      }
+
       ctx.clearRect(0, 0, width, height)
 
       // Increment snow accumulation gently up to 96px (1 CSS inch)
@@ -158,8 +170,10 @@ export const SnowfallCanvas: React.FC = () => {
         gradFront.addColorStop(0.2, 'rgba(245, 248, 255, 0.85)')
         gradFront.addColorStop(1, 'rgba(255, 255, 255, 0.98)')
         ctx.fillStyle = gradFront
-        ctx.shadowColor = 'rgba(255, 255, 255, 0.5)'
-        ctx.shadowBlur = 10
+        if (!isMobile) {
+          ctx.shadowColor = 'rgba(255, 255, 255, 0.5)'
+          ctx.shadowBlur = 10
+        }
         ctx.fill()
 
         // Soft shimmering top crest line
@@ -169,14 +183,19 @@ export const SnowfallCanvas: React.FC = () => {
         ctx.quadraticCurveTo(width * 0.85, baseLine - 6, width, baseLine + 8)
         ctx.strokeStyle = 'rgba(255, 255, 255, 0.95)'
         ctx.lineWidth = 1.5
-        ctx.shadowColor = '#ffffff'
-        ctx.shadowBlur = 6
+        if (!isMobile) {
+          ctx.shadowColor = '#ffffff'
+          ctx.shadowBlur = 6
+        }
         ctx.stroke()
 
         ctx.restore()
       }
 
       // ── Draw Falling Crisp White Snowflakes ──
+      if (isMobile) {
+        ctx.shadowBlur = 0
+      }
       for (let i = 0; i < snowflakes.length; i++) {
         const flake = snowflakes[i]
 
@@ -197,8 +216,10 @@ export const SnowfallCanvas: React.FC = () => {
         ctx.beginPath()
         ctx.arc(flake.x, flake.y, flake.radius, 0, Math.PI * 2)
         ctx.fillStyle = `rgba(255, 255, 255, ${flake.opacity})`
-        ctx.shadowColor = 'rgba(255, 255, 255, 0.85)'
-        ctx.shadowBlur = 4
+        if (!isMobile) {
+          ctx.shadowColor = 'rgba(255, 255, 255, 0.85)'
+          ctx.shadowBlur = 4
+        }
         ctx.fill()
       }
 
@@ -230,8 +251,12 @@ export const SnowfallCanvas: React.FC = () => {
           else if (item.type === 'skeleton') targetImg = skeletonImg
 
           if (targetImg && targetImg.complete && targetImg.naturalWidth > 0) {
-            ctx.shadowColor = item.type === 'pumpkin' ? 'rgba(212, 175, 55, 0.6)' : 'rgba(255, 255, 255, 0.5)'
-            ctx.shadowBlur = 8
+            if (!isMobile) {
+              ctx.shadowColor = item.type === 'pumpkin' ? 'rgba(212, 175, 55, 0.6)' : 'rgba(255, 255, 255, 0.5)'
+              ctx.shadowBlur = 8
+            } else {
+              ctx.shadowBlur = 0
+            }
             ctx.drawImage(
               targetImg,
               -item.size / 2,

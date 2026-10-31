@@ -59,16 +59,7 @@ export const ArchiveConnector: React.FC<ArchiveConnectorProps> = () => {
         }
         @media (max-width: 768px) {
           .archive-central-spine {
-            left: 28px !important;
-            transform: none !important;
-          }
-          .archive-node-row {
-            justify-content: flex-start !important;
-            padding-left: 54px !important;
-          }
-          .archive-connector-arm {
-            left: 28px !important;
-            width: 26px !important;
+            display: none !important;
           }
         }
       `}</style>

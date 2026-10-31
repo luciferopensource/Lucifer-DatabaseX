@@ -105,75 +105,66 @@ const AppContent: React.FC = () => {
   return (
     <div style={{ position: 'relative', width: '100%', minHeight: '100vh', background: '#09090f' }}>
       {/* ── Persistent Sovereign Movie Top Bar ── */}
-      <header
-        style={{
-          position: 'fixed',
-          top: 0,
-          left: 0,
-          right: 0,
-          zIndex: 99999,
-          background: 'rgba(8, 8, 12, 0.94)',
-          backdropFilter: 'blur(16px)',
-          WebkitBackdropFilter: 'blur(16px)',
-          borderBottom: '1px solid rgba(212, 175, 55, 0.32)',
-          boxShadow: '0 4px 25px rgba(0, 0, 0, 0.85)',
-          padding: '10px 24px',
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'space-between',
-          gap: '16px',
-          flexWrap: 'wrap',
-          fontFamily: "'Outfit', -apple-system, sans-serif",
-        }}
-      >
-        {/* Left: Brand */}
-        <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
-          <span style={{
-            width: '9px',
-            height: '9px',
-            borderRadius: '50%',
-            background: '#2ecc71',
-            boxShadow: '0 0 10px #2ecc71',
-          }} />
-          <span style={{
-            fontFamily: "'Cinzel', serif",
-            fontSize: '1.05rem',
-            fontWeight: 800,
-            color: '#d4af37',
-            letterSpacing: '0.06em',
-          }}>
-            LUCIFER DATABASE X
-          </span>
-          <span style={{
-            fontSize: '0.7rem',
-            background: 'rgba(212, 175, 55, 0.15)',
-            border: '1px solid rgba(212, 175, 55, 0.35)',
-            color: '#f3e5ab',
-            padding: '2px 8px',
-            borderRadius: '4px',
-            fontWeight: 700,
-            letterSpacing: '0.04em',
-          }}>
-            THE LIVING ARCHIVE
-          </span>
+      <header className="sovereign-app-header">
+        {/* Brand Row (Left on Desktop, Top Row on Mobile) */}
+        <div className="sovereign-header-brand-row">
+          <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+            <span style={{
+              width: '9px',
+              height: '9px',
+              borderRadius: '50%',
+              background: '#2ecc71',
+              boxShadow: '0 0 10px #2ecc71',
+              flexShrink: 0,
+            }} />
+            <span style={{
+              fontFamily: "'Cinzel', serif",
+              fontSize: '1.05rem',
+              fontWeight: 800,
+              color: '#d4af37',
+              letterSpacing: '0.06em',
+              whiteSpace: 'nowrap',
+            }}>
+              LUCIFER DATABASE X
+            </span>
+            <span className="sovereign-brand-badge" style={{
+              fontSize: '0.68rem',
+              background: 'rgba(212, 175, 55, 0.15)',
+              border: '1px solid rgba(212, 175, 55, 0.35)',
+              color: '#f3e5ab',
+              padding: '2px 8px',
+              borderRadius: '4px',
+              fontWeight: 700,
+              letterSpacing: '0.04em',
+              whiteSpace: 'nowrap',
+            }}>
+              THE LIVING ARCHIVE
+            </span>
+          </div>
+
+          {/* Compact Unit Selector on Mobile */}
+          <div className="sovereign-header-right-mobile">
+            <StorageUnitSelector compact />
+          </div>
         </div>
 
-        {/* Center: Navigation Tabs */}
-        <nav style={{ display: 'flex', alignItems: 'center', gap: '8px', flexWrap: 'wrap' }}>
+        {/* Center: Navigation Tabs (Touch Scrollable on Mobile) */}
+        <nav className="sovereign-header-nav">
           <button
             onClick={handleBackToHero}
             style={{
               background: currentPage === 'hero' ? 'linear-gradient(135deg, #d4af37 0%, #aa771c 100%)' : 'rgba(255, 255, 255, 0.05)',
               color: currentPage === 'hero' ? '#08080c' : '#f3e5ab',
               border: `1px solid ${currentPage === 'hero' ? '#d4af37' : 'rgba(212, 175, 55, 0.25)'}`,
-              padding: '7px 16px',
+              padding: '6px 14px',
               borderRadius: '8px',
               cursor: 'pointer',
-              fontSize: '0.82rem',
+              fontSize: '0.8rem',
               fontWeight: 700,
               display: 'flex',
               alignItems: 'center',
               gap: '6px',
+              flexShrink: 0,
               transition: 'all 0.2s',
             }}
           >
@@ -186,14 +177,15 @@ const AppContent: React.FC = () => {
               background: currentPage === 'total-database' ? 'linear-gradient(135deg, #d4af37 0%, #aa771c 100%)' : 'rgba(212, 175, 55, 0.18)',
               color: currentPage === 'total-database' ? '#08080c' : '#ffffff',
               border: `1px solid ${currentPage === 'total-database' ? '#d4af37' : 'rgba(212, 175, 55, 0.55)'}`,
-              padding: '7px 16px',
+              padding: '6px 14px',
               borderRadius: '8px',
               cursor: 'pointer',
-              fontSize: '0.82rem',
+              fontSize: '0.8rem',
               fontWeight: 800,
               display: 'flex',
               alignItems: 'center',
               gap: '6px',
+              flexShrink: 0,
               boxShadow: currentPage === 'total-database' ? '0 0 15px rgba(212, 175, 55, 0.55)' : '0 0 10px rgba(212, 175, 55, 0.25)',
               transition: 'all 0.2s',
             }}
@@ -217,14 +209,15 @@ const AppContent: React.FC = () => {
               background: currentPage === 'stream-backup-1' ? 'linear-gradient(135deg, #d4af37 0%, #aa771c 100%)' : 'rgba(212, 175, 55, 0.12)',
               color: currentPage === 'stream-backup-1' ? '#08080c' : '#ffffff',
               border: `1px solid ${currentPage === 'stream-backup-1' ? '#d4af37' : 'rgba(212, 175, 55, 0.4)'}`,
-              padding: '7px 14px',
+              padding: '6px 12px',
               borderRadius: '8px',
               cursor: 'pointer',
-              fontSize: '0.82rem',
+              fontSize: '0.8rem',
               fontWeight: 800,
               display: 'flex',
               alignItems: 'center',
               gap: '6px',
+              flexShrink: 0,
               transition: 'all 0.2s',
             }}
           >
@@ -247,14 +240,15 @@ const AppContent: React.FC = () => {
               background: currentPage === 'stream-backup-2' ? 'linear-gradient(135deg, #d4af37 0%, #aa771c 100%)' : 'rgba(212, 175, 55, 0.12)',
               color: currentPage === 'stream-backup-2' ? '#08080c' : '#ffffff',
               border: `1px solid ${currentPage === 'stream-backup-2' ? '#d4af37' : 'rgba(212, 175, 55, 0.4)'}`,
-              padding: '7px 14px',
+              padding: '6px 12px',
               borderRadius: '8px',
               cursor: 'pointer',
-              fontSize: '0.82rem',
+              fontSize: '0.8rem',
               fontWeight: 800,
               display: 'flex',
               alignItems: 'center',
               gap: '6px',
+              flexShrink: 0,
               transition: 'all 0.2s',
             }}
           >
@@ -272,8 +266,8 @@ const AppContent: React.FC = () => {
           </button>
         </nav>
 
-        {/* Right: Storage Unit Selector & Telemetry */}
-        <div style={{ display: 'flex', alignItems: 'center', gap: '12px', fontSize: '0.78rem', flexWrap: 'wrap' }}>
+        {/* Right: Storage Unit Selector & Telemetry (Desktop Only) */}
+        <div className="sovereign-header-right-desktop" style={{ gap: '12px', fontSize: '0.78rem' }}>
           <StorageUnitSelector compact />
           <span style={{ color: '#2ecc71', display: 'flex', alignItems: 'center', gap: '6px', fontWeight: 600 }}>
             <span style={{ width: '6px', height: '6px', borderRadius: '50%', background: '#2ecc71' }} />
@@ -292,16 +286,15 @@ const AppContent: React.FC = () => {
       <div
         style={{
           position: 'fixed',
-          top: '58px',
+          top: 'var(--sovereign-header-height, 56px)',
           left: 0,
           width: '100vw',
-          height: 'calc(100vh - 58px)',
+          height: 'calc(100vh - var(--sovereign-header-height, 56px))',
           zIndex: 0,
           pointerEvents: currentPage === 'hero' ? 'auto' : 'none',
           opacity: currentPage === 'hero' ? 1 : 0.88,
-          filter: currentPage === 'hero' ? 'none' : 'blur(5px) brightness(0.85) saturate(1.2)',
+          filter: 'none',
           transform: 'translateZ(0)',
-          transition: 'opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), filter 0.6s cubic-bezier(0.16, 1, 0.3, 1)',
           overflow: 'hidden',
           background: '#09090f',
         }}
@@ -318,13 +311,30 @@ const AppContent: React.FC = () => {
         />
       </div>
 
+      {/* ── Zero-Overhead Atmospheric Scrim for Subpages (replaces heavy full-screen GPU blur filter) ── */}
+      {currentPage !== 'hero' && (
+        <div
+          aria-hidden="true"
+          style={{
+            position: 'fixed',
+            top: 0,
+            left: 0,
+            width: '100vw',
+            height: '100vh',
+            zIndex: 1,
+            background: 'radial-gradient(ellipse at center, rgba(8, 8, 14, 0.78) 0%, rgba(5, 5, 10, 0.92) 100%)',
+            pointerEvents: 'none',
+          }}
+        />
+      )}
+
       {/* ── Homepage Living Archive Tree Section (Scroll-driven over 3D Hero) ── */}
       {currentPage === 'hero' && (
         <div style={{ position: 'relative', zIndex: 10 }}>
           {/* Hero Spacer (Allows direct interaction with 3D canvas, with smooth scroll prompt at bottom) */}
           <div
             style={{
-              height: 'calc(100vh - 58px)',
+              height: 'calc(100vh - var(--sovereign-header-height, 56px))',
               width: '100%',
               pointerEvents: 'none',
               position: 'relative',
@@ -358,7 +368,7 @@ const AppContent: React.FC = () => {
                 transition: 'all 0.2s',
               }}
               onClick={() => {
-                window.scrollTo({ top: window.innerHeight - 58, behavior: 'smooth' })
+                window.scrollTo({ top: window.innerHeight - 56, behavior: 'smooth' })
               }}
               onMouseEnter={(e) => {
                 e.currentTarget.style.borderColor = '#d4af37'
@@ -398,8 +408,8 @@ const AppContent: React.FC = () => {
       {currentPage === 'total-database' && (
         <div
           style={{
-            paddingTop: '58px',
-            minHeight: 'calc(100vh - 58px)',
+            paddingTop: 'var(--sovereign-header-height, 56px)',
+            minHeight: 'calc(100vh - var(--sovereign-header-height, 56px))',
             width: '100%',
             position: 'relative',
             zIndex: 10,
@@ -413,8 +423,8 @@ const AppContent: React.FC = () => {
       {currentPage === 'stream-backup-1' && (
         <div
           style={{
-            paddingTop: '58px',
-            minHeight: 'calc(100vh - 58px)',
+            paddingTop: 'var(--sovereign-header-height, 56px)',
+            minHeight: 'calc(100vh - var(--sovereign-header-height, 56px))',
             width: '100%',
             position: 'relative',
             zIndex: 10,
@@ -428,8 +438,8 @@ const AppContent: React.FC = () => {
       {currentPage === 'stream-backup-2' && (
         <div
           style={{
-            paddingTop: '58px',
-            minHeight: 'calc(100vh - 58px)',
+            paddingTop: 'var(--sovereign-header-height, 56px)',
+            minHeight: 'calc(100vh - var(--sovereign-header-height, 56px))',
             width: '100%',
             position: 'relative',
             zIndex: 10,

@@ -12,6 +12,12 @@ interface Particle {
 }
 
 export const SovereignCursor: React.FC = () => {
+  // Omit cursor entirely on touch devices to conserve resources and avoid stray points
+  const isTouchDevice = typeof window !== 'undefined' && window.matchMedia('(pointer: coarse)').matches
+  if (isTouchDevice) {
+    return null
+  }
+
   const canvasRef = useRef<HTMLCanvasElement>(null)
   const dotRef = useRef<HTMLDivElement>(null)
   const ringRef = useRef<HTMLDivElement>(null)

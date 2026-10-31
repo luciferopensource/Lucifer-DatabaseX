@@ -59,11 +59,10 @@ export const ArchiveNode: React.FC<ArchiveNodeProps> = ({ archive, position, onS
         position: 'relative',
         width: '100%',
         margin: '36px 0',
+        boxSizing: 'border-box',
         opacity: isVisible ? 1 : 0,
         filter: isVisible ? 'blur(0px)' : 'blur(8px)',
-        transform: isVisible
-          ? 'translateY(0) scale(1)'
-          : `translateY(45px) scale(0.94) ${isLeft ? 'translateX(-20px)' : 'translateX(20px)'}`,
+        transform: isVisible ? 'translateY(0) scale(1)' : 'translateY(35px) scale(0.96)',
         transition: 'opacity 0.75s cubic-bezier(0.16, 1, 0.3, 1), transform 0.75s cubic-bezier(0.16, 1, 0.3, 1), filter 0.75s cubic-bezier(0.16, 1, 0.3, 1)',
       }}
     >
