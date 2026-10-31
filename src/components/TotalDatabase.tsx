@@ -209,7 +209,7 @@ export const TotalDatabase: React.FC<TotalDatabaseProps> = ({ onBack, onSelectAr
             </div>
           </div>
 
-          {/* Primary Telemetry Quad-Grid with Dynamic Unit Converter */}
+          {/* Primary Telemetry Quad-Grid with Dynamic Unit Converter (macOS Liquid Glass) */}
           <div
             style={{
               display: 'grid',
@@ -217,78 +217,161 @@ export const TotalDatabase: React.FC<TotalDatabaseProps> = ({ onBack, onSelectAr
               gap: '16px',
             }}
           >
+            {/* Box 1: Combined Storage */}
             <div
               style={{
-                background: 'rgba(255, 255, 255, 0.03)',
-                border: '1px solid rgba(212, 175, 55, 0.2)',
-                borderRadius: '12px',
+                background: 'linear-gradient(135deg, rgba(255, 255, 255, 0.08) 0%, rgba(26, 20, 38, 0.55) 50%, rgba(12, 10, 20, 0.72) 100%)',
+                backdropFilter: 'blur(20px) saturate(200%) brightness(1.08)',
+                WebkitBackdropFilter: 'blur(20px) saturate(200%) brightness(1.08)',
+                border: '1.5px solid rgba(212, 175, 55, 0.38)',
+                borderRadius: '14px',
                 padding: '16px 18px',
+                boxShadow: '0 10px 28px rgba(0, 0, 0, 0.65), inset 0 1.5px 1.5px rgba(255, 255, 255, 0.3), 0 0 16px rgba(212, 175, 55, 0.12)',
+                minWidth: 0,
+                overflow: 'hidden',
               }}
             >
-              <div style={{ color: 'rgba(243, 229, 171, 0.65)', fontSize: '0.74rem', textTransform: 'uppercase', letterSpacing: '0.05em' }}>
+              <div style={{ color: 'rgba(243, 229, 171, 0.75)', fontSize: '0.74rem', textTransform: 'uppercase', letterSpacing: '0.06em', fontWeight: 700 }}>
                 Combined Storage
               </div>
-              <div style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: '1.5rem', fontWeight: 900, color: '#d4af37', marginTop: '6px' }}>
-                {formatString(aggregatedData.combinedStorage)}
-              </div>
-              <div style={{ color: '#2ecc71', fontSize: '0.75rem', fontWeight: 700, marginTop: '2px' }}>
+              {(() => {
+                const val = formatString(aggregatedData.combinedStorage)
+                const len = val.length
+                const fontSize = len > 16 ? '0.92rem' : len > 13 ? '1.1rem' : len > 10 ? '1.28rem' : '1.5rem'
+                return (
+                  <div
+                    title={val}
+                    style={{
+                      fontFamily: "'JetBrains Mono', monospace",
+                      fontSize,
+                      fontWeight: 900,
+                      color: '#d4af37',
+                      marginTop: '6px',
+                      maxWidth: '100%',
+                      width: '100%',
+                      whiteSpace: 'nowrap',
+                      overflow: 'hidden',
+                      textOverflow: 'ellipsis',
+                      lineHeight: 1.2,
+                      letterSpacing: len > 13 ? '-0.02em' : 'normal',
+                    }}
+                  >
+                    {val}
+                  </div>
+                )
+              })()}
+              <div style={{ color: '#2ecc71', fontSize: '0.75rem', fontWeight: 800, marginTop: '2px' }}>
                 {aggregatedData.combinedStoragePB} Full Quota
               </div>
             </div>
 
+            {/* Box 2: Total Files Found */}
             <div
               style={{
-                background: 'rgba(255, 255, 255, 0.03)',
-                border: '1px solid rgba(212, 175, 55, 0.2)',
-                borderRadius: '12px',
+                background: 'linear-gradient(135deg, rgba(255, 255, 255, 0.08) 0%, rgba(26, 20, 38, 0.55) 50%, rgba(12, 10, 20, 0.72) 100%)',
+                backdropFilter: 'blur(20px) saturate(200%) brightness(1.08)',
+                WebkitBackdropFilter: 'blur(20px) saturate(200%) brightness(1.08)',
+                border: '1.5px solid rgba(212, 175, 55, 0.38)',
+                borderRadius: '14px',
                 padding: '16px 18px',
+                boxShadow: '0 10px 28px rgba(0, 0, 0, 0.65), inset 0 1.5px 1.5px rgba(255, 255, 255, 0.3), 0 0 16px rgba(212, 175, 55, 0.12)',
+                minWidth: 0,
+                overflow: 'hidden',
               }}
             >
-              <div style={{ color: 'rgba(243, 229, 171, 0.65)', fontSize: '0.74rem', textTransform: 'uppercase', letterSpacing: '0.05em' }}>
+              <div style={{ color: 'rgba(243, 229, 171, 0.75)', fontSize: '0.74rem', textTransform: 'uppercase', letterSpacing: '0.06em', fontWeight: 700 }}>
                 Total Files Found
               </div>
-              <div style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: '1.5rem', fontWeight: 900, color: '#f3e5ab', marginTop: '6px' }}>
+              <div
+                style={{
+                  fontFamily: "'JetBrains Mono', monospace",
+                  fontSize: '1.5rem',
+                  fontWeight: 900,
+                  color: '#f3e5ab',
+                  marginTop: '6px',
+                  maxWidth: '100%',
+                  whiteSpace: 'nowrap',
+                  overflow: 'hidden',
+                  textOverflow: 'ellipsis',
+                }}
+              >
                 {aggregatedData.totalFiles}
               </div>
-              <div style={{ color: 'rgba(243, 229, 171, 0.5)', fontSize: '0.75rem', marginTop: '2px' }}>
+              <div style={{ color: 'rgba(243, 229, 171, 0.55)', fontSize: '0.75rem', fontWeight: 600, marginTop: '2px' }}>
                 Across All Channels
               </div>
             </div>
 
+            {/* Box 3: Messages Checked */}
             <div
               style={{
-                background: 'rgba(255, 255, 255, 0.03)',
-                border: '1px solid rgba(212, 175, 55, 0.2)',
-                borderRadius: '12px',
+                background: 'linear-gradient(135deg, rgba(255, 255, 255, 0.08) 0%, rgba(26, 20, 38, 0.55) 50%, rgba(12, 10, 20, 0.72) 100%)',
+                backdropFilter: 'blur(20px) saturate(200%) brightness(1.08)',
+                WebkitBackdropFilter: 'blur(20px) saturate(200%) brightness(1.08)',
+                border: '1.5px solid rgba(212, 175, 55, 0.38)',
+                borderRadius: '14px',
                 padding: '16px 18px',
+                boxShadow: '0 10px 28px rgba(0, 0, 0, 0.65), inset 0 1.5px 1.5px rgba(255, 255, 255, 0.3), 0 0 16px rgba(212, 175, 55, 0.12)',
+                minWidth: 0,
+                overflow: 'hidden',
               }}
             >
-              <div style={{ color: 'rgba(243, 229, 171, 0.65)', fontSize: '0.74rem', textTransform: 'uppercase', letterSpacing: '0.05em' }}>
+              <div style={{ color: 'rgba(243, 229, 171, 0.75)', fontSize: '0.74rem', textTransform: 'uppercase', letterSpacing: '0.06em', fontWeight: 700 }}>
                 Messages Checked
               </div>
-              <div style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: '1.5rem', fontWeight: 900, color: '#f3e5ab', marginTop: '6px' }}>
+              <div
+                style={{
+                  fontFamily: "'JetBrains Mono', monospace",
+                  fontSize: '1.5rem',
+                  fontWeight: 900,
+                  color: '#f3e5ab',
+                  marginTop: '6px',
+                  maxWidth: '100%',
+                  whiteSpace: 'nowrap',
+                  overflow: 'hidden',
+                  textOverflow: 'ellipsis',
+                }}
+              >
                 {aggregatedData.totalMessages}
               </div>
-              <div style={{ color: 'rgba(243, 229, 171, 0.5)', fontSize: '0.75rem', marginTop: '2px' }}>
+              <div style={{ color: 'rgba(243, 229, 171, 0.55)', fontSize: '0.75rem', fontWeight: 600, marginTop: '2px' }}>
                 Full Audit Depth
               </div>
             </div>
 
+            {/* Box 4: Scan Duration */}
             <div
               style={{
-                background: 'rgba(255, 255, 255, 0.03)',
-                border: '1px solid rgba(212, 175, 55, 0.2)',
-                borderRadius: '12px',
+                background: 'linear-gradient(135deg, rgba(255, 255, 255, 0.08) 0%, rgba(26, 20, 38, 0.55) 50%, rgba(12, 10, 20, 0.72) 100%)',
+                backdropFilter: 'blur(20px) saturate(200%) brightness(1.08)',
+                WebkitBackdropFilter: 'blur(20px) saturate(200%) brightness(1.08)',
+                border: '1.5px solid rgba(212, 175, 55, 0.38)',
+                borderRadius: '14px',
                 padding: '16px 18px',
+                boxShadow: '0 10px 28px rgba(0, 0, 0, 0.65), inset 0 1.5px 1.5px rgba(255, 255, 255, 0.3), 0 0 16px rgba(212, 175, 55, 0.12)',
+                minWidth: 0,
+                overflow: 'hidden',
               }}
             >
-              <div style={{ color: 'rgba(243, 229, 171, 0.65)', fontSize: '0.74rem', textTransform: 'uppercase', letterSpacing: '0.05em' }}>
+              <div style={{ color: 'rgba(243, 229, 171, 0.75)', fontSize: '0.74rem', textTransform: 'uppercase', letterSpacing: '0.06em', fontWeight: 700 }}>
                 Scan Duration
               </div>
-              <div style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: '1.5rem', fontWeight: 900, color: '#ffffff', marginTop: '6px' }}>
+              <div
+                style={{
+                  fontFamily: "'JetBrains Mono', monospace",
+                  fontSize: '1.5rem',
+                  fontWeight: 900,
+                  color: '#ffffff',
+                  marginTop: '6px',
+                  maxWidth: '100%',
+                  whiteSpace: 'nowrap',
+                  overflow: 'hidden',
+                  textOverflow: 'ellipsis',
+                }}
+              >
                 5h 36m 13s
               </div>
-              <div style={{ color: 'rgba(243, 229, 171, 0.5)', fontSize: '0.75rem', marginTop: '2px' }}>
+              <div style={{ color: 'rgba(243, 229, 171, 0.55)', fontSize: '0.75rem', fontWeight: 600, marginTop: '2px' }}>
                 Cumulative Scanner Runtime
               </div>
             </div>

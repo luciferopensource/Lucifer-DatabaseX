@@ -215,7 +215,7 @@ export const ArchiveNode: React.FC<ArchiveNodeProps> = ({ archive, position, onS
           {archive.displayName}
         </h3>
 
-        {/* Primary Metrics Grid */}
+        {/* Primary Metrics Grid (macOS Liquid Glass) */}
         <div
           style={{
             display: 'grid',
@@ -224,52 +224,99 @@ export const ArchiveNode: React.FC<ArchiveNodeProps> = ({ archive, position, onS
             marginBottom: '18px',
           }}
         >
+          {/* Metric 1: Archived Storage */}
           <div
             style={{
-              background: 'rgba(255, 255, 255, 0.03)',
-              border: '1px solid rgba(212, 175, 55, 0.15)',
-              borderRadius: '8px',
-              padding: '10px 12px',
+              background: 'linear-gradient(135deg, rgba(255, 255, 255, 0.08) 0%, rgba(26, 20, 38, 0.55) 50%, rgba(12, 10, 20, 0.72) 100%)',
+              backdropFilter: 'blur(20px) saturate(200%) brightness(1.08)',
+              WebkitBackdropFilter: 'blur(20px) saturate(200%) brightness(1.08)',
+              border: '1.5px solid rgba(212, 175, 55, 0.35)',
+              borderRadius: '12px',
+              padding: '12px 10px',
+              boxShadow: '0 8px 24px rgba(0, 0, 0, 0.6), inset 0 1.5px 1.5px rgba(255, 255, 255, 0.28), 0 0 14px rgba(212, 175, 55, 0.1)',
+              minWidth: 0,
+              overflow: 'hidden',
+              display: 'flex',
+              flexDirection: 'column',
+              justifyContent: 'center',
             }}
           >
-            <div style={{ color: 'rgba(243, 229, 171, 0.65)', fontSize: '0.72rem', textTransform: 'uppercase', letterSpacing: '0.05em' }}>
+            <div style={{ color: 'rgba(243, 229, 171, 0.75)', fontSize: '0.68rem', textTransform: 'uppercase', letterSpacing: '0.06em', fontWeight: 700 }}>
               Archived Storage
             </div>
-            <div
-              style={{
-                fontFamily: "'JetBrains Mono', monospace",
-                fontSize: '1.15rem',
-                fontWeight: 800,
-                color: '#d4af37',
-                marginTop: '4px',
-              }}
-            >
-              {formatString(archive.combinedStorage)}
-            </div>
+            {(() => {
+              const val = formatString(archive.combinedStorage)
+              const len = val.length
+              const fontSize = len > 15 ? '0.78rem' : len > 12 ? '0.88rem' : len > 9 ? '1rem' : '1.15rem'
+              return (
+                <div
+                  title={val}
+                  style={{
+                    fontFamily: "'JetBrains Mono', monospace",
+                    fontSize,
+                    fontWeight: 800,
+                    color: '#d4af37',
+                    marginTop: '4px',
+                    maxWidth: '100%',
+                    width: '100%',
+                    whiteSpace: 'nowrap',
+                    overflow: 'hidden',
+                    textOverflow: 'ellipsis',
+                    lineHeight: 1.25,
+                    letterSpacing: len > 12 ? '-0.02em' : 'normal',
+                  }}
+                >
+                  {val}
+                </div>
+              )
+            })()}
           </div>
 
+          {/* Metric 2: Files Audited */}
           <div
             style={{
-              background: 'rgba(255, 255, 255, 0.03)',
-              border: '1px solid rgba(212, 175, 55, 0.15)',
-              borderRadius: '8px',
-              padding: '10px 12px',
+              background: 'linear-gradient(135deg, rgba(255, 255, 255, 0.08) 0%, rgba(26, 20, 38, 0.55) 50%, rgba(12, 10, 20, 0.72) 100%)',
+              backdropFilter: 'blur(20px) saturate(200%) brightness(1.08)',
+              WebkitBackdropFilter: 'blur(20px) saturate(200%) brightness(1.08)',
+              border: '1.5px solid rgba(212, 175, 55, 0.35)',
+              borderRadius: '12px',
+              padding: '12px 10px',
+              boxShadow: '0 8px 24px rgba(0, 0, 0, 0.6), inset 0 1.5px 1.5px rgba(255, 255, 255, 0.28), 0 0 14px rgba(212, 175, 55, 0.1)',
+              minWidth: 0,
+              overflow: 'hidden',
+              display: 'flex',
+              flexDirection: 'column',
+              justifyContent: 'center',
             }}
           >
-            <div style={{ color: 'rgba(243, 229, 171, 0.65)', fontSize: '0.72rem', textTransform: 'uppercase', letterSpacing: '0.05em' }}>
+            <div style={{ color: 'rgba(243, 229, 171, 0.75)', fontSize: '0.68rem', textTransform: 'uppercase', letterSpacing: '0.06em', fontWeight: 700 }}>
               Files Audited
             </div>
-            <div
-              style={{
-                fontFamily: "'JetBrains Mono', monospace",
-                fontSize: '1.15rem',
-                fontWeight: 800,
-                color: '#f3e5ab',
-                marginTop: '4px',
-              }}
-            >
-              {archive.totalFiles}
-            </div>
+            {(() => {
+              const val = archive.totalFiles
+              const len = val.length
+              const fontSize = len > 12 ? '0.92rem' : '1.15rem'
+              return (
+                <div
+                  title={val}
+                  style={{
+                    fontFamily: "'JetBrains Mono', monospace",
+                    fontSize,
+                    fontWeight: 800,
+                    color: '#f3e5ab',
+                    marginTop: '4px',
+                    maxWidth: '100%',
+                    width: '100%',
+                    whiteSpace: 'nowrap',
+                    overflow: 'hidden',
+                    textOverflow: 'ellipsis',
+                    lineHeight: 1.25,
+                  }}
+                >
+                  {val}
+                </div>
+              )
+            })()}
           </div>
         </div>
 

@@ -23,10 +23,16 @@ export function formatBytesWithUnit(bytes: number, targetUnit: StorageUnit): str
   }
   if (targetUnit === 'GB') {
     const val = bytes / (1024 ** 3)
+    if (val >= 1000000) {
+      return `${Math.round(val).toLocaleString('en-US')} GB`
+    }
     return `${val.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })} GB`
   }
   if (targetUnit === 'MB') {
     const val = bytes / (1024 ** 2)
+    if (val >= 1000000) {
+      return `${Math.round(val).toLocaleString('en-US')} MB`
+    }
     return `${val.toLocaleString('en-US', { minimumFractionDigits: 1, maximumFractionDigits: 1 })} MB`
   }
 

@@ -300,9 +300,29 @@ export const ChannelAnalysisSection: React.FC<ChannelAnalysisSectionProps> = ({
                   <span style={{ color: 'rgba(243, 229, 171, 0.5)', display: 'block', fontSize: '0.7rem' }}>FILES</span>
                   <span style={{ fontWeight: 700, color: '#ffffff' }}>{item.files}</span>
                 </div>
-                <div style={{ textAlign: 'right' }}>
+                <div style={{ textAlign: 'right', minWidth: 0, overflow: 'hidden' }}>
                   <span style={{ color: 'rgba(243, 229, 171, 0.5)', display: 'block', fontSize: '0.7rem' }}>STORAGE</span>
-                  <span style={{ fontWeight: 700, color: '#f3e5ab' }}>{formatString(item.storage)}</span>
+                  {(() => {
+                    const val = formatString(item.storage)
+                    const len = val.length
+                    const fontSize = len > 13 ? '0.7rem' : len > 10 ? '0.75rem' : '0.78rem'
+                    return (
+                      <span
+                        title={val}
+                        style={{
+                          fontWeight: 700,
+                          color: '#f3e5ab',
+                          fontSize,
+                          whiteSpace: 'nowrap',
+                          overflow: 'hidden',
+                          textOverflow: 'ellipsis',
+                          display: 'block',
+                        }}
+                      >
+                        {val}
+                      </span>
+                    )
+                  })()}
                 </div>
               </div>
             </div>

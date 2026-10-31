@@ -196,7 +196,9 @@ export const IntelligenceHeader: React.FC<IntelligenceHeaderProps> = ({ dataset 
                 alignItems: 'center',
                 gap: '14px',
                 boxShadow: '0 8px 24px rgba(0,0,0,0.45), inset 0 1px 1px rgba(255,255,255,0.25)',
-                transition: 'transform 0.2s, border-color 0.2s'
+                transition: 'transform 0.2s, border-color 0.2s',
+                minWidth: 0,
+                overflow: 'hidden',
               }}
             >
               <div
@@ -209,18 +211,39 @@ export const IntelligenceHeader: React.FC<IntelligenceHeaderProps> = ({ dataset 
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
-                  color: '#d4af37'
+                  color: '#d4af37',
+                  flexShrink: 0,
                 }}
               >
                 <HardDrive size={22} />
               </div>
-              <div>
+              <div style={{ minWidth: 0, overflow: 'hidden', width: '100%' }}>
                 <span style={{ fontSize: '0.7rem', color: 'rgba(243, 229, 171, 0.6)', letterSpacing: '0.08em', textTransform: 'uppercase', display: 'block' }}>
                   COMBINED STORAGE
                 </span>
-                <span style={{ fontSize: '1.45rem', fontWeight: 800, color: '#f3e5ab', fontFamily: "'Cinzel', serif" }}>
-                  {formatString(scanSummary.combinedSize)}
-                </span>
+                {(() => {
+                  const val = formatString(scanSummary.combinedSize)
+                  const len = val.length
+                  const fontSize = len > 16 ? '0.9rem' : len > 13 ? '1.05rem' : len > 10 ? '1.2rem' : '1.45rem'
+                  return (
+                    <span
+                      title={val}
+                      style={{
+                        fontSize,
+                        fontWeight: 800,
+                        color: '#f3e5ab',
+                        fontFamily: "'Cinzel', serif",
+                        display: 'block',
+                        whiteSpace: 'nowrap',
+                        overflow: 'hidden',
+                        textOverflow: 'ellipsis',
+                        maxWidth: '100%',
+                      }}
+                    >
+                      {val}
+                    </span>
+                  )
+                })()}
               </div>
             </div>
 
@@ -236,7 +259,9 @@ export const IntelligenceHeader: React.FC<IntelligenceHeaderProps> = ({ dataset 
                 display: 'flex',
                 alignItems: 'center',
                 gap: '14px',
-                boxShadow: '0 8px 24px rgba(0,0,0,0.45), inset 0 1px 1px rgba(255,255,255,0.25)'
+                boxShadow: '0 8px 24px rgba(0,0,0,0.45), inset 0 1px 1px rgba(255,255,255,0.25)',
+                minWidth: 0,
+                overflow: 'hidden',
               }}
             >
               <div
@@ -249,16 +274,17 @@ export const IntelligenceHeader: React.FC<IntelligenceHeaderProps> = ({ dataset 
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
-                  color: '#2ecc71'
+                  color: '#2ecc71',
+                  flexShrink: 0,
                 }}
               >
                 <FileDigit size={22} />
               </div>
-              <div>
+              <div style={{ minWidth: 0, overflow: 'hidden' }}>
                 <span style={{ fontSize: '0.7rem', color: 'rgba(243, 229, 171, 0.6)', letterSpacing: '0.08em', textTransform: 'uppercase', display: 'block' }}>
                   TOTAL FILES FOUND
                 </span>
-                <span style={{ fontSize: '1.45rem', fontWeight: 800, color: '#f3e5ab', fontFamily: "'Cinzel', serif" }}>
+                <span style={{ fontSize: '1.45rem', fontWeight: 800, color: '#f3e5ab', fontFamily: "'Cinzel', serif", whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis', display: 'block' }}>
                   {scanSummary.totalFilesFound}
                 </span>
               </div>
@@ -276,7 +302,9 @@ export const IntelligenceHeader: React.FC<IntelligenceHeaderProps> = ({ dataset 
                 display: 'flex',
                 alignItems: 'center',
                 gap: '14px',
-                boxShadow: '0 8px 24px rgba(0,0,0,0.45), inset 0 1px 1px rgba(255,255,255,0.25)'
+                boxShadow: '0 8px 24px rgba(0,0,0,0.45), inset 0 1px 1px rgba(255,255,255,0.25)',
+                minWidth: 0,
+                overflow: 'hidden',
               }}
             >
               <div
@@ -289,16 +317,17 @@ export const IntelligenceHeader: React.FC<IntelligenceHeaderProps> = ({ dataset 
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
-                  color: '#3498db'
+                  color: '#3498db',
+                  flexShrink: 0,
                 }}
               >
                 <MessageSquare size={22} />
               </div>
-              <div>
+              <div style={{ minWidth: 0, overflow: 'hidden' }}>
                 <span style={{ fontSize: '0.7rem', color: 'rgba(243, 229, 171, 0.6)', letterSpacing: '0.08em', textTransform: 'uppercase', display: 'block' }}>
                   MESSAGES CHECKED
                 </span>
-                <span style={{ fontSize: '1.45rem', fontWeight: 800, color: '#f3e5ab', fontFamily: "'Cinzel', serif" }}>
+                <span style={{ fontSize: '1.45rem', fontWeight: 800, color: '#f3e5ab', fontFamily: "'Cinzel', serif", whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis', display: 'block' }}>
                   {scanSummary.messagesChecked}
                 </span>
               </div>
@@ -316,7 +345,9 @@ export const IntelligenceHeader: React.FC<IntelligenceHeaderProps> = ({ dataset 
                 display: 'flex',
                 alignItems: 'center',
                 gap: '14px',
-                boxShadow: '0 8px 24px rgba(0,0,0,0.45), inset 0 1px 1px rgba(255,255,255,0.25)'
+                boxShadow: '0 8px 24px rgba(0,0,0,0.45), inset 0 1px 1px rgba(255,255,255,0.25)',
+                minWidth: 0,
+                overflow: 'hidden',
               }}
             >
               <div
@@ -329,16 +360,17 @@ export const IntelligenceHeader: React.FC<IntelligenceHeaderProps> = ({ dataset 
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
-                  color: '#9b59b6'
+                  color: '#9b59b6',
+                  flexShrink: 0,
                 }}
               >
                 <Clock size={22} />
               </div>
-              <div>
+              <div style={{ minWidth: 0, overflow: 'hidden' }}>
                 <span style={{ fontSize: '0.7rem', color: 'rgba(243, 229, 171, 0.6)', letterSpacing: '0.08em', textTransform: 'uppercase', display: 'block' }}>
                   SCAN DURATION
                 </span>
-                <span style={{ fontSize: '1.45rem', fontWeight: 800, color: '#f3e5ab', fontFamily: "'Cinzel', serif" }}>
+                <span style={{ fontSize: '1.45rem', fontWeight: 800, color: '#f3e5ab', fontFamily: "'Cinzel', serif", whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis', display: 'block' }}>
                   {scanSummary.scanDuration}
                 </span>
               </div>

@@ -343,13 +343,32 @@ export const ResolutionIntelligenceSection: React.FC<ResolutionIntelligenceSecti
                     {res.files}
                   </span>
                 </div>
-                <div style={{ textAlign: 'right' }}>
+                <div style={{ textAlign: 'right', minWidth: 0, overflow: 'hidden' }}>
                   <span style={{ fontSize: '0.68rem', color: 'rgba(243, 229, 171, 0.5)', display: 'block', textTransform: 'uppercase' }}>
                     STORAGE
                   </span>
-                  <span style={{ fontWeight: 800, color: '#d4af37', fontFamily: "'JetBrains Mono', monospace" }}>
-                    {formatString(res.storage)}
-                  </span>
+                  {(() => {
+                    const val = formatString(res.storage)
+                    const len = val.length
+                    const fontSize = len > 13 ? '0.72rem' : len > 10 ? '0.78rem' : '0.82rem'
+                    return (
+                      <span
+                        title={val}
+                        style={{
+                          fontWeight: 800,
+                          color: '#d4af37',
+                          fontFamily: "'JetBrains Mono', monospace",
+                          fontSize,
+                          whiteSpace: 'nowrap',
+                          overflow: 'hidden',
+                          textOverflow: 'ellipsis',
+                          display: 'block',
+                        }}
+                      >
+                        {val}
+                      </span>
+                    )
+                  })()}
                 </div>
               </div>
             </div>

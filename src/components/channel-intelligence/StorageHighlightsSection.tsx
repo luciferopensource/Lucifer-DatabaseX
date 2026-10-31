@@ -149,19 +149,29 @@ export const StorageHighlightsSection: React.FC<StorageHighlightsSectionProps> =
             </span>
           </div>
 
-          <div
-            style={{
-              fontFamily: "'Cinzel', serif",
-              fontSize: 'clamp(2.4rem, 4.5vw, 3.4rem)',
-              fontWeight: 900,
-              color: '#f3e5ab',
-              lineHeight: 1.1,
-              textShadow: '0 4px 18px rgba(212, 175, 55, 0.45)',
-              margin: '8px 0 14px 0'
-            }}
-          >
-            {formatString(storageHighlights.totalStorage)}
-          </div>
+          {(() => {
+            const val = formatString(storageHighlights.totalStorage)
+            const len = val.length
+            const fontSize = len > 16 ? 'clamp(1.4rem, 2.5vw, 1.9rem)' : len > 13 ? 'clamp(1.7rem, 3.2vw, 2.3rem)' : 'clamp(2.4rem, 4.5vw, 3.4rem)'
+            return (
+              <div
+                title={val}
+                style={{
+                  fontFamily: "'Cinzel', serif",
+                  fontSize,
+                  fontWeight: 900,
+                  color: '#f3e5ab',
+                  lineHeight: 1.1,
+                  textShadow: '0 4px 18px rgba(212, 175, 55, 0.45)',
+                  margin: '8px 0 14px 0',
+                  wordBreak: 'break-word',
+                  overflow: 'hidden',
+                }}
+              >
+                {val}
+              </div>
+            )
+          })()}
 
           <p style={{ fontSize: '0.84rem', color: 'rgba(243, 229, 171, 0.85)', lineHeight: 1.5, margin: 0, fontWeight: 500 }}>
             Cumulative capacity across {storageHighlights.totalFiles} verified catalog records. Formatted and synchronized through Archive X Engine.

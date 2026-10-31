@@ -187,7 +187,7 @@ export const ArchiveRootNode: React.FC<ArchiveRootNodeProps> = ({ aggregatedData
           Central Sovereign Vault aggregating all registered stream archives into one unified digital intelligence ecosystem.
         </p>
 
-        {/* Aggregated Statistics Quad-Bar */}
+        {/* Aggregated Statistics Quad-Bar (macOS Sovereign Liquid Glass) */}
         <div
           style={{
             display: 'grid',
@@ -196,78 +196,202 @@ export const ArchiveRootNode: React.FC<ArchiveRootNodeProps> = ({ aggregatedData
             marginBottom: '26px',
           }}
         >
+          {/* Box 1: Combined Storage */}
           <div
             style={{
-              background: 'rgba(212, 175, 55, 0.08)',
-              border: '1px solid rgba(212, 175, 55, 0.25)',
-              borderRadius: '10px',
-              padding: '12px 8px',
+              background: 'linear-gradient(135deg, rgba(255, 255, 255, 0.08) 0%, rgba(26, 20, 38, 0.55) 50%, rgba(12, 10, 20, 0.72) 100%)',
+              backdropFilter: 'blur(20px) saturate(200%) brightness(1.08)',
+              WebkitBackdropFilter: 'blur(20px) saturate(200%) brightness(1.08)',
+              border: '1.5px solid rgba(212, 175, 55, 0.38)',
+              borderRadius: '14px',
+              padding: '14px 10px',
+              boxShadow: '0 10px 28px rgba(0, 0, 0, 0.65), inset 0 1.5px 1.5px rgba(255, 255, 255, 0.3), 0 0 16px rgba(212, 175, 55, 0.12)',
+              minWidth: 0,
+              overflow: 'hidden',
+              display: 'flex',
+              flexDirection: 'column',
+              justifyContent: 'center',
+              alignItems: 'center',
+              textAlign: 'center',
+              transition: 'all 0.25s cubic-bezier(0.16, 1, 0.3, 1)',
             }}
           >
-            <div style={{ color: 'rgba(243, 229, 171, 0.65)', fontSize: '0.7rem', textTransform: 'uppercase', letterSpacing: '0.05em' }}>
+            <div style={{ color: 'rgba(243, 229, 171, 0.75)', fontSize: '0.68rem', textTransform: 'uppercase', letterSpacing: '0.06em', fontWeight: 700 }}>
               Combined Storage
             </div>
-            <div style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: '1.25rem', fontWeight: 900, color: '#d4af37', marginTop: '4px' }}>
-              {formatString(aggregatedData.combinedStorage)}
-            </div>
-            <div style={{ color: '#2ecc71', fontSize: '0.68rem', fontWeight: 700, marginTop: '2px' }}>
+            {(() => {
+              const val = formatString(aggregatedData.combinedStorage)
+              const len = val.length
+              const fontSize = len > 16 ? '0.76rem' : len > 13 ? '0.86rem' : len > 10 ? '1rem' : '1.25rem'
+              return (
+                <div
+                  title={val}
+                  style={{
+                    fontFamily: "'JetBrains Mono', monospace",
+                    fontSize,
+                    fontWeight: 900,
+                    color: '#d4af37',
+                    marginTop: '4px',
+                    maxWidth: '100%',
+                    width: '100%',
+                    whiteSpace: 'nowrap',
+                    overflow: 'hidden',
+                    textOverflow: 'ellipsis',
+                    lineHeight: 1.25,
+                    letterSpacing: len > 13 ? '-0.02em' : 'normal',
+                  }}
+                >
+                  {val}
+                </div>
+              )
+            })()}
+            <div style={{ color: '#2ecc71', fontSize: '0.68rem', fontWeight: 800, marginTop: '2px' }}>
               {aggregatedData.combinedStoragePB}
             </div>
           </div>
 
+          {/* Box 2: Total Files */}
           <div
             style={{
-              background: 'rgba(212, 175, 55, 0.08)',
-              border: '1px solid rgba(212, 175, 55, 0.25)',
-              borderRadius: '10px',
-              padding: '12px 8px',
+              background: 'linear-gradient(135deg, rgba(255, 255, 255, 0.08) 0%, rgba(26, 20, 38, 0.55) 50%, rgba(12, 10, 20, 0.72) 100%)',
+              backdropFilter: 'blur(20px) saturate(200%) brightness(1.08)',
+              WebkitBackdropFilter: 'blur(20px) saturate(200%) brightness(1.08)',
+              border: '1.5px solid rgba(212, 175, 55, 0.38)',
+              borderRadius: '14px',
+              padding: '14px 10px',
+              boxShadow: '0 10px 28px rgba(0, 0, 0, 0.65), inset 0 1.5px 1.5px rgba(255, 255, 255, 0.3), 0 0 16px rgba(212, 175, 55, 0.12)',
+              minWidth: 0,
+              overflow: 'hidden',
+              display: 'flex',
+              flexDirection: 'column',
+              justifyContent: 'center',
+              alignItems: 'center',
+              textAlign: 'center',
+              transition: 'all 0.25s cubic-bezier(0.16, 1, 0.3, 1)',
             }}
           >
-            <div style={{ color: 'rgba(243, 229, 171, 0.65)', fontSize: '0.7rem', textTransform: 'uppercase', letterSpacing: '0.05em' }}>
+            <div style={{ color: 'rgba(243, 229, 171, 0.75)', fontSize: '0.68rem', textTransform: 'uppercase', letterSpacing: '0.06em', fontWeight: 700 }}>
               Total Files
             </div>
-            <div style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: '1.25rem', fontWeight: 900, color: '#f3e5ab', marginTop: '4px' }}>
-              {aggregatedData.totalFiles}
-            </div>
-            <div style={{ color: 'rgba(243, 229, 171, 0.5)', fontSize: '0.68rem', marginTop: '2px' }}>
+            {(() => {
+              const val = aggregatedData.totalFiles
+              const len = val.length
+              const fontSize = len > 12 ? '0.95rem' : '1.25rem'
+              return (
+                <div
+                  title={val}
+                  style={{
+                    fontFamily: "'JetBrains Mono', monospace",
+                    fontSize,
+                    fontWeight: 900,
+                    color: '#f3e5ab',
+                    marginTop: '4px',
+                    maxWidth: '100%',
+                    width: '100%',
+                    whiteSpace: 'nowrap',
+                    overflow: 'hidden',
+                    textOverflow: 'ellipsis',
+                    lineHeight: 1.25,
+                  }}
+                >
+                  {val}
+                </div>
+              )
+            })()}
+            <div style={{ color: 'rgba(243, 229, 171, 0.55)', fontSize: '0.68rem', fontWeight: 600, marginTop: '2px' }}>
               Verified Records
             </div>
           </div>
 
+          {/* Box 3: Messages Checked */}
           <div
             style={{
-              background: 'rgba(212, 175, 55, 0.08)',
-              border: '1px solid rgba(212, 175, 55, 0.25)',
-              borderRadius: '10px',
-              padding: '12px 8px',
+              background: 'linear-gradient(135deg, rgba(255, 255, 255, 0.08) 0%, rgba(26, 20, 38, 0.55) 50%, rgba(12, 10, 20, 0.72) 100%)',
+              backdropFilter: 'blur(20px) saturate(200%) brightness(1.08)',
+              WebkitBackdropFilter: 'blur(20px) saturate(200%) brightness(1.08)',
+              border: '1.5px solid rgba(212, 175, 55, 0.38)',
+              borderRadius: '14px',
+              padding: '14px 10px',
+              boxShadow: '0 10px 28px rgba(0, 0, 0, 0.65), inset 0 1.5px 1.5px rgba(255, 255, 255, 0.3), 0 0 16px rgba(212, 175, 55, 0.12)',
+              minWidth: 0,
+              overflow: 'hidden',
+              display: 'flex',
+              flexDirection: 'column',
+              justifyContent: 'center',
+              alignItems: 'center',
+              textAlign: 'center',
+              transition: 'all 0.25s cubic-bezier(0.16, 1, 0.3, 1)',
             }}
           >
-            <div style={{ color: 'rgba(243, 229, 171, 0.65)', fontSize: '0.7rem', textTransform: 'uppercase', letterSpacing: '0.05em' }}>
+            <div style={{ color: 'rgba(243, 229, 171, 0.75)', fontSize: '0.68rem', textTransform: 'uppercase', letterSpacing: '0.06em', fontWeight: 700 }}>
               Messages Checked
             </div>
-            <div style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: '1.25rem', fontWeight: 900, color: '#f3e5ab', marginTop: '4px' }}>
-              {aggregatedData.totalMessages}
-            </div>
-            <div style={{ color: 'rgba(243, 229, 171, 0.5)', fontSize: '0.68rem', marginTop: '2px' }}>
+            {(() => {
+              const val = aggregatedData.totalMessages
+              const len = val.length
+              const fontSize = len > 12 ? '0.95rem' : '1.25rem'
+              return (
+                <div
+                  title={val}
+                  style={{
+                    fontFamily: "'JetBrains Mono', monospace",
+                    fontSize,
+                    fontWeight: 900,
+                    color: '#f3e5ab',
+                    marginTop: '4px',
+                    maxWidth: '100%',
+                    width: '100%',
+                    whiteSpace: 'nowrap',
+                    overflow: 'hidden',
+                    textOverflow: 'ellipsis',
+                    lineHeight: 1.25,
+                  }}
+                >
+                  {val}
+                </div>
+              )
+            })()}
+            <div style={{ color: 'rgba(243, 229, 171, 0.55)', fontSize: '0.68rem', fontWeight: 600, marginTop: '2px' }}>
               Zero Missed
             </div>
           </div>
 
+          {/* Box 4: Registered Channels */}
           <div
             style={{
-              background: 'rgba(212, 175, 55, 0.08)',
-              border: '1px solid rgba(212, 175, 55, 0.25)',
-              borderRadius: '10px',
-              padding: '12px 8px',
+              background: 'linear-gradient(135deg, rgba(255, 255, 255, 0.08) 0%, rgba(26, 20, 38, 0.55) 50%, rgba(12, 10, 20, 0.72) 100%)',
+              backdropFilter: 'blur(20px) saturate(200%) brightness(1.08)',
+              WebkitBackdropFilter: 'blur(20px) saturate(200%) brightness(1.08)',
+              border: '1.5px solid rgba(212, 175, 55, 0.38)',
+              borderRadius: '14px',
+              padding: '14px 10px',
+              boxShadow: '0 10px 28px rgba(0, 0, 0, 0.65), inset 0 1.5px 1.5px rgba(255, 255, 255, 0.3), 0 0 16px rgba(212, 175, 55, 0.12)',
+              minWidth: 0,
+              overflow: 'hidden',
+              display: 'flex',
+              flexDirection: 'column',
+              justifyContent: 'center',
+              alignItems: 'center',
+              textAlign: 'center',
+              transition: 'all 0.25s cubic-bezier(0.16, 1, 0.3, 1)',
             }}
           >
-            <div style={{ color: 'rgba(243, 229, 171, 0.65)', fontSize: '0.7rem', textTransform: 'uppercase', letterSpacing: '0.05em' }}>
+            <div style={{ color: 'rgba(243, 229, 171, 0.75)', fontSize: '0.68rem', textTransform: 'uppercase', letterSpacing: '0.06em', fontWeight: 700 }}>
               Registered Channels
             </div>
-            <div style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: '1.25rem', fontWeight: 900, color: '#2ecc71', marginTop: '4px' }}>
+            <div
+              style={{
+                fontFamily: "'JetBrains Mono', monospace",
+                fontSize: '1.25rem',
+                fontWeight: 900,
+                color: '#2ecc71',
+                marginTop: '4px',
+                lineHeight: 1.25,
+              }}
+            >
               {aggregatedData.archiveCount}
             </div>
-            <div style={{ color: 'rgba(243, 229, 171, 0.5)', fontSize: '0.68rem', marginTop: '2px' }}>
+            <div style={{ color: 'rgba(243, 229, 171, 0.55)', fontSize: '0.68rem', fontWeight: 600, marginTop: '2px' }}>
               100% Complete
             </div>
           </div>
