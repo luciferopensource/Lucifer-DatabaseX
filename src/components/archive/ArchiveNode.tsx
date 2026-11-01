@@ -339,6 +339,10 @@ export const ArchiveNode: React.FC<ArchiveNodeProps> = ({ archive, position, onS
         {/* Action Button */}
         <button
           type="button"
+          onClick={(e) => {
+            e.stopPropagation()
+            onSelect(archive.route)
+          }}
           style={{
             width: '100%',
             background: isHovered

@@ -402,6 +402,10 @@ export const ArchiveRootNode: React.FC<ArchiveRootNodeProps> = ({ aggregatedData
         {/* Primary CTA Button */}
         <button
           type="button"
+          onClick={(e) => {
+            e.stopPropagation()
+            onSelectRoot()
+          }}
           style={{
             background: 'linear-gradient(135deg, #d4af37 0%, #aa771c 100%)',
             color: '#08080c',

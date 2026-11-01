@@ -330,7 +330,7 @@ const AppContent: React.FC = () => {
 
       {/* ── Homepage Living Archive Tree Section (Scroll-driven over 3D Hero) ── */}
       {currentPage === 'hero' && (
-        <div style={{ position: 'relative', zIndex: 10 }}>
+        <div style={{ position: 'relative', zIndex: 10, pointerEvents: 'none' }}>
           {/* Hero Spacer (Allows direct interaction with 3D canvas, with smooth scroll prompt at bottom) */}
           <div
             style={{
@@ -391,6 +391,7 @@ const AppContent: React.FC = () => {
           <div
             style={{
               position: 'relative',
+              pointerEvents: 'auto',
               background: 'linear-gradient(to bottom, rgba(8, 8, 14, 0.78) 0%, rgba(12, 12, 20, 0.88) 100%)',
               backdropFilter: 'blur(20px) saturate(180%)',
               WebkitBackdropFilter: 'blur(20px) saturate(180%)',
