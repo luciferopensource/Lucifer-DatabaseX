@@ -58,7 +58,8 @@ export const SovereignCursor: React.FC = () => {
     handleResize()
     window.addEventListener('resize', handleResize)
 
-    const spawnParticles = (x: number, y: number, count = 2, speedMultiplier = 1) => {
+    const spawnParticles = (x: number, y: number, count = 1, speedMultiplier = 1) => {
+      if (particles.length > 35) return
       for (let i = 0; i < count; i++) {
         const angle = Math.random() * Math.PI * 2
         const speed = (Math.random() * 1.5 + 0.4) * speedMultiplier
@@ -69,7 +70,7 @@ export const SovereignCursor: React.FC = () => {
           vy: Math.sin(angle) * speed + 0.2, // slight gentle gravity
           size: Math.random() * 2.8 + 1.2,
           alpha: 0.9,
-          decay: Math.random() * 0.025 + 0.015,
+          decay: Math.random() * 0.035 + 0.02,
           color: GOLD_COLORS[Math.floor(Math.random() * GOLD_COLORS.length)]
         })
       }
@@ -98,7 +99,7 @@ export const SovereignCursor: React.FC = () => {
       }
 
       // Spawn stardust trail particles
-      spawnParticles(mouseX, mouseY, 2)
+      spawnParticles(mouseX, mouseY, 1)
       resetIdleTimer()
     }
 
@@ -219,29 +220,26 @@ export const SovereignCursor: React.FC = () => {
           : 'transparent'
       }
 
-      // 2. Render & update golden trail particles
+      // 2. Render & update golden trail particles (high-performance crisp stardust)
       for (let i = particles.length - 1; i >= 0; i--) {
         const p = particles[i]
         p.x += p.vx
         p.y += p.vy
         p.alpha -= p.decay
-        p.size *= 0.98
+        p.size *= 0.97
 
         if (p.alpha <= 0 || p.size <= 0.2) {
           particles.splice(i, 1)
           continue
         }
 
-        ctx.save()
         ctx.globalAlpha = Math.max(0, p.alpha)
         ctx.fillStyle = p.color
-        ctx.shadowBlur = 8
-        ctx.shadowColor = '#d4af37'
         ctx.beginPath()
         ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2)
         ctx.fill()
-        ctx.restore()
       }
+      ctx.globalAlpha = 1
 
       animId = requestAnimationFrame(animate)
     }

@@ -170,10 +170,6 @@ export const SnowfallCanvas: React.FC = () => {
         gradFront.addColorStop(0.2, 'rgba(245, 248, 255, 0.85)')
         gradFront.addColorStop(1, 'rgba(255, 255, 255, 0.98)')
         ctx.fillStyle = gradFront
-        if (!isMobile) {
-          ctx.shadowColor = 'rgba(255, 255, 255, 0.5)'
-          ctx.shadowBlur = 10
-        }
         ctx.fill()
 
         // Soft shimmering top crest line
@@ -183,19 +179,12 @@ export const SnowfallCanvas: React.FC = () => {
         ctx.quadraticCurveTo(width * 0.85, baseLine - 6, width, baseLine + 8)
         ctx.strokeStyle = 'rgba(255, 255, 255, 0.95)'
         ctx.lineWidth = 1.5
-        if (!isMobile) {
-          ctx.shadowColor = '#ffffff'
-          ctx.shadowBlur = 6
-        }
         ctx.stroke()
 
         ctx.restore()
       }
 
-      // ── Draw Falling Crisp White Snowflakes ──
-      if (isMobile) {
-        ctx.shadowBlur = 0
-      }
+      // ── Draw Falling Crisp White Snowflakes (Pure fill, zero shadowBlur overhead) ──
       for (let i = 0; i < snowflakes.length; i++) {
         const flake = snowflakes[i]
 
@@ -216,10 +205,6 @@ export const SnowfallCanvas: React.FC = () => {
         ctx.beginPath()
         ctx.arc(flake.x, flake.y, flake.radius, 0, Math.PI * 2)
         ctx.fillStyle = `rgba(255, 255, 255, ${flake.opacity})`
-        if (!isMobile) {
-          ctx.shadowColor = 'rgba(255, 255, 255, 0.85)'
-          ctx.shadowBlur = 4
-        }
         ctx.fill()
       }
 

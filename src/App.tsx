@@ -286,10 +286,10 @@ const AppContent: React.FC = () => {
       <div
         style={{
           position: 'fixed',
-          top: 'var(--sovereign-header-height, 56px)',
+          top: 0,
           left: 0,
           width: '100vw',
-          height: 'calc(100vh - var(--sovereign-header-height, 56px))',
+          height: '100vh',
           zIndex: 0,
           pointerEvents: currentPage === 'hero' ? 'auto' : 'none',
           opacity: currentPage === 'hero' ? 1 : 0.88,
