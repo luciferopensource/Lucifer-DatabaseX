@@ -106,7 +106,7 @@
     position:absolute; inset:0; z-index:3;
     width:100%; height:100%;
     pointer-events:none;
-    opacity:0; transition:opacity .7s var(--ease);
+    opacity:1; transition:opacity .45s var(--ease);
   }
   .is-ready #scene{ opacity:1; }
 
@@ -1000,7 +1000,7 @@
     <article class="card card--about mask" style="--d:760ms; --pd:10; --pr:2.2; cursor:pointer;" id="cardAbout" onclick="navigateToTotalDatabase()">
       <figure class="portal" data-delay="920">
         <span class="portal-media">
-          <img crossorigin="anonymous" src="inner-green-assets/total-database-core.svg" alt="Total Database Sovereign Core" loading="eager" decoding="async">
+          <img src="inner-green-assets/total-database-core.svg" alt="Total Database Sovereign Core" loading="eager" decoding="async">
         </span>
         <canvas class="pixel-reveal" aria-hidden="true"></canvas>
       </figure>
@@ -1085,7 +1085,7 @@
       <p class="label">Official Sovereign Mirror</p>
       <h2>Lucifer Stream Site Backup 1</h2>
       <figure class="portal" data-delay="1080">
-        <span class="portal-media"><img crossorigin="anonymous" src="https://images.unsplash.com/photo-1517604931442-7e0c8ed2963c?auto=format&fit=crop&w=800&q=80" alt="Grand cinematic auditorium screen in royal obsidian lighting" loading="eager" decoding="async"></span>
+        <span class="portal-media"><img src="https://images.unsplash.com/photo-1517604931442-7e0c8ed2963c?auto=format&fit=crop&w=800&q=80" alt="Grand cinematic auditorium screen in royal obsidian lighting" loading="eager" decoding="async"></span>
         <canvas class="pixel-reveal" aria-hidden="true"></canvas>
       </figure>
       <button class="knob" aria-label="Open Lucifer Stream Site Backup 1" id="knobCardBackup" onclick="navigateToBackup1()" style="cursor:pointer;">
@@ -3175,9 +3175,7 @@ window.__seek   = v => { clock = v; drawn = null; };
     'uniform vec3 uScanO;',
     'uniform float uScanR, uScanOn;',
     'bool unscanned(vec3 w, float lag){',
-    '  if (uScanOn < 0.5) return false;',
-    '  float wob = sin(w.y * 0.011 + w.x * 0.007) * 36.0 + sin(w.z * 0.021 + w.y * 0.013) * 17.0;',
-    '  return distance(w, uScanO) > uScanR - lag + wob;',
+    '  return false;',
     '}',
     /* the far ridge has to dissolve before it reaches the cards, and into the
        floor light below it — the same two masks the artwork build carried */
@@ -3693,7 +3691,7 @@ window.__seek   = v => { clock = v; drawn = null; };
   var uMouseFar  = { value: new THREE.Vector3(9999, 9999, 9999) };
   /* the survey pulse — shared by every material so one write moves them all */
   var uScanO  = { value: new THREE.Vector3(-900, -260, 240) };
-  var uScanR  = { value: 0 };
+  var uScanR  = { value: 99999 };
   var uScanOn = { value: 0 };
   var uWire   = { value: 0 };
 
@@ -3941,6 +3939,10 @@ window.__seek   = v => { clock = v; drawn = null; };
         }
         var maxTex = gl.getParameter(gl.MAX_TEXTURE_SIZE) || 4096;
         if (maxTex < 4096) isLowGPU = true;
+        try {
+          var lose = gl.getExtension('WEBGL_lose_context');
+          if (lose) lose.loseContext();
+        } catch (le) {}
       } else {
         isLowGPU = true;
       }
@@ -3948,7 +3950,7 @@ window.__seek   = v => { clock = v; drawn = null; };
       isLowGPU = true;
     }
 
-    var qTier = /[?&]tier=(low|mid|high)/i.exec(location.search);
+    var qTier = /[?&]tier=(low|mid|high)/i.exec(window.location ? window.location.search : '');
     if (qTier) return qTier[1].toLowerCase();
 
     // Tier calculation:
@@ -3972,14 +3974,15 @@ window.__seek   = v => { clock = v; drawn = null; };
     var isLow = hardwareTier === 'low';
     var isMid = hardwareTier === 'mid';
     
-    // Low-end PCs / Mobile: 32k near + 8k far = 40,000 blades (smooth 60 FPS, zero freeze, looks lush)
-    // Mid-tier: 65k near + 18k far = 83,000 blades
-    // High-end desktop: 140k near + 45k far = 185,000 blades (maximum cinematic density)
-    var BLADES_NEAR = isLow ? 32000 : (isMid ? 65000 : 140000);
-    var BLADES_FAR  = isLow ? 8000  : (isMid ? 18000 : 45000);
+    // Intelligent Hardware-Tiered Blade Density:
+    // Low-end PCs / Mobile: 12k near + 3k far = 15,000 blades (super smooth 60 FPS on any low-end hardware / Intel HD GPU)
+    // Mid-tier: 40k near + 10k far = 50,000 blades (balanced high performance)
+    // High-end desktop: 100k near + 25k far = 125,000 blades (maximum cinematic density)
+    var BLADES_NEAR = isLow ? 12000 : (isMid ? 40000 : 100000);
+    var BLADES_FAR  = isLow ? 3000  : (isMid ? 10000 : 25000);
 
-    var q = /[?&]blades=(\d+)/.exec(location.search);
-    if (q) { BLADES_NEAR = +q[1]; BLADES_FAR = Math.round(+q[1] * 0.21); }
+    var q = /[?&]blades=(\d+)/.exec((typeof window !== 'undefined' && window.location) ? window.location.search : '');
+    if (q) { BLADES_NEAR = +q[1]; BLADES_FAR = Math.round(+q[1] * 0.25); }
 
     if (renderer) {
       try { renderer.dispose(); } catch (e) {}
@@ -3989,7 +3992,7 @@ window.__seek   = v => { clock = v; drawn = null; };
       canvas: canvas, 
       alpha: true, 
       antialias: hardwareTier === 'high',
-      powerPreference: isLow ? 'low-power' : 'high-performance'
+      powerPreference: 'default'
     });
     renderer.setClearColor(0x000000, 0);
     renderer.setPixelRatio(isLow ? 1.0 : (isMid ? Math.min(window.devicePixelRatio || 1, 1.25) : Math.min(window.devicePixelRatio || 1, 1.5)));
@@ -4048,10 +4051,10 @@ window.__seek   = v => { clock = v; drawn = null; };
     window.addEventListener('resize', layout);
     clock = new THREE.Clock();
 
-    /* Hold the pulse for a page nobody is looking at: a background tab gets
-       no rAF, so the scan would never advance and the hero would still be
-       empty when it was finally opened. */
-    if (!REDUCED) { uScanOn.value = 1; uScanR.value = 0; scanning = true; }
+    /* Discard filter disabled: 3D tree, roots and waving grass blades are rendered instantly on frame 1 */
+    uScanOn.value = 0;
+    uScanR.value = 99999;
+    scanning = false;
 
     /* Paint once here rather than waiting on the loop. */
     renderFrame();
@@ -4910,8 +4913,15 @@ window.__seek   = v => { clock = v; drawn = null; };
      frame — so hand the browser two frames to start animating. */
   ready();
   requestAnimationFrame(function () { requestAnimationFrame(function () {
-    try { build(); }
-    catch (err) { console.error(err); }
+    try { 
+      build(); 
+      window.__renderer = renderer; 
+      window.__scene = scene;
+    }
+    catch (err) { 
+      window.__buildError = err.stack || String(err);
+      console.error(err); 
+    }
   }); });
 
   /* never leave the page invisible if something stalls */
