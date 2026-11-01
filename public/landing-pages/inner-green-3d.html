@@ -363,6 +363,20 @@
   }
   .liquid-fx{ position:absolute; inset:0; width:100%; height:100%; display:block; }
 
+  /* High-performance CSS fallback for low-end PCs and mobile */
+  .liquid-stage.liquid-fallback .liquid-fx{ display:none !important; }
+  .liquid-stage.liquid-fallback .liquid-plate{
+    background:
+      linear-gradient(135deg, rgba(212,175,55,.22) 0%, rgba(12,16,12,.78) 50%, rgba(212,175,55,.14) 100%) !important;
+    border:1px solid rgba(212,175,55,.45) !important;
+    box-shadow:0 4px 20px rgba(0,0,0,.5), inset 0 1px 0 rgba(255,255,255,.2) !important;
+  }
+  .liquid-stage.liquid-fallback.hot .liquid-plate{
+    background:
+      linear-gradient(135deg, rgba(212,175,55,.36) 0%, rgba(18,24,16,.88) 50%, rgba(212,175,55,.24) 100%) !important;
+    box-shadow:0 6px 26px rgba(212,175,55,.32), inset 0 1px 0 rgba(255,255,255,.35) !important;
+  }
+
   .liquid-button{
     position:relative;
     height:var(--bh);
@@ -1188,6 +1202,21 @@
   'use strict';
 
   function mountLiquidMetal(host) {
+    if (!host) return;
+
+    var isLow = false;
+    try {
+      if (globalThis.navigator && globalThis.navigator.hardwareConcurrency && globalThis.navigator.hardwareConcurrency <= 4) isLow = true;
+      if (globalThis.navigator && globalThis.navigator.deviceMemory && globalThis.navigator.deviceMemory <= 4) isLow = true;
+      if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(globalThis.navigator ? globalThis.navigator.userAgent : '') || globalThis.innerWidth <= 768) isLow = true;
+    } catch (e) {}
+
+    // On low-end systems or mobile, preserve WebGL resources for the 3D scene with CSS fallback
+    if (isLow) {
+      host.classList.add('liquid-fallback');
+      return;
+    }
+
     const hostWindow = globalThis;
     const document = {
       body: host,
@@ -1573,7 +1602,17 @@ void main(){
 
 /* --------------------------------------------------------------- */
 const cv = document.getElementById('fx');
-const gl = cv.getContext('webgl2', {alpha:true, antialias:false, premultipliedAlpha:true, powerPreference:'high-performance'});
+if (!cv) { host.classList.add('liquid-fallback'); return; }
+let gl = null;
+try {
+  gl = cv.getContext('webgl2', {alpha:true, antialias:false, premultipliedAlpha:true, powerPreference:'high-performance'});
+} catch (e) {
+  gl = null;
+}
+if (!gl) {
+  host.classList.add('liquid-fallback');
+  return;
+}
 const stage = document.getElementById('stage');
 const btn   = document.getElementById('btn');
 const plate = document.querySelector('.plate');
@@ -1651,9 +1690,7 @@ const R = window.__R = {
   ptrVref: 4.5       // cursor speed, in button heights/sec, that counts as "fast"
 };
 
-if(!gl){
-  document.body.innerHTML = '<p style="color:#888;font:14px system-ui">WebGL2 is required for this page.</p>';
-} else {
+try {
 
 function sh(type, src){
   const s = gl.createShader(type); gl.shaderSource(s, src); gl.compileShader(s);
@@ -1995,12 +2032,23 @@ window.__hover  = v => { on.over = !!v; sync(); };
 window.__press  = v => { on.press = !!v; sync(); if(v) addRipple(0, 0); };
 window.__ripple = (x = 0, y = 0) => addRipple(x, y);
 window.__seek   = v => { clock = v; drawn = null; };
+} catch (err) {
+  console.warn('Liquid metal shader setup failed, fallback to CSS:', err);
+  host.classList.add('liquid-fallback');
+  return;
 }
 
   }
 
   const hosts = globalThis.document.querySelectorAll('[data-liquid-metal]');
-  for (let i = 0; i < hosts.length; i++) mountLiquidMetal(hosts[i]);
+  for (let i = 0; i < hosts.length; i++) {
+    try {
+      mountLiquidMetal(hosts[i]);
+    } catch (e) {
+      console.warn('Could not mount liquid metal on host:', e);
+      if (hosts[i]) hosts[i].classList.add('liquid-fallback');
+    }
+  }
 })();
 </script>
 <script>
@@ -2119,6 +2167,28 @@ window.__seek   = v => { clock = v; drawn = null; };
   var SCAN_DUR = 3.4;
   var clock = null;
   var readyStarted = false;
+  var hardwareTier = 'high';
+  var isContextLost = false;
+  var slowFrameCount = 0;
+  var downgraded = false;
+
+  if (canvas) {
+    canvas.addEventListener('webglcontextlost', function (e) {
+      e.preventDefault();
+      console.warn('Lucifer 3D Scene: WebGL context lost.');
+      isContextLost = true;
+    }, false);
+
+    canvas.addEventListener('webglcontextrestored', function () {
+      console.info('Lucifer 3D Scene: WebGL context restored. Re-initialising...');
+      isContextLost = false;
+      try {
+        build();
+      } catch (err) {
+        console.error('Failed to rebuild after context restore:', err);
+      }
+    }, false);
+  }
 
   /* ── plate transmission ─────────────────────────────────────────────
      Sample the actual photograph into a tiny grid and carry those colours
@@ -3841,31 +3911,88 @@ window.__seek   = v => { clock = v; drawn = null; };
     return t;
   }
 
+  /* ── intelligent hardware tiering for 60 FPS on low-end PCs & maximum high-end fidelity ── */
+  function detectHardwareTier() {
+    var ua = navigator.userAgent || '';
+    var isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(ua) 
+      || (window.innerWidth <= 768);
+    var cores = navigator.hardwareConcurrency || 4;
+    var mem = navigator.deviceMemory || 4;
+    var isLowGPU = false;
+    var isSoftware = false;
+
+    try {
+      var probeCanvas = document.createElement('canvas');
+      var gl = probeCanvas.getContext('webgl') || probeCanvas.getContext('experimental-webgl');
+      if (gl) {
+        var ext = gl.getExtension('WEBGL_debug_renderer_info');
+        if (ext) {
+          var rend = (gl.getParameter(ext.UNMASKED_RENDERER_WEBGL) || '').toLowerCase();
+          if (/swiftshader|llvmpipe|software|microsoft basic/i.test(rend)) {
+            isSoftware = true;
+            isLowGPU = true;
+          }
+          if (/intel.*(hd|uhd|graphics [23456]\d\d|iris|family)/i.test(rend)) {
+            isLowGPU = true;
+          }
+          if (/radeon.*(vega [23]|r[2345]|hd 6\d\d\d|hd 7\d\d\d|graphics)/i.test(rend)) {
+            isLowGPU = true;
+          }
+        }
+        var maxTex = gl.getParameter(gl.MAX_TEXTURE_SIZE) || 4096;
+        if (maxTex < 4096) isLowGPU = true;
+      } else {
+        isLowGPU = true;
+      }
+    } catch (e) {
+      isLowGPU = true;
+    }
+
+    var qTier = /[?&]tier=(low|mid|high)/i.exec(location.search);
+    if (qTier) return qTier[1].toLowerCase();
+
+    // Tier calculation:
+    // 'low': Mobile, low-power integrated GPUs, software rendering, or <= 4 cores with <= 4GB RAM
+    if (isMobile || isSoftware || (isLowGPU && cores <= 4) || (cores <= 2) || (mem <= 2)) {
+      return 'low';
+    }
+    // 'mid': 4 to 8 cores, moderate resolution, or modern integrated GPU with > 4GB RAM
+    if (cores <= 4 || isLowGPU || (window.innerWidth * window.innerHeight < 1400000)) {
+      return 'mid';
+    }
+    // 'high': Dedicated GPU, >= 8 cores, high memory
+    return 'high';
+  }
+
   /* ================================================================== *
    * build
    * ================================================================== */
   function build() {
-    var isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) 
-      || (window.innerWidth <= 768);
-    var narrow = NARROW.matches;
-    var small = narrow || (window.innerWidth * window.innerHeight) < 620000;
+    hardwareTier = detectHardwareTier();
+    var isLow = hardwareTier === 'low';
+    var isMid = hardwareTier === 'mid';
     
-    // Balanced high-fidelity geometry budget:
-    // 40,000 near blades on mobile delivers lush grass without frame drops.
-    // 140,000 blades on desktop delivers full cinematic density.
-    var BLADES_NEAR = isMobile ? 40000 : (small ? 70000 : 140000);
-    var BLADES_FAR  = isMobile ? 10000 : (small ? 20000 :  45000);
+    // Low-end PCs / Mobile: 32k near + 8k far = 40,000 blades (smooth 60 FPS, zero freeze, looks lush)
+    // Mid-tier: 65k near + 18k far = 83,000 blades
+    // High-end desktop: 140k near + 45k far = 185,000 blades (maximum cinematic density)
+    var BLADES_NEAR = isLow ? 32000 : (isMid ? 65000 : 140000);
+    var BLADES_FAR  = isLow ? 8000  : (isMid ? 18000 : 45000);
 
     var q = /[?&]blades=(\d+)/.exec(location.search);
     if (q) { BLADES_NEAR = +q[1]; BLADES_FAR = Math.round(+q[1] * 0.21); }
 
+    if (renderer) {
+      try { renderer.dispose(); } catch (e) {}
+    }
+
     renderer = new THREE.WebGLRenderer({ 
       canvas: canvas, 
       alpha: true, 
-      antialias: !small && !isMobile
+      antialias: hardwareTier === 'high',
+      powerPreference: isLow ? 'low-power' : 'high-performance'
     });
     renderer.setClearColor(0x000000, 0);
-    renderer.setPixelRatio(isMobile ? 1.0 : Math.min(window.devicePixelRatio || 1, small ? 1.25 : 1.5));
+    renderer.setPixelRatio(isLow ? 1.0 : (isMid ? Math.min(window.devicePixelRatio || 1, 1.25) : Math.min(window.devicePixelRatio || 1, 1.5)));
     renderer.toneMapping = THREE.ACESFilmicToneMapping;
     renderer.toneMappingExposure = 1.30;
     if ('sRGBEncoding' in THREE) renderer.outputEncoding = THREE.sRGBEncoding;
@@ -3880,7 +4007,7 @@ window.__seek   = v => { clock = v; drawn = null; };
     /* a scatter of stubby offshoots, so the tubes never read as hoses */
     var hp = new THREE.Vector3(), hn = new THREE.Vector3();
     var extra = [];
-    var extraOffshoots = isMobile ? 8 : 14;
+    var extraOffshoots = isLow ? 6 : (isMid ? 10 : 14);
     for (var i = 0; i < extraOffshoots; i++) {
       var r = rng();
       var src = nearLimbs[r < 0.62 ? 0 : (r < 0.82 ? 1 : 2)];
@@ -3898,23 +4025,18 @@ window.__seek   = v => { clock = v; drawn = null; };
 
     nearGroup = assembleRoot(nearLimbs, {
       aspect: ARCH.aspect, haze: 0.15, fog: 0.0, alpha: 1.0, order: 2,
-      blades: BLADES_NEAR, ferns: isMobile ? 18 : (small ? 26 : 46), flowers: isMobile ? 80 : (small ? 120 : 260),
+      blades: BLADES_NEAR, ferns: isLow ? 14 : (isMid ? 24 : 46), flowers: isLow ? 40 : (isMid ? 100 : 260),
       fernSize: [0.22, 0.50], flowerSize: [0.055, 0.118], mainLimbs: mainCount, wire: true,
       mouse: uMouseNear, mouseR: 1.20
     });
     scene.add(nearGroup);
-    if (!small) bf = buildButterfly(nearGroup, nearLimbs, nearGroup.userData.uni);
+    if (hardwareTier !== 'low') bf = buildButterfly(nearGroup, nearLimbs, nearGroup.userData.uni);
 
-    /* ---- far ridge: same builder, pushed back and washed into the air.
-            It dissolves before it reaches the cards (local x 0.5 → 4.0) and
-            into the floor light below it (lower 0/42% of its box) — the same
-            two masks the artwork build carried in its own shader. ---- */
+    /* ---- far ridge: same builder, pushed back and washed into the air ---- */
     farGroup = assembleRoot(buildFarRoot(), {
       aspect: FAR.aspect, haze: 0.16, fog: 0.26, alpha: 1.0, order: 0,
-      /* dimmer air than the near root's: at 0.46 of the pale tone the ridge
-         lost its silhouette entirely and read as a smudge on the background */
       hazeCol: [0.150, 0.164, 0.120], hazeLift: 0.92,
-      blades: BLADES_FAR, ferns: isMobile ? 8 : (small ? 12 : 16), flowers: isMobile ? 30 : (small ? 45 : 90),
+      blades: BLADES_FAR, ferns: isLow ? 6 : (isMid ? 10 : 16), flowers: isLow ? 24 : (isMid ? 45 : 90),
       fernSize: [0.26, 0.56], flowerSize: [0.034, 0.062],
       mask: [0.4, 3.4, 0.0, 0.42], wire: true,
       mouse: uMouseFar, mouseR: 1.4
@@ -3931,10 +4053,7 @@ window.__seek   = v => { clock = v; drawn = null; };
        empty when it was finally opened. */
     if (!REDUCED) { uScanOn.value = 1; uScanR.value = 0; scanning = true; }
 
-    /* Paint once here rather than waiting on the loop. A tab that is opened
-       in the background never gets a rAF, so the hero would sit empty until
-       it was looked at — and the first frame is also the one the entrance
-       wipe is revealing. */
+    /* Paint once here rather than waiting on the loop. */
     renderFrame();
     startTick();
   }
@@ -3960,14 +4079,10 @@ window.__seek   = v => { clock = v; drawn = null; };
     glowMesh.position.z = -320;
     scene.add(glowMesh);
 
-    /* ---- drifting pollen --------------------------------------------
-       Enough of it to read as air rather than as a handful of sprites, which
-       means the drift has to leave the CPU: every mote is animated from
-       uTime in the vertex shader, so the per-frame cost is one uniform write
-       no matter how many there are. Sizes follow a power law — a few big
-       soft ones near the lens, a great many specks behind them — and they
-       depth-test against the moss so the ones behind the root are hidden. */
-    var COUNT = isMobile ? 800 : ((NARROW.matches || (window.innerWidth * window.innerHeight) < 620000) ? 1500 : 3600);
+    /* ---- drifting pollen -------------------------------------------- */
+    var isLow = hardwareTier === 'low';
+    var isMid = hardwareTier === 'mid';
+    var COUNT = isLow ? 600 : (isMid ? 1400 : 3600);
     var pos = new Float32Array(COUNT * 3);
     var seed = new Float32Array(COUNT * 4);
     for (var i = 0; i < COUNT; i++) {
@@ -4722,9 +4837,27 @@ window.__seek   = v => { clock = v; drawn = null; };
   }
 
   /* ── frame ─────────────────────────────────────────────────────────── */
+  function monitorPerformance(dt) {
+    if (downgraded) return;
+    if (dt > 0.040) { // < 25 FPS
+      slowFrameCount++;
+      if (slowFrameCount > 6) {
+        downgraded = true;
+        console.warn('Lucifer Adaptive Watchdog: Performance drop detected. Throttling renderer to low profile...');
+        if (renderer) renderer.setPixelRatio(1.0);
+        if (bf) bf = null;
+        if (motes) motes.visible = false;
+      }
+    } else {
+      if (slowFrameCount > 0) slowFrameCount--;
+    }
+  }
+
   var frames = 0;
   function renderFrame() {
+    if (isContextLost || !renderer || !scene || !camera) return;
     var dt = Math.min(clock.getDelta(), 0.05);
+    monitorPerformance(dt);
     if (!REDUCED) uTime.value += dt;
 
     camera.position.x = -smooth.x * 26;
@@ -4762,8 +4895,12 @@ window.__seek   = v => { clock = v; drawn = null; };
     updateMouse(dt);
     emitSpray(dt);
 
-    renderer.render(scene, camera);
-    if (++frames === 2) window.__ready = true;
+    try {
+      renderer.render(scene, camera);
+      if (++frames === 2) window.__ready = true;
+    } catch (renderErr) {
+      console.warn('Lucifer 3D render caught error:', renderErr);
+    }
   }
 
   /* ── boot ──────────────────────────────────────────────────────────── */
